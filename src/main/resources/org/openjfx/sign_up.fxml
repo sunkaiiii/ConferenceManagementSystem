@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane style="-fx-background-color: #f6f6f6;" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.SignUpController">
+    <top>
+        <BorderPane>
+            <padding>
+                <Insets right="16" top="8" left="16"/>
+            </padding>
+            <left>
+                <ImageView fitHeight="100" fitWidth="100">
+                    <image>
+                        <Image url="@images/monash.png"/>
+                    </image>
+                </ImageView>
+            </left>
+            <center>
+                <Label text="Welcome to Monash Conference Management System" style="-fx-font-weight: bold"
+                       wrapText="true" textAlignment="CENTER">
+                    <font>
+                        <Font size="38"/>
+                    </font>
+                </Label>
+            </center>
+
+        </BorderPane>
+    </top>
+    <left>
+        <VBox  alignment="CENTER" onMouseClicked="#back">
+            <padding>
+                <Insets left="64"/>
+            </padding>
+            <ImageView fitHeight="48" fitWidth="48">
+                <Image url="@images/back_arrow.png"/>
+            </ImageView>
+            <Label text="Back to Log in"/>
+        </VBox>
+
+    </left>
+    <center>
+        <VBox alignment="CENTER" maxWidth="560" minWidth="200">
+            <HBox>
+                <VBox alignment="CENTER_LEFT">
+                    <padding>
+                        <Insets left="4" top="8" bottom="8" right="4"/>
+                    </padding>
+                    <Label text="First Name" style="-fx-font-weight: bold"/>
+                    <TextField/>
+                </VBox>
+                <VBox alignment="CENTER_LEFT">
+                    <Label text="Last Name" style="-fx-font-weight: bold"/>
+                    <TextField/>
+                </VBox>
+            </HBox>
+            <VBox>
+                <padding>
+                    <Insets left="4" top="8" bottom="8" right="4"/>
+                </padding>
+                <Label text="Email" style="-fx-font-weight: bold"/>
+                <TextField/>
+            </VBox>
+            <VBox>
+                <padding>
+                    <Insets left="4" top="8" bottom="8" right="4"/>
+                </padding>
+                <Label text="Password" style="-fx-font-weight: bold"/>
+                <TextField />
+            </VBox>
+            <VBox>
+                <padding>
+                    <Insets left="4" top="8" bottom="8" right="4"/>
+                </padding>
+                <Label text="Confirmed password" style="-fx-font-weight: bold"/>
+                <TextField/>
+            </VBox>
+            <VBox>
+                <padding>
+                    <Insets left="4" top="8" bottom="8" right="4"/>
+                </padding>
+                <Label text="Highest qualification" style="-fx-font-weight: bold"/>
+                <TextField/>
+            </VBox>
+            <VBox>
+                <padding>
+                    <Insets left="4" top="8" bottom="8" right="4"/>
+                </padding>
+                <Label text="Mobile number" style="-fx-font-weight: bold"/>
+                <TextField/>
+            </VBox>
+            <VBox>
+                <padding>
+                    <Insets left="4" top="8" bottom="8" right="4"/>
+                </padding>
+                <Label text="Interest area" style="-fx-font-weight: bold"/>
+                <TextField/>
+            </VBox>
+            <VBox>
+                <padding>
+                    <Insets left="4" top="8" bottom="8" right="4"/>
+                </padding>
+                <Label text="Employer's details" style="-fx-font-weight: bold"/>
+                <TextField/>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>
