@@ -89,7 +89,7 @@
                     <Insets left="4" top="8" bottom="8" right="4"/>
                 </padding>
                 <Label text="Highest qualification" style="-fx-font-weight: bold"/>
-                <TextField fx:id="higestQualification"/>
+                <TextField fx:id="highestQualification"/>
             </VBox>
             <VBox>
                 <padding>
@@ -112,7 +112,7 @@
                 <Label text="Employer's details" style="-fx-font-weight: bold"/>
                 <TextField fx:id="employerDetails"/>
             </VBox>
-            <Label fx:id="validatioMessage"/>
+            <Label fx:id="validationMessage"/>
             <Button text="Sign up" onAction="#sign_up" style="-fx-background-color: #3aa6dd" textFill="white" prefWidth="Infinity" >
                 <font>
                     <Font size="18"/>

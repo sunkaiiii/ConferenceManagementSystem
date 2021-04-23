@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.openjfx.validation.InputValidation;
 
@@ -39,7 +38,7 @@ public class SignUpController implements Initializable {
     private TextField confirmedPassword;
 
     @FXML
-    private TextField higestQualification;
+    private TextField highestQualification;
 
     @FXML
     private TextField mobileNumber;
@@ -51,7 +50,7 @@ public class SignUpController implements Initializable {
     private TextField employerDetails;
 
     @FXML
-    private Label validatioMessage;
+    private Label validationMessage;
 
     private List<TextField> allTextFields;
 
@@ -63,14 +62,14 @@ public class SignUpController implements Initializable {
         allTextFields.add(password);
         allTextFields.add(confirmedPassword);
         allTextFields.add(email);
-        allTextFields.add(higestQualification);
+        allTextFields.add(highestQualification);
         allTextFields.add(mobileNumber);
         allTextFields.add(interestArea);
         allTextFields.add(employerDetails);
     }
 
     @FXML
-    public void back(MouseEvent event) throws IOException{
+    public void back(MouseEvent event) throws IOException {
         Parent signup = FXMLLoader.load(getClass().getResource("log_in.fxml"));
         Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(signup);
@@ -78,11 +77,11 @@ public class SignUpController implements Initializable {
         appStage.show();
     }
 
-    @FXML public void sign_up(ActionEvent event) throws IOException{
-        validatioMessage.setText("");
-        Optional<Boolean> validationResult = allTextFields.stream().map(textField -> InputValidation.isNullOrEmpty(textField.getText())).filter(result-> result).findAny();
-        if (validationResult.isPresent()){
-            validatioMessage.setText("error");
+    @FXML
+    public void sign_up(ActionEvent event) throws IOException {
+        validationMessage.setText("");
+        if (InputValidation.checkTextFiledIsEmpty(allTextFields)) {
+            validationMessage.setText("error");
             return;
         }
     }
