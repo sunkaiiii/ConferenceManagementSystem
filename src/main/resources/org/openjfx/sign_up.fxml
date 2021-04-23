@@ -9,7 +9,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.geometry.Insets?>
 
-<BorderPane style="-fx-background-color: #f6f6f6;" xmlns="http://javafx.com/javafx/8.0.121"
+<BorderPane prefWidth="1396.0"
+            prefHeight="734.0"
+            style="-fx-background-color: #f6f6f6;" xmlns="http://javafx.com/javafx/8.0.121"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.SignUpController">
     <top>
         <BorderPane>
@@ -35,7 +37,7 @@
         </BorderPane>
     </top>
     <left>
-        <VBox  alignment="CENTER" onMouseClicked="#back">
+        <VBox alignment="CENTER" onMouseClicked="#back">
             <padding>
                 <Insets left="64"/>
             </padding>
@@ -54,11 +56,11 @@
                         <Insets left="4" top="8" bottom="8" right="4"/>
                     </padding>
                     <Label text="First Name" style="-fx-font-weight: bold"/>
-                    <TextField/>
+                    <TextField fx:id="firstName"/>
                 </VBox>
                 <VBox alignment="CENTER_LEFT">
                     <Label text="Last Name" style="-fx-font-weight: bold"/>
-                    <TextField/>
+                    <TextField fx:id="lastName"/>
                 </VBox>
             </HBox>
             <VBox>
@@ -66,50 +68,56 @@
                     <Insets left="4" top="8" bottom="8" right="4"/>
                 </padding>
                 <Label text="Email" style="-fx-font-weight: bold"/>
-                <TextField/>
+                <TextField fx:id="email"/>
             </VBox>
             <VBox>
                 <padding>
                     <Insets left="4" top="8" bottom="8" right="4"/>
                 </padding>
                 <Label text="Password" style="-fx-font-weight: bold"/>
-                <TextField />
+                <TextField fx:id="password"/>
             </VBox>
             <VBox>
                 <padding>
                     <Insets left="4" top="8" bottom="8" right="4"/>
                 </padding>
                 <Label text="Confirmed password" style="-fx-font-weight: bold"/>
-                <TextField/>
+                <TextField fx:id="confirmedPassword"/>
             </VBox>
             <VBox>
                 <padding>
                     <Insets left="4" top="8" bottom="8" right="4"/>
                 </padding>
                 <Label text="Highest qualification" style="-fx-font-weight: bold"/>
-                <TextField/>
+                <TextField fx:id="higestQualification"/>
             </VBox>
             <VBox>
                 <padding>
                     <Insets left="4" top="8" bottom="8" right="4"/>
                 </padding>
                 <Label text="Mobile number" style="-fx-font-weight: bold"/>
-                <TextField/>
+                <TextField fx:id="mobileNumber"/>
             </VBox>
             <VBox>
                 <padding>
                     <Insets left="4" top="8" bottom="8" right="4"/>
                 </padding>
                 <Label text="Interest area" style="-fx-font-weight: bold"/>
-                <TextField/>
+                <TextField fx:id="interestArea"/>
             </VBox>
             <VBox>
                 <padding>
                     <Insets left="4" top="8" bottom="8" right="4"/>
                 </padding>
                 <Label text="Employer's details" style="-fx-font-weight: bold"/>
-                <TextField/>
+                <TextField fx:id="employerDetails"/>
             </VBox>
+            <Label fx:id="validatioMessage"/>
+            <Button text="Sign up" onAction="#sign_up" style="-fx-background-color: #3aa6dd" textFill="white" prefWidth="Infinity" >
+                <font>
+                    <Font size="18"/>
+                </font>
+            </Button>
         </VBox>
     </center>
 </BorderPane>
