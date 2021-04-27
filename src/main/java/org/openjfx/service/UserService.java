@@ -24,7 +24,13 @@ public final class UserService {
         databaseService.addNewRecord(this.userDatabaseFileName,newUser);
     }
 
-    public RegisterdUser searchAUser(String userName){
-        return null;
+    public RegisterdUser searchAUser(String userName) throws IOException {
+        return databaseService.searchARecord(userDatabaseFileName,new String[]{userName},this::findUserRecordFromLine,RegisterdUser::readFromCSVString);
     }
+
+    private boolean findUserRecordFromLine(String[] usernames,String data){
+        String userName = usernames[0];
+        return data.split(",")[0].equalsIgnoreCase(userName);
+    }
+
 }
