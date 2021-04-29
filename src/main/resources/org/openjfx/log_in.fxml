@@ -46,7 +46,7 @@
                         <Insets top="8" bottom="8"/>
                     </padding>
                 </Label>
-                <TextField/>
+                <TextField fx:id="userName"/>
                 <Label text="password" style="-fx-font-weight: bold">
                     <font>
                         <Font size="18"/>
@@ -55,12 +55,12 @@
                         <Insets top="8"  bottom="8"/>
                     </padding>
                 </Label>
-                <TextField/>
+                <TextField fx:id="password"/>
                 <StackPane >
                     <padding>
                         <Insets top="16" bottom="16"/>
                     </padding>
-                    <Button text="Log in" style="-fx-background-color: #3aa6dd" textFill="white" prefWidth="Infinity" >
+                    <Button text="Log in" style="-fx-background-color: #3aa6dd" textFill="white" prefWidth="Infinity" onMouseClicked="#login" >
                         <font>
                             <Font size="18"/>
                         </font>

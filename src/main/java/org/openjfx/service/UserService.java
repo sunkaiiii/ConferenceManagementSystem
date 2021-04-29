@@ -28,9 +28,22 @@ public final class UserService {
         return databaseService.searchARecord(userDatabaseFileName,new String[]{userName},this::findUserRecordFromLine,RegisterdUser::readFromCSVString);
     }
 
+    public RegisterdUser checkUserCredential(String userName, String password) throws IOException {
+        return databaseService.searchARecord(userDatabaseFileName,new String[]{userName,password},this::checkUserCredential,RegisterdUser::readFromCSVString);
+    }
+
     private boolean findUserRecordFromLine(String[] usernames,String data){
         String userName = usernames[0];
         return data.split(",")[0].equalsIgnoreCase(userName);
+    }
+
+    private boolean checkUserCredential(String[] credential, String data){
+        String userName = credential[0];
+        String password = credential[1];
+        String[] databaseData = data.split(",");
+        String databaseUserName =  databaseData[0];
+        String databasePassword = databaseData[1];
+        return databaseUserName.equalsIgnoreCase(userName) && databasePassword.equals(password);
     }
 
 }

@@ -11,6 +11,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.openjfx.controllers.UserHandler;
+import org.openjfx.model.datamodel.RegisterdUser;
 import org.openjfx.validation.InputValidation;
 
 import java.io.IOException;
@@ -54,6 +56,8 @@ public class SignUpController implements Initializable {
 
     private List<TextField> allTextFields;
 
+    private UserHandler userHandler;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         allTextFields = new ArrayList<>();
@@ -84,5 +88,23 @@ public class SignUpController implements Initializable {
             validationMessage.setText("error");
             return;
         }
+        if(userHandler == null){
+            userHandler = new UserHandler();
+        }
+        RegisterdUser newUser = new RegisterdUser(email.getText(),password.getText(),firstName.getText(),lastName.getText(),highestQualification.getText(),interestArea.getText(),employerDetails.getText());
+        try{
+            userHandler.createANewUser(newUser);
+        } catch (UserHandler.CreateUserException e) {
+            e.printStackTrace();
+            validationMessage.setText("The email has been already registered in the system");
+        }catch (IOException e){
+            e.printStackTrace();
+            validationMessage.setText("The system could not handle the database");
+        }
+        Parent signup = FXMLLoader.load(getClass().getResource("main_page_left_banner.fxml"));
+        Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(signup);
+        appStage.setScene(scene);
+        appStage.show();
     }
 }

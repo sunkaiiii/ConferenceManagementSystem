@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.openjfx.MainPageLeftBannerController"
+            prefWidth="1396.0"
+            prefHeight="734.0">
+    <center>
+        <TabPane nodeOrientation="LEFT_TO_RIGHT" tabDragPolicy="FIXED">
+            <Tab text="1"/>
+            <Tab text="2"/>
+            <Tab text="3"/>
+        </TabPane>
+    </center>
+
+
+</BorderPane>
