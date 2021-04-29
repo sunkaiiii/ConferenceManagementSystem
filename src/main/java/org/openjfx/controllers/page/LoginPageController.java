@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -22,6 +23,7 @@ import java.util.ResourceBundle;
 
 public class LoginPageController implements Initializable {
 
+    public Label errorMessage;
     @FXML
     private TextField userName;
 
@@ -40,7 +42,7 @@ public class LoginPageController implements Initializable {
     @FXML
     public void login(MouseEvent event) throws IOException {
         if(InputValidation.checkTextFiledIsEmpty(textFieldList)){
-            //TODO error message
+            errorMessage.setText("Please input your username and password");
             return;
         }
         userController = new UserController();
@@ -49,7 +51,7 @@ public class LoginPageController implements Initializable {
         if(user != null){
             jumptoMainpage(event);
         }else{
-            //TODO error message
+            errorMessage.setText("Login failed");
             return;
         }
     }

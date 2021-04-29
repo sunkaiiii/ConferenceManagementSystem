@@ -1,34 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.*?>
 
-
-<?import javafx.geometry.Insets?>
-<BorderPane prefWidth="1396.0"
-            prefHeight="734.0" style="-fx-background-color: #f6f6f6;" xmlns="http://javafx.com/javafx/8.0.121"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controllers.page.LoginPageController">
+<BorderPane prefHeight="734.0" prefWidth="1396.0" style="-fx-background-color: #f6f6f6;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controllers.page.LoginPageController">
     <top>
         <BorderPane>
             <padding>
-                <Insets right="16" top="8" left="16"/>
+                <Insets left="16" right="16" top="8" />
             </padding>
             <left>
                 <ImageView fitHeight="100" fitWidth="100">
                     <image>
-                        <Image url="@../../images/monash.png"/>
+                        <Image url="@../../images/monash.png" />
                     </image>
                 </ImageView>
             </left>
             <center>
-                <Label text="Welcome to Monash Conference Management System" style="-fx-font-weight: bold"
-                       wrapText="true" textAlignment="CENTER">
+                <Label style="-fx-font-weight: bold" text="Welcome to Monash Conference Management System" textAlignment="CENTER" wrapText="true">
                     <font>
-                        <Font size="38"/>
+                        <Font size="38" />
                     </font>
                 </Label>
             </center>
@@ -38,38 +32,42 @@
     <center>
         <StackPane>
             <VBox alignment="CENTER_LEFT" maxWidth="560" minWidth="200">
-                <Label text="Email" style="-fx-font-weight: bold">
+                <Label style="-fx-font-weight: bold" text="Email">
                     <font>
-                        <Font size="18"/>
+                        <Font size="18" />
                     </font>
                     <padding>
-                        <Insets top="8" bottom="8"/>
+                        <Insets bottom="8" top="8" />
                     </padding>
                 </Label>
-                <TextField fx:id="userName"/>
-                <Label text="password" style="-fx-font-weight: bold">
+                <TextField fx:id="userName" />
+                <Label style="-fx-font-weight: bold" text="password">
                     <font>
-                        <Font size="18"/>
+                        <Font size="18" />
                     </font>
                     <padding>
-                        <Insets top="8"  bottom="8"/>
+                        <Insets bottom="8" top="8" />
                     </padding>
                 </Label>
-                <TextField fx:id="password"/>
-                <StackPane >
+                <TextField fx:id="password" />
+                <StackPane>
                     <padding>
-                        <Insets top="16" bottom="16"/>
+                        <Insets bottom="16" top="16" />
                     </padding>
-                    <Button text="Log in" style="-fx-background-color: #3aa6dd" textFill="white" prefWidth="Infinity" onMouseClicked="#login" >
+                    <Button onMouseClicked="#login" prefWidth="Infinity" style="-fx-background-color: #3aa6dd" text="Log in" textFill="white">
                         <font>
-                            <Font size="18"/>
+                            <Font size="18" />
                         </font>
                     </Button>
                 </StackPane>
                 <HBox alignment="CENTER">
-                    <Label text="Don’t have an account yet? " style="-fx-font-weight: bold"/>
-                    <Label text="Sign up" textFill="dodgerblue" style="-fx-font-weight: bold" onMouseClicked="#signup"/>
+                    <Label style="-fx-font-weight: bold" text="Don’t have an account yet? " />
+                    <Label onMouseClicked="#signup" style="-fx-font-weight: bold" text="Sign up" textFill="dodgerblue" />
                 </HBox>
+            <Label fx:id="errorMessage" alignment="CENTER" prefHeight="15.0" prefWidth="620.0" textAlignment="CENTER" textFill="RED">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
 
             </VBox>
         </StackPane>
