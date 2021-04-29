@@ -1,7 +1,6 @@
 package org.openjfx.service;
 
 import org.openjfx.model.datamodel.Conference;
-import org.openjfx.model.datamodel.interfaces.Chair;
 
 import java.io.IOException;
 
@@ -15,8 +14,8 @@ public class ConferenceService {
         return Instance;
     }
 
-    public void createConference(Chair chair,Conference newConference) throws IOException {
-        newConference.setChair(chair);
+    public void createConference(String chair, Conference newConference) throws IOException {
+        newConference.setChairName(chair);
         databaseService.addNewRecord(CONFERENCE_DATABASE_FILE_NAME,newConference);
     }
 

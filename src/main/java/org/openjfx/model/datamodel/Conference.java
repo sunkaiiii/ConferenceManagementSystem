@@ -2,7 +2,6 @@ package org.openjfx.model.datamodel;
 
 import org.openjfx.helper.CSVConvertHelper;
 import org.openjfx.model.datamodel.interfaces.CSVConvertable;
-import org.openjfx.model.datamodel.interfaces.Chair;
 import org.openjfx.service.ConferenceService;
 import org.openjfx.service.UserService;
 
@@ -16,7 +15,7 @@ public class Conference implements CSVConvertable<Conference> {
   private String topic;
   private List<String> keywords;
   private String deadline;
-  private Chair chair;
+  private String chairName;
 
     public Conference(String name, String title, String topic, List<String> keywords, String deadline) {
         this.name = name;
@@ -26,12 +25,12 @@ public class Conference implements CSVConvertable<Conference> {
         this.deadline = deadline;
     }
 
-    public Chair getChair() {
-        return chair;
+    public String getChairName() {
+        return chairName;
     }
 
-    public void setChair(Chair chair) {
-        this.chair = chair;
+    public void setChairName(String chairName) {
+        this.chairName = chairName;
     }
 
     public String getName() {
@@ -93,7 +92,7 @@ public class Conference implements CSVConvertable<Conference> {
 
     public static void main(String[] args) throws IOException {
         Conference conference = new Conference("Cloud computing","Cloud computing 2020","Cloud computing",List.of("Cloud","Big data"),LocalDateTime.now().plusDays(4).toString());
-        Chair chair = UserService.getInstance().searchAUser("123@qq.com");
+        String chair = UserService.getInstance().searchAUser("123@qq.com").getUserName();
         ConferenceService.getInstance().createConference(chair,conference);
     }
 }

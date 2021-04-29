@@ -5,24 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae9b270c-5962-4e59-ac2f-9f747ba3f49c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/pagemodel/ConferenceController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/helper/CSVConvertHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/model/datamodel/Conference.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/model/datamodel/factory/DataModelFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/service/ConferenceService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/MainApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/LoginPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/LoginPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/SignUpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/model/datamodel/RegisterdUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/model/datamodel/RegisterdUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/model/datamodel/interfaces/Chair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/model/datamodel/interfaces/Chair.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/service/DatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/service/DatabaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/validation/InputValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/helper/InputValidation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/main_page_left_banner.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/main_page_left_banner.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_table.csv" beforeDir="false" afterPath="$PROJECT_DIR$/user_table.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conference_table.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conference_table.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/model/datamodel/Conference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/model/datamodel/Conference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/service/ConferenceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/service/ConferenceService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
