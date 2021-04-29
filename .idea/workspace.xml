@@ -81,7 +81,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
   </component>
-  <component name="RunManager" selected="Application.UserController">
+  <component name="RunManager" selected="Gradle.FIT5136Assignment">
     <configuration name="RegisterdUser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.openjfx.model.datamodel.RegisterdUser" />
       <module name="FIT5136Assignment.main" />
@@ -95,12 +95,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.openjfx.controllers.UserController" />
+    <configuration name="UserHandler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.openjfx.controllers.UserHandler" />
       <module name="FIT5136Assignment.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.openjfx.controllers.*" />
+          <option name="PATTERN" value="org.openjfx.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -108,13 +108,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -161,7 +163,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.UserController" />
+        <item itemvalue="Application.UserHandler" />
         <item itemvalue="Application.RegisterdUser" />
       </list>
     </recent_temporary>

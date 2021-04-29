@@ -5,11 +5,11 @@ import org.openjfx.service.UserService;
 
 import java.io.IOException;
 
-public class UserController {
+public class UserHandler {
 
     private UserService userService;
 
-    public UserController(){
+    public UserHandler(){
         userService = UserService.getInstance();
     }
 
@@ -28,7 +28,7 @@ public class UserController {
 
     public static void main(String[] args) {
         RegisterdUser user = new RegisterdUser("kai@k.com","password","Kai","Sun","44","AI","details");
-        UserController controller = new UserController();
+        UserHandler controller = new UserHandler();
         try {
             controller.createANewUser(user);
         } catch (CreateUserException | IOException e) {

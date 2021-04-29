@@ -51,14 +51,14 @@
     <center>
         <VBox alignment="CENTER" maxWidth="560" minWidth="200">
             <HBox>
-                <VBox alignment="CENTER_LEFT">
+                <VBox alignment="CENTER_LEFT" prefWidth="280">
                     <padding>
                         <Insets left="4" top="8" bottom="8" right="4"/>
                     </padding>
                     <Label text="First Name" style="-fx-font-weight: bold"/>
                     <TextField fx:id="firstName"/>
                 </VBox>
-                <VBox alignment="CENTER_LEFT">
+                <VBox alignment="CENTER_LEFT" prefWidth="280">
                     <Label text="Last Name" style="-fx-font-weight: bold"/>
                     <TextField fx:id="lastName"/>
                 </VBox>
