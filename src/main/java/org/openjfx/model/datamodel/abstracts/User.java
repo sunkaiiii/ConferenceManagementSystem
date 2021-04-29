@@ -5,7 +5,7 @@ public abstract class User {
     private String password;
 
     public User(String userName, String password) {
-        this.userName = userName;
+        this.userName = userName.toLowerCase();
         this.password = password;
     }
 
