@@ -6,18 +6,60 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.geometry.Insets?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.openjfx.controllers.page.MainPageLeftBannerController"
-            prefWidth="1396.0"
-            prefHeight="734.0">
-    <center>
-        <TabPane nodeOrientation="LEFT_TO_RIGHT" tabDragPolicy="FIXED">
-            <Tab text="1"/>
-            <Tab text="2"/>
-            <Tab text="3"/>
-        </TabPane>
-    </center>
+            style="-fx-background-color: #FFFFFF">
+    <top>
+        <VBox alignment="CENTER">
+            <ImageView fitHeight="100" fitWidth="100">
+                <Image url="@../../images/monash.png"/>
+            </ImageView>
+            <VBox>
+                <padding>
+                    <Insets top="16" right="8" left="8"/>
+                </padding>
+                <HBox>
+                    <padding>
+                        <Insets bottom="8"/>
+                    </padding>
+                    <Pane prefWidth="4" style="-fx-background-color: #0C7CBA"/>
+                    <Label text="Conference Management">
+                        <padding>
+                            <Insets left="4"/>
+                        </padding>
+                    </Label>
+                </HBox>
+                <HBox>
+                    <Pane prefWidth="4" style="-fx-background-color: #0C7CBA"/>
+                    <padding>
+                        <Insets bottom="8"/>
+                    </padding>
+                    <Label text="Paper Submission">
+                        <padding>
+                            <Insets left="4"/>
+                        </padding>
+                    </Label>
+                </HBox>
+                <HBox>
+                    <Pane prefWidth="4" style="-fx-background-color: #0C7CBA"/>
+                    <padding>
+                        <Insets bottom="8"/>
+                    </padding>
+                    <Label text="Review Management">
+                        <padding>
+                            <Insets left="4"/>
+                        </padding>
+                    </Label>
+                </HBox>
+
+            </VBox>
+        </VBox>
+
+    </top>
 
 
 </BorderPane>

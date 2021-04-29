@@ -55,7 +55,7 @@ public class LoginPageController implements Initializable {
     }
 
     private void jumptoMainpage(MouseEvent event) throws IOException {
-        Parent signup = FXMLLoader.load(getClass().getResource("main_page_left_banner.fxml"));
+        Parent signup = FXMLLoader.load(getClass().getResource("main_page.fxml"));
         Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(signup);
         appStage.setScene(scene);
