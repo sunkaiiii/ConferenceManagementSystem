@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ae9b270c-5962-4e59-ac2f-9f747ba3f49c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conference_table.csv" beforeDir="false" afterPath="$PROJECT_DIR$/conference_table.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/model/datamodel/Conference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/model/datamodel/Conference.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/service/ConferenceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/service/ConferenceService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +92,7 @@
       <recent name="org.openjfx" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Conference">
+  <component name="RunManager" selected="Gradle.FIT5136Assignment">
     <configuration name="Conference" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.openjfx.model.datamodel.Conference" />
       <module name="FIT5136Assignment.main" />
