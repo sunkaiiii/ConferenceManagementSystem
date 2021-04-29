@@ -1,4 +1,4 @@
-package org.openjfx;
+package org.openjfx.controllers.page;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,7 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import org.openjfx.controllers.UserHandler;
+import org.openjfx.controllers.pagemodel.UserController;
 import org.openjfx.model.datamodel.RegisterdUser;
 import org.openjfx.validation.InputValidation;
 
@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class SignUpController implements Initializable {
@@ -56,7 +55,7 @@ public class SignUpController implements Initializable {
 
     private List<TextField> allTextFields;
 
-    private UserHandler userHandler;
+    private UserController userController;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -88,13 +87,13 @@ public class SignUpController implements Initializable {
             validationMessage.setText("error");
             return;
         }
-        if(userHandler == null){
-            userHandler = new UserHandler();
+        if(userController == null){
+            userController = new UserController();
         }
         RegisterdUser newUser = new RegisterdUser(email.getText(),password.getText(),firstName.getText(),lastName.getText(),highestQualification.getText(),interestArea.getText(),employerDetails.getText());
         try{
-            userHandler.createANewUser(newUser);
-        } catch (UserHandler.CreateUserException e) {
+            userController.createANewUser(newUser);
+        } catch (UserController.CreateUserException e) {
             e.printStackTrace();
             validationMessage.setText("The email has been already registered in the system");
         }catch (IOException e){

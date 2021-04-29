@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae9b270c-5962-4e59-ac2f-9f747ba3f49c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/MainPageLeftBannerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/openjfx/main_page_left_banner.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/LoginPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/LoginPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/SignUpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/UserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/UserHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/openjfx/log_in.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/openjfx/log_in.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="ae9b270c-5962-4e59-ac2f-9f747ba3f49c" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -109,12 +100,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserHandler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.openjfx.controllers.UserHandler" />
+    <configuration name="UserController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.openjfx.controllers.pagemodel.UserController" />
       <module name="FIT5136Assignment.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.openjfx.*" />
+          <option name="PATTERN" value="org.openjfx.controllers.pagemodel.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -177,7 +168,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.UserHandler" />
+        <item itemvalue="Application.UserController" />
         <item itemvalue="Application.RegisterdUser" />
       </list>
     </recent_temporary>

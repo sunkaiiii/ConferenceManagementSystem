@@ -1,15 +1,15 @@
-package org.openjfx.controllers;
+package org.openjfx.controllers.pagemodel;
 
 import org.openjfx.model.datamodel.RegisterdUser;
 import org.openjfx.service.UserService;
 
 import java.io.IOException;
 
-public class UserHandler {
+public class UserController {
 
     private UserService userService;
 
-    public UserHandler() {
+    public UserController() {
         userService = UserService.getInstance();
     }
 
@@ -32,7 +32,7 @@ public class UserHandler {
 
     public static void main(String[] args) {
         RegisterdUser user = new RegisterdUser("kai@k.com", "password", "Kai", "Sun", "44", "AI", "details");
-        UserHandler controller = new UserHandler();
+        UserController controller = new UserController();
         try {
             controller.createANewUser(user);
         } catch (CreateUserException | IOException e) {

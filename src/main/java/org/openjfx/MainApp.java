@@ -12,7 +12,7 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("log_in.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("controllers/page/log_in.fxml"));
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         stage.setTitle("FIT5136Assignment");

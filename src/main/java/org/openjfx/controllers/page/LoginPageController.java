@@ -1,26 +1,16 @@
-package org.openjfx;
+package org.openjfx.controllers.page;
 
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import org.openjfx.controllers.UserHandler;
+import org.openjfx.controllers.pagemodel.UserController;
 import org.openjfx.model.datamodel.RegisterdUser;
 import org.openjfx.validation.InputValidation;
 
@@ -39,7 +29,7 @@ public class LoginPageController implements Initializable {
     private TextField password;
 
     List<TextField> textFieldList;
-    UserHandler userHandler;
+    UserController userController;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         textFieldList = new ArrayList<>();
@@ -53,8 +43,8 @@ public class LoginPageController implements Initializable {
             //TODO error message
             return;
         }
-        userHandler = new UserHandler();
-        RegisterdUser user = userHandler.checkUserCredential(userName.getText(),password.getText());
+        userController = new UserController();
+        RegisterdUser user = userController.checkUserCredential(userName.getText(),password.getText());
 
         if(user != null){
             jumptoMainpage(event);

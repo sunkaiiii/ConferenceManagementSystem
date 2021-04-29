@@ -12,7 +12,7 @@
 <BorderPane prefWidth="1396.0"
             prefHeight="734.0"
             style="-fx-background-color: #f6f6f6;" xmlns="http://javafx.com/javafx/8.0.121"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.SignUpController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controllers.page.SignUpController">
     <top>
         <BorderPane>
             <padding>
@@ -21,7 +21,7 @@
             <left>
                 <ImageView fitHeight="100" fitWidth="100">
                     <image>
-                        <Image url="@images/monash.png"/>
+                        <Image url="@../../images/monash.png"/>
                     </image>
                 </ImageView>
             </left>
@@ -42,7 +42,7 @@
                 <Insets left="64"/>
             </padding>
             <ImageView fitHeight="48" fitWidth="48">
-                <Image url="@images/back_arrow.png"/>
+                <Image url="@../../images/back_arrow.png"/>
             </ImageView>
             <Label text="Back to Log in"/>
         </VBox>
