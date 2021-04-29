@@ -10,8 +10,15 @@ import javafx.stage.Stage;
 
 public class MainApp extends Application {
 
+    private static MainApp Instance;
+
+    public MainApp GetInstance(){
+        return Instance;
+    }
+
     @Override
     public void start(Stage stage) throws Exception {
+        Instance = this;
         Parent root = FXMLLoader.load(getClass().getResource("controllers/page/log_in.fxml"));
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());

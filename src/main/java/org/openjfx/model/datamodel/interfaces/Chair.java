@@ -1,5 +1,7 @@
 package org.openjfx.model.datamodel.interfaces;
 
-public interface Chair {
+import org.openjfx.model.datamodel.Conference;
 
+public interface Chair {
+    void createConference(Conference newConference);
 }

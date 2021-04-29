@@ -12,7 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.openjfx.controllers.pagemodel.UserController;
 import org.openjfx.model.datamodel.RegisterdUser;
-import org.openjfx.validation.InputValidation;
+import org.openjfx.helper.InputValidation;
 
 import java.io.IOException;
 import java.net.URL;

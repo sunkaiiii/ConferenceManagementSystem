@@ -34,7 +34,7 @@
                     </Label>
                 </HBox>
                 <HBox>
-                    <Pane prefWidth="4" style="-fx-background-color: #0C7CBA"/>
+                    <Pane prefWidth="4" style="-fx-background-color: #0C7CBA" visible="false"/>
                     <padding>
                         <Insets bottom="8"/>
                     </padding>
@@ -45,7 +45,7 @@
                     </Label>
                 </HBox>
                 <HBox>
-                    <Pane prefWidth="4" style="-fx-background-color: #0C7CBA"/>
+                    <Pane prefWidth="4" style="-fx-background-color: #0C7CBA" visible="false"/>
                     <padding>
                         <Insets bottom="8"/>
                     </padding>

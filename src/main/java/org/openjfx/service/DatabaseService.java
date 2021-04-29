@@ -17,7 +17,6 @@ public final class DatabaseService {
     }
 
     private DatabaseService(){
-
     }
 
     public void addNewRecord(String databaseName, String line) throws IOException {
@@ -25,7 +24,7 @@ public final class DatabaseService {
     }
 
     public void addNewRecord(String databaseName, CSVConvertable<?> convertableObject) throws IOException {
-        Files.write(Paths.get(databaseName),convertableObject.convertToCSVLine().getBytes(), StandardOpenOption.CREATE,StandardOpenOption.APPEND);
+        Files.write(Paths.get(databaseName),("\n"+convertableObject.convertToCSVLine()).getBytes(), StandardOpenOption.CREATE,StandardOpenOption.APPEND);
     }
 
     public <T> T searchARecord(String databaseName,String[] searchInfo

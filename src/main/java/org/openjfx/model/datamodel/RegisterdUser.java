@@ -1,10 +1,13 @@
 package org.openjfx.model.datamodel;
 
+import org.openjfx.helper.CSVConvertHelper;
 import org.openjfx.model.datamodel.abstracts.User;
+import org.openjfx.model.datamodel.factory.DataModelFactory;
 import org.openjfx.model.datamodel.interfaces.Author;
 import org.openjfx.model.datamodel.interfaces.CSVConvertable;
 import org.openjfx.model.datamodel.interfaces.Chair;
 import org.openjfx.model.datamodel.interfaces.Reviewer;
+import org.openjfx.service.ConferenceService;
 import org.openjfx.service.DatabaseService;
 
 import java.io.IOException;
@@ -73,36 +76,7 @@ public class RegisterdUser extends User implements Author, Chair, Reviewer, CSVC
 
     @Override
     public String convertToCSVLine() {
-        return getAllFields().stream().map(this::getFiledValue).collect(Collectors.joining(","));
-    }
-
-    private void findAllDeclaredFields(List<Field> fields,Class<?> clazz){
-        var superClass = clazz.getSuperclass();
-        if(superClass!=null){
-            findAllDeclaredFields(fields,superClass);
-        }
-        Collections.addAll(fields, clazz.getDeclaredFields());
-    }
-
-    private List<Field> getAllFields(){
-        List<Field> result = new ArrayList<>();
-        findAllDeclaredFields(result,this.getClass());
-        return result;
-    }
-
-
-    private String getFiledValue(Field field){
-        //TODO handle exception in the outside
-        try{
-            field.setAccessible(true);
-            return field.get(this).toString();
-        }catch (Exception ignored){}
-        return "";
-    }
-
-    public static RegisterdUser readFromCSVString(String csvData) throws IndexOutOfBoundsException {
-        String[] data = csvData.split(",");
-        return new RegisterdUser(data[0],data[1],data[2],data[3],data[4],data[5],data[6]);
+        return CSVConvertHelper.convertClassToCSVStringLine(this);
     }
 
     @Override
@@ -116,10 +90,15 @@ public class RegisterdUser extends User implements Author, Chair, Reviewer, CSVC
                 '}';
     }
 
+    @Override
+    public void createConference(Conference newConference) {
+        ConferenceService service = ConferenceService.getInstance();
+    }
+
     public static void main(String[] args) {
         var user = new RegisterdUser("kai@k.com","password","Kai","Sun","44","AI","details");
         String csvLine = user.convertToCSVLine();
-        user = RegisterdUser.readFromCSVString(csvLine);
+        user = DataModelFactory.convertUserFromCSVLine(csvLine);
         System.out.println(user);
         try {
             DatabaseService.getInstance().addNewRecord("user.csv",csvLine);
