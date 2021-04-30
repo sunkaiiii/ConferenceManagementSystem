@@ -49,7 +49,7 @@
                         <Insets bottom="8" top="8" />
                     </padding>
                 </Label>
-                <TextField fx:id="password" />
+                <PasswordField fx:id="password" />
                 <StackPane>
                     <padding>
                         <Insets bottom="16" top="16" />

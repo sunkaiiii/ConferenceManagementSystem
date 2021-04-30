@@ -75,14 +75,14 @@
                     <Insets left="4" top="8" bottom="8" right="4"/>
                 </padding>
                 <Label text="Password" style="-fx-font-weight: bold"/>
-                <TextField fx:id="password"/>
+                <PasswordField fx:id="password"/>
             </VBox>
             <VBox>
                 <padding>
                     <Insets left="4" top="8" bottom="8" right="4"/>
                 </padding>
                 <Label text="Confirmed password" style="-fx-font-weight: bold"/>
-                <TextField fx:id="confirmedPassword"/>
+                <PasswordField fx:id="confirmedPassword"/>
             </VBox>
             <VBox>
                 <padding>
