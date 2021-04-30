@@ -34,6 +34,11 @@ public class RegisterdUser extends User implements Author, Chair, Reviewer, CSVC
         this.employerDetails = employerDetails;
     }
 
+    @Override
+    public boolean isAdmin() {
+        return false;
+    }
+
     public String getFirstName() {
         return firstName;
     }

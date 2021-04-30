@@ -9,6 +9,8 @@ public abstract class User {
         this.password = password;
     }
 
+    public abstract boolean isAdmin();
+
     public String getUserName() {
         return userName;
     }
