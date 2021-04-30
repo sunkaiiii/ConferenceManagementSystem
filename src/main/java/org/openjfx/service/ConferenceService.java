@@ -1,8 +1,10 @@
 package org.openjfx.service;
 
 import org.openjfx.model.datamodel.Conference;
+import org.openjfx.model.datamodel.factory.DataModelFactory;
 
 import java.io.IOException;
+import java.util.List;
 
 public class ConferenceService {
     private static final ConferenceService Instance = new ConferenceService();
@@ -14,11 +16,14 @@ public class ConferenceService {
         return Instance;
     }
 
-    public void createConference(String chair, Conference newConference) throws IOException {
-        newConference.setChairName(chair);
+    public void createConference(String chairName, Conference newConference) throws IOException {
+        newConference.setChairName(chairName);
         databaseService.addNewRecord(CONFERENCE_DATABASE_FILE_NAME,newConference);
     }
 
+    public List<Conference> searchAllConference() throws IOException {
+        return databaseService.searchRecords(CONFERENCE_DATABASE_FILE_NAME,null,(predicate,data)->true, DataModelFactory::convertConferenceFromCSVLine);
+    }
     public Conference searchConference(String conferenceName){
         return null;
 //        return databaseService.searchARecord(CONFERENCE_DATABASE_FILE_NAME,new String[]{conferenceName},this::searchConference,)

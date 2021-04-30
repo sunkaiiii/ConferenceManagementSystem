@@ -9,9 +9,9 @@ import java.io.IOException;
 public final class UserService {
 
 
-    private static UserService Instance = new UserService();
+    private static final UserService Instance = new UserService();
     private final Gson gson = new Gson();
-    private DatabaseService databaseService = DatabaseService.getInstance();
+    private final DatabaseService databaseService = DatabaseService.getInstance();
 
     private final String userDatabaseFileName = "user_table.csv";
 
