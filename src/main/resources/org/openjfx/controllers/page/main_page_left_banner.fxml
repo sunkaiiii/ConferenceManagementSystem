@@ -1,59 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.geometry.Insets?>
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.openjfx.controllers.page.MainPageLeftBannerController"
-            style="-fx-background-color: #FFFFFF">
+<BorderPane style="-fx-background-color: #FFFFFF" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controllers.page.MainPageLeftBannerController">
     <top>
         <VBox alignment="CENTER">
             <ImageView fitHeight="100" fitWidth="100">
-                <Image url="@../../images/monash.png"/>
+                <Image url="@../../images/monash.png" />
             </ImageView>
             <VBox>
                 <padding>
-                    <Insets top="16" right="8" left="8"/>
+                    <Insets left="8" right="8" top="16" />
                 </padding>
-                <HBox>
+                <HBox fx:id="conferenceManagement" onMouseClicked="#onItemClick">
                     <padding>
-                        <Insets bottom="8"/>
+                        <Insets bottom="8" />
                     </padding>
-                    <Pane prefWidth="4" style="-fx-background-color: #0C7CBA"/>
+                    <Pane prefWidth="4" style="-fx-background-color: #0C7CBA" />
                     <Label text="Conference Management">
                         <padding>
-                            <Insets left="4"/>
+                            <Insets left="4" />
                         </padding>
                     </Label>
                 </HBox>
-                <HBox>
-                    <Pane prefWidth="4" style="-fx-background-color: #0C7CBA" visible="false"/>
-                    <padding>
-                        <Insets bottom="8"/>
-                    </padding>
+                <HBox fx:id="paperSubmission" onMouseClicked="#onItemClick">
+                    <Pane prefWidth="4" style="-fx-background-color: #0C7CBA" visible="false" />
                     <Label text="Paper Submission">
                         <padding>
-                            <Insets left="4"/>
+                            <Insets left="4" />
                         </padding>
                     </Label>
-                </HBox>
-                <HBox>
-                    <Pane prefWidth="4" style="-fx-background-color: #0C7CBA" visible="false"/>
                     <padding>
-                        <Insets bottom="8"/>
+                        <Insets bottom="8" />
                     </padding>
+                </HBox>
+                <HBox fx:id="reviewManagement" onMouseClicked="#onItemClick">
+                    <Pane prefWidth="4" style="-fx-background-color: #0C7CBA" visible="false" />
                     <Label text="Review Management">
                         <padding>
-                            <Insets left="4"/>
+                            <Insets left="4" />
                         </padding>
                     </Label>
+                    <padding>
+                        <Insets bottom="8" />
+                    </padding>
                 </HBox>
 
             </VBox>
