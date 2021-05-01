@@ -29,15 +29,15 @@
                         <Label text="On-going conference" />
                     </left>
                     <right>
-                        <Button style="-fx-background-color: #19967d; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0)dro;" text="Create Conference" textFill="white" onMouseClicked="#gotoCreateConferencePage">
+                        <Button style="-fx-background-color: #19967d; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" text="Create Conference" textFill="white" onMouseClicked="#gotoCreateConferencePage">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Button>
                     </right>
                 </BorderPane>
-                <FlowPane prefWidth="Infinity" />
+                <FlowPane prefWidth="Infinity" fx:id="onGoingConferenceFlowPane"/>
                 <Label text="finished conference" />
-                <FlowPane prefWidth="Infinity" />
+                <FlowPane prefWidth="Infinity" fx:id="finishedConferenceFLowPane" />
             </VBox>
         </ScrollPane>
 

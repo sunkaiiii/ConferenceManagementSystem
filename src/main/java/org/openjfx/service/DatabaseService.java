@@ -36,6 +36,9 @@ public final class DatabaseService {
         try (FileInputStream inputStream = new FileInputStream(databaseName); BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
+                if(line.isBlank()){
+                    continue;
+                }
                 if (predicate.test(searchInfo, line)) {
                     result.add(function.apply(line));
                 }
@@ -52,6 +55,9 @@ public final class DatabaseService {
         try (FileInputStream inputStream = new FileInputStream(databaseName); BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
+                if(line.isBlank()){
+                    continue;
+                }
                 if (predicate.test(searchInfo, line)) {
                     return function.apply(line);
                 }

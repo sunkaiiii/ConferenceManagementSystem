@@ -23,7 +23,6 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class CreateConferenceController implements Initializable {
-    private static final String CONFERENCE_MANAGEMENT_PAGE_NAME = "conference_management.fxml";
     @FXML
     private TextField conferenceName;
 

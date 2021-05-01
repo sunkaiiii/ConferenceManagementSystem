@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane prefWidth="500" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controllers.page.ConferenceCellController">
+    <padding>
+        <Insets bottom="16" left="16" right="16" top="16" />
+    </padding>
+    <VBox style="-fx-background-color: white; -fx-background-radius: 16px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
+        <padding>
+            <Insets bottom="32" left="32" right="32" top="32" />
+        </padding>
+        <Label fx:id="conferenceName" alignment="CENTER" prefWidth="Infinity" text="conference name">
+            <font>
+                <Font name="System Bold" size="23.0" />
+            </font>
+        </Label>
+        <HBox alignment="CENTER_LEFT">
+            <Label text="Topic:" />
+            <Label fx:id="topic" />
+        </HBox>
+        <HBox alignment="CENTER_LEFT">
+            <Label text="Deadline:" />
+            <Label fx:id="deadline" />
+        </HBox>
+        <VBox fx:id="paperInformation" />
+        <HBox alignment="CENTER_RIGHT">
+            <Button fx:id="viewPapers" text="View Papers" />
+            <Button fx:id="edit" text="Edit" />
+        </HBox>
+
+    </VBox>
+</StackPane>

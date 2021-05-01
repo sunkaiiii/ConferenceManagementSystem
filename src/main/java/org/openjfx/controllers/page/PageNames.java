@@ -6,7 +6,9 @@ enum PageNames implements PageNameDescriber {
     LOG_IN("log_in.fxml"),
     SIGN_UP("sign_up.fxml"),
     CONFERENCE_MANAGEMENT("conference_management.fxml"),
-    CREATE_CONFERENCE("create_conference.fxml");
+    CREATE_CONFERENCE("create_conference.fxml"),
+    CONFERENCE_CELL("conference_cell.fxml")
+    ;
     private String pageName;
 
     public String getPageName() {

@@ -28,7 +28,7 @@ public final class SceneHelper {
         appStage.show();
     }
 
-    private static Scene getSceneFromResourceNameWithCache(Class<?> clazz, String resourceFileName) throws IOException {
+    private static Scene getSceneFromResourceNameWithCache(Class<? extends Initializable> clazz, String resourceFileName) throws IOException {
         Scene cacheScene = sceneMap.get(resourceFileName);
         if (cacheScene != null) {
             return cacheScene;
@@ -38,9 +38,13 @@ public final class SceneHelper {
         return scene;
     }
 
-    private static Scene getSceneFromResourceName(Class<?> clazz, String resourceFileName) throws IOException {
+    private static Scene getSceneFromResourceName(Class<? extends Initializable> clazz, String resourceFileName) throws IOException {
         Parent parent = FXMLLoader.load(clazz.getResource(resourceFileName));
         return new Scene(parent);
+    }
+
+    public static FXMLLoader createViewWithResourceName(Class<? extends Initializable> clazz,String resourceFileName)throws IOException{
+        return new FXMLLoader(clazz.getResource(resourceFileName));
     }
 
     public static void deleteScene(String resourceFileName) {
