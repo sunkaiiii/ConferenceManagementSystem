@@ -2,6 +2,7 @@ package org.openjfx.helper;
 
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,7 +16,7 @@ import java.util.Map;
 public final class SceneHelper {
     private static final Map<String, Scene> sceneMap = new HashMap<>();
 
-    public static void startPage(Class<?> controllerClazz, Event event, PageNameDescriber resourceFileName, boolean cacheScene) throws IOException {
+    public static void startPage(Class<? extends Initializable> controllerClazz, Event event, PageNameDescriber resourceFileName, boolean cacheScene) throws IOException {
         Scene scene;
         if (cacheScene) {
             scene = SceneHelper.getSceneFromResourceNameWithCache(controllerClazz, resourceFileName.getPageName());
