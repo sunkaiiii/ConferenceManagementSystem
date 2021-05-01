@@ -8,6 +8,7 @@ import org.openjfx.MainApp;
 import org.openjfx.helper.InputValidation;
 import org.openjfx.helper.SceneHelper;
 import org.openjfx.model.datamodel.Conference;
+import org.openjfx.model.datamodel.interfaces.Chair;
 import org.openjfx.service.ConferenceService;
 import tornadofx.control.DateTimePicker;
 
@@ -38,6 +39,8 @@ public class CreateConferenceController implements Initializable {
     private DateTimePicker deadline;
 
     List<TextField> textFields;
+
+    private final ConferenceService conferenceService = ConferenceService.getInstance();
 
 
     @Override
@@ -70,16 +73,15 @@ public class CreateConferenceController implements Initializable {
         SceneHelper.deleteScene(PageNames.CONFERENCE_MANAGEMENT.getPageName());
     }
 
-    private void saveConferenceDataToDatabase(Conference newConference) {
-        MainApp.getInstance().getUser().createConference(newConference);
+    private void saveConferenceDataToDatabase(Conference newConference) throws IOException {
+        Chair chair = MainApp.getInstance().getUser();
+        conferenceService.createConference(chair,newConference);
     }
 
     private boolean checkFieldsValid() {
-        //TODO validation
-        return true;
-//        boolean result = InputValidation.checkTextFiledIsEmpty(textFields);
-//        LocalDateTime deadlineTime = deadline.getDateTimeValue();
-//        result &= deadlineTime != null && LocalDateTime.now().isBefore(deadlineTime) && Duration.between(deadlineTime,LocalDateTime.now()).toDays()>1;
-//        return result;
+        boolean result = !InputValidation.checkTextFiledIsEmpty(textFields);
+        LocalDateTime deadlineTime = deadline.getDateTimeValue();
+        result &= deadlineTime != null && LocalDateTime.now().isBefore(deadlineTime) && Duration.between(LocalDateTime.now(),deadlineTime).toDays()>1;
+        return result;
     }
 }

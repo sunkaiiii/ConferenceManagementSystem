@@ -96,9 +96,8 @@ public class RegisterdUser extends User implements Author, Chair, Reviewer, CSVC
     }
 
     @Override
-    public void createConference(Conference newConference) {
-        //TODO create conference
-        ConferenceService service = ConferenceService.getInstance();
+    public String getChairName() {
+        return getUserName();
     }
 
     public static void main(String[] args) {
