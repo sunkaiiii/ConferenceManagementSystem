@@ -2,6 +2,7 @@ module untitled2{
     requires javafx.controls;
     requires javafx.fxml;
     requires com.google.gson;
+    requires tornadofx.controls;
     exports org.openjfx;
     exports org.openjfx.controllers.pagemodel;
     exports org.openjfx.model.datamodel;

@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import org.openjfx.MainApp;
 import org.openjfx.controllers.pagemodel.UserController;
 import org.openjfx.helper.InputValidation;
 import org.openjfx.helper.SceneHelper;
@@ -85,6 +86,7 @@ public class SignUpController implements Initializable {
         RegisterdUser newUser = new RegisterdUser(email.getText(), password.getText(), firstName.getText(), lastName.getText(), highestQualification.getText(), interestArea.getText(), employerDetails.getText());
         try {
             userController.createANewUser(newUser);
+            MainApp.getInstance().setUser(newUser);
         } catch (UserController.CreateUserException e) {
             e.printStackTrace();
             validationMessage.setText("The email has been already registered in the system");

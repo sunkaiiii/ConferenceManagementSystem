@@ -4,6 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import tornadofx.control.DateTimePicker?>
 <BorderPane prefHeight="734.0" prefWidth="1396.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controllers.page.CreateConferenceController">
     <left>
         <fx:include source="main_page_left_banner.fxml" />
@@ -15,20 +16,21 @@
                <Font name="System Bold" size="24.0" />
             </font></Label>
             <Label text="Conference Name:" />
-            <TextField />
+            <TextField fx:id="conferenceName"/>
             <Label text="Conference Title:" />
-            <TextField />
+            <TextField fx:id="conferenceTitle"/>
             <Label text="Conference Topic" />
-            <TextField />
+            <TextField fx:id="conferenceTopic" />
+            <Label text="Keywords" />
+            <TextField fx:id="keywords" />
             <Label text="Conference Deadline" />
-            <TextField editable="false" />
-            <DatePicker />
+            <DateTimePicker prefWidth="Infinity" fx:id="deadline"/>
             <BorderPane>
                 <left>
                     <Label text="Cancel" onMouseClicked="#cancelCreation"/>
                 </left>
                 <right>
-                    <Button text="Create"/>
+                    <Button text="Create" onMouseClicked="#createConference"/>
                 </right>
             </BorderPane>
         </VBox>

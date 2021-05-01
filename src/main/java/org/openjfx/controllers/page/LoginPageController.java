@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import org.openjfx.MainApp;
 import org.openjfx.controllers.pagemodel.UserController;
 import org.openjfx.helper.InputValidation;
 import org.openjfx.helper.SceneHelper;
@@ -46,14 +47,15 @@ public class LoginPageController implements Initializable {
         RegisterdUser user = userController.checkUserCredential(userName.getText(), password.getText());
 
         if (user != null) {
-            jumptoMainpage(event);
+            MainApp.getInstance().setUser(user);
+            jumpToMainPage(event);
         } else {
             errorMessage.setText("Login failed");
             return;
         }
     }
 
-    private void jumptoMainpage(MouseEvent event) throws IOException {
+    private void jumpToMainPage(MouseEvent event) throws IOException {
         SceneHelper.startPage(getClass(), event, PageNames.CONFERENCE_MANAGEMENT, true);
     }
 

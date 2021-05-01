@@ -25,4 +25,5 @@ jlink {
 
 dependencies {
     compile 'com.google.code.gson:gson:2.8.6'
+    compile 'no.tornado:tornadofx-controls:1.0.4'
 }
