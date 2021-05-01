@@ -2,18 +2,14 @@ package org.openjfx.controllers.page;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 import org.openjfx.controllers.pagemodel.UserController;
-import org.openjfx.model.datamodel.RegisterdUser;
 import org.openjfx.helper.InputValidation;
+import org.openjfx.helper.SceneHelper;
+import org.openjfx.model.datamodel.RegisterdUser;
 
 import java.io.IOException;
 import java.net.URL;
@@ -73,11 +69,7 @@ public class SignUpController implements Initializable {
 
     @FXML
     public void back(MouseEvent event) throws IOException {
-        Parent signup = FXMLLoader.load(getClass().getResource("log_in.fxml"));
-        Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(signup);
-        appStage.setScene(scene);
-        appStage.show();
+        SceneHelper.startPage(getClass(), event, PageNames.LOG_IN, true);
     }
 
     @FXML
@@ -87,23 +79,19 @@ public class SignUpController implements Initializable {
             validationMessage.setText("error");
             return;
         }
-        if(userController == null){
+        if (userController == null) {
             userController = new UserController();
         }
-        RegisterdUser newUser = new RegisterdUser(email.getText(),password.getText(),firstName.getText(),lastName.getText(),highestQualification.getText(),interestArea.getText(),employerDetails.getText());
-        try{
+        RegisterdUser newUser = new RegisterdUser(email.getText(), password.getText(), firstName.getText(), lastName.getText(), highestQualification.getText(), interestArea.getText(), employerDetails.getText());
+        try {
             userController.createANewUser(newUser);
         } catch (UserController.CreateUserException e) {
             e.printStackTrace();
             validationMessage.setText("The email has been already registered in the system");
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
             validationMessage.setText("The system could not handle the database");
         }
-        Parent signup = FXMLLoader.load(getClass().getResource("main_page_left_banner.fxml"));
-        Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(signup);
-        appStage.setScene(scene);
-        appStage.show();
+        SceneHelper.startPage(getClass(), event, PageNames.CONFERENCE_MANAGEMENT, true);
     }
 }

@@ -26,9 +26,9 @@ public class MainPageLeftBannerController implements Initializable {
     }
 
     @FXML
-    void onItemClick(MouseEvent event) throws IOException{
-        String id = ((Control)event.getSource()).getId();
-        switch (id){
+    void onItemClick(MouseEvent event) throws IOException {
+        String id = ((Control) event.getSource()).getId();
+        switch (id) {
             case "conferenceManagement":
                 break;
             case "paperSubmission":

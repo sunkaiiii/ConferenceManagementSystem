@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import org.openjfx.helper.SceneHelper;
 
 
 public class MainApp extends Application {
@@ -22,6 +23,7 @@ public class MainApp extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("controllers/page/log_in.fxml"));
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+        SceneHelper.addScene("log_in.fxml",scene);
         stage.setTitle("FIT5136Assignment");
         stage.setScene(scene);
         stage.show();

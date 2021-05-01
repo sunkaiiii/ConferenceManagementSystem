@@ -1,21 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.openjfx.controllers.page.ConferenceManagementController"
-            prefWidth="1396.0"
-            prefHeight="734.0">
+<BorderPane prefHeight="734.0" prefWidth="1396.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controllers.page.ConferenceManagementController">
     <left>
-        <fx:include source="main_page_left_banner.fxml"/>
+        <fx:include source="main_page_left_banner.fxml" />
     </left>
+    <top>
+        <Label alignment="CENTER" prefWidth="Infinity" style="-fx-font-weight: bold" text="Conference Management" textFill="black">
+         <font>
+            <Font size="24.0" />
+         </font>
+         <padding>
+             <Insets bottom="16" top="16" />
+         </padding></Label>
+    </top>
     <center>
-        <Label text="123"/>
+        <ScrollPane fitToHeight="true" fitToWidth="true">
+            <VBox prefHeight="Infinity" prefWidth="Infinity">
+                <padding>
+                    <Insets bottom="16" left="32" right="32" top="16" />
+                </padding>
+                <BorderPane prefWidth="Infinity">
+                    <left>
+                        <Label text="On-going conference" />
+                    </left>
+                    <right>
+                        <Button style="-fx-background-color: #19967d; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0)dro;" text="Create Conference" textFill="white" onMouseClicked="#gotoCreateConferencePage">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Button>
+                    </right>
+                </BorderPane>
+                <FlowPane prefWidth="Infinity" />
+                <Label text="finished conference" />
+                <FlowPane prefWidth="Infinity" />
+            </VBox>
+        </ScrollPane>
+
     </center>
 
 </BorderPane>

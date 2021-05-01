@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="734.0" prefWidth="1396.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controllers.page.CreateConferenceController">
+    <left>
+        <fx:include source="main_page_left_banner.fxml" />
+    </left>
+    <center>
+        <VBox alignment="TOP_CENTER" maxWidth="400">
+            <Label text="Create Conference">
+            <font>
+               <Font name="System Bold" size="24.0" />
+            </font></Label>
+            <Label text="Conference Name:" />
+            <TextField />
+            <Label text="Conference Title:" />
+            <TextField />
+            <Label text="Conference Topic" />
+            <TextField />
+            <Label text="Conference Deadline" />
+            <TextField editable="false" />
+            <DatePicker />
+            <BorderPane>
+                <left>
+                    <Label text="Cancel" onMouseClicked="#cancelCreation"/>
+                </left>
+                <right>
+                    <Button text="Create"/>
+                </right>
+            </BorderPane>
+        </VBox>
+    </center>
+</BorderPane>
