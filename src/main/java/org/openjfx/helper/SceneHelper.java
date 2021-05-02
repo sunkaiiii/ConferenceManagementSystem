@@ -28,6 +28,12 @@ public final class SceneHelper {
         appStage.show();
     }
 
+    public static void startStage(Scene scene,Event event){
+        Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        appStage.setScene(scene);
+        appStage.show();
+    }
+
     private static Scene getSceneFromResourceNameWithCache(Class<? extends Initializable> clazz, String resourceFileName) throws IOException {
         Scene cacheScene = sceneMap.get(resourceFileName);
         if (cacheScene != null) {

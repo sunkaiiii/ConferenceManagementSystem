@@ -40,7 +40,7 @@ public class PaperManagementAvailableConferenceController implements Initializab
         try {
             FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.AVAILABLE_CONFERENCE_CELL.getPageName());
             Parent parent = loader.load();
-            PaperPageAvailableConferenceController controller = loader.getController();
+            PaperPageAvailableConferenceCellController controller = loader.getController();
             controller.setConference(conference);
             return parent;
         } catch (IOException e) {

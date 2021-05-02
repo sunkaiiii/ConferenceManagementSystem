@@ -9,7 +9,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.text.Font?>
 <StackPane prefWidth="500" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="org.openjfx.controllers.page.PaperPageAvailableConferenceController">
+           fx:controller="org.openjfx.controllers.page.PaperPageAvailableConferenceCellController">
     <padding>
         <Insets bottom="16" left="16" right="16" top="16"/>
     </padding>
@@ -39,7 +39,7 @@
             <Label fx:id="chairName"/>
         </HBox>
         <HBox alignment="CENTER_RIGHT">
-            <Button text="Submit Paper"/>
+            <Button text="Submit Paper" onMouseClicked="#goToSubmitPage"/>
         </HBox>
 
     </VBox>

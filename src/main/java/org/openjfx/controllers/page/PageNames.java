@@ -10,7 +10,7 @@ enum PageNames implements PageNameDescriber {
     CONFERENCE_CELL("conference_cell.fxml"),
     AVAILABLE_CONFERENCE_CELL("paper_page_available_conference_cell.fxml"),
     PAPER_SUBMISSION_LIST("paper_management.fxml"),
-    PAPER_MANAGEMENT_AVAILABLE_CONFERENCE("paper_management_available_conference.fxml"),
+    SUBMIT_PAPER("submit_paper.fxml"),
     PAPER_MANAGEMENT_MY_PAPERS("paper_management_my_papers")
     ;
     private final String pageName;

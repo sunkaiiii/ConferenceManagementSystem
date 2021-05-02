@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import org.openjfx.controllers.page.MainPageLeftBannerController?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.openjfx.controllers.page.SubmitPaperController"
+            prefWidth="1396.0"
+            prefHeight="734.0">
+
+    <left>
+        <MainPageLeftBannerController index="1"/>
+    </left>
+
+    <center>
+        <VBox alignment="CENTER_LEFT">
+            <Label text="Paper Name:"/>
+            <TextField fx:id="paperName"/>
+            <HBox>
+                <Label text="Conference Name:"/>
+                <Label fx:id="conferenceName"/>
+            </HBox>
+            <HBox>
+                <Label text="Conference chair:"/>
+                <Label fx:id="chairName"/>
+            </HBox>
+            <BorderPane>
+                <left>
+                    <VBox alignment="CENTER">
+                        <Label text="Upload your paper(s)"/>
+                        <Label text="(only support pdf, doc, docx)"/>
+                    </VBox>
+                </left>
+                <right>
+                    <VBox>
+                        <Label text="Authors:"/>
+                        <TextField/>
+                        <Label text="Keywords"/>
+                        <TextField/>
+                        <FlowPane/>
+                    </VBox>
+                </right>
+            </BorderPane>
+
+        </VBox>
+    </center>
+
+</BorderPane>
