@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae9b270c-5962-4e59-ac2f-9f747ba3f49c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/SubmitPaperController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/submit_paper.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/PageNames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/PageNames.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/PaperManagementAvailableConferenceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/PaperManagementAvailableConferenceController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/PaperPageAvailableConferenceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/PaperPageAvailableConferenceCellController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/helper/SceneHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/helper/SceneHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/paper_page_available_conference_cell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/paper_page_available_conference_cell.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/ConferenceManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/ConferenceManagementController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/SubmitPaperController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/SubmitPaperController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/submit_paper.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/submit_paper.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,6 +69,10 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/submit_paper.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/SubmitPaperController.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectId" id="1rTTJLfPbgeaikjUVFY6T03wlp4" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -83,7 +83,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../NetRadio" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Bitcoin-Wallet-master" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -232,7 +232,7 @@
       <workItem from="1619839791119" duration="7384000" />
       <workItem from="1619849132084" duration="2401000" />
       <workItem from="1619867638275" duration="3689000" />
-      <workItem from="1619932638568" duration="1555000" />
+      <workItem from="1619932638568" duration="4760000" />
     </task>
     <servers />
   </component>
