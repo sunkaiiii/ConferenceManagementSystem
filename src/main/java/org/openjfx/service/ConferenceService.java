@@ -6,6 +6,8 @@ import org.openjfx.model.datamodel.factory.DataModelFactory;
 import org.openjfx.model.datamodel.interfaces.Chair;
 
 import java.io.IOException;
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,7 +21,7 @@ public class ConferenceService {
         return Instance;
     }
 
-    private ConferenceService(){
+    private ConferenceService() {
 
     }
 
@@ -41,12 +43,19 @@ public class ConferenceService {
         return databaseService.searchRecords(CONFERENCE_DATABASE_FILE_NAME, new String[]{chair.getChairName()}, this::searchConferenceBelongToUser, DataModelFactory::convertConferenceFromCSVLine);
     }
 
+    public List<Conference> searchAvailableConference() throws IOException {
+        return databaseService.searchRecords(CONFERENCE_DATABASE_FILE_NAME,null,this::judgeIsAvailableConference,DataModelFactory::convertConferenceFromCSVLine);
+    }
+
     private boolean searchConference(String[] conferenceName, String databaseRecord) {
         return false;
     }
 
-    private boolean searchConferenceBelongToUser(String[] usernames, String data) {
-        Conference conference = DataModelFactory.convertConferenceFromCSVLine(data);
+    private boolean searchConferenceBelongToUser(String[] usernames, Conference conference) {
         return Arrays.binarySearch(usernames, conference.getChairName()) >= 0;
+    }
+
+    private boolean judgeIsAvailableConference(String[] searchInfo, Conference conference) {
+        return Duration.between(LocalDateTime.now(), LocalDateTime.parse(conference.getDeadline())).toDays() > 1;
     }
 }

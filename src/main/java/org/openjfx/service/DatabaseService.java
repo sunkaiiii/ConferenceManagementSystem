@@ -30,7 +30,7 @@ public final class DatabaseService {
     }
 
     public <T> List<T> searchRecords(String databaseName, String[] searchInfo
-            , BiPredicate<String[], String> predicate
+            , BiPredicate<String[], T> predicate
             , Function<String, T> function) throws IOException {
         List<T> result = new ArrayList<>();
         try (FileInputStream inputStream = new FileInputStream(databaseName); BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
@@ -39,8 +39,9 @@ public final class DatabaseService {
                 if(line.isBlank()){
                     continue;
                 }
-                if (predicate.test(searchInfo, line)) {
-                    result.add(function.apply(line));
+                T data = function.apply(line);
+                if (predicate.test(searchInfo, data)) {
+                    result.add(data);
                 }
             }
         } catch (FileNotFoundException ignored) {
@@ -50,7 +51,7 @@ public final class DatabaseService {
     }
 
     public <T> T searchARecord(String databaseName, String[] searchInfo
-            , BiPredicate<String[], String> predicate
+            , BiPredicate<String[], T> predicate
             , Function<String, T> function) throws IOException {
         try (FileInputStream inputStream = new FileInputStream(databaseName); BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
@@ -58,8 +59,9 @@ public final class DatabaseService {
                 if(line.isBlank()){
                     continue;
                 }
-                if (predicate.test(searchInfo, line)) {
-                    return function.apply(line);
+                T data = function.apply(line);
+                if (predicate.test(searchInfo, data)) {
+                    return data;
                 }
             }
         } catch (FileNotFoundException ignored) {

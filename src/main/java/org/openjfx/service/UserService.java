@@ -35,19 +35,11 @@ public final class UserService {
         return databaseService.searchARecord(userDatabaseFileName,new String[]{userName,password},this::checkUserCredential, DataModelFactory::convertUserFromCSVLine);
     }
 
-    private boolean findUserRecordFromLine(String[] usernames,String data){
-        if(data.isBlank()){
-            return false;
-        }
-        RegisterdUser dataBaseUser = gson.fromJson(data,RegisterdUser.class);
+    private boolean findUserRecordFromLine(String[] usernames,RegisterdUser dataBaseUser){
         return dataBaseUser.getUserName().equalsIgnoreCase(usernames[0]);
     }
 
-    private boolean checkUserCredential(String[] credential, String data){
-        if(data.isBlank()){
-            return false;
-        }
-        RegisterdUser dataBaseUser = gson.fromJson(data,RegisterdUser.class);
+    private boolean checkUserCredential(String[] credential, RegisterdUser dataBaseUser){
         String userName = credential[0];
         String password = credential[1];
         return dataBaseUser.getUserName().equalsIgnoreCase(userName) && dataBaseUser.getPassword().equals(password);
