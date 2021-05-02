@@ -19,6 +19,10 @@ public class ConferenceService {
         return Instance;
     }
 
+    private ConferenceService(){
+
+    }
+
     public void createConference(Chair chairName, Conference newConference) throws IOException {
         newConference.setChairName(chairName.getChairName());
         databaseService.addNewRecord(CONFERENCE_DATABASE_FILE_NAME, newConference);
