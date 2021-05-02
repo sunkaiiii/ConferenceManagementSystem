@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import org.openjfx.controllers.page.MainPageLeftBannerController?>
+<BorderPane prefHeight="734.0" prefWidth="1396.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controllers.page.PaperSubmissionListController">
+    <left>
+        <StackPane>
+            <MainPageLeftBannerController index="1"/>
+        </StackPane>
+
+    </left>
+    <top>
+        <StackPane prefWidth="Infinity">
+            <Label alignment="CENTER" text="Paper Management">
+                <padding>
+                    <Insets bottom="32" top="32" />
+                </padding>
+                <font>
+                    <Font name="System Bold" size="24.0" />
+                </font>
+            </Label>
+        </StackPane>
+
+    </top>
+
+    <center>
+        <TabPane>
+            <Tab text="Available Conferences" closable="false">
+
+            </Tab>
+            <Tab text="My Papers" closable="false">
+
+            </Tab>
+        </TabPane>
+
+    </center>
+</BorderPane>

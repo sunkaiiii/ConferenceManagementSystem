@@ -5,9 +5,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import org.openjfx.controllers.page.MainPageLeftBannerController?>
 <BorderPane prefHeight="734.0" prefWidth="1396.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controllers.page.ConferenceManagementController">
     <left>
-        <fx:include source="main_page_left_banner.fxml" />
+        <StackPane>
+            <MainPageLeftBannerController index="0"/>
+        </StackPane>
+
     </left>
     <top>
         <Label alignment="CENTER" prefWidth="Infinity" style="-fx-font-weight: bold" text="Conference Management" textFill="black">
