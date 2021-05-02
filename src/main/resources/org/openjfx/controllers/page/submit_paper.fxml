@@ -19,6 +19,7 @@
 
     <center>
         <VBox alignment="CENTER_LEFT">
+            <Label text="Paper Submission"/>
             <Label text="Paper Name:"/>
             <TextField fx:id="paperName"/>
             <HBox>
@@ -47,7 +48,10 @@
                     </VBox>
                 </right>
             </BorderPane>
-
+            <VBox alignment="CENTER">
+                <Button text="Submit"/>
+                <Label text="Cancel Submit" textFill="RED" />
+            </VBox>
         </VBox>
     </center>
 
