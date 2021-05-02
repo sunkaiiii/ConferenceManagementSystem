@@ -5,9 +5,10 @@
 <?import javafx.scene.text.*?>
 
 <?import tornadofx.control.DateTimePicker?>
+<?import org.openjfx.controllers.page.MainPageLeftBannerController?>
 <BorderPane prefHeight="734.0" prefWidth="1396.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controllers.page.CreateConferenceController">
     <left>
-        <fx:include source="main_page_left_banner.fxml" />
+        <MainPageLeftBannerController index="0"/>
     </left>
     <center>
         <VBox alignment="TOP_CENTER" maxWidth="400">
