@@ -55,7 +55,7 @@
                 </right>
             </BorderPane>
             <VBox alignment="CENTER">
-                <Button text="Submit"/>
+                <Button text="Submit" onMouseClicked="#submitPaper"/>
                 <Label text="Cancel Submit" textFill="RED" onMouseClicked="#cancelSubmit"/>
             </VBox>
         </VBox>
