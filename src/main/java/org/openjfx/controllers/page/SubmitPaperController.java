@@ -1,5 +1,7 @@
 package org.openjfx.controllers.page;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +28,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class SubmitPaperController implements Initializable {
+public class SubmitPaperController implements Initializable, PreDefineListCellController.OnKeywordSelectedListener {
 
     @FXML
     private TextField paperName;
@@ -44,11 +46,18 @@ public class SubmitPaperController implements Initializable {
     private ComboBox<String> authorSelectBox;
 
     @FXML
+    private TextField keywordField;
+
+    @FXML
+    private TextField authorField;
+
+    @FXML
     private FlowPane preDefineKeywordFlowPane;
 
     private Conference conference;
 
     List<Author> authorList;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
@@ -62,11 +71,21 @@ public class SubmitPaperController implements Initializable {
         initPage(conference);
     }
 
-    private void initPage(Conference conference){
+    private void initPage(Conference conference) {
         this.chairName.setText(conference.getChairName());
         this.conferenceName.setText(conference.getName());
         initAuthorList();
         this.authorSelectBox.setItems(FXCollections.observableArrayList(authorList.stream().map(Author::getAuthorName).collect(Collectors.toList())));
+        this.authorSelectBox.valueProperty().addListener(new ChangeListener<>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                var listener = this;
+                authorSelectBox.valueProperty().removeListener(listener);
+                authorField.setText(authorField.getText() + newValue + ";");
+                authorSelectBox.getItems().remove(newValue);
+                authorSelectBox.valueProperty().addListener(listener);
+            }
+        });
         this.preDefineKeywordFlowPane.getChildren().addAll(getPreDefineKeywordsCells());
     }
 
@@ -79,17 +98,18 @@ public class SubmitPaperController implements Initializable {
         }
     }
 
-    private List<Parent> getPreDefineKeywordsCells(){
+    private List<Parent> getPreDefineKeywordsCells() {
         List<String> preDefineKeywords = PreDefineKeywordHelper.getPreDefineList();
         return preDefineKeywords.stream().map(this::createKeywordCell).collect(Collectors.toList());
     }
 
-    private Parent createKeywordCell(String keyword){
+    private Parent createKeywordCell(String keyword) {
         try {
-            FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(),PageNames.PRE_DEFINE_KEYWORD_CELL.getPageName());
+            FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.PRE_DEFINE_KEYWORD_CELL.getPageName());
             Parent result = loader.load();
             PreDefineListCellController cell = loader.getController();
             cell.setKeyword(keyword);
+            cell.setOnKeywordSelectedListener(this);
             return result;
         } catch (IOException e) {
             e.printStackTrace();
@@ -98,9 +118,9 @@ public class SubmitPaperController implements Initializable {
     }
 
     @FXML
-    void selectPapers(MouseEvent event){
+    void selectPapers(MouseEvent event) {
         FileChooser fileChooser = new FileChooser();
-        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Paper format",".doc",".docx",".pdf");
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Paper format", ".doc", ".docx", ".pdf");
         fileChooser.setSelectedExtensionFilter(filter);
         Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         List<File> selectedFiles = fileChooser.showOpenMultipleDialog(appStage);
@@ -110,6 +130,15 @@ public class SubmitPaperController implements Initializable {
 
     @FXML
     void cancelSubmit(MouseEvent event) throws IOException {
-        SceneHelper.startPage(getClass(),event,PageNames.PAPER_MANAGEMENT,true);
+        SceneHelper.startPage(getClass(), event, PageNames.PAPER_MANAGEMENT, true);
+    }
+
+    @Override
+    public void onKeywordSelected(String keyword, PreDefineListCellController.SelectedState state) {
+        if (state == PreDefineListCellController.SelectedState.ADD) {
+            this.keywordField.setText(this.keywordField.getText() + keyword + ";");
+        } else if (state == PreDefineListCellController.SelectedState.DELETE) {
+            this.keywordField.setText(this.keywordField.getText().replace(keyword + ";", ""));
+        }
     }
 }

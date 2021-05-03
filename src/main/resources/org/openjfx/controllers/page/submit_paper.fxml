@@ -44,12 +44,12 @@
                     <VBox>
                         <Label text="Authors:"/>
                         <StackPane alignment="CENTER_RIGHT">
-                            <TextField/>
+                            <TextField fx:id="authorField" editable="false"/>
                             <ComboBox fx:id="authorSelectBox"/>
                         </StackPane>
 
                         <Label text="Keywords"/>
-                        <TextField/>
+                        <TextField fx:id="keywordField" editable="false"/>
                         <FlowPane fx:id="preDefineKeywordFlowPane"/>
                     </VBox>
                 </right>

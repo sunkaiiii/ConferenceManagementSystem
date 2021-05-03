@@ -26,7 +26,7 @@ public class PreDefineListCellController implements Initializable {
 
     private SelectedState state = SelectedState.ADD;
 
-    private OnKeywordSelectedListener listener;
+    private OnKeywordSelectedListener onKeywordSelectedListener;
 
     private final String nonSelectedBorderColour = "#7AB648";
     private final String nonSelectedBackgroundColour = "#C7E8AC";
@@ -77,8 +77,8 @@ public class PreDefineListCellController implements Initializable {
 
     @FXML
     void keywordClicked(MouseEvent event) throws IOException {
-        if (listener != null) {
-            listener.onKeywordSelected(this.keyword, this.state);
+        if (onKeywordSelectedListener != null) {
+            onKeywordSelectedListener.onKeywordSelected(this.keyword, this.state);
         }
         if (this.state == SelectedState.ADD) {
             this.state = SelectedState.DELETE;
@@ -86,6 +86,10 @@ public class PreDefineListCellController implements Initializable {
             this.state = SelectedState.ADD;
         }
         initView();
+    }
+
+    public void setOnKeywordSelectedListener(OnKeywordSelectedListener onKeywordSelectedListener) {
+        this.onKeywordSelectedListener = onKeywordSelectedListener;
     }
 
     public interface OnKeywordSelectedListener {
