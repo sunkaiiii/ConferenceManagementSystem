@@ -63,8 +63,14 @@ public class RegisterdUser extends User implements Author, Chair, Reviewer, CSVC
         this.highestQualification = highestQualification;
     }
 
-    public String getInterestArea() {
-        return interestArea;
+    @Override
+    public String getAuthorName() {
+        return firstName + " "+ lastName;
+    }
+
+    @Override
+    public String  getAuthorIdentifiedName() {
+        return getUserName();
     }
 
     public void setInterestArea(String interestArea) {

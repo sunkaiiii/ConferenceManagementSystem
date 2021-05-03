@@ -74,7 +74,7 @@ public class MainPageLeftBannerController extends BorderPane implements Initiali
                 SceneHelper.startPage(getClass(),event,PageNames.CONFERENCE_MANAGEMENT,true);
                 break;
             case "paperSubmission":
-                SceneHelper.startPage(getClass(),event,PageNames.PAPER_SUBMISSION_LIST,true);
+                SceneHelper.startPage(getClass(),event,PageNames.PAPER_MANAGEMENT,true);
                 break;
             case "reviewManagement":
                 break;

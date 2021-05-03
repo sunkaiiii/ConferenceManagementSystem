@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+<StackPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="org.openjfx.controllers.page.PreDefineListCellController">
+    <padding>
+        <Insets left="8" right="8" top="8" bottom="8"/>
+    </padding>
+    <HBox
+            style="-fx-background-color: #C7E8AC;-fx-border-color: #7AB648; -fx-background-radius: 8; -fx-border-radius: 8"
+            fx:id="cellBody"
+            onMouseClicked="#keywordClicked">
+        <padding>
+            <Insets left="8" right="8" top="4" bottom="4"/>
+        </padding>
+        <Label text="+" fx:id="statusLabel">
+            <font>
+                <Font name="System Bold"/>
+            </font>
+        </Label>
+        <Label fx:id="keywordDesc" textFill="#19967D"/>
+    </HBox>
+</StackPane>

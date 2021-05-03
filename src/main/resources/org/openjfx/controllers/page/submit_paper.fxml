@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import org.openjfx.controllers.page.MainPageLeftBannerController?>
+<?import tornadofx.control.ListMenu?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.openjfx.controllers.page.SubmitPaperController"
@@ -36,21 +37,26 @@
                         <Label text="Upload your paper(s)"/>
                         <Label text="(only support pdf, doc, docx)"/>
                         <Button text="Select File" onMouseClicked="#selectPapers"/>
+                        <Label fx:id="fileName"/>
                     </VBox>
                 </left>
                 <right>
                     <VBox>
                         <Label text="Authors:"/>
-                        <TextField/>
+                        <StackPane alignment="CENTER_RIGHT">
+                            <TextField/>
+                            <ComboBox fx:id="authorSelectBox"/>
+                        </StackPane>
+
                         <Label text="Keywords"/>
                         <TextField/>
-                        <FlowPane/>
+                        <FlowPane fx:id="preDefineKeywordFlowPane"/>
                     </VBox>
                 </right>
             </BorderPane>
             <VBox alignment="CENTER">
                 <Button text="Submit"/>
-                <Label text="Cancel Submit" textFill="RED" />
+                <Label text="Cancel Submit" textFill="RED" onMouseClicked="#cancelSubmit"/>
             </VBox>
         </VBox>
     </center>
