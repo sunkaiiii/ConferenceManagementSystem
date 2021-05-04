@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
 <?import org.openjfx.controllers.page.MainPageLeftBannerController?>
 <?import tornadofx.control.ListMenu?>
+
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.openjfx.controllers.page.SubmitPaperController"
@@ -17,7 +20,18 @@
     <left>
         <MainPageLeftBannerController index="1"/>
     </left>
-
+    <top>
+        <StackPane prefWidth="Infinity">
+            <Label alignment="CENTER" text="Paper Management">
+                <padding>
+                    <Insets bottom="16" top="16" />
+                </padding>
+                <font>
+                    <Font name="System Bold" size="24.0" />
+                </font>
+            </Label>
+        </StackPane>
+    </top>
     <center>
         <VBox alignment="CENTER_LEFT">
             <Label text="Paper Submission"/>
