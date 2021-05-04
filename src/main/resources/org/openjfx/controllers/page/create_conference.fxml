@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -10,29 +11,60 @@
     <left>
         <MainPageLeftBannerController index="0"/>
     </left>
+    <top>
+        <Label alignment="CENTER" prefWidth="Infinity" style="-fx-font-weight: bold" text="Conference Management" textFill="black">
+            <font>
+                <Font size="24.0" />
+            </font>
+            <padding>
+                <Insets bottom="16" top="16" />
+            </padding></Label>
+    </top>
     <center>
         <VBox alignment="TOP_CENTER" maxWidth="400">
             <Label text="Create Conference">
             <font>
-               <Font name="System Bold" size="24.0" />
-            </font></Label>
+               <Font name="System Bold" size="18.0" />
+            </font>
+            <padding>
+                <Insets bottom="16" top="12" />
+            </padding></Label>
             <Label text="Conference Name:" />
             <TextField fx:id="conferenceName"/>
-            <Label text="Conference Title:" />
+            <Label text="Conference Title:" >
+                <padding>
+                    <Insets top="8" />
+                </padding>
+            </Label>
             <TextField fx:id="conferenceTitle"/>
-            <Label text="Conference Topic" />
+            <Label text="Conference Topic" >
+                <padding>
+                    <Insets top="8" />
+                </padding>
+            </Label>
             <TextField fx:id="conferenceTopic" />
-            <Label text="Keywords" />
+            <Label text="Keywords" >
+                <padding>
+                    <Insets top="8" />
+                </padding>
+            </Label>
             <TextField fx:id="keywords" />
-            <Label text="Conference Deadline" />
+            <Label text="Conference Deadline" >
+                <padding>
+                    <Insets top="8" />
+                </padding>
+            </Label>
             <DateTimePicker prefWidth="Infinity" fx:id="deadline"/>
             <BorderPane>
                 <left>
-                    <Label text="Cancel" onMouseClicked="#cancelCreation"/>
+                    <Button text="Cancel" onMouseClicked="#cancelCreation"/>
                 </left>
                 <right>
                     <Button text="Create" onMouseClicked="#createConference"/>
                 </right>
+                <padding>
+                    <Insets top="8" />
+                </padding>
             </BorderPane>
         </VBox>
     </center>
