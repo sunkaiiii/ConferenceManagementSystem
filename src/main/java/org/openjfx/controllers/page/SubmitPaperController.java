@@ -134,13 +134,11 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
 
     @FXML
     void selectPapers(MouseEvent event) {
-        //TODO filter does not work?
         FileChooser fileChooser = new FileChooser();
-        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Paper format", ".doc", ".docx", ".pdf");
-        fileChooser.setSelectedExtensionFilter(filter);
+        FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Paper format (*.pdf, *.doc, *.docx)", "*.doc", "*.docx", "*.pdf");
+        fileChooser.getExtensionFilters().add(filter);
         Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         this.paperFiles = fileChooser.showOpenMultipleDialog(appStage);
-        ;
         String fileNames = this.paperFiles.stream().map(File::getName).collect(Collectors.joining("\n"));
         fileName.setText(fileNames);
     }
