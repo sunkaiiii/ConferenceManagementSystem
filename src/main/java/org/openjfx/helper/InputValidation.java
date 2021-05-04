@@ -26,12 +26,5 @@ public class InputValidation {
         return isEmptyResult.isPresent();
     }
 
-    static public void showErrorDialog(String message){
-        Dialog<String> dialog = new Dialog<>();
-        dialog.setTitle("Error");
-        ButtonType buttonType = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
-        dialog.setContentText(message);
-        dialog.getDialogPane().getButtonTypes().add(buttonType);
-        dialog.showAndWait();
-    }
+
 }
