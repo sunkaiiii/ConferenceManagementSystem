@@ -33,7 +33,7 @@
                 <fx:include source="paper_management_available_conference.fxml"/>
             </Tab>
             <Tab text="My Papers" closable="false">
-
+                <fx:include source="paper_management_my_papers.fxml"/>
             </Tab>
         </TabPane>
 

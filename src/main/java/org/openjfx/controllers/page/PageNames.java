@@ -12,7 +12,8 @@ enum PageNames implements PageNameDescriber {
     PAPER_MANAGEMENT("paper_management.fxml"),
     SUBMIT_PAPER("submit_paper.fxml"),
     PRE_DEFINE_KEYWORD_CELL("pre_define_list_cell.fxml"),
-    PAPER_MANAGEMENT_MY_PAPERS("paper_management_my_papers")
+    PAPER_MANAGEMENT_MY_PAPERS("paper_management_my_papers"),
+    MY_PAPER_LIST_CELL("my_paper_list_cell.fxml")
     ;
     private final String pageName;
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefWidth="Infinity" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="org.openjfx.controllers.page.MyPaperListCell">
+    <left>
+        <VBox>
+            <Label fx:id="paperName"/>
+            <Label fx:id="keywords"/>
+            <Label fx:id="authors"/>
+        </VBox>
+    </left>
+    <center>
+        <HBox>
+            <Label text="Submitted by:"/>
+            <Label fx:id="submittedName"/>
+        </HBox>
+    </center>
+    <right>
+        <HBox>
+            <VBox>
+                <Label text="submitted at:"/>
+                <Label fx:id="submittedTime"/>
+            </VBox>
+            <Label fx:id="paperStatus"/>
+        </HBox>
+    </right>
+</BorderPane>
+

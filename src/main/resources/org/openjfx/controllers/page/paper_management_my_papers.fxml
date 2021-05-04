@@ -6,9 +6,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import org.openjfx.controllers.page.MainPageLeftBannerController?>
 <StackPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.openjfx.controllers.page.PaperManagementMyPapersController"
-            prefHeight="734.0" prefWidth="1396.0">
-<FlowPane prefWidth="Infinity" prefHeight="Infinity"/>
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="org.openjfx.controllers.page.PaperManagementMyPapersController"
+           prefHeight="734.0" prefWidth="1396.0">
+    <ScrollPane fitToHeight="true" fitToWidth="true">
+        <VBox prefWidth="Infinity" fx:id="myPaperContainer"/>
+    </ScrollPane>
 </StackPane>

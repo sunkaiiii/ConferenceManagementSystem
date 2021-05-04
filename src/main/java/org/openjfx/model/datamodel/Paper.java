@@ -1,8 +1,10 @@
 package org.openjfx.model.datamodel;
 
 import org.openjfx.helper.CSVConvertHelper;
+import org.openjfx.model.datamodel.interfaces.Author;
 import org.openjfx.model.datamodel.interfaces.CSVConvertable;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Paper implements CSVConvertable<Conference> {
@@ -13,7 +15,9 @@ public class Paper implements CSVConvertable<Conference> {
     private String deadline;
     private List<PaperFile> paperFiles;
     private String conferenceName;
-    private List<String> authors;
+    private String submittedTime;
+    private List<AuthorInformation> authors;
+    private PaperStatus paperStatus;
 
     public Paper(String title, String topic, List<String> keywords, String deadline,List<PaperFile> paperFiles, String conferenceName) {
         this.title = title;
@@ -22,6 +26,8 @@ public class Paper implements CSVConvertable<Conference> {
         this.deadline = deadline;
         this.paperFiles = paperFiles;
         this.conferenceName = conferenceName;
+        this.submittedTime = LocalDateTime.now().toString();
+        this.paperStatus = PaperStatus.SUBMITTED;
     }
 
     public String getTitle() {
@@ -72,12 +78,25 @@ public class Paper implements CSVConvertable<Conference> {
         this.conferenceName = conferenceName;
     }
 
-    public List<String> getAuthors() {
+    public List<AuthorInformation> getAuthors() {
         return authors;
     }
 
-    public void setAuthors(List<String> authors) {
+    public void setAuthors(List<AuthorInformation> authors) {
         this.authors = authors;
+    }
+
+    public String getSubmittedTime() {
+        return submittedTime;
+    }
+
+
+    public PaperStatus getPaperStatus() {
+        return paperStatus;
+    }
+
+    public void setPaperStatus(PaperStatus paperStatus) {
+        this.paperStatus = paperStatus;
     }
 
     @Override
@@ -89,7 +108,9 @@ public class Paper implements CSVConvertable<Conference> {
                 ", deadline='" + deadline + '\'' +
                 ", paperFiles=" + paperFiles +
                 ", conferenceName='" + conferenceName + '\'' +
+                ", submittedTime='" + submittedTime + '\'' +
                 ", authors=" + authors +
+                ", paperStatus=" + paperStatus +
                 '}';
     }
 
@@ -97,4 +118,27 @@ public class Paper implements CSVConvertable<Conference> {
     public String convertToCSVLine() {
         return CSVConvertHelper.convertClassToCSVStringLine(this);
     }
+
+    public enum PaperStatus{
+        SUBMITTED("Submitted"),
+        ACCEPTED("Accepted"),
+        REJECTED("Rejected"),
+        REVIEWED("Reviewed")
+        ;
+        private String status;
+        PaperStatus(String status){
+            this.status=status;
+        }
+        public String getStatus() {
+            return status;
+        }
+
+        @Override
+        public String toString() {
+            return "PaperStatus{" +
+                    "status='" + status + '\'' +
+                    '}';
+        }
+    }
+
 }
