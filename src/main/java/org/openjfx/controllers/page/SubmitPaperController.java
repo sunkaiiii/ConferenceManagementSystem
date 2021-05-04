@@ -14,10 +14,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.openjfx.MainApp;
-import org.openjfx.helper.FileHelper;
-import org.openjfx.helper.InputValidation;
-import org.openjfx.helper.PreDefineKeywordHelper;
-import org.openjfx.helper.SceneHelper;
+import org.openjfx.helper.*;
 import org.openjfx.model.datamodel.Conference;
 import org.openjfx.model.datamodel.Paper;
 import org.openjfx.model.datamodel.PaperFile;
@@ -29,7 +26,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
@@ -159,22 +155,38 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
         if (!validate()) {
             return;
         }
+        DialogHelper.showConfirmDialog("", "Do you want to submit these paper(s)?", new DialogHelper.ConfirmDialogClickListener() {
+            @Override
+            public void onNegativeButtonClick() {
+
+            }
+
+            @Override
+            public void onPositiveButtonClick() {
+                submitPaperToSystem(event);
+            }
+        });
+
+
+    }
+
+    private void submitPaperToSystem(MouseEvent event){
         List<PaperFile> paperFiles = this.paperFiles.stream().map(paper -> {
             try {
                 return FileHelper.getInstance().uploadFileToServer(paper.getName(), paper.getAbsolutePath());
             } catch (IOException e) {
-                InputValidation.showErrorDialog("Upload file error");
-                System.out.println(e);
+                DialogHelper.showErrorDialog("Upload file error");
+                e.printStackTrace();
                 throw new RuntimeException();
             }
         }).collect(Collectors.toList());
         Paper paper = new Paper(paperName.getText(), conference.getTopic(), Arrays.stream(keywordField.getText().split(";")).collect(Collectors.toList()), conference.getDeadline(), paperFiles, conference.getName());
-        paperService.submitPaper(selectedAuthor, paper);
-        //TODO second confirmation dialog
-
-
-
-        SceneHelper.startPage(getClass(),event,PageNames.PAPER_MANAGEMENT,true);
+        try {
+            paperService.submitPaper(selectedAuthor, paper);
+            SceneHelper.startPage(getClass(),event,PageNames.PAPER_MANAGEMENT,true);
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
     }
 
     @Override
@@ -188,16 +200,16 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
 
     public boolean validate() {
         if (InputValidation.checkTextFiledIsEmpty(this.allFields)) {
-            InputValidation.showErrorDialog("You need to fill up all fields");
+            DialogHelper.showErrorDialog("You need to fill up all fields");
             return false;
         }
         if (this.paperFiles == null || this.paperFiles.isEmpty()) {
-            InputValidation.showErrorDialog("You need to choose paper(s)");
+            DialogHelper.showErrorDialog("You need to choose paper(s)");
             return false;
         }
 
         if (this.keywordField.getText().split(";").length < 3) {
-            InputValidation.showErrorDialog("You need to input at least 3 keywords");
+            DialogHelper.showErrorDialog("You need to input at least 3 keywords");
             return false;
         }
         return true;
