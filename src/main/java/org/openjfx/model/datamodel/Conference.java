@@ -92,7 +92,7 @@ public class Conference implements CSVConvertable<Conference> {
 
     public static void main(String[] args) throws IOException {
         Conference conference = new Conference("Cloud computing","Cloud computing 2020","Cloud computing",List.of("Cloud","Big data"),LocalDateTime.now().plusDays(4).toString());
-        RegisterdUser chair = UserService.getInstance().searchAUser("123@qq.com");
-        ConferenceService.getInstance().createConference(chair,conference);
+        RegisterdUser chair = UserService.getDefaultInstance().searchAUser("123@qq.com");
+        ConferenceService.getDefaultInstance().createConference(chair,conference);
     }
 }

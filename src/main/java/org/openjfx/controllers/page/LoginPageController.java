@@ -33,7 +33,7 @@ public class LoginPageController implements Initializable {
 
     List<TextField> textFieldList;
 
-    private final UserService userService = UserService.getInstance();
+    private final UserService userService = UserService.getDefaultInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

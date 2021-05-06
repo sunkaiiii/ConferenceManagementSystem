@@ -52,7 +52,7 @@ public class SignUpController implements Initializable {
 
     private List<TextField> allTextFields;
 
-    private final UserService userService = UserService.getInstance();
+    private final UserService userService = UserService.getDefaultInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

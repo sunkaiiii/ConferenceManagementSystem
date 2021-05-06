@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
 import javafx.scene.layout.VBox;
 import org.openjfx.helper.SceneHelper;
 import org.openjfx.model.datamodel.Conference;
@@ -31,7 +30,7 @@ public class ConferencePaperController implements Initializable {
 
     private Conference conference;
 
-    private final PaperService paperService = PaperService.getInstance();
+    private final PaperService paperService = PaperService.getDefaultInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

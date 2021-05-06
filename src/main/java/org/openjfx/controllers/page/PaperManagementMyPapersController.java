@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import org.openjfx.MainApp;
 import org.openjfx.helper.SceneHelper;
@@ -23,7 +22,7 @@ public class PaperManagementMyPapersController implements Initializable {
     @FXML
     private VBox myPaperContainer;
 
-    private final PaperService paperService = PaperService.getInstance();
+    private final PaperService paperService = PaperService.getDefaultInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

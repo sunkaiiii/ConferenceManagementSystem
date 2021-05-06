@@ -20,7 +20,7 @@ public class PaperManagementAvailableConferenceController implements Initializab
     @FXML
     private FlowPane conferenceFlowPane;
 
-    private final ConferenceService conferenceService = ConferenceService.getInstance();
+    private final ConferenceService conferenceService = ConferenceService.getDefaultInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

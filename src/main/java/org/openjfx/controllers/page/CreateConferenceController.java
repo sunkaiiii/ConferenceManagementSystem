@@ -12,7 +12,6 @@ import org.openjfx.model.datamodel.interfaces.Chair;
 import org.openjfx.service.ConferenceService;
 import tornadofx.control.DateTimePicker;
 
-import javax.xml.validation.ValidatorHandler;
 import java.io.IOException;
 import java.net.URL;
 import java.time.Duration;
@@ -39,7 +38,7 @@ public class CreateConferenceController implements Initializable {
 
     List<TextField> textFields;
 
-    private final ConferenceService conferenceService = ConferenceService.getInstance();
+    private final ConferenceService conferenceService = ConferenceService.getDefaultInstance();
 
 
     @Override

@@ -66,7 +66,7 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
 
     private List<File> paperFiles;
 
-    private final PaperService paperService = PaperService.getInstance();
+    private final PaperService paperService = PaperService.getDefaultInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -106,7 +106,7 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
 
     private void initAuthorList() {
         try {
-            authorList = UserService.getInstance().findAuthors();
+            authorList = UserService.getDefaultInstance().findAuthors();
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -27,7 +27,7 @@ public class ConferenceManagementController implements Initializable {
     @FXML
     private FlowPane finishedConferenceFLowPane;
 
-    private final ConferenceService conferenceService = ConferenceService.getInstance();
+    private final ConferenceService conferenceService = ConferenceService.getDefaultInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

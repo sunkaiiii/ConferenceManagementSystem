@@ -7,17 +7,10 @@ import org.openjfx.model.datamodel.interfaces.Author;
 import org.openjfx.model.datamodel.interfaces.CSVConvertable;
 import org.openjfx.model.datamodel.interfaces.Chair;
 import org.openjfx.model.datamodel.interfaces.Reviewer;
-import org.openjfx.service.ConferenceService;
 import org.openjfx.service.DatabaseService;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class RegisterdUser extends User implements Author, Chair, Reviewer, CSVConvertable<RegisterdUser> {
     private String firstName;

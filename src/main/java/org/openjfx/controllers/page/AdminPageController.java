@@ -27,9 +27,9 @@ public class AdminPageController implements Initializable {
     @FXML
     private VBox userListContainer;
 
-    private final ConferenceService conferenceService = ConferenceService.getInstance();
+    private final ConferenceService conferenceService = ConferenceService.getDefaultInstance();
 
-    private final UserService userService = UserService.getInstance();
+    private final UserService userService = UserService.getDefaultInstance();
 
     private Admin admin;
 
