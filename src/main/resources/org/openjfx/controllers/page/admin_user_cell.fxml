@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="org.openjfx.controllers.page.AdminUserCell">
+    <padding>
+        <Insets left="16" right="16" top="8" bottom="8"/>
+    </padding>
+    <BorderPane style="-fx-background-color: white;-fx-background-radius: 8">
+        <padding>
+            <Insets left="32" right="32" top="16" bottom="16"/>
+        </padding>
+        <left>
+            <StackPane>
+                <Label fx:id="userName">
+                    <font>
+                        <Font name="System bold" size="14"/>
+                    </font>
+                </Label>
+            </StackPane>
+        </left>
+        <right>
+            <HBox alignment="CENTER">
+                <HBox alignment="CENTER">
+                    <padding>
+                        <Insets right="8"/>
+                    </padding>
+                    <Label text="Created at: "/>
+                    <Label fx:id="creationTime"/>
+                </HBox>
+
+                <StackPane style="-fx-border-color: gray;-fx-border-radius: 8">
+                    <padding>
+                        <Insets left="24" right="24" top="8" bottom="8"/>
+                    </padding>
+                    <Label text="Detail" textFill="gray"/>
+                </StackPane>
+            </HBox>
+        </right>
+    </BorderPane>
+
+</StackPane>

@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae9b270c-5962-4e59-ac2f-9f747ba3f49c" name="Default Changelist" comment="Adjust the layout of create_conference page">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/model/datamodel/RegisterdUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/model/datamodel/RegisterdUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user_table.csv" beforeDir="false" afterPath="$PROJECT_DIR$/user_table.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/AdminUserCell.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/admin_user_cell.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/AdminPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/AdminPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/PageNames.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/PageNames.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +239,7 @@
       <workItem from="1620030012734" duration="1205000" />
       <workItem from="1620036573402" duration="12413000" />
       <workItem from="1620096833044" duration="9077000" />
-      <workItem from="1620283790618" duration="8771000" />
+      <workItem from="1620283790618" duration="9703000" />
     </task>
     <servers />
   </component>

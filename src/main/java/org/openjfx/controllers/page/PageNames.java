@@ -16,7 +16,8 @@ enum PageNames implements PageNameDescriber {
     MY_PAPER_LIST_CELL("my_paper_list_cell.fxml"),
     CONFERENCE_PAPER("conference_paper.fxml"),
     ADMIN_PAGE("admin_page.fxml"),
-    ADMIN_CONFERENCE_CELL("admin_conference_cell.fxml")
+    ADMIN_CONFERENCE_CELL("admin_conference_cell.fxml"),
+    ADMIN_USER_CELL("admin_user_cell.fxml")
     ;
     private final String pageName;
 

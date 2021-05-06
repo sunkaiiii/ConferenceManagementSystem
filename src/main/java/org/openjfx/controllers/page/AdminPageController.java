@@ -42,7 +42,8 @@ public class AdminPageController implements Initializable {
         try {
             List<Node> allConference = conferenceService.searchAllConference().stream().map(this::getConferenceCell).filter(Objects::nonNull).collect(Collectors.toList());
             conferenceListContainer.getChildren().setAll(allConference);
-            List<RegisterdUser> allUser = userService.findAllUser(admin);
+            List<Node> allUser = userService.findAllUser(admin).stream().map(this::getUserCell).filter(Objects::nonNull).collect(Collectors.toList());
+            userListContainer.getChildren().setAll(allUser);
         } catch (IOException exception) {
             exception.printStackTrace();
         }
@@ -54,6 +55,19 @@ public class AdminPageController implements Initializable {
             Node result = loader.load();
             AdminConferenceCell conferenceCell = loader.getController();
             conferenceCell.setConference(conference);
+            return result;
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+        return null;
+    }
+
+    private Node getUserCell(RegisterdUser user) {
+        try {
+            FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.ADMIN_USER_CELL.getPageName());
+            Node result = loader.load();
+            AdminUserCell cell = loader.getController();
+            cell.setUser(user);
             return result;
         } catch (IOException exception) {
             exception.printStackTrace();
