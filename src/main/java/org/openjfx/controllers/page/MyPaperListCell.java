@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.input.MouseEvent;
 import org.openjfx.model.datamodel.AuthorInformation;
 import org.openjfx.model.datamodel.Paper;
 
@@ -35,6 +36,8 @@ public class MyPaperListCell implements Initializable {
 
     private Paper paper;
 
+    private StatusButtonListener statusButtonListener;
+
 
     public Paper getPaper() {
         return paper;
@@ -56,5 +59,24 @@ public class MyPaperListCell implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+    }
+
+    @FXML
+    void onStatusButtonClicked(MouseEvent event){
+        if(this.statusButtonListener!=null){
+            this.statusButtonListener.onStatusButtonClicked(event,this.paper);
+        }
+    }
+
+    public StatusButtonListener getStatusButtonListener() {
+        return statusButtonListener;
+    }
+
+    public void setStatusButtonListener(StatusButtonListener statusButtonListener) {
+        this.statusButtonListener = statusButtonListener;
+    }
+
+    public interface StatusButtonListener{
+        void onStatusButtonClicked(MouseEvent event, Paper paper);
     }
 }

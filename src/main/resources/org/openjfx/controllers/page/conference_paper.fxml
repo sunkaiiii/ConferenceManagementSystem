@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import org.openjfx.controllers.page.MainPageLeftBannerController?>
+<?import javafx.geometry.Insets?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.openjfx.controllers.page.ConferencePaperController"
@@ -19,10 +20,18 @@
             <Label fx:id="conferenceName" text="Conference Name"/>
             <TabPane>
                 <Tab text="Paper to be processed" closable="false">
-                    <VBox fx:id="paperToBeProcessedTabContainer"/>
+                    <VBox fx:id="paperToBeProcessedTabContainer">
+                        <padding>
+                            <Insets left="32" right="32" top="16" bottom="16"/>
+                        </padding>
+                    </VBox>
                 </Tab>
                 <Tab text="Processed paper" closable="false">
-                    <VBox fx:id="processedPaperTabContainer"/>
+                    <VBox fx:id="processedPaperTabContainer">
+                        <padding>
+                            <Insets left="32" right="32" top="16" bottom="16"/>
+                        </padding>
+                    </VBox>
                 </Tab>
             </TabPane>
         </VBox>

@@ -5,27 +5,60 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefWidth="Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controllers.page.MyPaperListCell">
-    <left>
-        <VBox alignment="CENTER_LEFT">
-            <Label fx:id="paperName" />
-            <Label fx:id="keywords" />
-            <Label fx:id="authors" />
-        </VBox>
-    </left>
-    <center>
-        <HBox alignment="CENTER">
-            <Label text="Submitted by:" />
-            <Label fx:id="submittedName" />
-        </HBox>
-    </center>
-    <right>
-        <HBox alignment="CENTER_LEFT">
-            <VBox>
-                <Label text="submitted at:" />
-                <Label fx:id="submittedTime" />
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+<StackPane prefWidth="Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controllers.page.MyPaperListCell" style="-fx-background-color: white; -fx-background-radius: 8">
+    <padding>
+        <Insets left="32" right="32" top="16" bottom="16"/>
+    </padding>
+    <BorderPane prefWidth="Infinity" >
+        <left>
+            <VBox alignment="CENTER_LEFT">
+                <Label fx:id="paperName">
+                    <font>
+                        <Font name="System bold" size="16"/>
+                    </font>
+                </Label>
+                <Label fx:id="keywords" textFill="gray" />
+                <Label fx:id="authors" textFill="gray"/>
             </VBox>
-            <Label fx:id="paperStatus" />
-        </HBox>
-    </right>
-</BorderPane>
+        </left>
+        <center>
+            <HBox alignment="CENTER">
+                <Label text="Submitted by:" >
+                    <font>
+                        <Font name="System bold"/>
+                    </font>
+                </Label>
+                <Label fx:id="submittedName">
+                    <font>
+                        <Font name="System bold"/>
+                    </font>
+                </Label>
+            </HBox>
+        </center>
+        <right>
+            <HBox alignment="CENTER">
+                <VBox alignment="CENTER_LEFT">
+                    <padding>
+                        <Insets right="16"/>
+                    </padding>
+                    <Label text="submitted at:" />
+                    <Label fx:id="submittedTime" />
+                </VBox>
+                <StackPane style="-fx-background-color: #428452;-fx-background-radius: 32" prefHeight="32" maxHeight="32">
+                    <padding>
+                        <Insets left="32" right="32"/>
+                    </padding>
+                    <Label fx:id="paperStatus" onMouseClicked="#onStatusButtonClicked" textFill="white" prefHeight="16" maxHeight="16">
+                        <font>
+                            <Font name="System bold"/>
+                        </font>
+                    </Label>
+                </StackPane>
+
+            </HBox>
+        </right>
+    </BorderPane>
+
+</StackPane>
