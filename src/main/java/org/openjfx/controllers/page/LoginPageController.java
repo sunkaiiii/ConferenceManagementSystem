@@ -2,7 +2,10 @@ package org.openjfx.controllers.page;
 
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -10,7 +13,9 @@ import org.openjfx.MainApp;
 import org.openjfx.controllers.pagemodel.UserController;
 import org.openjfx.helper.InputValidation;
 import org.openjfx.helper.SceneHelper;
+import org.openjfx.model.datamodel.Admin;
 import org.openjfx.model.datamodel.RegisterdUser;
+import org.openjfx.service.UserService;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,6 +35,8 @@ public class LoginPageController implements Initializable {
     List<TextField> textFieldList;
     UserController userController;
 
+    private final UserService userService = UserService.getInstance();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         textFieldList = new ArrayList<>();
@@ -44,6 +51,14 @@ public class LoginPageController implements Initializable {
             return;
         }
         userController = new UserController();
+        if (userName.getText().equalsIgnoreCase("admin")) {
+            Admin admin = userService.adminLogin(userName.getText(), password.getText());
+            if(admin!=null){
+                jumpToAdminPage(event,admin);
+            }
+
+            return;
+        }
         RegisterdUser user = userController.checkUserCredential(userName.getText(), password.getText());
 
         if (user != null) {
@@ -51,8 +66,15 @@ public class LoginPageController implements Initializable {
             jumpToMainPage(event);
         } else {
             errorMessage.setText("Login failed");
-            return;
         }
+    }
+
+    private void jumpToAdminPage(MouseEvent event, Admin admin) throws IOException {
+        FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(),PageNames.ADMIN_PAGE.getPageName());
+        Parent parent = loader.load();
+        AdminPageController controller = loader.getController();
+        controller.setAdmin(admin);
+        SceneHelper.startStage(new Scene(parent),event);
     }
 
     private void jumpToMainPage(MouseEvent event) throws IOException {

@@ -2,7 +2,9 @@ package org.openjfx.service;
 
 import com.google.gson.Gson;
 import org.openjfx.MainApp;
+import org.openjfx.model.datamodel.Admin;
 import org.openjfx.model.datamodel.RegisterdUser;
+import org.openjfx.model.datamodel.abstracts.User;
 import org.openjfx.model.datamodel.factory.DataModelFactory;
 import org.openjfx.model.datamodel.interfaces.Author;
 
@@ -45,6 +47,17 @@ public final class UserService {
 
     public List<Author> findAuthors() throws IOException{
         return new ArrayList<>(databaseService.searchRecords(USER_DATABASE_FILE_NAME, null, this::findAuthorFromKeywords, DataModelFactory::convertUserFromCSVLine));
+    }
+
+    public Admin adminLogin(String userName, String password){
+        if(userName.equalsIgnoreCase("admin") && "Admin".equals(password)){
+            return new Admin(userName, password);
+        }
+        return null;
+    }
+
+    public List<RegisterdUser> findAllUser(User user) throws IOException {
+        return databaseService.searchRecords(USER_DATABASE_FILE_NAME,null,(s,u)->true,DataModelFactory::convertUserFromCSVLine);
     }
 
     private boolean findUserRecordFromLine(String[] usernames,RegisterdUser dataBaseUser){

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="org.openjfx.controllers.page.AdminConferenceCell"
+
+>
+    <padding>
+        <Insets left="8" top="16" bottom="16" right="8"/>
+    </padding>
+    <VBox style="-fx-background-color: white; -fx-background-radius: 8">
+        <padding>
+            <Insets left="16" top="16" bottom="16" right="16"/>
+        </padding>
+        <Label fx:id="conferenceName" alignment="CENTER">
+            <font>
+                <Font name="System bold"/>
+            </font>
+        </Label>
+        <HBox>
+            <Label text="Title:"/>
+            <Label fx:id="title"/>
+        </HBox>
+        <HBox>
+            <Label text="Topic:"/>
+            <Label fx:id="topic"/>
+        </HBox>
+        <HBox>
+            <Label text="Deadline:"/>
+            <Label fx:id="deadline"/>
+        </HBox>
+        <HBox>
+            <Label text="Chair Name:"/>
+            <Label fx:id="chairName"/>
+        </HBox>
+        <StackPane alignment="CENTER_RIGHT" style="-fx-border-color: #0c7dba; -fx-background-radius: 8">
+            <padding>
+                <Insets left="8" right="8" top="4" bottom="4"/>
+            </padding>
+            <Label text="Detail"/>
+        </StackPane>
+    </VBox>
+</StackPane>
