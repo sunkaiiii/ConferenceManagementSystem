@@ -65,7 +65,7 @@ public class ConferenceManagementController implements Initializable {
 
     private Node createCellWithConference(Conference conference) {
         try {
-            FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.CONFERENCE_CELL.getPageName());
+            FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.CONFERENCE_CELL);
             Parent parent = loader.load();
             ConferenceCellController controller = loader.getController();
             controller.setConference(conference);

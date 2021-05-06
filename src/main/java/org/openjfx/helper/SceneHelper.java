@@ -49,8 +49,8 @@ public final class SceneHelper {
         return new Scene(parent);
     }
 
-    public static FXMLLoader createViewWithResourceName(Class<? extends Initializable> clazz,String resourceFileName)throws IOException{
-        return new FXMLLoader(clazz.getResource(resourceFileName));
+    public static FXMLLoader createViewWithResourceName(Class<? extends Initializable> clazz,PageNameDescriber resourceFileName)throws IOException{
+        return new FXMLLoader(clazz.getResource(resourceFileName.getPageName()));
     }
 
     public static void deleteScene(String resourceFileName) {

@@ -70,7 +70,7 @@ public class LoginPageController implements Initializable {
     }
 
     private void jumpToAdminPage(MouseEvent event, Admin admin) throws IOException {
-        FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(),PageNames.ADMIN_PAGE.getPageName());
+        FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(),PageNames.ADMIN_PAGE);
         Parent parent = loader.load();
         AdminPageController controller = loader.getController();
         controller.setAdmin(admin);

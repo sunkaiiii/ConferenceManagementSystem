@@ -51,7 +51,7 @@ public class AdminPageController implements Initializable {
 
     private Node getConferenceCell(Conference conference) {
         try {
-            FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.ADMIN_CONFERENCE_CELL.getPageName());
+            FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.ADMIN_CONFERENCE_CELL);
             Node result = loader.load();
             AdminConferenceCell conferenceCell = loader.getController();
             conferenceCell.setConference(conference);
@@ -64,7 +64,7 @@ public class AdminPageController implements Initializable {
 
     private Node getUserCell(RegisterdUser user) {
         try {
-            FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.ADMIN_USER_CELL.getPageName());
+            FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.ADMIN_USER_CELL);
             Node result = loader.load();
             AdminUserCell cell = loader.getController();
             cell.setUser(user);

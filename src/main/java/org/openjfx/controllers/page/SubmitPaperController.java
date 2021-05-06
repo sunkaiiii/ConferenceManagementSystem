@@ -120,7 +120,7 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
 
     private Parent createKeywordCell(String keyword) {
         try {
-            FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.PRE_DEFINE_KEYWORD_CELL.getPageName());
+            FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.PRE_DEFINE_KEYWORD_CELL);
             Parent result = loader.load();
             PreDefineListCellController cell = loader.getController();
             cell.setKeyword(keyword);

@@ -63,7 +63,7 @@ public class ConferenceCellController implements Initializable {
 
     @FXML
     void viewPapers(MouseEvent event) throws IOException {
-        FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(),PageNames.CONFERENCE_PAPER.getPageName());
+        FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(),PageNames.CONFERENCE_PAPER);
         Parent parent = loader.load();
         ConferencePaperController controller = loader.getController();
         controller.setConference(this.conference);

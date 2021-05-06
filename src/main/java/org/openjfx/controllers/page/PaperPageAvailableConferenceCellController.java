@@ -62,7 +62,7 @@ public class PaperPageAvailableConferenceCellController implements Initializable
 
     @FXML
     void goToSubmitPage(MouseEvent event) throws IOException {
-        FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(),PageNames.SUBMIT_PAPER.getPageName());
+        FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(),PageNames.SUBMIT_PAPER);
         Parent node = loader.load();
         Scene scene = new Scene(node);
         SubmitPaperController controller = loader.getController();

@@ -63,7 +63,7 @@ public class ConferencePaperController implements Initializable {
 
     private Node createPaperCell(Paper paper){
         try {
-            FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.MY_PAPER_LIST_CELL.getPageName());
+            FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.MY_PAPER_LIST_CELL);
             Node node = loader.load();
             MyPaperListCell cell = loader.getController();
             cell.setPaper(paper);

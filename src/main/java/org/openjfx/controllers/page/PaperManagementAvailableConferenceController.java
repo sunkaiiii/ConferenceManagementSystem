@@ -38,7 +38,7 @@ public class PaperManagementAvailableConferenceController implements Initializab
 
     private Node createCellWithConference(Conference conference) {
         try {
-            FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.AVAILABLE_CONFERENCE_CELL.getPageName());
+            FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.AVAILABLE_CONFERENCE_CELL);
             Parent parent = loader.load();
             PaperPageAvailableConferenceCellController controller = loader.getController();
             controller.setConference(conference);
