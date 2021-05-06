@@ -80,6 +80,10 @@ public class SignUpController implements Initializable {
             validationMessage.setText("error");
             return;
         }
+        if(!InputValidation.isEmailFormat(email.getText())){
+            validationMessage.setText("The email is not in a correct format");
+            return;
+        }
         RegisterdUser newUser = new RegisterdUser(email.getText(), password.getText(), firstName.getText(), lastName.getText(), highestQualification.getText(), interestArea.getText(), employerDetails.getText());
         try {
             if (userService.searchAUser(email.getText()) != null) {

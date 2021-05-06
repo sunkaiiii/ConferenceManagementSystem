@@ -3,6 +3,7 @@ module untitled2{
     requires javafx.fxml;
     requires com.google.gson;
     requires tornadofx.controls;
+    requires commons.validator;
     exports org.openjfx;
     exports org.openjfx.model.datamodel;
     exports org.openjfx.model.datamodel.interfaces;

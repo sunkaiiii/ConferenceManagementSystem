@@ -1,9 +1,7 @@
 package org.openjfx.helper;
 
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.TextField;
+import org.apache.commons.validator.routines.EmailValidator;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -24,6 +22,11 @@ public class InputValidation {
                 .filter(result -> result)
                 .findAny();
         return isEmptyResult.isPresent();
+    }
+
+    static public boolean isEmailFormat(String text) {
+        EmailValidator validator = EmailValidator.getInstance();
+        return validator.isValid(text);
     }
 
 

@@ -26,4 +26,5 @@ jlink {
 dependencies {
     compile 'com.google.code.gson:gson:2.8.6'
     compile 'no.tornado:tornadofx-controls:1.0.4'
+    compile group: 'commons-validator', name: 'commons-validator', version: '1.4.0'
 }
