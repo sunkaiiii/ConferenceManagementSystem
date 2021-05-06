@@ -10,7 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import org.openjfx.MainApp;
-import org.openjfx.controllers.pagemodel.UserController;
 import org.openjfx.helper.InputValidation;
 import org.openjfx.helper.SceneHelper;
 import org.openjfx.model.datamodel.Admin;
@@ -33,7 +32,6 @@ public class LoginPageController implements Initializable {
     private TextField password;
 
     List<TextField> textFieldList;
-    UserController userController;
 
     private final UserService userService = UserService.getInstance();
 
@@ -50,7 +48,6 @@ public class LoginPageController implements Initializable {
             errorMessage.setText("Please input your username and password");
             return;
         }
-        userController = new UserController();
         if (userName.getText().equalsIgnoreCase("admin")) {
             Admin admin = userService.adminLogin(userName.getText(), password.getText());
             if(admin!=null){
@@ -59,7 +56,7 @@ public class LoginPageController implements Initializable {
 
             return;
         }
-        RegisterdUser user = userController.checkUserCredential(userName.getText(), password.getText());
+        RegisterdUser user = userService.checkUserCredential(userName.getText(), password.getText());
 
         if (user != null) {
             MainApp.getInstance().setUser(user);

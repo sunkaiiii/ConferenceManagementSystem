@@ -7,10 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import org.openjfx.MainApp;
-import org.openjfx.controllers.pagemodel.UserController;
 import org.openjfx.helper.InputValidation;
 import org.openjfx.helper.SceneHelper;
 import org.openjfx.model.datamodel.RegisterdUser;
+import org.openjfx.service.UserService;
 
 import java.io.IOException;
 import java.net.URL;
@@ -52,7 +52,7 @@ public class SignUpController implements Initializable {
 
     private List<TextField> allTextFields;
 
-    private UserController userController;
+    private final UserService userService = UserService.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -80,16 +80,14 @@ public class SignUpController implements Initializable {
             validationMessage.setText("error");
             return;
         }
-        if (userController == null) {
-            userController = new UserController();
-        }
         RegisterdUser newUser = new RegisterdUser(email.getText(), password.getText(), firstName.getText(), lastName.getText(), highestQualification.getText(), interestArea.getText(), employerDetails.getText());
         try {
-            userController.createANewUser(newUser);
+            if (userService.searchAUser(email.getText()) != null) {
+                validationMessage.setText("The email has been already registered in the system");
+                return;
+            }
+            userService.addANewUser(newUser);
             MainApp.getInstance().setUser(newUser);
-        } catch (UserController.CreateUserException e) {
-            e.printStackTrace();
-            validationMessage.setText("The email has been already registered in the system");
         } catch (IOException e) {
             e.printStackTrace();
             validationMessage.setText("The system could not handle the database");
