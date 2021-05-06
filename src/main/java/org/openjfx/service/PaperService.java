@@ -2,6 +2,7 @@ package org.openjfx.service;
 
 import org.openjfx.helper.CSVConvertHelper;
 import org.openjfx.model.datamodel.AuthorInformation;
+import org.openjfx.model.datamodel.Conference;
 import org.openjfx.model.datamodel.Paper;
 import org.openjfx.model.datamodel.factory.DataModelFactory;
 import org.openjfx.model.datamodel.interfaces.Author;
@@ -33,8 +34,17 @@ public class PaperService {
         return databaseService.searchRecords(PAPER_DATABASE_FILE_NAME,new String[]{author.getAuthorIdentifiedName()},this::findMyPaper, DataModelFactory::convertPaperFromCSVLine);
     }
 
+    public List<Paper> getConferencePaper(Conference conference) throws IOException{
+        return databaseService.searchRecords(PAPER_DATABASE_FILE_NAME,new String[]{conference.getName()},this::findConferencePaper,DataModelFactory::convertPaperFromCSVLine);
+    }
+
     private boolean findMyPaper(String[] authorName, Paper paper){
         String identifyName = authorName[0];
         return paper.getAuthors().stream().anyMatch(information->information.getAuthorIdentifyName().equalsIgnoreCase(identifyName));
+    }
+
+    private boolean findConferencePaper(String[] conferenceNames, Paper paper){
+        String conferenceName = conferenceNames[0];
+        return paper.getConferenceName().equalsIgnoreCase(conferenceName);
     }
 }

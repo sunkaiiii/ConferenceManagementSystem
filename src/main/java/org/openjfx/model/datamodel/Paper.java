@@ -19,7 +19,7 @@ public class Paper implements CSVConvertable<Conference> {
     private List<AuthorInformation> authors;
     private PaperStatus paperStatus;
 
-    public Paper(String title, String topic, List<String> keywords, String deadline,List<PaperFile> paperFiles, String conferenceName) {
+    public Paper(String title, String topic, List<String> keywords, String deadline, List<PaperFile> paperFiles, String conferenceName) {
         this.title = title;
         this.topic = topic;
         this.keywords = keywords;
@@ -99,6 +99,10 @@ public class Paper implements CSVConvertable<Conference> {
         this.paperStatus = paperStatus;
     }
 
+    public boolean isProcessed() {
+        return paperStatus == PaperStatus.ACCEPTED || paperStatus == PaperStatus.REJECTED;
+    }
+
     @Override
     public String toString() {
         return "Paper{" +
@@ -119,16 +123,17 @@ public class Paper implements CSVConvertable<Conference> {
         return CSVConvertHelper.convertClassToCSVStringLine(this);
     }
 
-    public enum PaperStatus{
+    public enum PaperStatus {
         SUBMITTED("Submitted"),
         ACCEPTED("Accepted"),
         REJECTED("Rejected"),
-        REVIEWED("Reviewed")
-        ;
+        REVIEWED("Reviewed");
         private String status;
-        PaperStatus(String status){
-            this.status=status;
+
+        PaperStatus(String status) {
+            this.status = status;
         }
+
         public String getStatus() {
             return status;
         }
