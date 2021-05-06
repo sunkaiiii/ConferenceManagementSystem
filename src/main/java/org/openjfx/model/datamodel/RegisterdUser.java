@@ -12,6 +12,7 @@ import org.openjfx.service.DatabaseService;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -24,6 +25,7 @@ public class RegisterdUser extends User implements Author, Chair, Reviewer, CSVC
     private String highestQualification;
     private String interestArea;
     private String employerDetails;
+    private String creationTime;
 
     public RegisterdUser(String userName, String password, String firstName, String lastName, String highestQualification, String interestArea, String employerDetails) {
         super(userName, password);
@@ -32,6 +34,7 @@ public class RegisterdUser extends User implements Author, Chair, Reviewer, CSVC
         this.highestQualification = highestQualification;
         this.interestArea = interestArea;
         this.employerDetails = employerDetails;
+        this.creationTime = LocalDateTime.now().toString();
     }
 
     @Override
@@ -85,6 +88,18 @@ public class RegisterdUser extends User implements Author, Chair, Reviewer, CSVC
         this.employerDetails = employerDetails;
     }
 
+    public String getInterestArea() {
+        return interestArea;
+    }
+
+    public String getCreationTime() {
+        return creationTime;
+    }
+
+    public void setCreationTime(String creationTime) {
+        this.creationTime = creationTime;
+    }
+
     @Override
     public String convertToCSVLine() {
         return CSVConvertHelper.convertClassToCSVStringLine(this);
@@ -92,12 +107,13 @@ public class RegisterdUser extends User implements Author, Chair, Reviewer, CSVC
 
     @Override
     public String toString() {
-        return super.toString() + "RegisterdUser{" +
+        return "RegisterdUser{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", highestQualification='" + highestQualification + '\'' +
                 ", interestArea='" + interestArea + '\'' +
                 ", employerDetails='" + employerDetails + '\'' +
+                ", creationTime='" + creationTime + '\'' +
                 '}';
     }
 
