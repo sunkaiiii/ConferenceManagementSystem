@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
+import javafx.scene.layout.VBox;
 import org.openjfx.helper.SceneHelper;
 import org.openjfx.model.datamodel.Conference;
 import org.openjfx.model.datamodel.Paper;
@@ -22,10 +23,10 @@ public class ConferencePaperController implements Initializable {
     private Label conferenceName;
 
     @FXML
-    private Tab paperToBeProcessedTab;
-    
+    private VBox paperToBeProcessedTabContainer;
+
     @FXML
-    private Tab processedPaperTab;
+    private VBox processedPaperTabContainer;
 
 
     private Conference conference;
@@ -52,10 +53,13 @@ public class ConferencePaperController implements Initializable {
             List<Paper> conferencePaper = paperService.getConferencePaper(conference);
             List<Node> paperToBeProcessed = conferencePaper.stream().filter(paper -> !paper.isProcessed()).map(this::createPaperCell).collect(Collectors.toList());
             List<Node> processedPaper = conferencePaper.stream().filter(Paper::isProcessed).map(this::createPaperCell).collect(Collectors.toList());
+            paperToBeProcessedTabContainer.getChildren().setAll(paperToBeProcessed);
+            processedPaperTabContainer.getChildren().setAll(processedPaper);
         } catch (IOException exception) {
             exception.printStackTrace();
         }
     }
+
 
     private Node createPaperCell(Paper paper){
         try {

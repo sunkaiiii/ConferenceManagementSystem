@@ -18,8 +18,12 @@
         <VBox>
             <Label fx:id="conferenceName" text="Conference Name"/>
             <TabPane>
-                <Tab text="Paper to be processed" closable="false" fx:id="paperToBeProcessedTab"/>
-                <Tab text="Processed paper" closable="false" fx:id="processedPaperTab"/>
+                <Tab text="Paper to be processed" closable="false">
+                    <VBox fx:id="paperToBeProcessedTabContainer"/>
+                </Tab>
+                <Tab text="Processed paper" closable="false">
+                    <VBox fx:id="processedPaperTabContainer"/>
+                </Tab>
             </TabPane>
         </VBox>
     </center>
