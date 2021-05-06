@@ -82,4 +82,8 @@ final class UserServiceImpl implements UserService {
         return !user.getUserName().equalsIgnoreCase(MainApp.getInstance().getUser().getUserName()) && !user.getUserName().equalsIgnoreCase(ADMIN_NAME);
     }
 
+    @Override
+    public String getDatabaseName() {
+        return USER_DATABASE_FILE_NAME;
+    }
 }

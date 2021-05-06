@@ -62,4 +62,9 @@ final class ConferenceServiceImpl implements ConferenceService {
     private boolean judgeIsAvailableConference(String[] searchInfo, Conference conference) {
         return Duration.between(LocalDateTime.now(), LocalDateTime.parse(conference.getDeadline())).toDays() > 1;
     }
+
+    @Override
+    public String getDatabaseName() {
+        return CONFERENCE_DATABASE_FILE_NAME;
+    }
 }

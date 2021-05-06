@@ -8,7 +8,7 @@ import org.openjfx.model.datamodel.interfaces.Author;
 import java.io.IOException;
 import java.util.List;
 
-public interface UserService {
+public interface UserService extends DatabaseServiceInterface.DatabaseName {
     void addANewUser(RegisterdUser newUser) throws IOException;
     RegisterdUser searchAUser(String userName) throws IOException;
     RegisterdUser checkUserCredential(String userName, String password) throws IOException;

@@ -7,7 +7,7 @@ import org.openjfx.model.datamodel.interfaces.Author;
 import java.io.IOException;
 import java.util.List;
 
-public interface PaperService {
+public interface PaperService extends DatabaseServiceInterface.DatabaseName {
     void submitPaper(List<Author> authors, Paper paper) throws IOException;
     List<Paper> getUserPapers(Author author) throws IOException;
     List<Paper> getConferencePaper(Conference conference) throws IOException;

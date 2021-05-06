@@ -49,4 +49,9 @@ final class PaperServiceImpl implements PaperService {
         String conferenceName = conferenceNames[0];
         return paper.getConferenceName().equalsIgnoreCase(conferenceName);
     }
+
+    @Override
+    public String getDatabaseName() {
+        return PAPER_DATABASE_FILE_NAME;
+    }
 }
