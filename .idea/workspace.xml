@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae9b270c-5962-4e59-ac2f-9f747ba3f49c" name="Default Changelist" comment="Adjust the layout of create_conference page">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/helper/InputValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/helper/InputValidation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/CreateConferenceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/CreateConferenceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/service/ConferenceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/service/ConferenceServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -238,7 +240,7 @@
       <workItem from="1620036573402" duration="12413000" />
       <workItem from="1620096833044" duration="9077000" />
       <workItem from="1620283790618" duration="13652000" />
-      <workItem from="1620356283800" duration="1727000" />
+      <workItem from="1620356283800" duration="2884000" />
     </task>
     <servers />
   </component>
