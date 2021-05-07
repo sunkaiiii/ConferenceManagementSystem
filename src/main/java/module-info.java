@@ -1,4 +1,4 @@
-module untitled2{
+module assignment{
     requires javafx.controls;
     requires javafx.fxml;
     requires com.google.gson;
