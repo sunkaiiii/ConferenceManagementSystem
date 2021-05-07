@@ -16,11 +16,11 @@ final class ConferenceServiceImpl implements ConferenceService {
 
     private final DatabaseService databaseService = DatabaseService.getDefaultInstance();
 
-    public static ConferenceServiceImpl getInstance() {
+    static ConferenceServiceImpl getInstance() {
         return Instance;
     }
 
-    ConferenceServiceImpl() {
+    private ConferenceServiceImpl() {
 
     }
 

@@ -16,11 +16,11 @@ final class PaperServiceImpl implements PaperService {
 
     private final DatabaseService databaseService = DatabaseService.getDefaultInstance();
 
-    public static PaperServiceImpl getInstance() {
+    static PaperServiceImpl getInstance() {
         return Instance;
     }
 
-    PaperServiceImpl() {
+    private PaperServiceImpl() {
 
     }
 

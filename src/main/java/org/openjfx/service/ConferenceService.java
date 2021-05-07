@@ -14,6 +14,6 @@ public interface ConferenceService extends DatabaseController {
     List<Conference> searchAvailableConference() throws IOException;
 
     static ConferenceService getDefaultInstance(){
-        return new ConferenceServiceImpl();
+        return ConferenceServiceImpl.getInstance();
     }
 }

@@ -13,6 +13,6 @@ public interface PaperService extends DatabaseController {
     List<Paper> getConferencePaper(Conference conference) throws IOException;
 
     static PaperService getDefaultInstance(){
-        return new PaperServiceImpl();
+        return PaperServiceImpl.getInstance();
     }
 }

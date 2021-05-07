@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae9b270c-5962-4e59-ac2f-9f747ba3f49c" name="Default Changelist" comment="Adjust the layout of create_conference page">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/model/datamodel/RegisterdUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/model/datamodel/RegisterdUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/service/ConferenceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/service/ConferenceService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/service/ConferenceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/service/ConferenceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/service/DatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/service/DatabaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/service/DatabaseServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/service/DatabaseServiceInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/service/PaperService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/service/PaperService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/service/PaperServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/service/PaperServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -243,7 +241,7 @@
       <workItem from="1620036573402" duration="12413000" />
       <workItem from="1620096833044" duration="9077000" />
       <workItem from="1620283790618" duration="13652000" />
-      <workItem from="1620356283800" duration="831000" />
+      <workItem from="1620356283800" duration="1179000" />
     </task>
     <servers />
   </component>

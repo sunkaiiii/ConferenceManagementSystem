@@ -16,14 +16,13 @@ final class UserServiceImpl implements UserService {
 
 
     private static final UserServiceImpl Instance = new UserServiceImpl();
-    private final Gson gson = new Gson();
     private final DatabaseService databaseService = DatabaseService.getDefaultInstance();
 
     private final String ADMIN_NAME = "Admin";
 
     private final String USER_DATABASE_FILE_NAME = "user_table.csv";
 
-    UserServiceImpl() {
+    private UserServiceImpl() {
 
     }
 
