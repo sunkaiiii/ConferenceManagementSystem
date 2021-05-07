@@ -1,10 +1,10 @@
 package org.openjfx.service;
 
-import org.openjfx.model.datamodel.AuthorInformation;
-import org.openjfx.model.datamodel.Conference;
-import org.openjfx.model.datamodel.Paper;
-import org.openjfx.model.datamodel.factory.DataModelFactory;
-import org.openjfx.model.datamodel.interfaces.Author;
+import org.openjfx.model.AuthorInformation;
+import org.openjfx.model.Conference;
+import org.openjfx.model.Paper;
+import org.openjfx.model.factory.DataModelFactory;
+import org.openjfx.model.interfaces.Author;
 
 import java.io.IOException;
 import java.util.List;

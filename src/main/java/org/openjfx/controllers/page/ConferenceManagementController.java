@@ -9,7 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import org.openjfx.MainApp;
 import org.openjfx.helper.SceneHelper;
-import org.openjfx.model.datamodel.Conference;
+import org.openjfx.model.Conference;
 import org.openjfx.service.ConferenceService;
 
 import java.io.IOException;

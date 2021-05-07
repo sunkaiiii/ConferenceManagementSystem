@@ -3,7 +3,7 @@ package org.openjfx.controllers.page;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import org.openjfx.model.datamodel.RegisterdUser;
+import org.openjfx.model.RegisterdUser;
 
 import java.net.URL;
 import java.util.ResourceBundle;

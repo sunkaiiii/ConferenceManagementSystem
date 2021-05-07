@@ -12,8 +12,8 @@ import javafx.scene.input.MouseEvent;
 import org.openjfx.MainApp;
 import org.openjfx.helper.InputValidation;
 import org.openjfx.helper.SceneHelper;
-import org.openjfx.model.datamodel.Admin;
-import org.openjfx.model.datamodel.RegisterdUser;
+import org.openjfx.model.Admin;
+import org.openjfx.model.RegisterdUser;
 import org.openjfx.service.UserService;
 
 import java.io.IOException;

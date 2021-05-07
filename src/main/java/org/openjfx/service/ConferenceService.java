@@ -1,7 +1,7 @@
 package org.openjfx.service;
 
-import org.openjfx.model.datamodel.Conference;
-import org.openjfx.model.datamodel.interfaces.Chair;
+import org.openjfx.model.Conference;
+import org.openjfx.model.interfaces.Chair;
 
 import java.io.IOException;
 import java.util.List;

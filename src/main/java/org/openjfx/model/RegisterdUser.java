@@ -1,12 +1,12 @@
-package org.openjfx.model.datamodel;
+package org.openjfx.model;
 
 import org.openjfx.helper.CSVConvertHelper;
-import org.openjfx.model.datamodel.abstracts.User;
-import org.openjfx.model.datamodel.factory.DataModelFactory;
-import org.openjfx.model.datamodel.interfaces.Author;
-import org.openjfx.model.datamodel.interfaces.CSVConvertable;
-import org.openjfx.model.datamodel.interfaces.Chair;
-import org.openjfx.model.datamodel.interfaces.Reviewer;
+import org.openjfx.model.abstracts.User;
+import org.openjfx.model.factory.DataModelFactory;
+import org.openjfx.model.interfaces.Author;
+import org.openjfx.model.interfaces.CSVConvertable;
+import org.openjfx.model.interfaces.Chair;
+import org.openjfx.model.interfaces.Reviewer;
 import org.openjfx.service.DatabaseService;
 
 import java.io.IOException;

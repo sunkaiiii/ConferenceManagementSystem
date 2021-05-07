@@ -7,9 +7,9 @@ import javafx.scene.Node;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import org.openjfx.helper.SceneHelper;
-import org.openjfx.model.datamodel.Admin;
-import org.openjfx.model.datamodel.Conference;
-import org.openjfx.model.datamodel.RegisterdUser;
+import org.openjfx.model.Admin;
+import org.openjfx.model.Conference;
+import org.openjfx.model.RegisterdUser;
 import org.openjfx.service.ConferenceService;
 import org.openjfx.service.UserService;
 

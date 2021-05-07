@@ -1,4 +1,4 @@
-package org.openjfx.model.datamodel;
+package org.openjfx.model;
 
 public class AuthorInformation {
     private String authorDisplayName;

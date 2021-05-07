@@ -1,6 +1,6 @@
 package org.openjfx.helper;
 
-import org.openjfx.model.datamodel.PaperFile;
+import org.openjfx.model.PaperFile;
 
 import java.io.File;
 import java.io.IOException;

@@ -7,8 +7,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import org.openjfx.helper.SceneHelper;
-import org.openjfx.model.datamodel.Conference;
-import org.openjfx.model.datamodel.Paper;
+import org.openjfx.model.Conference;
+import org.openjfx.model.Paper;
 import org.openjfx.service.PaperService;
 
 import java.io.IOException;

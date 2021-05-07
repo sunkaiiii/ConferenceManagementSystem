@@ -1,6 +1,6 @@
-package org.openjfx.model.datamodel;
+package org.openjfx.model;
 
-import org.openjfx.model.datamodel.abstracts.User;
+import org.openjfx.model.abstracts.User;
 
 public class Admin extends User {
     public Admin(String userName, String password) {

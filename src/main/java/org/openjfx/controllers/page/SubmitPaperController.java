@@ -15,10 +15,10 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.openjfx.MainApp;
 import org.openjfx.helper.*;
-import org.openjfx.model.datamodel.Conference;
-import org.openjfx.model.datamodel.Paper;
-import org.openjfx.model.datamodel.PaperFile;
-import org.openjfx.model.datamodel.interfaces.Author;
+import org.openjfx.model.Conference;
+import org.openjfx.model.Paper;
+import org.openjfx.model.PaperFile;
+import org.openjfx.model.interfaces.Author;
 import org.openjfx.service.PaperService;
 import org.openjfx.service.UserService;
 

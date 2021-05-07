@@ -1,4 +1,4 @@
-package org.openjfx.model.datamodel.abstracts;
+package org.openjfx.model.abstracts;
 
 public abstract class User {
     private String userName;

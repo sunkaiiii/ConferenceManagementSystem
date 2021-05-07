@@ -1,6 +1,6 @@
 package org.openjfx.service;
 
-import org.openjfx.model.datamodel.interfaces.CSVConvertable;
+import org.openjfx.model.interfaces.CSVConvertable;
 
 import java.io.IOException;
 import java.util.List;

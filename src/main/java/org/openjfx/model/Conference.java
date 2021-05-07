@@ -1,7 +1,7 @@
-package org.openjfx.model.datamodel;
+package org.openjfx.model;
 
 import org.openjfx.helper.CSVConvertHelper;
-import org.openjfx.model.datamodel.interfaces.CSVConvertable;
+import org.openjfx.model.interfaces.CSVConvertable;
 import org.openjfx.service.ConferenceService;
 import org.openjfx.service.UserService;
 

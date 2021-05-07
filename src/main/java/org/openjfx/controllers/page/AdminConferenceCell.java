@@ -3,7 +3,7 @@ package org.openjfx.controllers.page;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import org.openjfx.model.datamodel.Conference;
+import org.openjfx.model.Conference;
 
 import java.net.URL;
 import java.util.ResourceBundle;

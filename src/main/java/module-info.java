@@ -5,10 +5,10 @@ module untitled2{
     requires tornadofx.controls;
     requires commons.validator;
     exports org.openjfx;
-    exports org.openjfx.model.datamodel;
-    exports org.openjfx.model.datamodel.interfaces;
+    exports org.openjfx.model;
+    exports org.openjfx.model.interfaces;
     exports org.openjfx.controllers.page;
     opens org.openjfx.controllers.page to javafx.fxml;
-    opens org.openjfx.model.datamodel.abstracts to com.google.gson;
-    opens org.openjfx.model.datamodel to com.google.gson;
+    opens org.openjfx.model.abstracts to com.google.gson;
+    opens org.openjfx.model to com.google.gson;
 }

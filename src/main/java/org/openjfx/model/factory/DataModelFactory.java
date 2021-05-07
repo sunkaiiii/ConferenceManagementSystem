@@ -1,13 +1,9 @@
-package org.openjfx.model.datamodel.factory;
+package org.openjfx.model.factory;
 
 import com.google.gson.Gson;
-import org.openjfx.model.datamodel.Conference;
-import org.openjfx.model.datamodel.Paper;
-import org.openjfx.model.datamodel.RegisterdUser;
-
-import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.stream.Collectors;
+import org.openjfx.model.Conference;
+import org.openjfx.model.Paper;
+import org.openjfx.model.RegisterdUser;
 
 public class DataModelFactory {
     public static RegisterdUser convertUserFromCSVLine(String csvData) {

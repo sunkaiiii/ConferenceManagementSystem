@@ -1,9 +1,9 @@
 package org.openjfx.service;
 
-import org.openjfx.model.datamodel.Admin;
-import org.openjfx.model.datamodel.RegisterdUser;
-import org.openjfx.model.datamodel.abstracts.User;
-import org.openjfx.model.datamodel.interfaces.Author;
+import org.openjfx.model.Admin;
+import org.openjfx.model.RegisterdUser;
+import org.openjfx.model.abstracts.User;
+import org.openjfx.model.interfaces.Author;
 
 import java.io.IOException;
 import java.util.List;

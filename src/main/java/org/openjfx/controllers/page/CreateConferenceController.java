@@ -8,8 +8,8 @@ import org.openjfx.MainApp;
 import org.openjfx.helper.DialogHelper;
 import org.openjfx.helper.InputValidation;
 import org.openjfx.helper.SceneHelper;
-import org.openjfx.model.datamodel.Conference;
-import org.openjfx.model.datamodel.interfaces.Chair;
+import org.openjfx.model.Conference;
+import org.openjfx.model.interfaces.Chair;
 import org.openjfx.service.ConferenceService;
 import tornadofx.control.DateTimePicker;
 
