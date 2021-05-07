@@ -14,7 +14,7 @@ final class PaperServiceImpl implements PaperService {
     private static final PaperServiceImpl Instance = new PaperServiceImpl();
     private static final String PAPER_DATABASE_FILE_NAME = "paper_table.csv";
 
-    private final DatabaseService databaseService = DatabaseService.getInstance();
+    private final DatabaseService databaseService = DatabaseService.getDefaultInstance();
 
     public static PaperServiceImpl getInstance() {
         return Instance;
@@ -27,17 +27,17 @@ final class PaperServiceImpl implements PaperService {
     @Override
     public void submitPaper(List<Author> authors, Paper paper) throws IOException {
         paper.setAuthors(authors.stream().map(author -> new AuthorInformation(author.getAuthorName(),author.getAuthorIdentifiedName())).collect(Collectors.toList()));
-        databaseService.addNewRecord(PAPER_DATABASE_FILE_NAME, paper);
+        databaseService.addNewRecord(this, paper);
     }
 
     @Override
     public List<Paper> getUserPapers(Author author) throws IOException{
-        return databaseService.searchRecords(PAPER_DATABASE_FILE_NAME,new String[]{author.getAuthorIdentifiedName()},this::findMyPaper, DataModelFactory::convertPaperFromCSVLine);
+        return databaseService.searchRecords(this,new String[]{author.getAuthorIdentifiedName()},this::findMyPaper, DataModelFactory::convertPaperFromCSVLine);
     }
 
     @Override
     public List<Paper> getConferencePaper(Conference conference) throws IOException{
-        return databaseService.searchRecords(PAPER_DATABASE_FILE_NAME,new String[]{conference.getName()},this::findConferencePaper,DataModelFactory::convertPaperFromCSVLine);
+        return databaseService.searchRecords(this,new String[]{conference.getName()},this::findConferencePaper,DataModelFactory::convertPaperFromCSVLine);
     }
 
     private boolean findMyPaper(String[] authorName, Paper paper){

@@ -61,11 +61,11 @@ public class RegisterdUser extends User implements Author, Chair, Reviewer, CSVC
 
     @Override
     public String getAuthorName() {
-        return firstName + " "+ lastName;
+        return firstName + " " + lastName;
     }
 
     @Override
-    public String  getAuthorIdentifiedName() {
+    public String getAuthorIdentifiedName() {
         return getUserName();
     }
 
@@ -116,12 +116,12 @@ public class RegisterdUser extends User implements Author, Chair, Reviewer, CSVC
     }
 
     public static void main(String[] args) {
-        var user = new RegisterdUser("kai@k.com","password","Kai","Sun","44","AI","details");
+        var user = new RegisterdUser("kai@k.com", "password", "Kai", "Sun", "44", "AI", "details");
         String csvLine = user.convertToCSVLine();
         user = DataModelFactory.convertUserFromCSVLine(csvLine);
         System.out.println(user);
         try {
-            DatabaseService.getInstance().addNewRecord("user.csv",csvLine);
+            DatabaseService.getDefaultInstance().addNewRecord(() -> "user.csv", csvLine);
         } catch (IOException e) {
             e.printStackTrace();
         }

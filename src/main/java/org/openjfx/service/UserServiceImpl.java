@@ -17,13 +17,13 @@ final class UserServiceImpl implements UserService {
 
     private static final UserServiceImpl Instance = new UserServiceImpl();
     private final Gson gson = new Gson();
-    private final DatabaseService databaseService = DatabaseService.getInstance();
+    private final DatabaseService databaseService = DatabaseService.getDefaultInstance();
 
     private final String ADMIN_NAME = "Admin";
 
     private final String USER_DATABASE_FILE_NAME = "user_table.csv";
 
-    UserServiceImpl(){
+    UserServiceImpl() {
 
     }
 
@@ -34,27 +34,27 @@ final class UserServiceImpl implements UserService {
 
     @Override
     public void addANewUser(RegisterdUser newUser) throws IOException {
-        databaseService.addNewRecord(this.USER_DATABASE_FILE_NAME,newUser);
+        databaseService.addNewRecord(this, newUser);
     }
 
     @Override
     public RegisterdUser searchAUser(String userName) throws IOException {
-        return databaseService.searchARecord(USER_DATABASE_FILE_NAME,new String[]{userName},this::findUserRecordFromLine,DataModelFactory::convertUserFromCSVLine);
+        return databaseService.searchARecord(this, new String[]{userName}, this::findUserRecordFromLine, DataModelFactory::convertUserFromCSVLine);
     }
 
     @Override
     public RegisterdUser checkUserCredential(String userName, String password) throws IOException {
-        return databaseService.searchARecord(USER_DATABASE_FILE_NAME,new String[]{userName,password},this::checkUserCredential, DataModelFactory::convertUserFromCSVLine);
+        return databaseService.searchARecord(this, new String[]{userName, password}, this::checkUserCredential, DataModelFactory::convertUserFromCSVLine);
     }
 
     @Override
-    public List<Author> findAuthors() throws IOException{
-        return new ArrayList<>(databaseService.searchRecords(USER_DATABASE_FILE_NAME, null, this::findAuthorFromKeywords, DataModelFactory::convertUserFromCSVLine));
+    public List<Author> findAuthors() throws IOException {
+        return new ArrayList<>(databaseService.searchRecords(this, null, this::findAuthorFromKeywords, DataModelFactory::convertUserFromCSVLine));
     }
 
     @Override
-    public Admin adminLogin(String userName, String password){
-        if(userName.equalsIgnoreCase("admin") && "Admin".equals(password)){
+    public Admin adminLogin(String userName, String password) {
+        if (userName.equalsIgnoreCase("admin") && "Admin".equals(password)) {
             return new Admin(userName, password);
         }
         return null;
@@ -62,23 +62,23 @@ final class UserServiceImpl implements UserService {
 
     @Override
     public List<RegisterdUser> findAllUser(User user) throws IOException {
-        if(!user.isAdmin()){
+        if (!user.isAdmin()) {
             return new ArrayList<>();
         }
-        return databaseService.searchRecords(USER_DATABASE_FILE_NAME,null,(s,u)->true,DataModelFactory::convertUserFromCSVLine);
+        return databaseService.searchRecords(this, null, (s, u) -> true, DataModelFactory::convertUserFromCSVLine);
     }
 
-    private boolean findUserRecordFromLine(String[] usernames,RegisterdUser dataBaseUser){
+    private boolean findUserRecordFromLine(String[] usernames, RegisterdUser dataBaseUser) {
         return dataBaseUser.getUserName().equalsIgnoreCase(usernames[0]);
     }
 
-    private boolean checkUserCredential(String[] credential, RegisterdUser dataBaseUser){
+    private boolean checkUserCredential(String[] credential, RegisterdUser dataBaseUser) {
         String userName = credential[0];
         String password = credential[1];
         return dataBaseUser.getUserName().equalsIgnoreCase(userName) && dataBaseUser.getPassword().equals(password);
     }
 
-    private boolean findAuthorFromKeywords(String[] keywords, RegisterdUser user){
+    private boolean findAuthorFromKeywords(String[] keywords, RegisterdUser user) {
         return !user.getUserName().equalsIgnoreCase(MainApp.getInstance().getUser().getUserName()) && !user.getUserName().equalsIgnoreCase(ADMIN_NAME);
     }
 

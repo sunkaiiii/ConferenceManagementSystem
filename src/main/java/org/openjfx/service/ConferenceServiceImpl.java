@@ -14,7 +14,7 @@ final class ConferenceServiceImpl implements ConferenceService {
     private static final ConferenceServiceImpl Instance = new ConferenceServiceImpl();
     private static final String CONFERENCE_DATABASE_FILE_NAME = "conference_table.csv";
 
-    private final DatabaseService databaseService = DatabaseService.getInstance();
+    private final DatabaseService databaseService = DatabaseService.getDefaultInstance();
 
     public static ConferenceServiceImpl getInstance() {
         return Instance;
@@ -27,12 +27,12 @@ final class ConferenceServiceImpl implements ConferenceService {
     @Override
     public void createConference(Chair chair, Conference newConference) throws IOException {
         newConference.setChairName(chair.getChairName());
-        databaseService.addNewRecord(CONFERENCE_DATABASE_FILE_NAME, newConference);
+        databaseService.addNewRecord(this, newConference);
     }
 
     @Override
     public List<Conference> searchAllConference() throws IOException {
-        return databaseService.searchRecords(CONFERENCE_DATABASE_FILE_NAME, null, (predicate, data) -> true, DataModelFactory::convertConferenceFromCSVLine);
+        return databaseService.searchRecords(this, null, (predicate, data) -> true, DataModelFactory::convertConferenceFromCSVLine);
     }
 
     @Override
@@ -43,12 +43,12 @@ final class ConferenceServiceImpl implements ConferenceService {
 
     @Override
     public List<Conference> searchUsersConference(Chair chair) throws IOException {
-        return databaseService.searchRecords(CONFERENCE_DATABASE_FILE_NAME, new String[]{chair.getChairName()}, this::searchConferenceBelongToUser, DataModelFactory::convertConferenceFromCSVLine);
+        return databaseService.searchRecords(this, new String[]{chair.getChairName()}, this::searchConferenceBelongToUser, DataModelFactory::convertConferenceFromCSVLine);
     }
 
     @Override
     public List<Conference> searchAvailableConference() throws IOException {
-        return databaseService.searchRecords(CONFERENCE_DATABASE_FILE_NAME,null,this::judgeIsAvailableConference,DataModelFactory::convertConferenceFromCSVLine);
+        return databaseService.searchRecords(this,null,this::judgeIsAvailableConference,DataModelFactory::convertConferenceFromCSVLine);
     }
 
     private boolean searchConference(String[] conferenceName, String databaseRecord) {
