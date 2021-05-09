@@ -46,7 +46,7 @@
                     <Label text="submitted at:" />
                     <Label fx:id="submittedTime" />
                 </VBox>
-                <StackPane style="-fx-background-color: #428452;-fx-background-radius: 32" prefHeight="32" maxHeight="32">
+                <StackPane fx:id="statusBackground" style="-fx-background-color: #428452;-fx-background-radius: 32" prefHeight="32" maxHeight="32">
                     <padding>
                         <Insets left="32" right="32"/>
                     </padding>

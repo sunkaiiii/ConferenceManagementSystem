@@ -66,6 +66,12 @@ public class ConferencePaperController implements Initializable {
             Node node = loader.load();
             MyPaperListCell cell = loader.getController();
             cell.setPaper(paper);
+            switch (paper.getPaperStatus()){
+                case ACCEPTED -> cell.setPresentation(MyPaperListCell.PaperStatusPresentation.CONFERENCE_MANAGEMENT_PAPER_ACCEPTED);
+                case REJECTED -> cell.setPresentation(MyPaperListCell.PaperStatusPresentation.CONFERENCE_MANAGEMENT_PAPER_REJECTED);
+                case REVIEWED -> cell.setPresentation(MyPaperListCell.PaperStatusPresentation.CONFERENCE_MANAGEMENT_PAPER_REVIEWED);
+                case SUBMITTED -> cell.setPresentation(MyPaperListCell.PaperStatusPresentation.CONFERENCE_MANAGEMENT_PAPER_SUBMITTED);
+            }
             return node;
         } catch (IOException exception) {
             exception.printStackTrace();

@@ -45,6 +45,12 @@ public class PaperManagementMyPapersController implements Initializable {
             Node node = loader.load();
             MyPaperListCell cell = loader.getController();
             cell.setPaper(paper);
+            switch (paper.getPaperStatus()){
+                case ACCEPTED -> cell.setPresentation(MyPaperListCell.PaperStatusPresentation.PAPER_PAGE_ACCEPTED);
+                case REJECTED -> cell.setPresentation(MyPaperListCell.PaperStatusPresentation.PAPER_PAGE_REJECTED);
+                case REVIEWED -> cell.setPresentation(MyPaperListCell.PaperStatusPresentation.PAPER_PAGE_REVIEWED);
+                case SUBMITTED -> cell.setPresentation(MyPaperListCell.PaperStatusPresentation.PAPER_PAGE_SUBMITTED);
+            }
             return node;
         } catch (IOException exception) {
             exception.printStackTrace();
