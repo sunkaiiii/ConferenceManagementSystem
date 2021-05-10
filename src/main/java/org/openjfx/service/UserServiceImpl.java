@@ -6,10 +6,12 @@ import org.openjfx.model.RegisterdUser;
 import org.openjfx.model.abstracts.User;
 import org.openjfx.model.factory.DataModelFactory;
 import org.openjfx.model.interfaces.Author;
+import org.openjfx.model.interfaces.Reviewer;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 final class UserServiceImpl implements UserService {
 
@@ -64,6 +66,15 @@ final class UserServiceImpl implements UserService {
             return new ArrayList<>();
         }
         return databaseService.searchRecords(this, null, (s, u) -> true, DataModelFactory::convertUserFromCSVLine);
+    }
+
+    @Override
+    public List<Reviewer> findAllReviewers(RegisterdUser currentUser) throws IOException {
+        return new ArrayList<>(databaseService.searchRecords(this, new String[]{currentUser.getUserName()}, this::findReviewerExceptCurrentUser, DataModelFactory::convertUserFromCSVLine));
+    }
+
+    private boolean findReviewerExceptCurrentUser(String[] currentUserName, RegisterdUser user) {
+        return !currentUserName[0].equalsIgnoreCase(user.getUserName());
     }
 
     private boolean findUserRecordFromLine(String[] usernames, RegisterdUser dataBaseUser) {

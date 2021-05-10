@@ -11,6 +11,9 @@ import org.openjfx.service.DatabaseService;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
 
 public class RegisterdUser extends User implements Author, Chair, Reviewer, CSVConvertable<RegisterdUser> {
     private String firstName;
@@ -125,5 +128,21 @@ public class RegisterdUser extends User implements Author, Chair, Reviewer, CSVC
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public String getReviewerName() {
+        return getFirstName() + "." + getLastName().charAt(0);
+    }
+
+    @Override
+    public String getReviewerIdentifiedName() {
+        return getUserName();
+    }
+
+    @Override
+    public Map<String, Integer> getInterestAreas() {
+        //TODO add field and add value in sign up page
+        return Map.of(getInterestArea(), new Random().nextInt(10));
     }
 }

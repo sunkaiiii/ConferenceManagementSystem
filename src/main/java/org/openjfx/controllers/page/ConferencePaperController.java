@@ -4,7 +4,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import org.openjfx.helper.SceneHelper;
 import org.openjfx.model.Conference;
@@ -17,7 +20,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class ConferencePaperController implements Initializable {
+public class ConferencePaperController implements Initializable, MyPaperListCell.StatusButtonListener {
     @FXML
     private Label conferenceName;
 
@@ -60,23 +63,24 @@ public class ConferencePaperController implements Initializable {
     }
 
 
-    private Node createPaperCell(Paper paper){
+    private Node createPaperCell(Paper paper) {
         try {
             FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.MY_PAPER_LIST_CELL);
             Node node = loader.load();
             MyPaperListCell cell = loader.getController();
             cell.setPaper(paper);
-            switch (paper.getPaperStatus()){
+            cell.setStatusButtonListener(this);
+            switch (paper.getPaperStatus()) {
                 case ACCEPTED:
                     cell.setPresentation(MyPaperListCell.PaperStatusPresentation.CONFERENCE_MANAGEMENT_PAPER_ACCEPTED);
                     break;
                 case REJECTED:
                     cell.setPresentation(MyPaperListCell.PaperStatusPresentation.CONFERENCE_MANAGEMENT_PAPER_REJECTED);
                     break;
-                case REVIEWED :
+                case REVIEWED:
                     cell.setPresentation(MyPaperListCell.PaperStatusPresentation.CONFERENCE_MANAGEMENT_PAPER_REVIEWED);
                     break;
-                case SUBMITTED :
+                case SUBMITTED:
                     cell.setPresentation(MyPaperListCell.PaperStatusPresentation.CONFERENCE_MANAGEMENT_PAPER_SUBMITTED);
                     break;
             }
@@ -85,5 +89,29 @@ public class ConferencePaperController implements Initializable {
             exception.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public void onStatusButtonClicked(MouseEvent event, Paper paper) {
+        switch (paper.getPaperStatus()) {
+            case SUBMITTED:
+                goToReviewerAssignmentPage(event, paper);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void goToReviewerAssignmentPage(MouseEvent event, Paper paper) {
+        try {
+            FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.REVIEWER_ASSIGNMENT);
+            Parent node = loader.load();
+            ReviewerAssignmentController controller = loader.getController();
+            controller.setPaper(paper);
+            controller.setPreviousScene(((Node) event.getSource()).getScene());
+            SceneHelper.startStage(new Scene(node), event);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

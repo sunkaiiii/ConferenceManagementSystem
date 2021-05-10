@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import org.openjfx.controllers.page.MainPageLeftBannerController?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.openjfx.controllers.page.ReviewerAssignmentController"
+            prefWidth="1396.0"
+            prefHeight="734.0">
+    <left>
+        <MainPageLeftBannerController index="0"/>
+    </left>
+    <center>
+        <VBox>
+            <Label fx:id="paperName"/>
+            <Label fx:id="authors"/>
+            <BorderPane>
+                <left>
+                    <StackPane>
+                        <Label fx:id="keywords"/>
+                    </StackPane>
+                </left>
+                <right>
+                    <VBox>
+                        <Label text="Assign Reviewers"/>
+                        <StackPane prefWidth="300" prefHeight="400">
+                            <padding>
+                                <Insets right="16" left="16" top="16" bottom="16"/>
+                            </padding>
+                            <ScrollPane fitToHeight="true" fitToWidth="true">
+                                <VBox fx:id="reviewerListContainer"/>
+                            </ScrollPane>
+                        </StackPane>
+                        <Label text="Selected Reviewers"/>
+                        <TextField fx:id="reviewerFields" disable="true"/>
+                    </VBox>
+                </right>
+            </BorderPane>
+            <HBox alignment="CENTER">
+                <Label text="Cancel" onMouseClicked="#back">
+                    <padding>
+                        <Insets right="16"/>
+                    </padding>
+                </Label>
+                <StackPane onMouseClicked="#assignReviewer"
+                           style="-fx-background-color: #0c7dba;-fx-background-radius: 8">
+                    <padding>
+                        <Insets top="8" bottom="8" left="32" right="32"/>
+                    </padding>
+                    <Label text="Assigning" textFill="white">
+                        <font>
+                            <Font name="System bold"/>
+                        </font>
+                    </Label>
+                </StackPane>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>
