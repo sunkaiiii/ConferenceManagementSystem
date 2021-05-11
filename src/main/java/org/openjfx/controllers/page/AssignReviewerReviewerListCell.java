@@ -47,7 +47,7 @@ public class AssignReviewerReviewerListCell implements Initializable {
 
     private void initViews(Reviewer reviewer) {
         this.reviewerName.setText(reviewer.getReviewerName());
-        this.interestArea.setText(reviewer.getInterestAreas().entrySet().iterator().next().getKey());
+        this.interestArea.setText("("+reviewer.getInterestAreas().entrySet().iterator().next().getKey()+")");
         this.expertise.setText("("+reviewer.getInterestAreas().entrySet().iterator().next().getValue().toString()+")");
     }
 

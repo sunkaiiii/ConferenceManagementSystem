@@ -19,6 +19,7 @@ import org.openjfx.service.UserService;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -113,6 +114,8 @@ public class ReviewerAssignmentController implements Initializable, AssignReview
 
     @Override
     public void onClick(MouseEvent event, Reviewer reviewer) {
-        this.reviewerFields.setText(this.authors.getText() + reviewer.getReviewerName() + ";");
+        this.reviewerFields.setText(this.reviewerFields.getText() + reviewer.getReviewerName() + ";");
+        Node node = (Node)event.getSource();
+        this.reviewerListContainer.getChildren().stream().filter(n->n==node).findAny().ifPresent(value -> this.reviewerListContainer.getChildren().remove(value));
     }
 }
