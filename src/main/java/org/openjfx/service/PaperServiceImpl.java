@@ -5,6 +5,7 @@ import org.openjfx.model.Conference;
 import org.openjfx.model.Paper;
 import org.openjfx.model.factory.DataModelFactory;
 import org.openjfx.model.interfaces.Author;
+import org.openjfx.model.interfaces.Reviewer;
 
 import java.io.IOException;
 import java.util.List;
@@ -26,26 +27,39 @@ final class PaperServiceImpl implements PaperService {
 
     @Override
     public void submitPaper(List<Author> authors, Paper paper) throws IOException {
-        paper.setAuthors(authors.stream().map(author -> new AuthorInformation(author.getAuthorName(),author.getAuthorIdentifiedName())).collect(Collectors.toList()));
+        paper.setAuthors(authors.stream().map(author -> new AuthorInformation(author.getAuthorName(), author.getAuthorIdentifiedName())).collect(Collectors.toList()));
         databaseService.addNewRecord(this, paper);
     }
 
     @Override
-    public List<Paper> getUserPapers(Author author) throws IOException{
-        return databaseService.searchRecords(this,new String[]{author.getAuthorIdentifiedName()},this::findMyPaper, DataModelFactory::convertPaperFromCSVLine);
+    public void setReviewer(Paper paper, List<Reviewer> reviewers) throws IOException {
+        paper.setReviewers(reviewers.stream().map(Reviewer::getReviewerIdentifiedName).collect(Collectors.toList()));
+        paper.setPaperStatus(Paper.PaperStatus.BEING_REVIEWED);
+        databaseService.alterRecord(this, new String[]{paper.getTitle(), paper.getConferenceName()}, paper, this::findPaper, DataModelFactory::convertPaperFromCSVLine);
+    }
+
+    private boolean findPaper(String[] searchInfo, Paper paper) {
+        String title = searchInfo[0];
+        String conferenceName = searchInfo[1];
+        return paper.getConferenceName().equals(conferenceName) && paper.getTitle().equals(title);
     }
 
     @Override
-    public List<Paper> getConferencePaper(Conference conference) throws IOException{
-        return databaseService.searchRecords(this,new String[]{conference.getName()},this::findConferencePaper,DataModelFactory::convertPaperFromCSVLine);
+    public List<Paper> getUserPapers(Author author) throws IOException {
+        return databaseService.searchRecords(this, new String[]{author.getAuthorIdentifiedName()}, this::findMyPaper, DataModelFactory::convertPaperFromCSVLine);
     }
 
-    private boolean findMyPaper(String[] authorName, Paper paper){
+    @Override
+    public List<Paper> getConferencePaper(Conference conference) throws IOException {
+        return databaseService.searchRecords(this, new String[]{conference.getName()}, this::findConferencePaper, DataModelFactory::convertPaperFromCSVLine);
+    }
+
+    private boolean findMyPaper(String[] authorName, Paper paper) {
         String identifyName = authorName[0];
-        return paper.getAuthors().stream().anyMatch(information->information.getAuthorIdentifyName().equalsIgnoreCase(identifyName));
+        return paper.getAuthors().stream().anyMatch(information -> information.getAuthorIdentifyName().equalsIgnoreCase(identifyName));
     }
 
-    private boolean findConferencePaper(String[] conferenceNames, Paper paper){
+    private boolean findConferencePaper(String[] conferenceNames, Paper paper) {
         String conferenceName = conferenceNames[0];
         return paper.getConferenceName().equalsIgnoreCase(conferenceName);
     }

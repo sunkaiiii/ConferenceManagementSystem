@@ -109,6 +109,7 @@ public class ConferencePaperController implements Initializable, MyPaperListCell
             ReviewerAssignmentController controller = loader.getController();
             controller.setPaper(paper);
             controller.setPreviousScene(((Node) event.getSource()).getScene());
+            controller.setOnReviewerAssignedListener(()->initView(this.conference));
             SceneHelper.startStage(new Scene(node), event);
         } catch (IOException e) {
             e.printStackTrace();

@@ -5,6 +5,7 @@ import org.openjfx.model.interfaces.CSVConvertable;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 public class Paper implements CSVConvertable<Conference> {
 
@@ -17,6 +18,7 @@ public class Paper implements CSVConvertable<Conference> {
     private String submittedTime;
     private List<AuthorInformation> authors;
     private PaperStatus paperStatus;
+    private List<String> reviewers;
 
     public Paper(String title, String topic, List<String> keywords, String deadline, List<PaperFile> paperFiles, String conferenceName) {
         this.title = title;
@@ -98,6 +100,14 @@ public class Paper implements CSVConvertable<Conference> {
         this.paperStatus = paperStatus;
     }
 
+    public List<String> getReviewers() {
+        return reviewers;
+    }
+
+    public void setReviewers(List<String> reviewers) {
+        this.reviewers = reviewers;
+    }
+
     public boolean isProcessed() {
         return paperStatus == PaperStatus.ACCEPTED || paperStatus == PaperStatus.REJECTED;
     }
@@ -114,6 +124,7 @@ public class Paper implements CSVConvertable<Conference> {
                 ", submittedTime='" + submittedTime + '\'' +
                 ", authors=" + authors +
                 ", paperStatus=" + paperStatus +
+                ", reviewers=" + reviewers +
                 '}';
     }
 
@@ -126,6 +137,7 @@ public class Paper implements CSVConvertable<Conference> {
         SUBMITTED("Submitted"),
         ACCEPTED("Accepted"),
         REJECTED("Rejected"),
+        BEING_REVIEWED("Being Reviewed"),
         REVIEWED("Reviewed");
         private String status;
 

@@ -9,15 +9,22 @@ import java.util.function.Function;
 
 public interface DatabaseService {
     void addNewRecord(DatabaseController databaseName, String line) throws IOException;
+
     void addNewRecord(DatabaseController databaseName, CSVConvertable<?> convertableObject) throws IOException;
+
+    <T> void deleteRecord(DatabaseController databaseName, String[] searchInfo, BiPredicate<String[], T> predicate,Function<String, T> function) throws IOException;
+
+    <T extends CSVConvertable<?>> void alterRecord(DatabaseController databaseName, String[] searchInfo,T newRecord, BiPredicate<String[], T> predicate,Function<String, T> function) throws IOException;
+
     <T> List<T> searchRecords(DatabaseController databaseName, String[] searchInfo
             , BiPredicate<String[], T> predicate
             , Function<String, T> function) throws IOException;
+
     <T> T searchARecord(DatabaseController databaseName, String[] searchInfo
             , BiPredicate<String[], T> predicate
             , Function<String, T> function) throws IOException;
 
-    static DatabaseService getDefaultInstance(){
+    static DatabaseService getDefaultInstance() {
         return CSVBasedDatabaseServiceImpl.getInstance();
     }
 }
