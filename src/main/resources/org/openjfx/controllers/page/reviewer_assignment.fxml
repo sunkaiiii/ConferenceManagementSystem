@@ -41,7 +41,7 @@
                             </ScrollPane>
                         </StackPane>
                         <Label text="Selected Reviewers"/>
-                        <FlowPane fx:id="selectedReviewersPane" disable="true"/>
+                        <FlowPane fx:id="selectedReviewersPane"/>
                     </VBox>
                 </right>
             </BorderPane>

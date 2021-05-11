@@ -18,11 +18,11 @@
     </padding>
     <HBox
             style="-fx-background-color: #C7E8AC;-fx-border-color: #7AB648; -fx-background-radius: 8; -fx-border-radius: 8"
-    >
+            >
         <padding>
             <Insets left="8" right="8" top="4" bottom="4"/>
         </padding>
-        <Label text="x">
+        <Label text="×">
             <font>
                 <Font name="System Bold"/>
             </font>
