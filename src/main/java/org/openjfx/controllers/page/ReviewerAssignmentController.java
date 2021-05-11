@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import org.openjfx.MainApp;
 import org.openjfx.helper.SceneHelper;
@@ -38,7 +39,7 @@ public class ReviewerAssignmentController implements Initializable, AssignReview
     private VBox reviewerListContainer;
 
     @FXML
-    private TextField reviewerFields;
+    private FlowPane selectedReviewersPane;
 
     private Paper paper;
 
@@ -114,8 +115,29 @@ public class ReviewerAssignmentController implements Initializable, AssignReview
 
     @Override
     public void onClick(MouseEvent event, Reviewer reviewer) {
-        this.reviewerFields.setText(this.reviewerFields.getText() + reviewer.getReviewerName() + ";");
+        this.selectedReviewersPane.getChildren().add(createSelectedReviewerNode(event,reviewer));
         Node node = (Node)event.getSource();
         this.reviewerListContainer.getChildren().stream().filter(n->n==node).findAny().ifPresent(value -> this.reviewerListContainer.getChildren().remove(value));
     }
+
+    private Node createSelectedReviewerNode(MouseEvent event, Reviewer reviewer){
+        try {
+            FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.SELECTED_REVIEWER_CELL);
+            Node result = loader.load();
+            SelectedReviewerCell controller = loader.getController();
+            controller.setReviewer(reviewer);
+            controller.setOnCancelClickedListener(this::onCancelReviewerClick);
+            return result;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private void onCancelReviewerClick(MouseEvent event, Reviewer reviewer){
+        System.out.println("event");
+        this.selectedReviewersPane.getChildren().remove(event.getSource());
+        reviewerListContainer.getChildren().add(createReviewerListCell(reviewer));
+    }
+
 }

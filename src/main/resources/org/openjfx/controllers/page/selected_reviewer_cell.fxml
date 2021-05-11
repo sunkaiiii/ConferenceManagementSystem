@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="org.openjfx.controllers.page.SelectedReviewerCell"
+           onMouseClicked="#cancelClicked"
+>
+    <padding>
+        <Insets left="8" right="8" top="8" bottom="8"/>
+    </padding>
+    <HBox
+            style="-fx-background-color: #C7E8AC;-fx-border-color: #7AB648; -fx-background-radius: 8; -fx-border-radius: 8"
+    >
+        <padding>
+            <Insets left="8" right="8" top="4" bottom="4"/>
+        </padding>
+        <Label text="x">
+            <font>
+                <Font name="System Bold"/>
+            </font>
+        </Label>
+        <Label fx:id="reviewerName" textFill="#19967D"/>
+    </HBox>
+</StackPane>
