@@ -1,5 +1,6 @@
 package org.openjfx.model;
 
+import javafx.util.Pair;
 import org.openjfx.helper.CSVConvertHelper;
 import org.openjfx.model.interfaces.CSVConvertable;
 
@@ -18,7 +19,7 @@ public class Paper implements CSVConvertable<Conference> {
     private String submittedTime;
     private List<AuthorInformation> authors;
     private PaperStatus paperStatus;
-    private List<String> reviewers;
+    private List<Pair<String,String>> reviewers;
 
     public Paper(String title, String topic, List<String> keywords, String deadline, List<PaperFile> paperFiles, String conferenceName) {
         this.title = title;
@@ -100,11 +101,15 @@ public class Paper implements CSVConvertable<Conference> {
         this.paperStatus = paperStatus;
     }
 
-    public List<String> getReviewers() {
+    public void setSubmittedTime(String submittedTime) {
+        this.submittedTime = submittedTime;
+    }
+
+    public List<Pair<String, String>> getReviewers() {
         return reviewers;
     }
 
-    public void setReviewers(List<String> reviewers) {
+    public void setReviewers(List<Pair<String, String>> reviewers) {
         this.reviewers = reviewers;
     }
 

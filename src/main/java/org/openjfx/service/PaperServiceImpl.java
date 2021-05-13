@@ -1,5 +1,6 @@
 package org.openjfx.service;
 
+import javafx.util.Pair;
 import org.openjfx.model.AuthorInformation;
 import org.openjfx.model.Conference;
 import org.openjfx.model.Paper;
@@ -33,9 +34,13 @@ final class PaperServiceImpl implements PaperService {
 
     @Override
     public void setReviewer(Paper paper, List<Reviewer> reviewers) throws IOException {
-        paper.setReviewers(reviewers.stream().map(Reviewer::getReviewerIdentifiedName).collect(Collectors.toList()));
+        paper.setReviewers(reviewers.stream().map(this::createReviewerPair).collect(Collectors.toList()));
         paper.setPaperStatus(Paper.PaperStatus.BEING_REVIEWED);
         databaseService.alterRecord(this, new String[]{paper.getTitle(), paper.getConferenceName()}, paper, this::findPaper, DataModelFactory::convertPaperFromCSVLine);
+    }
+
+    private Pair<String,String> createReviewerPair(Reviewer reviewer){
+        return new Pair<>(reviewer.getReviewerIdentifiedName(),"");
     }
 
     private boolean findPaper(String[] searchInfo, Paper paper) {

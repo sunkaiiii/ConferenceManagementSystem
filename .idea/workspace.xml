@@ -6,12 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ae9b270c-5962-4e59-ac2f-9f747ba3f49c" name="Default Changelist" comment="Adjust the layout of create_conference page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/ConferencePaperController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/ConferencePaperController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/ReviewerAssignmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/ReviewerAssignmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/paper_table.csv" beforeDir="false" afterPath="$PROJECT_DIR$/paper_table.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/model/Paper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/model/Paper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/service/CSVBasedDatabaseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/service/CSVBasedDatabaseServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/service/DatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/service/DatabaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/service/PaperService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/service/PaperService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/service/PaperServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/service/PaperServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -161,19 +157,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="FIT5136Assignment" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -250,6 +233,7 @@
       <workItem from="1620696965139" duration="43000" />
       <workItem from="1620697043187" duration="3152000" />
       <workItem from="1620736174620" duration="4133000" />
+      <workItem from="1620871010915" duration="349000" />
     </task>
     <servers />
   </component>
