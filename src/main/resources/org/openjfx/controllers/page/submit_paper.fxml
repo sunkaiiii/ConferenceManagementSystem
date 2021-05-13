@@ -33,46 +33,55 @@
         </StackPane>
     </top>
     <center>
-        <VBox alignment="CENTER_LEFT">
-            <Label text="Paper Submission"/>
-            <Label text="Paper Name:"/>
-            <TextField fx:id="paperName"/>
-            <HBox>
-                <Label text="Conference Name:"/>
-                <Label fx:id="conferenceName"/>
-            </HBox>
-            <HBox>
-                <Label text="Conference chair:"/>
-                <Label fx:id="chairName"/>
-            </HBox>
-            <BorderPane>
-                <left>
-                    <VBox alignment="CENTER">
-                        <Label text="Upload your paper(s)"/>
-                        <Label text="(only support pdf, doc, docx)"/>
-                        <Button text="Select File" onMouseClicked="#selectPapers"/>
-                        <Label fx:id="fileName"/>
-                    </VBox>
-                </left>
-                <right>
-                    <VBox>
-                        <Label text="Authors:"/>
-                        <StackPane alignment="CENTER_RIGHT">
-                            <TextField fx:id="authorField" editable="false"/>
-                            <ComboBox fx:id="authorSelectBox"/>
-                        </StackPane>
+        <StackPane prefWidth="Infinity">
+            <VBox alignment="TOP_CENTER">
+                <Label alignment="TOP_CENTER" text="Paper Submission">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                    <padding>
+                        <Insets bottom="16" top="12" />
+                    </padding></Label></VBox>
+            <VBox alignment="CENTER_LEFT">
+                <Label text="Paper Name:"/>
+                <TextField fx:id="paperName"/>
+                <HBox>
+                    <Label text="Conference Name:"/>
+                    <Label fx:id="conferenceName"/>
+                </HBox>
+                <HBox>
+                    <Label text="Conference chair:"/>
+                    <Label fx:id="chairName"/>
+                </HBox>
+                <BorderPane>
+                    <left>
+                        <VBox alignment="CENTER">
+                            <Label text="Upload your paper(s)"/>
+                            <Label text="(only support pdf, doc, docx)"/>
+                            <Button text="Select File" onMouseClicked="#selectPapers"/>
+                            <Label fx:id="fileName"/>
+                        </VBox>
+                    </left>
+                    <right>
+                        <VBox>
+                            <Label text="Authors:"/>
+                            <StackPane alignment="CENTER_RIGHT">
+                                <TextField fx:id="authorField" editable="false"/>
+                                <ComboBox fx:id="authorSelectBox"/>
+                            </StackPane>
 
-                        <Label text="Keywords"/>
-                        <TextField fx:id="keywordField" editable="false"/>
-                        <FlowPane fx:id="preDefineKeywordFlowPane"/>
-                    </VBox>
-                </right>
-            </BorderPane>
-            <VBox alignment="CENTER">
-                <Button text="Submit" onMouseClicked="#submitPaper"/>
-                <Label text="Cancel Submit" textFill="RED" onMouseClicked="#cancelSubmit"/>
+                            <Label text="Keywords"/>
+                            <TextField fx:id="keywordField" editable="false"/>
+                            <FlowPane fx:id="preDefineKeywordFlowPane"/>
+                        </VBox>
+                    </right>
+                </BorderPane>
+                <VBox alignment="CENTER">
+                    <Button text="Submit" onMouseClicked="#submitPaper"/>
+                    <Label text="Cancel Submit" textFill="RED" onMouseClicked="#cancelSubmit"/>
+                </VBox>
             </VBox>
-        </VBox>
+        </StackPane>
     </center>
 
 </BorderPane>
