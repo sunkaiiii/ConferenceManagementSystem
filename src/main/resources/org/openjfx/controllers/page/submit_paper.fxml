@@ -11,6 +11,8 @@
 <?import org.openjfx.controllers.page.MainPageLeftBannerController?>
 <?import tornadofx.control.ListMenu?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.openjfx.controllers.page.SubmitPaperController"
@@ -34,6 +36,9 @@
     </top>
     <center>
         <StackPane prefWidth="Infinity">
+            <padding>
+                <Insets left="32" right="32" bottom="16" top="16"/>
+            </padding>
             <VBox alignment="TOP_CENTER">
                 <Label alignment="TOP_CENTER" text="Paper Submission">
                     <font>
@@ -59,12 +64,40 @@
                 </HBox>
                 <BorderPane>
                     <center>
-                        <VBox alignment="CENTER">
-                            <Label text="Upload your paper(s)"/>
-                            <Label text="(only support pdf, doc, docx)"/>
-                            <Button text="Select File" onMouseClicked="#selectPapers"/>
-                            <Label fx:id="fileName"/>
-                        </VBox>
+                        <StackPane style="-fx-background-color: white;-fx-background-radius: 8">
+                            <padding>
+                                <Insets left="32" right="32" top="32" bottom="32"/>
+                            </padding>
+                            <VBox alignment="CENTER" onMouseClicked="#selectPapers">
+                                <Label text="Upload your paper(s)">
+                                    <font>
+                                        <Font  size="24" name="System Bold"/>
+                                    </font>
+                                </Label>
+                                <Label text="(only support pdf, doc, docx)" textFill="red">
+                                    <font>
+                                        <Font name="System Bold"/>
+                                    </font>
+                                </Label>
+                                <StackPane style="-fx-border-color: #a6b9ff;-fx-border-radius: 8;-fx-background-color: #f6f8ff;-fx-background-radius: 8" prefHeight="400">
+                                    <padding>
+                                        <Insets left="16" right="16" top="16" bottom="16"/>
+                                    </padding>
+                                    <VBox alignment="CENTER" >
+                                        <ImageView fitHeight="48" fitWidth="48" >
+                                            <image>
+                                                <Image url="@../../images/folder.png"/>
+                                            </image>
+                                        </ImageView>
+                                        <Label textFill="#b2b2b2" text="Click here to add files"/>
+                                    </VBox>
+                                    <ScrollPane fitToWidth="true" fitToHeight="true" style="-fx-background: transparent; -fx-background-color: transparent;">
+                                        <VBox fx:id="fileListContainer"/>
+                                    </ScrollPane>
+                                </StackPane>
+                                <Label fx:id="fileName"/>
+                            </VBox>
+                        </StackPane>
                     </center>
                     <right>
                         <VBox>

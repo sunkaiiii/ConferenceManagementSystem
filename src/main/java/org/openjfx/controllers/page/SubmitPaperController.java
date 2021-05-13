@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.openjfx.MainApp;
@@ -25,9 +26,7 @@ import org.openjfx.service.UserService;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class SubmitPaperController implements Initializable, PreDefineListCellController.OnKeywordSelectedListener {
@@ -56,6 +55,9 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
     @FXML
     private FlowPane preDefineKeywordFlowPane;
 
+    @FXML
+    private VBox fileListContainer;
+
     private Conference conference;
 
     private List<Author> authorList;
@@ -64,7 +66,7 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
 
     private List<TextField> allFields;
 
-    private List<File> paperFiles;
+    private Set<File> paperFiles;
 
     private final PaperService paperService = PaperService.getDefaultInstance();
 
@@ -72,6 +74,7 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
     public void initialize(URL location, ResourceBundle resources) {
         allFields = List.of(paperName, keywordField);
         selectedAuthor = List.of(MainApp.getInstance().getUser());
+        paperFiles = new HashSet<>();
     }
 
     public Conference getConference() {
@@ -138,7 +141,13 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
         FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Paper format (*.pdf, *.doc, *.docx)", "*.doc", "*.docx", "*.pdf");
         fileChooser.getExtensionFilters().add(filter);
         Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        this.paperFiles = fileChooser.showOpenMultipleDialog(appStage);
+        List<File> selectedFiles = fileChooser.showOpenMultipleDialog(appStage);
+        if(selectedFiles==null || selectedFiles.size()==0){
+            return;
+        }
+        this.paperFiles.addAll(selectedFiles);
+        System.out.println(this.paperFiles.size());
+
         String fileNames = this.paperFiles.stream().map(File::getName).collect(Collectors.joining("\n"));
         fileName.setText(fileNames);
     }
