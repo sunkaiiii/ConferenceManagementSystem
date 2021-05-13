@@ -8,12 +8,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import org.openjfx.MainApp;
 import org.openjfx.helper.DialogHelper;
 import org.openjfx.helper.InputValidation;
 import org.openjfx.helper.SceneHelper;
 import org.openjfx.model.AuthorInformation;
 import org.openjfx.model.Paper;
 import org.openjfx.model.PaperFile;
+import org.openjfx.model.Review;
+import org.openjfx.service.ReviewService;
 
 import java.io.IOException;
 import java.net.URL;
@@ -48,31 +51,60 @@ public class WriteReviewPageController implements Initializable {
     @FXML
     private TextField reviewContent;
 
-    List<WriteReviewPageFileListCell> fileListCellList;
+    private List<WriteReviewPageFileListCell> fileListCellList;
 
     private Paper paper;
 
-
+    private final ReviewService reviewService = ReviewService.getDefaultInstance();
 
     @FXML
     void cancelSubmit(MouseEvent event) throws IOException {
-        SceneHelper.startPage(getClass(),event,PageNames.REVIEW_MANAGEMENT,true);
+        SceneHelper.startPage(getClass(), event, PageNames.REVIEW_MANAGEMENT, true);
     }
 
     @FXML
-    void submitReview(MouseEvent event){
-        if(!validation()){
+    void submitReview(MouseEvent event) {
+        if (!validation()) {
             return;
         }
+        assert this.paper != null;
+        Review review = new Review(this.paper.getId(), this.reviewContent.getText(), MainApp.getInstance().getUser().getReviewerIdentifiedName());
+        DialogHelper.showConfirmDialog("Confirmation", "Do you want to submit this review?", new DialogHelper.ConfirmDialogClickListener() {
+            @Override
+            public void onNegativeButtonClick() {
+
+            }
+
+            @Override
+            public void onPositiveButtonClick() {
+                try {
+                    writeReview(event, review);
+                    backToPreviousPageAndRefresh(event);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
     }
 
-    private boolean validation(){
-        boolean isReadAllFiles = fileListCellList.stream().map(WriteReviewPageFileListCell::isRead).anyMatch(result-> !result);
-        if(!isReadAllFiles){
+    private void writeReview(MouseEvent event, Review review) throws IOException {
+        reviewService.addReview(review);
+    }
+
+    private void backToPreviousPageAndRefresh(MouseEvent event) throws IOException {
+        SceneHelper.deleteScene(PageNames.REVIEW_MANAGEMENT.getPageName());
+        SceneHelper.startPage(getClass(), event, PageNames.REVIEW_MANAGEMENT, true);
+    }
+
+
+    private boolean validation() {
+        boolean isReadAllFiles = fileListCellList.stream().allMatch(WriteReviewPageFileListCell::isRead);
+        if (!isReadAllFiles) {
             DialogHelper.showErrorDialog("You need to read all papers to write the review");
             return false;
         }
-        if (InputValidation.checkTextFiledIsEmpty(this.reviewContent)){
+        if (InputValidation.checkTextFiledIsEmpty(this.reviewContent)) {
             DialogHelper.showErrorDialog("You need to write a review");
             return false;
         }
@@ -93,12 +125,12 @@ public class WriteReviewPageController implements Initializable {
         this.authorNames.setText(paper.getAuthors().stream().map(AuthorInformation::getAuthorDisplayName).collect(Collectors.joining(";")));
         this.conferenceName.setText(paper.getConferenceName());
         this.topic.setText(paper.getTopic());
-        this.keywords.setText(String.join(";",paper.getKeywords()));
+        this.keywords.setText(String.join(";", paper.getKeywords()));
         this.submittedTime.setText(paper.getSubmittedTime());
         this.fileContainer.getChildren().setAll(paper.getPaperFiles().stream().map(this::createReviewFileListCell).collect(Collectors.toList()));
     }
 
-    private Node createReviewFileListCell(PaperFile file){
+    private Node createReviewFileListCell(PaperFile file) {
         try {
             FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.WRITE_REVIEW_PAGE_FILE_LIST_CELL);
             Node result = loader.load();

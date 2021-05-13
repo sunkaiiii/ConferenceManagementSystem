@@ -87,6 +87,9 @@ public class WriteReviewPageFileListCell implements Initializable {
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Document format","*."+extension));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         File saveFile = fileChooser.showSaveDialog(stage);
+        if(saveFile == null){
+            return;
+        }
         File source = new File(this.paperFile.getStoragePath());
         Files.copy(source.toPath(),saveFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
         this.downloadedIndicator.setVisible(true);

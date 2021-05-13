@@ -19,4 +19,8 @@ public class ReviewServiceImpl implements ReviewService{
     public void addReview(Review newReview) throws IOException {
         databaseService.addNewRecord(this,newReview);
     }
+
+    public static ReviewService getInstance(){
+        return Instance;
+    }
 }
