@@ -74,6 +74,10 @@ public class WriteReviewPageFileListCell implements Initializable {
         }
     }
 
+    public boolean isRead(){
+        return this.downloadedIndicator.isVisible();
+    }
+
     @FXML
     void clickToDownloadFile(MouseEvent event) throws IOException {
         assert this.paperFile != null;

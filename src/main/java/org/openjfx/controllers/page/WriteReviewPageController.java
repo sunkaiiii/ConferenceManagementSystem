@@ -8,6 +8,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import org.openjfx.helper.DialogHelper;
+import org.openjfx.helper.InputValidation;
 import org.openjfx.helper.SceneHelper;
 import org.openjfx.model.AuthorInformation;
 import org.openjfx.model.Paper;
@@ -15,6 +17,8 @@ import org.openjfx.model.PaperFile;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -44,6 +48,8 @@ public class WriteReviewPageController implements Initializable {
     @FXML
     private TextField reviewContent;
 
+    List<WriteReviewPageFileListCell> fileListCellList;
+
     private Paper paper;
 
 
@@ -55,7 +61,22 @@ public class WriteReviewPageController implements Initializable {
 
     @FXML
     void submitReview(MouseEvent event){
+        if(!validation()){
+            return;
+        }
+    }
 
+    private boolean validation(){
+        boolean isReadAllFiles = fileListCellList.stream().map(WriteReviewPageFileListCell::isRead).anyMatch(result-> !result);
+        if(!isReadAllFiles){
+            DialogHelper.showErrorDialog("You need to read all papers to write the review");
+            return false;
+        }
+        if (InputValidation.checkTextFiledIsEmpty(this.reviewContent)){
+            DialogHelper.showErrorDialog("You need to write a review");
+            return false;
+        }
+        return true;
     }
 
     public Paper getPaper() {
@@ -82,6 +103,7 @@ public class WriteReviewPageController implements Initializable {
             FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.WRITE_REVIEW_PAGE_FILE_LIST_CELL);
             Node result = loader.load();
             WriteReviewPageFileListCell cell = loader.getController();
+            fileListCellList.add(cell);
             cell.setPaperFile(file);
             return result;
         } catch (IOException e) {
@@ -93,6 +115,6 @@ public class WriteReviewPageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        fileListCellList = new ArrayList<>();
     }
 }
