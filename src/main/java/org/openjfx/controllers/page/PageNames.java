@@ -23,6 +23,7 @@ enum PageNames implements PageNameDescriber {
     SELECTED_REVIEWER_CELL("selected_reviewer_cell.fxml"),
     REVIEW_MANAGEMENT("review_management.fxml"),
     REVIEW_PAGE_CELL("review_page_cell.fxml"),
+    WRITE_REVIEW_PAGE("write_review_page.fxml"),
     ;
     private final String pageName;
 
