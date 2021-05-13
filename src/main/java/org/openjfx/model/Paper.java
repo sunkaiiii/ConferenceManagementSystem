@@ -6,7 +6,6 @@ import org.openjfx.model.interfaces.CSVConvertable;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 
 public class Paper implements CSVConvertable<Conference> {
@@ -20,7 +19,7 @@ public class Paper implements CSVConvertable<Conference> {
     private String submittedTime;
     private List<AuthorInformation> authors;
     private PaperStatus paperStatus;
-    private List<Pair<String,String>> reviewers;
+    private List<ReviewerInformation> reviewerInformationList;
 
     public Paper(String title, String topic, List<String> keywords, String deadline, List<PaperFile> paperFiles, String conferenceName) {
         this.id = UUID.randomUUID().toString();
@@ -115,12 +114,12 @@ public class Paper implements CSVConvertable<Conference> {
         this.submittedTime = submittedTime;
     }
 
-    public List<Pair<String, String>> getReviewers() {
-        return reviewers;
+    public List<ReviewerInformation> getReviewerInformationList() {
+        return reviewerInformationList;
     }
 
-    public void setReviewers(List<Pair<String, String>> reviewers) {
-        this.reviewers = reviewers;
+    public void setReviewerInformationList(List<ReviewerInformation> reviewerInformationList) {
+        this.reviewerInformationList = reviewerInformationList;
     }
 
     public boolean isProcessed() {
@@ -130,7 +129,8 @@ public class Paper implements CSVConvertable<Conference> {
     @Override
     public String toString() {
         return "Paper{" +
-                "title='" + title + '\'' +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
                 ", topic='" + topic + '\'' +
                 ", keywords=" + keywords +
                 ", deadline='" + deadline + '\'' +
@@ -139,7 +139,7 @@ public class Paper implements CSVConvertable<Conference> {
                 ", submittedTime='" + submittedTime + '\'' +
                 ", authors=" + authors +
                 ", paperStatus=" + paperStatus +
-                ", reviewers=" + reviewers +
+                ", reviewerInformationList=" + reviewerInformationList +
                 '}';
     }
 

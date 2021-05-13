@@ -8,6 +8,7 @@ public class ReviewServiceImpl implements ReviewService{
     private static final ReviewServiceImpl Instance = new ReviewServiceImpl();
     private static final String REVIEW_DATABASE_FILE_NAME = "review_table.csv";
     private final DatabaseService databaseService = DatabaseService.getDefaultInstance();
+    private final PaperService paperService = PaperService.getDefaultInstance();
 
     private ReviewServiceImpl(){}
     @Override
@@ -18,6 +19,7 @@ public class ReviewServiceImpl implements ReviewService{
     @Override
     public void addReview(Review newReview) throws IOException {
         databaseService.addNewRecord(this,newReview);
+        paperService.setReviewRecordToPaper(newReview.getPaperId(),newReview.getReviewerIdentifiedName(),newReview.getId());
     }
 
     public static ReviewService getInstance(){
