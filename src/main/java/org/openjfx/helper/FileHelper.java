@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Optional;
 import java.util.UUID;
 
 public class FileHelper {
@@ -30,6 +31,12 @@ public class FileHelper {
         Path originalPath = Paths.get(originalAbsolutePath);
         Files.copy(originalPath, copied, StandardCopyOption.REPLACE_EXISTING);
         return new PaperFile(paperName, storedPath);
+    }
+
+    public Optional<String> getFileExtensionByStringHandling(String filename) {
+        return Optional.ofNullable(filename)
+                .filter(f -> f.contains("."))
+                .map(f -> f.substring(filename.lastIndexOf(".") + 1));
     }
 
 

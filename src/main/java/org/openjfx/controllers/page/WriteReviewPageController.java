@@ -1,7 +1,9 @@
 package org.openjfx.controllers.page;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -9,6 +11,7 @@ import javafx.scene.layout.VBox;
 import org.openjfx.helper.SceneHelper;
 import org.openjfx.model.AuthorInformation;
 import org.openjfx.model.Paper;
+import org.openjfx.model.PaperFile;
 
 import java.io.IOException;
 import java.net.URL;
@@ -71,6 +74,21 @@ public class WriteReviewPageController implements Initializable {
         this.topic.setText(paper.getTopic());
         this.keywords.setText(String.join(";",paper.getKeywords()));
         this.submittedTime.setText(paper.getSubmittedTime());
+        this.fileContainer.getChildren().setAll(paper.getPaperFiles().stream().map(this::createReviewFileListCell).collect(Collectors.toList()));
+    }
+
+    private Node createReviewFileListCell(PaperFile file){
+        try {
+            FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.WRITE_REVIEW_PAGE_FILE_LIST_CELL);
+            Node result = loader.load();
+            WriteReviewPageFileListCell cell = loader.getController();
+            cell.setPaperFile(file);
+            return result;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+
     }
 
     @Override
