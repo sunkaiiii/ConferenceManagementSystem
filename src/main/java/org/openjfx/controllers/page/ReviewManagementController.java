@@ -15,12 +15,17 @@ import java.net.URL;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class ReviewManagementController implements Initializable {
 
     @FXML
     private FlowPane reviewPaperList;
+
+    @FXML
+    private FlowPane reviewedPaperList;
 
     private final PaperService paperService = PaperService.getDefaultInstance();
 
@@ -34,19 +39,26 @@ public class ReviewManagementController implements Initializable {
             List<Node> paperCells = paperService
                     .findPaperNeedToBeReviewedByTheUser(MainApp.getInstance().getUser())
                     .stream()
-                    .map(this::createReviewPaperCell)
+                    .map(this::createBeingReviewCell)
                     .filter(Objects::nonNull).collect(Collectors.toList());
+            List<Node> reviewedPaperCells = paperService.findPaperReviewedByTheUser(MainApp.getInstance().getUser())
+                    .stream()
+                    .map(this::createReviewedCell)
+                    .filter(Objects::nonNull)
+                    .collect(Collectors.toList());
             this.reviewPaperList.getChildren().setAll(paperCells);
+            this.reviewedPaperList.getChildren().setAll(reviewedPaperCells);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private Node createReviewPaperCell(Paper paper) {
+    private Node loadReviewCellResource(Paper paper, Consumer<ReviewPageCell> cellConsumer) {
         try {
             FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.REVIEW_PAGE_CELL);
             Node result = loader.load();
             ReviewPageCell cell = loader.getController();
+            cellConsumer.accept(cell);
             cell.setPaper(paper);
             return result;
         } catch (IOException e) {
@@ -54,4 +66,18 @@ public class ReviewManagementController implements Initializable {
         }
         return null;
     }
+
+    private Node createBeingReviewCell(Paper paper) {
+        return loadReviewCellResource(paper, cell -> {
+            cell.setCellType(ReviewPageCell.CellType.BEING_REVIEW);
+        });
+    }
+
+    private Node createReviewedCell(Paper paper) {
+        return loadReviewCellResource(paper, cell -> {
+            cell.setCellType(ReviewPageCell.CellType.REVIEWED);
+        });
+    }
+
+
 }

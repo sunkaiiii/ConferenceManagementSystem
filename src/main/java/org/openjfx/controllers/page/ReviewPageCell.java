@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import org.openjfx.helper.SceneHelper;
 import org.openjfx.model.AuthorInformation;
 import org.openjfx.model.Paper;
@@ -28,6 +29,9 @@ public class ReviewPageCell implements Initializable {
     
     @FXML
     private Label paperKeywords;
+
+    @FXML
+    private StackPane submitReview;
     
     private Paper paper;
 
@@ -36,6 +40,8 @@ public class ReviewPageCell implements Initializable {
     }
 
     private Scene writeReviewScene;
+
+    private CellType cellType;
 
     public void setPaper(Paper paper) {
         this.paper = paper;
@@ -47,6 +53,14 @@ public class ReviewPageCell implements Initializable {
         paperAuthor.setText(paper.getAuthors().stream().map(AuthorInformation::getAuthorDisplayName).collect(Collectors.joining(";")));
         paperKeywords.setText(String.join(";",paper.getKeywords()));
         submittedTime.setText(paper.getSubmittedTime());
+        switch (this.cellType){
+            case REVIEWED:
+                this.submitReview.setVisible(false);
+                break;
+            case BEING_REVIEW:
+                this.submitReview.setVisible(true);
+                break;
+        }
     }
 
     @FXML
@@ -69,5 +83,18 @@ public class ReviewPageCell implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+    }
+
+    public CellType getCellType() {
+        return cellType;
+    }
+
+    public void setCellType(CellType cellType) {
+        this.cellType = cellType;
+    }
+
+    public enum CellType{
+        BEING_REVIEW,
+        REVIEWED
     }
 }

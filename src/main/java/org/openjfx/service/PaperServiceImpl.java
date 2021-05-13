@@ -40,7 +40,7 @@ final class PaperServiceImpl implements PaperService {
         databaseService.alterRecord(this, new String[]{paper.getId()}, paper, this::findPaper, DataModelFactory::convertPaperFromCSVLine);
     }
 
-    private ReviewerInformation createReviewerPair(Reviewer reviewer){
+    private ReviewerInformation createReviewerPair(Reviewer reviewer) {
         ReviewerInformation information = new ReviewerInformation();
         information.setReviewerIdentifiedName(reviewer.getReviewerIdentifiedName());
         return information;
@@ -63,30 +63,48 @@ final class PaperServiceImpl implements PaperService {
 
     @Override
     public List<Paper> findPaperNeedToBeReviewedByTheUser(Reviewer reviewer) throws IOException {
-        return databaseService.searchRecords(this,new String[]{reviewer.getReviewerIdentifiedName()},this::checkThePaperNeedsToBeReviewedByTheUser,DataModelFactory::convertPaperFromCSVLine);
+        return databaseService.searchRecords(this, new String[]{reviewer.getReviewerIdentifiedName()}, this::checkThePaperNeedsToBeReviewedByTheUser, DataModelFactory::convertPaperFromCSVLine);
+    }
+
+    @Override
+    public List<Paper> findPaperReviewedByTheUser(Reviewer reviewer) throws IOException {
+        return databaseService.searchRecords(this, new String[]{reviewer.getReviewerIdentifiedName()}, this::checkThePaperIsReviewedByTheUser, DataModelFactory::convertPaperFromCSVLine);
     }
 
     @Override
     public void setReviewRecordToPaper(String paperId, String reviewerIdentifiedName, String id) throws IOException {
-        Paper paper = databaseService.searchARecord(this,new String[]{paperId},this::findPaper,DataModelFactory::convertPaperFromCSVLine);
-        var reviewerInformation = paper.getReviewerInformationList().stream().filter(information->information.getReviewerIdentifiedName().equals(reviewerIdentifiedName)).findFirst();
-        if(reviewerInformation.isPresent()){
+        Paper paper = databaseService.searchARecord(this, new String[]{paperId}, this::findPaper, DataModelFactory::convertPaperFromCSVLine);
+        var reviewerInformation = paper.getReviewerInformationList().stream().filter(information -> information.getReviewerIdentifiedName().equals(reviewerIdentifiedName)).findFirst();
+        if (reviewerInformation.isPresent()) {
             ReviewerInformation information = reviewerInformation.get();
             information.setReviewId(id);
         }
-        if(paper.getReviewerInformationList().stream().noneMatch(information-> information.getReviewId().isBlank())){
+        if (paper.getReviewerInformationList().stream().noneMatch(information -> information.getReviewId().isBlank())) {
             paper.setPaperStatus(Paper.PaperStatus.REVIEWED);
         }
-        databaseService.alterRecord(this,new String[]{paper.getId()},paper,this::findPaper,DataModelFactory::convertPaperFromCSVLine);
+        databaseService.alterRecord(this, new String[]{paper.getId()}, paper, this::findPaper, DataModelFactory::convertPaperFromCSVLine);
     }
 
-    private boolean checkThePaperNeedsToBeReviewedByTheUser(String[] identifiedName, Paper paper){
+    private boolean checkThePaperNeedsToBeReviewedByTheUser(String[] identifiedName, Paper paper) {
         List<ReviewerInformation> reviewerInformationList = paper.getReviewerInformationList();
-        if(reviewerInformationList==null){
+        if (reviewerInformationList == null) {
             return false;
         }
-        for(final var information:reviewerInformationList){
-            if(information.getReviewerIdentifiedName().equals(identifiedName[0])&&information.getReviewId().isBlank()){
+        for (final var information : reviewerInformationList) {
+            if (information.getReviewerIdentifiedName().equals(identifiedName[0]) && information.getReviewId().isBlank()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean checkThePaperIsReviewedByTheUser(String[] searchInfo, Paper paper) {
+        List<ReviewerInformation> reviewerInformationList = paper.getReviewerInformationList();
+        if (reviewerInformationList == null) {
+            return false;
+        }
+        for (final ReviewerInformation reviewerInformation : reviewerInformationList) {
+            if (reviewerInformation.getReviewerIdentifiedName().equals(searchInfo[0]) && !reviewerInformation.getReviewId().isBlank()) {
                 return true;
             }
         }

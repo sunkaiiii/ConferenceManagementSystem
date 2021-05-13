@@ -16,7 +16,7 @@
     <Label fx:id="submittedTime"/>
     <Label fx:id="paperAuthor"/>
     <Label fx:id="paperKeywords"/>
-    <StackPane style="-fx-background-color: green; -fx-background-radius: 16 " onMouseClicked="#goToReviewPage">
+    <StackPane style="-fx-background-color: green; -fx-background-radius: 16 " onMouseClicked="#goToReviewPage" fx:id="submitReview">
         <padding>
             <Insets left="48" right="48" top="16" bottom="16"/>
         </padding>
