@@ -20,7 +20,9 @@ enum PageNames implements PageNameDescriber {
     ADMIN_USER_CELL("admin_user_cell.fxml"),
     REVIEWER_ASSIGNMENT("reviewer_assignment.fxml"),
     ASSIGN_REVIEWER_REVIEW_LIST_CELL("assign_reviewer_reviewer_list_cell.fxml"),
-    SELECTED_REVIEWER_CELL("selected_reviewer_cell.fxml")
+    SELECTED_REVIEWER_CELL("selected_reviewer_cell.fxml"),
+    REVIEW_MANAGEMENT("review_management.fxml"),
+    REVIEW_PAGE_CELL("review_page_cell.fxml"),
     ;
     private final String pageName;
 

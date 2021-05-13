@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import org.openjfx.controllers.page.MainPageLeftBannerController?>
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.openjfx.controllers.page.ReviewManagementController"
+            prefHeight="734.0" prefWidth="1396.0">
+<left>
+    <MainPageLeftBannerController index="2"/>
+</left>
+    <top>
+        <Label alignment="CENTER" prefWidth="Infinity" style="-fx-font-weight: bold" text="Review Management" textFill="black">
+            <font>
+                <Font size="24.0" />
+            </font>
+            <padding>
+                <Insets bottom="16" top="16" />
+            </padding></Label>
+    </top>
+    <center>
+        <FlowPane fx:id="reviewPaperList"/>
+    </center>
+</BorderPane>

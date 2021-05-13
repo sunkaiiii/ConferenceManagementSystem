@@ -7,9 +7,10 @@ import org.openjfx.model.interfaces.CSVConvertable;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 public class Paper implements CSVConvertable<Conference> {
-
+    private String id;
     private String title;
     private String topic;
     private List<String> keywords;
@@ -22,6 +23,7 @@ public class Paper implements CSVConvertable<Conference> {
     private List<Pair<String,String>> reviewers;
 
     public Paper(String title, String topic, List<String> keywords, String deadline, List<PaperFile> paperFiles, String conferenceName) {
+        this.id = UUID.randomUUID().toString();
         this.title = title;
         this.topic = topic;
         this.keywords = keywords;
@@ -30,6 +32,14 @@ public class Paper implements CSVConvertable<Conference> {
         this.conferenceName = conferenceName;
         this.submittedTime = LocalDateTime.now().toString();
         this.paperStatus = PaperStatus.SUBMITTED;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -161,5 +171,4 @@ public class Paper implements CSVConvertable<Conference> {
                     '}';
         }
     }
-
 }

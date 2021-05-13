@@ -59,6 +59,24 @@ final class PaperServiceImpl implements PaperService {
         return databaseService.searchRecords(this, new String[]{conference.getName()}, this::findConferencePaper, DataModelFactory::convertPaperFromCSVLine);
     }
 
+    @Override
+    public List<Paper> findPaperNeedToBeReviewedByTheUser(Reviewer reviewer) throws IOException {
+        return databaseService.searchRecords(this,new String[]{reviewer.getReviewerIdentifiedName()},this::checkThePaperNeedsToBeReviewedByTheUser,DataModelFactory::convertPaperFromCSVLine);
+    }
+
+    private boolean checkThePaperNeedsToBeReviewedByTheUser(String[] identifiedName, Paper paper){
+        List<Pair<String,String>> reviewer = paper.getReviewers();
+        if(reviewer==null){
+            return false;
+        }
+        for(final var pair:reviewer){
+            if(pair.getKey().equals(identifiedName[0])&&pair.getValue().isBlank()){
+                return true;
+            }
+        }
+        return false;
+    }
+
     private boolean findMyPaper(String[] authorName, Paper paper) {
         String identifyName = authorName[0];
         return paper.getAuthors().stream().anyMatch(information -> information.getAuthorIdentifyName().equalsIgnoreCase(identifyName));
