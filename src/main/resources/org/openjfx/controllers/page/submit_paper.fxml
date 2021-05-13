@@ -43,25 +43,29 @@
                         <Insets bottom="16" top="12" />
                     </padding></Label></VBox>
             <VBox alignment="CENTER_LEFT">
-                <Label text="Paper Name:"/>
+                <Label text="Paper Name: ">
+                    <padding>
+                        <Insets left="16" />
+                    </padding>
+                </Label>
                 <TextField fx:id="paperName"/>
                 <HBox>
-                    <Label text="Conference Name:"/>
+                    <Label text="Conference Name: "/>
                     <Label fx:id="conferenceName"/>
                 </HBox>
                 <HBox>
-                    <Label text="Conference chair:"/>
+                    <Label text="Conference chair: "/>
                     <Label fx:id="chairName"/>
                 </HBox>
                 <BorderPane>
-                    <left>
+                    <center>
                         <VBox alignment="CENTER">
                             <Label text="Upload your paper(s)"/>
                             <Label text="(only support pdf, doc, docx)"/>
                             <Button text="Select File" onMouseClicked="#selectPapers"/>
                             <Label fx:id="fileName"/>
                         </VBox>
-                    </left>
+                    </center>
                     <right>
                         <VBox>
                             <Label text="Authors:"/>
