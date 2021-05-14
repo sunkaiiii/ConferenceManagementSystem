@@ -6,6 +6,7 @@
 <?import javafx.scene.text.*?>
 
 <?import org.openjfx.controllers.page.MainPageLeftBannerController?>
+<?import org.openjfx.controllers.page.GeneralTopLayout?>
 <BorderPane prefHeight="734.0" prefWidth="1396.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controllers.page.ConferenceManagementController">
     <left>
         <StackPane>
@@ -14,13 +15,7 @@
 
     </left>
     <top>
-        <Label alignment="CENTER" prefWidth="Infinity" style="-fx-font-weight: bold" text="Conference Management" textFill="black">
-         <font>
-            <Font size="24.0" />
-         </font>
-         <padding>
-             <Insets bottom="16" top="16" />
-         </padding></Label>
+        <GeneralTopLayout titleText="Conference Management"/>
     </top>
     <center>
         <ScrollPane fitToHeight="true" fitToWidth="true">

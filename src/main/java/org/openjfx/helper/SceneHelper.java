@@ -34,6 +34,19 @@ public final class SceneHelper {
         appStage.show();
     }
 
+    public static void startPage(Class<? extends Initializable> controllerClazz, Node node, PageNameDescriber resourceFileName, boolean cacheScene) throws IOException {
+        Scene scene;
+        if (cacheScene) {
+            scene = SceneHelper.getSceneFromResourceNameWithCache(controllerClazz, resourceFileName.getPageName());
+        } else {
+            scene = SceneHelper.getSceneFromResourceName(controllerClazz, resourceFileName.getPageName());
+        }
+        Stage appStage = (Stage) (node).getScene().getWindow();
+        appStage.setScene(scene);
+        appStage.show();
+    }
+
+
     private static Scene getSceneFromResourceNameWithCache(Class<? extends Initializable> clazz, String resourceFileName) throws IOException {
         Scene cacheScene = sceneMap.get(resourceFileName);
         if (cacheScene != null) {
