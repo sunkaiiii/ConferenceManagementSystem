@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.text.Font?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.openjfx.controllers.page.PaperSubmitFileListCell"
+fx:id="topView">
+    <left>
+        <HBox>
+            <ImageView fx:id="fileIcon" fitWidth="48" fitHeight="48"/>
+            <Label fx:id="fileName" textFill="black" alignment="CENTER">
+                <Font name="System bold"/>
+            </Label>
+        </HBox>
+    </left>
+    <right>
+        <Label text="x" textFill="grey" onMouseClicked="#cancelSelectedFile"/>
+    </right>
+
+</BorderPane>

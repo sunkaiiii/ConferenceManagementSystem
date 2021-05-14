@@ -14,7 +14,7 @@ import org.openjfx.helper.InputValidation;
 import org.openjfx.helper.SceneHelper;
 import org.openjfx.model.AuthorInformation;
 import org.openjfx.model.Paper;
-import org.openjfx.model.PaperFile;
+import org.openjfx.model.File;
 import org.openjfx.model.Review;
 import org.openjfx.service.ReviewService;
 
@@ -130,7 +130,7 @@ public class WriteReviewPageController implements Initializable {
         this.fileContainer.getChildren().setAll(paper.getPaperFiles().stream().map(this::createReviewFileListCell).collect(Collectors.toList()));
     }
 
-    private Node createReviewFileListCell(PaperFile file) {
+    private Node createReviewFileListCell(File file) {
         try {
             FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.WRITE_REVIEW_PAGE_FILE_LIST_CELL);
             Node result = loader.load();

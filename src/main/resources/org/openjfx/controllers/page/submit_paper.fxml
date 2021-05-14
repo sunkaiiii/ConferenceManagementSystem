@@ -68,7 +68,7 @@
                             <padding>
                                 <Insets left="32" right="32" top="32" bottom="32"/>
                             </padding>
-                            <VBox alignment="CENTER" onMouseClicked="#selectPapers">
+                            <VBox alignment="CENTER" onMouseClicked="#selectPapers" fx:id="selectPaperContainer">
                                 <Label text="Upload your paper(s)">
                                     <font>
                                         <Font  size="24" name="System Bold"/>
@@ -83,7 +83,7 @@
                                     <padding>
                                         <Insets left="16" right="16" top="16" bottom="16"/>
                                     </padding>
-                                    <VBox alignment="CENTER" >
+                                    <VBox alignment="CENTER" fx:id="folderContainer">
                                         <ImageView fitHeight="48" fitWidth="48" >
                                             <image>
                                                 <Image url="@../../images/folder.png"/>
@@ -95,7 +95,6 @@
                                         <VBox fx:id="fileListContainer"/>
                                     </ScrollPane>
                                 </StackPane>
-                                <Label fx:id="fileName"/>
                             </VBox>
                         </StackPane>
                     </center>

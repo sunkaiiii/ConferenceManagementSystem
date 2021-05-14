@@ -3,6 +3,7 @@ package org.openjfx.controllers.page;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,18 +19,17 @@ import org.openjfx.MainApp;
 import org.openjfx.helper.*;
 import org.openjfx.model.Conference;
 import org.openjfx.model.Paper;
-import org.openjfx.model.PaperFile;
+import org.openjfx.model.File;
 import org.openjfx.model.interfaces.Author;
 import org.openjfx.service.PaperService;
 import org.openjfx.service.UserService;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class SubmitPaperController implements Initializable, PreDefineListCellController.OnKeywordSelectedListener {
+public class SubmitPaperController implements Initializable, PreDefineListCellController.OnKeywordSelectedListener, PaperSubmitFileListCell.OnCancelButtonSelectedListener {
 
     @FXML
     private TextField paperName;
@@ -41,7 +41,7 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
     private Label chairName;
 
     @FXML
-    private Label fileName;
+    private Parent selectPaperContainer;
 
     @FXML
     private ComboBox<String> authorSelectBox;
@@ -58,6 +58,9 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
     @FXML
     private VBox fileListContainer;
 
+    @FXML
+    private Parent folderContainer;
+
     private Conference conference;
 
     private List<Author> authorList;
@@ -66,7 +69,7 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
 
     private List<TextField> allFields;
 
-    private Set<File> paperFiles;
+    private Set<java.io.File> paperFiles;
 
     private final PaperService paperService = PaperService.getDefaultInstance();
 
@@ -137,19 +140,40 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
 
     @FXML
     void selectPapers(MouseEvent event) {
+        if(paperFiles.size()>0){
+            return;
+        }
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Paper format (*.pdf, *.doc, *.docx)", "*.doc", "*.docx", "*.pdf");
         fileChooser.getExtensionFilters().add(filter);
         Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        List<File> selectedFiles = fileChooser.showOpenMultipleDialog(appStage);
+        List<java.io.File> selectedFiles = fileChooser.showOpenMultipleDialog(appStage);
         if(selectedFiles==null || selectedFiles.size()==0){
             return;
         }
         this.paperFiles.addAll(selectedFiles);
+        refreshFilePageCell();
         System.out.println(this.paperFiles.size());
+    }
 
-        String fileNames = this.paperFiles.stream().map(File::getName).collect(Collectors.joining("\n"));
-        fileName.setText(fileNames);
+    private void refreshFilePageCell() {
+        List<Node> result = this.paperFiles.stream().map(this::createFileListCell).filter(Objects::nonNull).collect(Collectors.toList());
+        this.fileListContainer.getChildren().setAll(result);
+        this.folderContainer.setVisible(!(result.size()>0));
+    }
+
+    private Node createFileListCell(java.io.File file){
+        try{
+            FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(),PageNames.PAPER_SUBMIT_FILE_LIST_CELL);
+            Node result = loader.load();
+            PaperSubmitFileListCell cell = loader.getController();
+            cell.setSelectedFile(file);
+            cell.setOnCancelButtonSelectedListener(this);
+            return result;
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @FXML
@@ -178,7 +202,7 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
     }
 
     private void submitPaperToSystem(MouseEvent event){
-        List<PaperFile> paperFiles = this.paperFiles.stream().map(paper -> {
+        List<File> paperFiles = this.paperFiles.stream().map(paper -> {
             try {
                 return FileHelper.getInstance().uploadFileToServer(paper.getName(), paper.getAbsolutePath());
             } catch (IOException e) {
@@ -220,5 +244,11 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void onCanceled(MouseEvent event, java.io.File file, Parent parent) {
+        this.paperFiles.remove(file);
+        refreshFilePageCell();
     }
 }

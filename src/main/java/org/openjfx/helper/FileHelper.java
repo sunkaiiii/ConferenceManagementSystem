@@ -1,8 +1,7 @@
 package org.openjfx.helper;
 
-import org.openjfx.model.PaperFile;
+import org.openjfx.model.File;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -19,9 +18,9 @@ public class FileHelper {
 
     }
 
-    public PaperFile uploadFileToServer(String paperName, String originalAbsolutePath) throws IOException {
+    public File uploadFileToServer(String paperName, String originalAbsolutePath) throws IOException {
         if (!Files.exists(Path.of(PAPER_FOLDER))) {
-            if (!new File(PAPER_FOLDER).mkdir()) {
+            if (!new java.io.File(PAPER_FOLDER).mkdir()) {
                 throw new IOException("Cannot create paper folder");
             }
         }
@@ -30,7 +29,7 @@ public class FileHelper {
         String storedPath = copied.toString();
         Path originalPath = Paths.get(originalAbsolutePath);
         Files.copy(originalPath, copied, StandardCopyOption.REPLACE_EXISTING);
-        return new PaperFile(paperName, storedPath);
+        return new File(paperName, storedPath);
     }
 
     public Optional<String> getFileExtensionByStringHandling(String filename) {
