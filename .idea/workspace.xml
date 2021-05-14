@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae9b270c-5962-4e59-ac2f-9f747ba3f49c" name="Default Changelist" comment="Adjust the layout of submit_paper page">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/GeneralTopLayout.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/general_top_layout.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/helper/SceneHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/helper/SceneHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/conference_management.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/conference_management.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/GeneralTopLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/GeneralTopLayout.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -264,7 +260,7 @@
       <workItem from="1620736174620" duration="4133000" />
       <workItem from="1620871010915" duration="9982000" />
       <workItem from="1620895172917" duration="4602000" />
-      <workItem from="1620972149711" duration="4852000" />
+      <workItem from="1620972149711" duration="5165000" />
     </task>
     <task id="LOCAL-00001" summary="Adjust the layout of submit_paper page">
       <created>1620902744935</created>

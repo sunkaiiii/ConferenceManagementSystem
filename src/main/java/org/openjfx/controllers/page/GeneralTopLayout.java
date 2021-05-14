@@ -9,6 +9,7 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.StackPane;
 import org.openjfx.MainApp;
+import org.openjfx.helper.DialogHelper;
 import org.openjfx.helper.SceneHelper;
 
 import java.io.IOException;
@@ -31,10 +32,10 @@ public class GeneralTopLayout extends StackPane implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("general_top_layout.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
-        try{
+        try {
             fxmlLoader.load();
-        }catch (IOException exception){
-            throw  new RuntimeException(exception);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
         }
         this.title.setText(titleText);
     }
@@ -59,10 +60,21 @@ public class GeneralTopLayout extends StackPane implements Initializable {
     }
 
     private void logOut(ActionEvent event) {
-        try {
-            SceneHelper.logOut(getClass(), menuButton, PageNames.LOG_IN);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        DialogHelper.showConfirmDialog("Log out", "Are you sure you want to log out?", new DialogHelper.ConfirmDialogClickListener() {
+            @Override
+            public void onNegativeButtonClick() {
+
+            }
+
+            @Override
+            public void onPositiveButtonClick() {
+                try {
+                    SceneHelper.logOut(GeneralTopLayout.this.getClass(), menuButton, PageNames.LOG_IN);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 }
