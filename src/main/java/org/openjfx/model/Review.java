@@ -10,13 +10,15 @@ public class Review implements CSVConvertable<Review> {
     private String reviewContent;
     private String deadLine;
     private String reviewerIdentifiedName;
+    private String reviewerDisplayName;
     private String paperId;
 
-    public Review(String paperId,String reviewContent, String reviewerIdentifiedName) {
+    public Review(String paperId, String reviewContent, String reviewerIdentifiedName, String reviewerDisplayName) {
         this.id = UUID.randomUUID().toString();
         this.paperId = paperId;
         this.reviewContent = reviewContent;
         this.reviewerIdentifiedName = reviewerIdentifiedName;
+        this.reviewerDisplayName = reviewerDisplayName;
     }
 
     public String getId() {
@@ -60,6 +62,25 @@ public class Review implements CSVConvertable<Review> {
         this.reviewerIdentifiedName = reviewerIdentifiedName;
     }
 
+    public String getReviewerDisplayName() {
+        return reviewerDisplayName;
+    }
+
+    public void setReviewerDisplayName(String reviewerDisplayName) {
+        this.reviewerDisplayName = reviewerDisplayName;
+    }
+
+    @Override
+    public String toString() {
+        return "Review{" +
+                "id='" + id + '\'' +
+                ", reviewContent='" + reviewContent + '\'' +
+                ", deadLine='" + deadLine + '\'' +
+                ", reviewerIdentifiedName='" + reviewerIdentifiedName + '\'' +
+                ", reviewerDisplayName='" + reviewerDisplayName + '\'' +
+                ", paperId='" + paperId + '\'' +
+                '}';
+    }
 
     @Override
     public String convertToCSVLine() {

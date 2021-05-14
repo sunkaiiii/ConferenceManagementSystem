@@ -14,7 +14,7 @@ import org.openjfx.helper.InputValidation;
 import org.openjfx.helper.SceneHelper;
 import org.openjfx.model.AuthorInformation;
 import org.openjfx.model.Paper;
-import org.openjfx.model.File;
+import org.openjfx.model.PaperFile;
 import org.openjfx.model.Review;
 import org.openjfx.service.ReviewService;
 
@@ -68,7 +68,7 @@ public class WriteReviewPageController implements Initializable {
             return;
         }
         assert this.paper != null;
-        Review review = new Review(this.paper.getId(), this.reviewContent.getText(), MainApp.getInstance().getUser().getReviewerIdentifiedName());
+        Review review = new Review(this.paper.getId(), this.reviewContent.getText(), MainApp.getInstance().getUser().getReviewerIdentifiedName(),MainApp.getInstance().getUser().getReviewerName());
         DialogHelper.showConfirmDialog("Confirmation", "Do you want to submit this review?", new DialogHelper.ConfirmDialogClickListener() {
             @Override
             public void onNegativeButtonClick() {
@@ -130,7 +130,7 @@ public class WriteReviewPageController implements Initializable {
         this.fileContainer.getChildren().setAll(paper.getPaperFiles().stream().map(this::createReviewFileListCell).collect(Collectors.toList()));
     }
 
-    private Node createReviewFileListCell(File file) {
+    private Node createReviewFileListCell(PaperFile file) {
         try {
             FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.WRITE_REVIEW_PAGE_FILE_LIST_CELL);
             Node result = loader.load();
@@ -142,7 +142,6 @@ public class WriteReviewPageController implements Initializable {
             e.printStackTrace();
         }
         return null;
-
     }
 
     @Override

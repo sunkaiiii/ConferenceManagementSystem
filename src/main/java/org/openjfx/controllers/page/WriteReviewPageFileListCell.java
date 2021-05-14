@@ -10,7 +10,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.openjfx.controllers.page.abspage.AbstractFileListCell;
 import org.openjfx.helper.FileHelper;
-import org.openjfx.model.File;
+import org.openjfx.model.PaperFile;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,7 +29,7 @@ public class WriteReviewPageFileListCell extends AbstractFileListCell implements
     @FXML
     private Label downloadedIndicator;
 
-    private File paperFile;
+    private PaperFile paperFile;
 
 
     @Override
@@ -37,16 +37,16 @@ public class WriteReviewPageFileListCell extends AbstractFileListCell implements
 
     }
 
-    public File getPaperFile() {
+    public PaperFile getPaperFile() {
         return paperFile;
     }
 
-    public void setPaperFile(File paperFile) {
+    public void setPaperFile(PaperFile paperFile) {
         this.paperFile = paperFile;
         initViews(paperFile);
     }
 
-    private void initViews(File paperFile) {
+    private void initViews(PaperFile paperFile) {
         this.fileName.setText(paperFile.getFileName());
         this.fileIcon.setImage(getFileIcon(paperFile.getStoragePath()));
     }

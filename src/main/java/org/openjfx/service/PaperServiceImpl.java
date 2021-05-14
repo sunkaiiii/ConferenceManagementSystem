@@ -40,6 +40,11 @@ final class PaperServiceImpl implements PaperService {
         databaseService.alterRecord(this, new String[]{paper.getId()}, paper, this::findPaper, DataModelFactory::convertPaperFromCSVLine);
     }
 
+    @Override
+    public void updatePaperStatus(Paper updatedPaper) throws IOException {
+        databaseService.alterRecord(this,new String[]{updatedPaper.getId()},updatedPaper,this::findPaper,DataModelFactory::convertPaperFromCSVLine);
+    }
+
     private ReviewerInformation createReviewerPair(Reviewer reviewer) {
         ReviewerInformation information = new ReviewerInformation();
         information.setReviewerIdentifiedName(reviewer.getReviewerIdentifiedName());

@@ -2,12 +2,12 @@ package org.openjfx.model;
 
 import java.time.LocalDateTime;
 
-public class File {
+public class PaperFile {
     private String fileName;
     private String storagePath;
     private String creationDate;
 
-    public File(String fileName, String storagePath){
+    public PaperFile(String fileName, String storagePath){
         this.fileName= fileName;
         this.storagePath = storagePath;
         this.creationDate = LocalDateTime.now().toString();

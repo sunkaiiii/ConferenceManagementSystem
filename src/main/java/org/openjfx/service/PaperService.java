@@ -11,6 +11,7 @@ import java.util.List;
 public interface PaperService extends DatabaseController {
     void submitPaper(List<Author> authors, Paper paper) throws IOException;
     void setReviewer(Paper paper, List<Reviewer> reviewers) throws IOException;
+    void updatePaperStatus(Paper updatedPaper) throws IOException;
     List<Paper> getUserPapers(Author author) throws IOException;
     List<Paper> getConferencePaper(Conference conference) throws IOException;
     List<Paper> findPaperNeedToBeReviewedByTheUser(Reviewer reviewer) throws IOException;

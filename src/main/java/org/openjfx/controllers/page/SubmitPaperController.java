@@ -3,7 +3,6 @@ package org.openjfx.controllers.page;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,7 +18,7 @@ import org.openjfx.MainApp;
 import org.openjfx.helper.*;
 import org.openjfx.model.Conference;
 import org.openjfx.model.Paper;
-import org.openjfx.model.File;
+import org.openjfx.model.PaperFile;
 import org.openjfx.model.interfaces.Author;
 import org.openjfx.service.PaperService;
 import org.openjfx.service.UserService;
@@ -202,7 +201,7 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
     }
 
     private void submitPaperToSystem(MouseEvent event){
-        List<File> paperFiles = this.paperFiles.stream().map(paper -> {
+        List<PaperFile> paperFiles = this.paperFiles.stream().map(paper -> {
             try {
                 return FileHelper.getInstance().uploadFileToServer(paper.getName(), paper.getAbsolutePath());
             } catch (IOException e) {

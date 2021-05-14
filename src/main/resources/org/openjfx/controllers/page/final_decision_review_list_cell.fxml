@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="org.openjfx.controllers.page.FinalDecisionReviewListCell"
+>
+    <padding>
+        <Insets left="8" right="8" top="4" bottom="4"/>
+    </padding>
+    <StackPane style="-fx-background-color: #f2f2f2;-fx-background-radius: 8">
+        <padding>
+            <Insets left="32" right="32" top="16" bottom="16"/>
+        </padding>
+        <HBox alignment="CENTER">
+            <VBox alignment="CENTER">
+                <ImageView fitWidth="36" fitHeight="36">
+                    <image>
+                        <Image url="@../../images/review.png"/>
+                    </image>
+                </ImageView>
+                <Label fx:id="reviewerName" textFill="black"/>
+            </VBox>
+            <Region prefWidth="32"/>
+            <Label fx:id="reviewContent" textFill="black"/>
+        </HBox>
+    </StackPane>
+
+</StackPane>

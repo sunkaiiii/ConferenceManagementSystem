@@ -27,6 +27,7 @@ enum PageNames implements PageNameDescriber {
     WRITE_REVIEW_PAGE_FILE_LIST_CELL("write_review_page_file_list_cell.fxml"),
     PAPER_SUBMIT_FILE_LIST_CELL("paper_submit_file_list_cell.fxml"),
     PAPER_FINAL_DECISION_PAGE("paper_final_decision_page.fxml"),
+    FINAL_DECISION_REVIEW_LIST_CELL("final_decision_review_list_cell.fxml"),
     ;
     private final String pageName;
 
