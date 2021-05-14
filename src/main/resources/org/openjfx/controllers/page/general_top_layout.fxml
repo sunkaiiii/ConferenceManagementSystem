@@ -21,6 +21,9 @@
     </Label>
 
     <StackPane prefWidth="Infinity" alignment="CENTER_RIGHT">
+        <padding>
+            <Insets right="32"/>
+        </padding>
         <MenuButton fx:id="menuButton" alignment="CENTER_RIGHT">
             <items>
                 <MenuItem fx:id="logOut" text="Log out"/>
