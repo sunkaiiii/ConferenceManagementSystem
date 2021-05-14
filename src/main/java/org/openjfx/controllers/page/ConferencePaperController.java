@@ -98,13 +98,24 @@ public class ConferencePaperController implements Initializable, MyPaperListCell
                 goToReviewerAssignmentPage(event, paper);
                 break;
             case REVIEWED:
-                goToFinalDecisionPage(event,paper);
+                goToFinalDecisionPage(event, paper);
             default:
                 break;
         }
     }
 
     private void goToFinalDecisionPage(MouseEvent event, Paper paper) {
+        try {
+            FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.PAPER_FINAL_DECISION_PAGE);
+            Parent node = loader.load();
+            PaperFinalDecisionPageController controller = loader.getController();
+            controller.setPaper(paper);
+            controller.setPreviousScene(((Node) event.getSource()).getScene());
+            controller.setFinalDecisionAppliedListener(() -> initView(this.conference));
+            SceneHelper.startStage(new Scene(node), event);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void goToReviewerAssignmentPage(MouseEvent event, Paper paper) {
@@ -114,7 +125,7 @@ public class ConferencePaperController implements Initializable, MyPaperListCell
             ReviewerAssignmentController controller = loader.getController();
             controller.setPaper(paper);
             controller.setPreviousScene(((Node) event.getSource()).getScene());
-            controller.setOnReviewerAssignedListener(()->initView(this.conference));
+            controller.setOnReviewerAssignedListener(() -> initView(this.conference));
             SceneHelper.startStage(new Scene(node), event);
         } catch (IOException e) {
             e.printStackTrace();
