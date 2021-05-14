@@ -46,6 +46,11 @@ public final class SceneHelper {
         appStage.show();
     }
 
+    public static void logOut(Class<? extends Initializable> controllerClazz, Node node, PageNameDescriber resourceFileName) throws IOException{
+        sceneMap.clear();
+        startPage(controllerClazz,node,resourceFileName,false);
+    }
+
 
     private static Scene getSceneFromResourceNameWithCache(Class<? extends Initializable> clazz, String resourceFileName) throws IOException {
         Scene cacheScene = sceneMap.get(resourceFileName);

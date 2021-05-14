@@ -60,7 +60,7 @@ public class GeneralTopLayout extends StackPane implements Initializable {
 
     private void logOut(ActionEvent event) {
         try {
-            SceneHelper.startPage(getClass(), menuButton, PageNames.LOG_IN, false);
+            SceneHelper.logOut(getClass(), menuButton, PageNames.LOG_IN);
         } catch (IOException e) {
             e.printStackTrace();
         }
