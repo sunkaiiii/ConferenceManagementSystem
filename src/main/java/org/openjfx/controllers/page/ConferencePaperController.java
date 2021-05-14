@@ -97,9 +97,14 @@ public class ConferencePaperController implements Initializable, MyPaperListCell
             case SUBMITTED:
                 goToReviewerAssignmentPage(event, paper);
                 break;
+            case REVIEWED:
+                goToFinalDecisionPage(event,paper);
             default:
                 break;
         }
+    }
+
+    private void goToFinalDecisionPage(MouseEvent event, Paper paper) {
     }
 
     private void goToReviewerAssignmentPage(MouseEvent event, Paper paper) {

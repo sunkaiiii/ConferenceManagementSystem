@@ -3,13 +3,18 @@ package org.openjfx.controllers.page;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import org.openjfx.model.AuthorInformation;
 import org.openjfx.model.Paper;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -34,6 +39,9 @@ public class MyPaperListCell implements Initializable {
 
     @FXML
     private StackPane statusBackground;
+
+    @FXML
+    private HBox statusContainer;
 
     private Paper paper;
 
@@ -65,6 +73,21 @@ public class MyPaperListCell implements Initializable {
         }
         paperStatus.setText(this.presentation.statusText);
         statusBackground.setStyle(this.presentation.getStatusBackgroundStyle());
+        if(!this.presentation.getNotificationText().isBlank()){
+            ImageView imageView = new ImageView();
+            imageView.setFitHeight(12);
+            imageView.setFitWidth(12);
+            try{
+                Image image = new Image(Objects.requireNonNull(getClass().getResource("/org/openjfx/images/information.png")).toString());
+                imageView.setImage(image);
+                this.statusContainer.getChildren().add(imageView);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            Label label = new Label();
+            label.setText(this.presentation.getNotificationText());
+            this.statusContainer.getChildren().add(label);
+        }
     }
 
     @Override
