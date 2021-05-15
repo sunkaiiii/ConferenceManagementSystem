@@ -16,6 +16,8 @@ public interface PaperService extends DatabaseController {
     List<Paper> getConferencePaper(Conference conference) throws IOException;
     List<Paper> findPaperNeedToBeReviewedByTheUser(Reviewer reviewer) throws IOException;
     List<Paper> findPaperReviewedByTheUser(Reviewer reviewer) throws IOException;
+    List<Paper> findPaperWithStatus(Paper.PaperStatus status) throws IOException;
+    List<Paper> findPaperWithStatus(Conference conference,Paper.PaperStatus status) throws IOException;
     void setReviewRecordToPaper(String paperId, String reviewerIdentifiedName, String id) throws IOException;
 
     static PaperService getDefaultInstance(){

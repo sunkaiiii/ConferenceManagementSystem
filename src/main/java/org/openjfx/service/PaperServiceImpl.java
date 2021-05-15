@@ -42,7 +42,7 @@ final class PaperServiceImpl implements PaperService {
 
     @Override
     public void updatePaperStatus(Paper updatedPaper) throws IOException {
-        databaseService.alterRecord(this,new String[]{updatedPaper.getId()},updatedPaper,this::findPaper,DataModelFactory::convertPaperFromCSVLine);
+        databaseService.alterRecord(this, new String[]{updatedPaper.getId()}, updatedPaper, this::findPaper, DataModelFactory::convertPaperFromCSVLine);
     }
 
     private ReviewerInformation createReviewerPair(Reviewer reviewer) {
@@ -74,6 +74,16 @@ final class PaperServiceImpl implements PaperService {
     @Override
     public List<Paper> findPaperReviewedByTheUser(Reviewer reviewer) throws IOException {
         return databaseService.searchRecords(this, new String[]{reviewer.getReviewerIdentifiedName()}, this::checkThePaperIsReviewedByTheUser, DataModelFactory::convertPaperFromCSVLine);
+    }
+
+    @Override
+    public List<Paper> findPaperWithStatus(Paper.PaperStatus status) throws IOException {
+        return databaseService.searchRecords(this, null, (statusInfo, paper) -> paper.getPaperStatus().getStatus().equals(status.getStatus()), DataModelFactory::convertPaperFromCSVLine);
+    }
+
+    @Override
+    public List<Paper> findPaperWithStatus(Conference conference, Paper.PaperStatus status) throws IOException {
+        return databaseService.searchRecords(this, null, (statusInfo, paper) -> paper.getPaperStatus().getStatus().equals(status.getStatus()) && paper.getConferenceName().equals(conference.getName()), DataModelFactory::convertPaperFromCSVLine);
     }
 
     @Override
