@@ -7,9 +7,12 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import org.openjfx.controllers.PageNames;
-import org.openjfx.helper.DialogHelper;
+import org.openjfx.controllers.dialog.FinalDecisionAlertView;
+import org.openjfx.controllers.dialog.absdialog.AbstractAlertDialog;
+import org.openjfx.controllers.dialog.absdialog.ButtonStyle;
 import org.openjfx.helper.SceneHelper;
 import org.openjfx.model.*;
 import org.openjfx.service.PaperService;
@@ -35,6 +38,12 @@ public class PaperFinalDecisionPageController implements Initializable {
 
     @FXML
     private VBox reviewContainer;
+
+    @FXML
+    private FinalDecisionAlertView finalDecisionAlertView;
+
+    @FXML
+    private BorderPane finalDecisionBody;
 
 
     private Paper paper;
@@ -77,36 +86,39 @@ public class PaperFinalDecisionPageController implements Initializable {
 
     @FXML
     void rejectClicked(MouseEvent event) {
-        DialogHelper.showConfirmDialog("Reject Paper", "Are you sure you want to reject this paper?", "Cancel", "Reject", new DialogHelper.ConfirmDialogClickListener() {
-            @Override
-            public void onNegativeButtonClick() {
-
-            }
-
-            @Override
-            public void onPositiveButtonClick() {
-                if (writePaperStatus(Paper.PaperStatus.REJECTED)) {
-                    refreshPreviousPageAndGoBack(event);
-                }
-            }
-        });
+        ButtonStyle rejectButtonStyle = new ButtonStyle("Reject", "#FFFFFF", "#c92d39");
+        showAlertDialog(event, "Do you want to reject this paper?", rejectButtonStyle, Paper.PaperStatus.REJECTED);
     }
 
     @FXML
     void acceptClicked(MouseEvent event) {
-        DialogHelper.showConfirmDialog("Accept Paper", "Are you sure you want to Accept this paper?", "Cancel", "Accept", new DialogHelper.ConfirmDialogClickListener() {
-            @Override
-            public void onNegativeButtonClick() {
+        ButtonStyle acceptButtonStyle = new ButtonStyle("Accept", "#FFFFFF", "#0c7dba");
+        showAlertDialog(event, "Do you want to accept this paper?", acceptButtonStyle, Paper.PaperStatus.ACCEPTED);
+    }
 
-            }
-
+    private void showAlertDialog(MouseEvent event, String content, ButtonStyle buttonStyle, Paper.PaperStatus paperStatus) {
+        finalDecisionAlertView.setPositiveButtonStyle(buttonStyle);
+        finalDecisionAlertView.setNegativeButtonStyle(new ButtonStyle("Cancel", "#000000", "#FFFFFFFF"));
+        finalDecisionAlertView.setAlertContent(content);
+        finalDecisionBody.setDisable(true);
+        finalDecisionAlertView.setAlertDialogClickListener(new AbstractAlertDialog.AlertDialogClickListener() {
             @Override
-            public void onPositiveButtonClick() {
-                if (writePaperStatus(Paper.PaperStatus.ACCEPTED)) {
+            public void onPositiveButtonClick(MouseEvent event) {
+                finalDecisionBody.setDisable(false);
+                finalDecisionAlertView.setVisible(false);
+
+                if (writePaperStatus(paperStatus)) {
                     refreshPreviousPageAndGoBack(event);
                 }
             }
+
+            @Override
+            public void onNegativeButtonClick(MouseEvent event) {
+                finalDecisionBody.setDisable(false);
+                finalDecisionAlertView.setVisible(false);
+            }
         });
+        finalDecisionAlertView.setVisible(true);
     }
 
     private boolean writePaperStatus(Paper.PaperStatus status) {

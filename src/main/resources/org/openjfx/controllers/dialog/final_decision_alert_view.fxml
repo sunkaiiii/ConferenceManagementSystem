@@ -5,13 +5,17 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<fx:root type="javafx.scene.layout.StackPane" prefHeight="734.0" prefWidth="1396.0"
-           fx:controller="org.openjfx.controllers.dialog.FinalDecisionAlertView"
-           xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: #fcfcfcaa">
-    <StackPane prefWidth="350" prefHeight="200" maxWidth="350" maxHeight="200"
+<fx:root prefHeight="734.0" prefWidth="1396.0" style="-fx-background-color: #fcfcfcaa"
+         type="javafx.scene.layout.StackPane" xmlns="http://javafx.com/javafx/11.0.1"
+         xmlns:fx="http://javafx.com/fxml/1">
+    <StackPane maxHeight="200" maxWidth="350" prefHeight="200" prefWidth="350"
                style="-fx-background-color: white; -fx-background-radius: 8px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
         <VBox alignment="CENTER">
-            <Label fx:id="alertContent" alignment="CENTER" prefWidth="Infinity" text="124" textFill="black">
+            <Label fx:id="alertContent" alignment="CENTER" prefWidth="Infinity" textAlignment="CENTER" textFill="black"
+                   wrapText="true">
+                <VBox.margin>
+                    <Insets left="16" right="16"/>
+                </VBox.margin>
                 <font>
                     <Font name="System Bold" size="28.0"/>
                 </font>
@@ -23,15 +27,20 @@
                 <padding>
                     <Insets left="64" right="64"/>
                 </padding>
-                <Button fx:id="negativeButton" StackPane.alignment="CENTER_LEFT" onMouseClicked="#negativeButtonClicked">
+                <Button fx:id="negativeButton" onMouseClicked="#negativeButtonClicked"
+                        StackPane.alignment="CENTER_LEFT">
                     <padding>
-                        <Insets left="32" right="32" top="8" bottom="8"/>
+                        <Insets bottom="8" left="32" right="32" top="8"/>
                     </padding>
                 </Button>
-                <Button fx:id="positiveButton" StackPane.alignment="CENTER_RIGHT" onMouseClicked="#positiveButtonClicked">
+                <Button fx:id="positiveButton" onMouseClicked="#positiveButtonClicked"
+                        StackPane.alignment="CENTER_RIGHT">
                     <padding>
-                        <Insets left="32" right="32" top="8" bottom="8"/>
+                        <Insets bottom="8" left="32" right="32" top="8"/>
                     </padding>
+                    <font>
+                        <Font name="System Bold" size="12.0"/>
+                    </font>
                 </Button>
             </StackPane>
         </VBox>
