@@ -1,6 +1,7 @@
 package org.openjfx.controllers.dialog.absdialog;
 
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 
@@ -29,6 +30,10 @@ public abstract class AbstractAlertDialog extends StackPane implements Initializ
     public abstract void setNegativeButtonStyle(ButtonStyle style);
 
     public abstract void setAlertContent(String content);
+
+    public abstract void show(Node caller);
+
+    public abstract void dismiss();
 
     public interface AlertDialogClickListener {
         default void onNegativeButtonClick(MouseEvent event){}

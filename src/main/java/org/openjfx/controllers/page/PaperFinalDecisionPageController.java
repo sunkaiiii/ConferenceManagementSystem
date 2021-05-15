@@ -100,25 +100,12 @@ public class PaperFinalDecisionPageController implements Initializable {
         finalDecisionAlertView.setPositiveButtonStyle(buttonStyle);
         finalDecisionAlertView.setNegativeButtonStyle(new ButtonStyle("Cancel", "#000000", "#FFFFFFFF"));
         finalDecisionAlertView.setAlertContent(content);
-        finalDecisionBody.setDisable(true);
-        finalDecisionAlertView.setAlertDialogClickListener(new AbstractAlertDialog.AlertDialogClickListener() {
-            @Override
-            public void onPositiveButtonClick(MouseEvent event) {
-                finalDecisionBody.setDisable(false);
-                finalDecisionAlertView.setVisible(false);
-
-                if (writePaperStatus(paperStatus)) {
-                    refreshPreviousPageAndGoBack(event);
-                }
-            }
-
-            @Override
-            public void onNegativeButtonClick(MouseEvent event) {
-                finalDecisionBody.setDisable(false);
-                finalDecisionAlertView.setVisible(false);
+        finalDecisionAlertView.setAlertDialogClickListener(event1 -> {
+            if (writePaperStatus(paperStatus)) {
+                refreshPreviousPageAndGoBack(event1);
             }
         });
-        finalDecisionAlertView.setVisible(true);
+        finalDecisionAlertView.show(this.finalDecisionBody);
     }
 
     private boolean writePaperStatus(Paper.PaperStatus status) {
