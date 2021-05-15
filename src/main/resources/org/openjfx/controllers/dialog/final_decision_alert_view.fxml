@@ -10,7 +10,7 @@
          type="javafx.scene.layout.StackPane" xmlns="http://javafx.com/javafx/11.0.1"
          xmlns:fx="http://javafx.com/fxml/1">
     <StackPane maxHeight="200" maxWidth="350" prefHeight="200" prefWidth="350"
-               style="-fx-background-color: white; -fx-background-radius: 8px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
+               style="-fx-background-color: white; -fx-background-radius: 8px; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" fx:id="contentBody">
         <VBox alignment="CENTER">
             <Label fx:id="alertContent" alignment="CENTER" prefWidth="Infinity" textAlignment="CENTER" textFill="black"
                    wrapText="true">
