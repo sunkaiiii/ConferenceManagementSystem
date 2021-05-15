@@ -103,7 +103,11 @@
                     <Insets left="4" top="8" bottom="8" right="4"/>
                 </padding>
                 <Label text="Interest area" style="-fx-font-weight: bold"/>
-                <TextField fx:id="interestArea"/>
+                <StackPane>
+                    <TextField fx:id="interestArea" disable="true"/>
+                    <Button text="Add" onMouseClicked="#addInterestingAreaClicked" StackPane.alignment="CENTER_RIGHT"/>
+                </StackPane>
+
             </VBox>
             <VBox>
                 <padding>

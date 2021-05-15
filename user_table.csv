@@ -1,6 +1,7 @@
 
-{"firstName":"123","lastName":"123","highestQualification":"123","interestArea":"Android","employerDetails":"123","creationTime":"2021-05-03T23:47:24.286237200","userName":"123@qq.com","password":"123"}
-{"firstName":"Kai","lastName":"Sun","highestQualification":"123","interestArea":"Cloud Computing","employerDetails":"123","creationTime":"2021-05-01T15:22:24.286237200","userName":"ksun@13.com","password":"123"}
-{"firstName":"Jim","lastName":"Keller","highestQualification":"Master","interestArea":"Cloud computing","employerDetails":"no","creationTime":"2021-05-11T11:40:13.232234","userName":"jim@kk.edu","password":"123qweASD"}
-{"firstName":"Bella","lastName":"Wang","highestQualification":"Doctor","interestArea":"Mobile development","employerDetails":"n","creationTime":"2021-05-11T11:40:59.018717","userName":"bella@ccc.edu","password":"123qweASD"}
-{"firstName":"Andy","lastName":"Hope","highestQualification":"Master","interestArea":"Software security","employerDetails":"nnn","creationTime":"2021-05-11T11:41:42.295860","userName":"andy@we.edu","password":"123qweASD"}
+{"firstName":"Sarah","lastName":"Fulller","highestQualification":"Master","interestAreas":{"Cloud Computing":4,"Android":8},"employerDetails":"none","creationTime":"2021-05-15T12:01:20.844071200","userName":"sarah@sa.edu","password":"123qweASD"}
+{"firstName":"123","lastName":"123","highestQualification":"123","interestAreas":{"Android":4},"employerDetails":"123","creationTime":"2021-05-03T23:47:24.286237200","userName":"123@qq.com","password":"123"}
+{"firstName":"Kai","lastName":"Sun","highestQualification":"123","interestAreas":{"Cloud Computing":3},"employerDetails":"123","creationTime":"2021-05-01T15:22:24.286237200","userName":"ksun@13.com","password":"123"}
+{"firstName":"Jim","lastName":"Keller","highestQualification":"Master","interestAreas":{"Cloud computing":5},"employerDetails":"no","creationTime":"2021-05-11T11:40:13.232234","userName":"jim@kk.edu","password":"123qweASD"}
+{"firstName":"Bella","lastName":"Wang","highestQualification":"Doctor","interestAreas":{"Mobile development":2},"employerDetails":"n","creationTime":"2021-05-11T11:40:59.018717","userName":"bella@ccc.edu","password":"123qweASD"}
+{"firstName":"Andy","lastName":"Hope","highestQualification":"Master","interestAreas":{"Software security":4},"employerDetails":"nnn","creationTime":"2021-05-11T11:41:42.295860","userName":"andy@we.edu","password":"123qweASD"}

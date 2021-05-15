@@ -11,24 +11,22 @@ import org.openjfx.service.DatabaseService;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 public class RegisterdUser extends User implements Author, Chair, Reviewer, CSVConvertable<RegisterdUser> {
     private String firstName;
     private String lastName;
     private String highestQualification;
-    private String interestArea;
+    private Map<String,Integer> interestAreas;
     private String employerDetails;
     private String creationTime;
 
-    public RegisterdUser(String userName, String password, String firstName, String lastName, String highestQualification, String interestArea, String employerDetails) {
+    public RegisterdUser(String userName, String password, String firstName, String lastName, String highestQualification, Map<String,Integer> interestAreas, String employerDetails) {
         super(userName, password);
         this.firstName = firstName;
         this.lastName = lastName;
         this.highestQualification = highestQualification;
-        this.interestArea = interestArea;
+        this.interestAreas = interestAreas;
         this.employerDetails = employerDetails;
         this.creationTime = LocalDateTime.now().toString();
     }
@@ -72,8 +70,8 @@ public class RegisterdUser extends User implements Author, Chair, Reviewer, CSVC
         return getUserName();
     }
 
-    public void setInterestArea(String interestArea) {
-        this.interestArea = interestArea;
+    public void setInterestAreas(Map<String,Integer> interestAreas) {
+        this.interestAreas = interestAreas;
     }
 
     public String getEmployerDetails() {
@@ -84,8 +82,8 @@ public class RegisterdUser extends User implements Author, Chair, Reviewer, CSVC
         this.employerDetails = employerDetails;
     }
 
-    public String getInterestArea() {
-        return interestArea;
+    public Map<String,Integer> getInterestAreas() {
+        return interestAreas;
     }
 
     public String getCreationTime() {
@@ -107,7 +105,7 @@ public class RegisterdUser extends User implements Author, Chair, Reviewer, CSVC
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", highestQualification='" + highestQualification + '\'' +
-                ", interestArea='" + interestArea + '\'' +
+                ", interestAreas='" + interestAreas + '\'' +
                 ", employerDetails='" + employerDetails + '\'' +
                 ", creationTime='" + creationTime + '\'' +
                 '}';
@@ -119,7 +117,7 @@ public class RegisterdUser extends User implements Author, Chair, Reviewer, CSVC
     }
 
     public static void main(String[] args) {
-        var user = new RegisterdUser("kai@k.com", "password", "Kai", "Sun", "44", "AI", "details");
+        var user = new RegisterdUser("kai@k.com", "password", "Kai", "Sun", "44", Map.of("AI",4), "details");
         String csvLine = user.convertToCSVLine();
         user = DataModelFactory.convertUserFromCSVLine(csvLine);
         System.out.println(user);
@@ -138,11 +136,5 @@ public class RegisterdUser extends User implements Author, Chair, Reviewer, CSVC
     @Override
     public String getReviewerIdentifiedName() {
         return getUserName();
-    }
-
-    @Override
-    public Map<String, Integer> getInterestAreas() {
-        //TODO add field and add value in sign up page
-        return Map.of(getInterestArea(), new Random().nextInt(10));
     }
 }

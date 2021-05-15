@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.geometry.Insets?>
+<AnchorPane minHeight="250.0" minWidth="400.0" xmlns="http://javafx.com/javafx/8.0.111"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controllers.dialog.AddInterestingAreaDialog">
+    <VBox alignment="CENTER" layoutX="131.0" layoutY="50.0" prefHeight="150.0" prefWidth="100.0"
+          AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0"
+          AnchorPane.topAnchor="5.0">
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adding InterestingArea Dialog"/>
+        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+            <padding>
+                <Insets right="30.0"/>
+            </padding>
+            <Label alignment="CENTER_RIGHT" minWidth="100.0" text="Interest Area Name"/>
+            <TextField fx:id="interestingAreaName" HBox.hgrow="ALWAYS"/>
+        </HBox>
+        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
+            <padding>
+                <Insets right="30.0"/>
+            </padding>
+            <Label alignment="CENTER_RIGHT" minWidth="100.0" text="Expertise"/>
+            <TextField fx:id="interestingAreaExpertise" HBox.hgrow="ALWAYS"/>
+        </HBox>
+        <HBox alignment="CENTER_RIGHT">
+            <Button mnemonicParsing="false" onMouseClicked="#btnAddInterestingAreaClicked" text="Add"/>
+            <opaqueInsets>
+                <Insets/>
+            </opaqueInsets>
+            <padding>
+                <Insets right="30.0"/>
+            </padding>
+        </HBox>
+    </VBox>
+</AnchorPane>
