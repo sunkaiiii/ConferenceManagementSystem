@@ -115,20 +115,20 @@ public class FinalDecisionAlertView extends AbstractAlertDialog {
         });
         Timeline timeline = new Timeline();
         final KeyValue kv = new KeyValue(value, 24);
-        final KeyFrame kf = new KeyFrame(Duration.millis(150), kv);
+        final KeyFrame kf = new KeyFrame(Duration.millis(225), kv);
         timeline.getKeyFrames().add(kf);
         timeline.play();
 
         contentBody.setCache(true);
         contentBody.setCacheHint(CacheHint.SPEED);
-        ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(150), contentBody);
+        ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(225), contentBody);
         scaleTransition.setFromX(0.3);
         scaleTransition.setFromY(0.3);
         scaleTransition.setToX(1);
         scaleTransition.setToY(1);
         caller.setDisable(true);
 
-        FadeTransition fadeTransition = new FadeTransition(Duration.millis(150), contentBody);
+        FadeTransition fadeTransition = new FadeTransition(Duration.millis(225), contentBody);
         fadeTransition.setFromValue(0);
         fadeTransition.setToValue(1);
         ParallelTransition parallelTransition = new ParallelTransition(scaleTransition, fadeTransition);

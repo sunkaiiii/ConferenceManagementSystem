@@ -1,8 +1,7 @@
 package org.openjfx.controllers.page;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -44,7 +43,7 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
     private Parent selectPaperContainer;
 
     @FXML
-    private ComboBox<String> authorSelectBox;
+    private MenuButton authorSelectMenuButton;
 
     @FXML
     private TextField keywordField;
@@ -76,7 +75,7 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         allFields = List.of(paperName, keywordField);
-        selectedAuthor = List.of(MainApp.getInstance().getUser());
+        selectedAuthor = new ArrayList<>(List.of(MainApp.getInstance().getUser()));
         paperFiles = new HashSet<>();
     }
 
@@ -93,20 +92,11 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
         this.chairName.setText(conference.getChairName());
         this.conferenceName.setText(conference.getName());
         initAuthorList();
-        this.authorSelectBox.setItems(FXCollections.observableArrayList(authorList.stream().map(Author::getAuthorName).collect(Collectors.toList())));
-        this.authorSelectBox.valueProperty().addListener(new ChangeListener<>() {
-            @Override
-            //TODO rewrite observable value item
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                var listener = this;
-                authorSelectBox.valueProperty().removeListener(listener);
-                authorField.setText(authorField.getText() + newValue + ";");
-                authorSelectBox.getItems().remove(newValue);
-                //TODO user identify name
-                selectedAuthor.add(authorList.stream().filter(author -> author.getAuthorName().equals(newValue)).findAny().get());
-                authorSelectBox.valueProperty().addListener(listener);
-            }
-        });
+        List<MenuItem> items = authorList
+                .stream()
+                .map(this::createMenuItem)
+                .collect(Collectors.toList());
+        this.authorSelectMenuButton.getItems().setAll(items);
         this.preDefineKeywordFlowPane.getChildren().addAll(getPreDefineKeywordsCells());
     }
 
@@ -117,6 +107,21 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private MenuItem createMenuItem(Author author){
+        MenuItem menuItem = new MenuItem();
+        menuItem.setText(author.getAuthorName());
+        menuItem.setUserData(author);
+        menuItem.setOnAction((event)->authorItemSelected(event,menuItem));
+        return menuItem;
+    }
+
+    private void authorItemSelected(ActionEvent event, MenuItem item){
+        Author author = (Author) item.getUserData();
+        authorField.setText(authorField.getText()+author.getAuthorName()+";");
+        selectedAuthor.add(author);
+        this.authorSelectMenuButton.getItems().remove(item);
     }
 
     private List<Parent> getPreDefineKeywordsCells() {

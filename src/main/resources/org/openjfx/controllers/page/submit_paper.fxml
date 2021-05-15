@@ -103,7 +103,7 @@
                             <Label text="Authors:"/>
                             <StackPane alignment="CENTER_RIGHT">
                                 <TextField fx:id="authorField" editable="false"/>
-                                <ComboBox fx:id="authorSelectBox"/>
+                                <MenuButton fx:id="authorSelectMenuButton"/>
                             </StackPane>
 
                             <Label text="Keywords"/>
