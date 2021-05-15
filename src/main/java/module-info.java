@@ -6,9 +6,11 @@ module assignment{
     requires commons.validator;
     exports org.openjfx;
     exports org.openjfx.model;
+    exports org.openjfx.controllers;
     exports org.openjfx.model.interfaces;
     exports org.openjfx.controllers.page;
     exports org.openjfx.controllers.dialog;
+    exports org.openjfx.controllers.dialog.absdialog;
     opens  org.openjfx.controllers.dialog to javafx.fxml;
     opens org.openjfx.controllers.page to javafx.fxml;
     opens org.openjfx.model.abstracts to com.google.gson;

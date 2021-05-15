@@ -3,7 +3,6 @@ package org.openjfx.controllers.page;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -12,6 +11,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import org.openjfx.controllers.PageNames;
 import org.openjfx.helper.SceneHelper;
 
 import java.io.IOException;
@@ -72,7 +72,7 @@ public class MainPageLeftBannerController extends BorderPane implements Initiali
         String id = ((HBox) event.getSource()).getId();
         switch (id) {
             case "conferenceManagement":
-                SceneHelper.startPage(getClass(),event,PageNames.CONFERENCE_MANAGEMENT,true);
+                SceneHelper.startPage(getClass(),event, PageNames.CONFERENCE_MANAGEMENT,true);
                 break;
             case "paperSubmission":
                 SceneHelper.startPage(getClass(),event,PageNames.PAPER_MANAGEMENT,true);

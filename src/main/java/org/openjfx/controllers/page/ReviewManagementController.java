@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.FlowPane;
 import org.openjfx.MainApp;
+import org.openjfx.controllers.PageNames;
 import org.openjfx.helper.SceneHelper;
 import org.openjfx.model.Paper;
 import org.openjfx.service.PaperService;
@@ -16,7 +17,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.function.Consumer;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class ReviewManagementController implements Initializable {

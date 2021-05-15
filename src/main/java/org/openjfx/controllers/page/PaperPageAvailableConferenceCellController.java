@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import org.openjfx.controllers.PageNames;
 import org.openjfx.helper.SceneHelper;
 import org.openjfx.model.Conference;
 
@@ -57,7 +58,7 @@ public class PaperPageAvailableConferenceCellController implements Initializable
 
     @FXML
     void goToSubmitPage(MouseEvent event) throws IOException {
-        FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(),PageNames.SUBMIT_PAPER);
+        FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.SUBMIT_PAPER);
         Parent node = loader.load();
         Scene scene = new Scene(node);
         SubmitPaperController controller = loader.getController();

@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import org.openjfx.MainApp;
+import org.openjfx.controllers.PageNames;
 import org.openjfx.helper.InputValidation;
 import org.openjfx.helper.SceneHelper;
 import org.openjfx.model.Admin;
@@ -67,7 +68,7 @@ public class LoginPageController implements Initializable {
     }
 
     private void jumpToAdminPage(MouseEvent event, Admin admin) throws IOException {
-        FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(),PageNames.ADMIN_PAGE);
+        FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.ADMIN_PAGE);
         Parent parent = loader.load();
         AdminPageController controller = loader.getController();
         controller.setAdmin(admin);

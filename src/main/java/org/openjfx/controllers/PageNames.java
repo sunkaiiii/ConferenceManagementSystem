@@ -1,8 +1,8 @@
-package org.openjfx.controllers.page;
+package org.openjfx.controllers;
 
 import org.openjfx.controllers.page.interfaces.PageNameDescriber;
 
-enum PageNames implements PageNameDescriber {
+public enum PageNames implements PageNameDescriber {
     LOG_IN("log_in.fxml"),
     SIGN_UP("sign_up.fxml"),
     CONFERENCE_MANAGEMENT("conference_management.fxml"),

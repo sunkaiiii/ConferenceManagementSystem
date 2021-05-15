@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
+import org.openjfx.controllers.PageNames;
 import org.openjfx.helper.SceneHelper;
 import org.openjfx.model.Conference;
 import org.openjfx.model.Paper;
@@ -21,7 +22,6 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 public class ConferenceCellController implements Initializable {
     @FXML

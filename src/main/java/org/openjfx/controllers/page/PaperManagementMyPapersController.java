@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import org.openjfx.MainApp;
+import org.openjfx.controllers.PageNames;
 import org.openjfx.helper.SceneHelper;
 import org.openjfx.model.Paper;
 import org.openjfx.service.PaperService;

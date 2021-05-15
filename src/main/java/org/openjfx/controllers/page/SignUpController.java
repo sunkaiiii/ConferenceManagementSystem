@@ -13,6 +13,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 import org.openjfx.MainApp;
+import org.openjfx.controllers.PageNames;
 import org.openjfx.controllers.dialog.AddInterestingAreaDialog;
 import org.openjfx.helper.InputValidation;
 import org.openjfx.helper.SceneHelper;
