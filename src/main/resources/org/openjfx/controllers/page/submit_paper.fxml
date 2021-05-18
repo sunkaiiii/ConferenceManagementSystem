@@ -13,6 +13,7 @@
 
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
+<?import org.openjfx.controllers.page.GeneralTopLayout?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.openjfx.controllers.page.SubmitPaperController"
@@ -23,16 +24,7 @@
         <MainPageLeftBannerController index="1"/>
     </left>
     <top>
-        <StackPane prefWidth="Infinity">
-            <Label alignment="CENTER" text="Paper Management">
-                <padding>
-                    <Insets bottom="16" top="16" />
-                </padding>
-                <font>
-                    <Font name="System Bold" size="24.0" />
-                </font>
-            </Label>
-        </StackPane>
+        <GeneralTopLayout titleText="Paper Submission"/>
     </top>
     <center>
         <StackPane prefWidth="Infinity">

@@ -9,6 +9,7 @@
 <?import org.openjfx.controllers.page.MainPageLeftBannerController?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.text.Font?>
+<?import org.openjfx.controllers.page.GeneralTopLayout?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.openjfx.controllers.page.ConferencePaperController"
@@ -18,18 +19,18 @@
     </left>
 
     <top>
-        <Label fx:id="conferenceName" text="Conference Name" alignment="CENTER" prefWidth="Infinity">
-            <font>
-                <Font size="24.0" />
-            </font>
-            <padding>
-                <Insets bottom="16" top="16" />
-            </padding>
-        </Label>
+        <GeneralTopLayout titleText="Conference Management"/>
     </top>
     <center>
         <VBox>
-
+            <Label fx:id="conferenceName" text="Conference Name" alignment="CENTER" prefWidth="Infinity">
+                <font>
+                    <Font size="24.0" />
+                </font>
+                <padding>
+                    <Insets bottom="16" top="16" />
+                </padding>
+            </Label>
             <TabPane>
                 <Tab text="Paper to be processed" closable="false">
                     <VBox fx:id="paperToBeProcessedTabContainer">

@@ -11,6 +11,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.text.Font?>
+<?import org.openjfx.controllers.page.GeneralTopLayout?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.openjfx.controllers.page.ReviewerAssignmentController"
@@ -19,6 +20,9 @@
     <left>
         <MainPageLeftBannerController index="0"/>
     </left>
+    <top>
+        <GeneralTopLayout titleText="Reviewer Assignment"/>
+    </top>
     <center>
         <VBox>
             <Label fx:id="paperName"/>

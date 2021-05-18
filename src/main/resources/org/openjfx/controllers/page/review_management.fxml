@@ -10,6 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.text.Text?>
+<?import org.openjfx.controllers.page.GeneralTopLayout?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.openjfx.controllers.page.ReviewManagementController"
@@ -18,13 +19,7 @@
     <MainPageLeftBannerController index="2"/>
 </left>
     <top>
-        <Label alignment="CENTER" prefWidth="Infinity" style="-fx-font-weight: bold" text="Review Management" textFill="black">
-            <font>
-                <Font size="24.0" />
-            </font>
-            <padding>
-                <Insets bottom="16" top="16" />
-            </padding></Label>
+        <GeneralTopLayout titleText="Review Management"/>
     </top>
     <center>
         <ScrollPane fitToHeight="true" fitToWidth="true">
