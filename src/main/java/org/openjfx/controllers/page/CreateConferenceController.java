@@ -15,6 +15,8 @@ import javafx.stage.Stage;
 import org.openjfx.MainApp;
 import org.openjfx.controllers.PageNames;
 import org.openjfx.controllers.dialog.CreateConferenceSelectTimeDialog;
+import org.openjfx.controllers.dialog.GeneralAlertView;
+import org.openjfx.controllers.dialog.absdialog.AbstractAlertDialog;
 import org.openjfx.helper.DialogHelper;
 import org.openjfx.helper.InputValidation;
 import org.openjfx.helper.SceneHelper;
@@ -35,6 +37,10 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class CreateConferenceController implements Initializable {
+
+    @FXML
+    private Parent rootView;
+
     @FXML
     private TextField conferenceName;
 
@@ -43,6 +49,9 @@ public class CreateConferenceController implements Initializable {
 
     @FXML
     private TextField conferenceTopic;
+
+    @FXML
+    private GeneralAlertView confirmCreateConferenceView;
 
     @FXML
     TextField keywords;
@@ -62,7 +71,7 @@ public class CreateConferenceController implements Initializable {
         disablePastDates();
     }
 
-    private void addDateSelectedListener(){
+    private void addDateSelectedListener() {
         deadline.valueProperty().addListener(new ChangeListener<LocalDate>() {
             @Override
             public void changed(ObservableValue<? extends LocalDate> observable, LocalDate oldValue, LocalDate newValue) {
@@ -71,13 +80,13 @@ public class CreateConferenceController implements Initializable {
         });
     }
 
-    private void disablePastDates(){
-        deadline.setDayCellFactory(picker->new DateCell(){
+    private void disablePastDates() {
+        deadline.setDayCellFactory(picker -> new DateCell() {
             @Override
             public void updateItem(LocalDate item, boolean empty) {
                 super.updateItem(item, empty);
                 LocalDate today = LocalDate.now();
-                setDisable(empty || item.compareTo(today) < 0 );
+                setDisable(empty || item.compareTo(today) < 0);
             }
         });
     }
@@ -93,7 +102,7 @@ public class CreateConferenceController implements Initializable {
                 deadline.setDateTimeValue(selectedTime);
                 deadline.valueProperty().addListener(changeListener);
             });
-            Scene scene = new Scene(parent,350,100);
+            Scene scene = new Scene(parent, 350, 100);
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
@@ -127,9 +136,16 @@ public class CreateConferenceController implements Initializable {
             DialogHelper.showErrorDialog("There has a existed conference with the same name");
             return;
         }
-        saveConferenceDataToDatabase(newConference);
-        clearCacheSceneData();
-        jumpToConferenceManagement(event);
+        confirmCreateConferenceView.setAlertDialogClickListener(event1 -> {
+            try {
+                saveConferenceDataToDatabase(newConference);
+                clearCacheSceneData();
+                jumpToConferenceManagement(event);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).show(rootView);
+
     }
 
     private void jumpToConferenceManagement(MouseEvent event) throws IOException {

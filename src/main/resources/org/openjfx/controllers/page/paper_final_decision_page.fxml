@@ -8,7 +8,7 @@
 
 <?import org.openjfx.controllers.page.MainPageLeftBannerController?>
 <?import org.openjfx.controllers.page.GeneralTopLayout?>
-<?import org.openjfx.controllers.dialog.FinalDecisionAlertView?>
+<?import org.openjfx.controllers.dialog.GeneralAlertView?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.geometry.Insets?>
@@ -74,10 +74,10 @@
             </VBox>
         </center>
     </BorderPane>
-    <FinalDecisionAlertView fx:id="finalDecisionAlertView" visible="false">
+    <GeneralAlertView fx:id="generalAlertView" visible="false" alertcon>
         <negativeButtonStyle>
            <ButtonStyle buttonText="Cancel" buttonBackground="#FFFFFFFF" buttonTextFill="black"/>
         </negativeButtonStyle>
-    </FinalDecisionAlertView>
+    </GeneralAlertView>
 </StackPane>
 

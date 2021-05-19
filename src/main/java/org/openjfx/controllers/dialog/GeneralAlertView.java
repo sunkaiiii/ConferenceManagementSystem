@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.function.Consumer;
 
-public class FinalDecisionAlertView extends AbstractAlertDialog {
+public class GeneralAlertView extends AbstractAlertDialog {
 
     @FXML
     private Button negativeButton;
@@ -29,15 +29,17 @@ public class FinalDecisionAlertView extends AbstractAlertDialog {
     @FXML
     private Parent contentBody;
 
-    private Parent root;
+    private final Parent root;
+
+
 
 
 
     private WeakReference<Node> callerReference;
 
-    public FinalDecisionAlertView() {
+    public GeneralAlertView() {
         try {
-            FXMLLoader fxmlLoader = SceneHelper.createViewWithResourceName(getClass(), PageNames.FINAL_DECISION_ALERT_VIEW);
+            FXMLLoader fxmlLoader = SceneHelper.createViewWithResourceName(getClass(), PageNames.GENERAL_ALERT_VIEW);
             fxmlLoader.setRoot(this);
             fxmlLoader.setController(this);
             this.root = fxmlLoader.load();

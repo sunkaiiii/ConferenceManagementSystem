@@ -10,8 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import org.openjfx.controllers.PageNames;
-import org.openjfx.controllers.dialog.FinalDecisionAlertView;
-import org.openjfx.controllers.dialog.absdialog.AbstractAlertDialog;
+import org.openjfx.controllers.dialog.GeneralAlertView;
 import org.openjfx.controllers.dialog.absdialog.ButtonStyle;
 import org.openjfx.helper.SceneHelper;
 import org.openjfx.model.*;
@@ -40,7 +39,7 @@ public class PaperFinalDecisionPageController implements Initializable {
     private VBox reviewContainer;
 
     @FXML
-    private FinalDecisionAlertView finalDecisionAlertView;
+    private GeneralAlertView generalAlertView;
 
     @FXML
     private BorderPane finalDecisionBody;
@@ -97,15 +96,15 @@ public class PaperFinalDecisionPageController implements Initializable {
     }
 
     private void showAlertDialog(MouseEvent event, String content, ButtonStyle buttonStyle, Paper.PaperStatus paperStatus) {
-        finalDecisionAlertView.setPositiveButtonStyle(buttonStyle);
-        finalDecisionAlertView.setNegativeButtonStyle(new ButtonStyle("Cancel", "#000000", "#FFFFFFFF"));
-        finalDecisionAlertView.setAlertContent(content);
-        finalDecisionAlertView.setAlertDialogClickListener(event1 -> {
+        generalAlertView.setPositiveButtonStyle(buttonStyle);
+        generalAlertView.setNegativeButtonStyle(new ButtonStyle("Cancel", "#000000", "#FFFFFFFF"));
+        generalAlertView.setAlertContent(content);
+        generalAlertView.setAlertDialogClickListener(event1 -> {
             if (writePaperStatus(paperStatus)) {
                 refreshPreviousPageAndGoBack(event1);
             }
         });
-        finalDecisionAlertView.show(this.finalDecisionBody);
+        generalAlertView.show(this.finalDecisionBody);
     }
 
     private boolean writePaperStatus(Paper.PaperStatus status) {

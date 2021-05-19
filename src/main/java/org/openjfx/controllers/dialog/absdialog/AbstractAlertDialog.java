@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.CacheHint;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
@@ -30,13 +31,16 @@ public abstract class AbstractAlertDialog extends StackPane implements Initializ
 
     private WeakReference<Node> callerReference;
 
+    private String alertText;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
 
-    public void setAlertDialogClickListener(AlertDialogClickListener alertDialogClickListener) {
+    public AbstractAlertDialog setAlertDialogClickListener(AlertDialogClickListener alertDialogClickListener) {
         this.alertDialogClickListener = alertDialogClickListener;
+        return this;
     }
 
     public ButtonStyle getPositiveButtonStyle() {
@@ -62,7 +66,7 @@ public abstract class AbstractAlertDialog extends StackPane implements Initializ
         button.setTextFill(buttonStyle.getButtonTextFill());
         button.setStyle(String.format("-fx-background-radius: 8;-fx-background-color: %s", buttonStyle.getButtonBackground()));
     }
-
+    
     public void show(Node caller) {
         GaussianBlur blur = new GaussianBlur(0);
         caller.setEffect(blur);
@@ -80,7 +84,7 @@ public abstract class AbstractAlertDialog extends StackPane implements Initializ
         final KeyFrame kf = new KeyFrame(Duration.millis(225), kv);
         timeline.getKeyFrames().add(kf);
         timeline.play();
-
+        
         Node contentBody = getContentBody();
         contentBody.setCache(true);
         contentBody.setCacheHint(CacheHint.SPEED);
@@ -101,7 +105,7 @@ public abstract class AbstractAlertDialog extends StackPane implements Initializ
         this.callerReference = new WeakReference<>(caller);
         getRoot().setVisible(true);
     }
-
+    
     public void dismiss() {
         Node caller = callerReference.get();
         if (caller != null) {
@@ -145,14 +149,25 @@ public abstract class AbstractAlertDialog extends StackPane implements Initializ
         }
     }
 
+    public String getAlertText() {
+        return alertText;
+    }
+
+    public void setAlertText(String alertText) {
+        this.alertText = alertText;
+        getContentLabel().setText(alertText);
+    }
+
+    public abstract Label getContentLabel();
+
     public abstract void setAlertContent(String content);
-
+    
     public abstract Node getRoot();
-
+    
     public abstract Node getContentBody();
-
+    
     public abstract Button getPositiveButton();
-
+    
     public abstract Button getNegativeButton();
 
     public interface AlertDialogClickListener {

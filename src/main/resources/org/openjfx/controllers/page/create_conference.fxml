@@ -8,10 +8,11 @@
 <?import tornadofx.control.DateTimePicker?>
 <?import org.openjfx.controllers.page.MainPageLeftBannerController?>
 <?import org.openjfx.controllers.page.GeneralTopLayout?>
-<?import org.openjfx.controllers.dialog.CreateConferenceAlertView?>
+<?import org.openjfx.controllers.dialog.GeneralAlertView?>
+<?import org.openjfx.controllers.dialog.absdialog.ButtonStyle?>
 <StackPane prefHeight="734.0" prefWidth="1396.0" xmlns="http://javafx.com/javafx/11.0.1"
            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controllers.page.CreateConferenceController">
-    <BorderPane prefHeight="734.0" prefWidth="1396.0">
+    <BorderPane prefHeight="734.0" prefWidth="1396.0" fx:id="rootView">
         <left>
             <MainPageLeftBannerController index="0"/>
         </left>
@@ -79,9 +80,12 @@
             </VBox>
         </center>
     </BorderPane>
-    <CreateConferenceAlertView fx:id="finalDecisionAlertView" visible="false">
+    <GeneralAlertView fx:id="confirmCreateConferenceView" visible="false">
         <negativeButtonStyle>
             <ButtonStyle buttonText="Cancel" buttonBackground="#FFFFFFFF" buttonTextFill="black"/>
         </negativeButtonStyle>
-    </CreateConferenceAlertView>
+        <positiveButtonStyle>
+            <ButtonStyle buttonText="Create" buttonBackground="#19967d" buttonTextFill="white"/>
+        </positiveButtonStyle>
+    </GeneralAlertView>
 </StackPane>
