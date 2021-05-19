@@ -122,7 +122,7 @@ public class CreateConferenceController implements Initializable {
             return;
         }
 
-        Conference newConference = new Conference(conferenceName.getText(), conferenceTitle.getText(), conferenceTopic.getText(), Arrays.stream(keywords.getText().split(",")).collect(Collectors.toList()), deadline.getDateTimeValue().toString());
+        Conference newConference = new Conference(conferenceName.getText(), conferenceTitle.getText(), conferenceTopic.getText(), Arrays.stream(keywords.getText().split(";")).collect(Collectors.toList()), deadline.getDateTimeValue().toString());
         if (conferenceService.searchConference(conferenceName.getText()) != null) {
             DialogHelper.showErrorDialog("There has a existed conference with the same name");
             return;
