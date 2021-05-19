@@ -29,6 +29,7 @@ public enum PageNames implements PageNameDescriber {
     PAPER_FINAL_DECISION_PAGE("paper_final_decision_page.fxml"),
     FINAL_DECISION_REVIEW_LIST_CELL("final_decision_review_list_cell.fxml"),
     FINAL_DECISION_ALERT_VIEW("final_decision_alert_view.fxml"),
+    CREATE_CONFERENCE_ADD_TIME_DIALOG("/org/openjfx/controllers/dialog/create_conference_select_time_dialog.fxml"),
     ;
     private final String pageName;
 

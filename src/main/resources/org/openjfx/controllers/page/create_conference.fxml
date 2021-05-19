@@ -49,7 +49,7 @@
                     <Insets top="8" />
                 </padding>
             </Label>
-            <DateTimePicker prefWidth="Infinity" fx:id="deadline"/>
+            <DateTimePicker prefWidth="Infinity" fx:id="deadline"  />
             <BorderPane>
                 <left>
                     <Button text="Cancel" onMouseClicked="#cancelCreation"/>
