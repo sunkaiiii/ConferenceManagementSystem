@@ -132,4 +132,10 @@ public class ConferencePaperController implements Initializable, MyPaperListCell
             e.printStackTrace();
         }
     }
+
+
+    @FXML
+    private void backToPreviousView(MouseEvent event) throws IOException {
+        SceneHelper.startPage(getClass(), event, PageNames.CONFERENCE_MANAGEMENT, true);
+    }
 }

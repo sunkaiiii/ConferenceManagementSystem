@@ -67,6 +67,11 @@ public class GeneralAlertView extends AbstractAlertDialog {
 
 
     @Override
+    public Label getContentLabel() {
+        return this.alertContent;
+    }
+
+    @Override
     public void setAlertContent(String content) {
         this.alertContent.setText(content);
     }

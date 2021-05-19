@@ -148,6 +148,7 @@ public class CreateConferenceController implements Initializable {
 
     }
 
+
     private void jumpToConferenceManagement(MouseEvent event) throws IOException {
         SceneHelper.startPage(getClass(), event, PageNames.CONFERENCE_MANAGEMENT, true);
     }

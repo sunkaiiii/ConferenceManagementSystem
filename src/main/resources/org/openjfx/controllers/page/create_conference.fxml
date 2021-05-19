@@ -80,7 +80,7 @@
             </VBox>
         </center>
     </BorderPane>
-    <GeneralAlertView fx:id="confirmCreateConferenceView" visible="false">
+    <GeneralAlertView fx:id="confirmCreateConferenceView" visible="false" alertText="Do you want to create this conference?">
         <negativeButtonStyle>
             <ButtonStyle buttonText="Cancel" buttonBackground="#FFFFFFFF" buttonTextFill="black"/>
         </negativeButtonStyle>
