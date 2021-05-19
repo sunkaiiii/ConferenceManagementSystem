@@ -1,13 +1,16 @@
 package org.openjfx.controllers.page;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -15,6 +18,7 @@ import javafx.util.Pair;
 import org.openjfx.MainApp;
 import org.openjfx.controllers.PageNames;
 import org.openjfx.controllers.dialog.AddInterestingAreaDialog;
+import org.openjfx.helper.DialogHelper;
 import org.openjfx.helper.InputValidation;
 import org.openjfx.helper.SceneHelper;
 import org.openjfx.model.RegisterdUser;
@@ -52,9 +56,6 @@ public class SignUpController implements Initializable {
 
     @FXML
     private TextField employerDetails;
-
-    @FXML
-    private Label validationMessage;
 
     private List<TextField> allTextFields;
 
@@ -102,34 +103,38 @@ public class SignUpController implements Initializable {
 
     @FXML
     public void sign_up(ActionEvent event) throws IOException {
-        validationMessage.setText("");
-        if (InputValidation.checkTextFiledIsEmpty(allTextFields)) {
-            validationMessage.setText("error");
+        List<TextField> emptyField = InputValidation.findTextFieldIsEmpty(allTextFields);
+        if(emptyField.size()>0){
+            DialogHelper.showErrorDialog("You need to fill up all fields");
+            Collections.reverse(emptyField);
+            emptyField.forEach(InputValidation::setFocusAndSetErrorStyle);
             return;
         }
         if (!InputValidation.isEmailFormat(email.getText())) {
-            validationMessage.setText("The email is not in a correct format");
+            DialogHelper.showErrorDialog("The email is not in a correct format");
+            InputValidation.setFocusAndSetErrorStyle(email);
             return;
         }
         if (!InputValidation.checkPasswordFormat(password.getText())) {
-            validationMessage.setText("The password is not in a correct format");
+            DialogHelper.showErrorDialog("The password is not in a correct format");
+            InputValidation.setFocusAndSetErrorStyle(password);
             return;
         }
         if (this.interestAreas.size() <= 0) {
-            validationMessage.setText("You need to fill up at least 1 interesting area");
+            DialogHelper.showErrorDialog("You need to fill up at least 1 interesting area");
             return;
         }
         RegisterdUser newUser = new RegisterdUser(email.getText(), password.getText(), firstName.getText(), lastName.getText(), highestQualification.getText(), this.interestAreas, employerDetails.getText());
         try {
             if (userService.searchAUser(email.getText()) != null) {
-                validationMessage.setText("The email has been already registered in the system");
+                DialogHelper.showErrorDialog("The email has been already registered in the system");
                 return;
             }
             userService.addANewUser(newUser);
             MainApp.getInstance().setUser(newUser);
         } catch (IOException e) {
             e.printStackTrace();
-            validationMessage.setText("The system could not handle the database");
+            DialogHelper.showErrorDialog("The system could not handle the database");
         }
         SceneHelper.startPage(getClass(), event, PageNames.CONFERENCE_MANAGEMENT, true);
     }
