@@ -17,6 +17,7 @@ import org.openjfx.model.AuthorInformation;
 import org.openjfx.model.Paper;
 import org.openjfx.model.PaperFile;
 import org.openjfx.model.Review;
+import org.openjfx.service.ConferenceService;
 import org.openjfx.service.ReviewService;
 
 import java.io.IOException;
@@ -58,6 +59,8 @@ public class WriteReviewPageController implements Initializable {
 
     private final ReviewService reviewService = ReviewService.getDefaultInstance();
 
+    private final ConferenceService conferenceService = ConferenceService.getDefaultInstance();
+
     @FXML
     void cancelSubmit(MouseEvent event) throws IOException {
         SceneHelper.startPage(getClass(), event, PageNames.REVIEW_MANAGEMENT, true);
@@ -69,7 +72,7 @@ public class WriteReviewPageController implements Initializable {
             return;
         }
         assert this.paper != null;
-        Review review = new Review(this.paper.getId(), this.reviewContent.getText(), MainApp.getInstance().getUser().getReviewerIdentifiedName(),MainApp.getInstance().getUser().getReviewerName());
+        Review review = new Review(this.paper.getId(), this.reviewContent.getText(), MainApp.getInstance().getUser().getReviewerIdentifiedName(), MainApp.getInstance().getUser().getReviewerName());
         DialogHelper.showConfirmDialog("Confirmation", "Do you want to submit this review?", new DialogHelper.ConfirmDialogClickListener() {
             @Override
             public void onNegativeButtonClick() {
@@ -124,7 +127,7 @@ public class WriteReviewPageController implements Initializable {
     private void initViews(Paper paper) {
         this.paperName.setText(paper.getTitle());
         this.authorNames.setText(paper.getAuthors().stream().map(AuthorInformation::getAuthorDisplayName).collect(Collectors.joining(";")));
-        this.conferenceName.setText(paper.getConferenceName());
+        this.conferenceName.setText(conferenceService.getConferenceNameById(paper.getConferenceId()));
         this.topic.setText(paper.getTopic());
         this.keywords.setText(String.join(";", paper.getKeywords()));
         this.submittedTime.setText(paper.getSubmittedTime());

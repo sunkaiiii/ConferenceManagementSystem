@@ -14,7 +14,7 @@ public class Paper implements CSVConvertable<Conference> {
     private List<String> keywords;
     private String deadline;
     private List<PaperFile> paperFiles;
-    private String conferenceName;
+    private String conferenceId;
     private String submittedTime;
     private List<AuthorInformation> authors;
     private PaperStatus paperStatus;
@@ -27,7 +27,6 @@ public class Paper implements CSVConvertable<Conference> {
         this.keywords = keywords;
         this.deadline = deadline;
         this.paperFiles = paperFiles;
-        this.conferenceName = conferenceName;
         this.submittedTime = LocalDateTime.now().toString();
         this.paperStatus = PaperStatus.SUBMITTED;
     }
@@ -80,13 +79,6 @@ public class Paper implements CSVConvertable<Conference> {
         this.paperFiles = paperFiles;
     }
 
-    public String getConferenceName() {
-        return conferenceName;
-    }
-
-    public void setConferenceName(String conferenceName) {
-        this.conferenceName = conferenceName;
-    }
 
     public List<AuthorInformation> getAuthors() {
         return authors;
@@ -121,6 +113,14 @@ public class Paper implements CSVConvertable<Conference> {
         this.reviewerInformationList = reviewerInformationList;
     }
 
+    public String getConferenceId() {
+        return conferenceId;
+    }
+
+    public void setConferenceId(String conferenceId) {
+        this.conferenceId = conferenceId;
+    }
+
     public boolean isProcessed() {
         return paperStatus == PaperStatus.ACCEPTED || paperStatus == PaperStatus.REJECTED;
     }
@@ -134,7 +134,7 @@ public class Paper implements CSVConvertable<Conference> {
                 ", keywords=" + keywords +
                 ", deadline='" + deadline + '\'' +
                 ", paperFiles=" + paperFiles +
-                ", conferenceName='" + conferenceName + '\'' +
+                ", conferenceId='" + conferenceId + '\'' +
                 ", submittedTime='" + submittedTime + '\'' +
                 ", authors=" + authors +
                 ", paperStatus=" + paperStatus +

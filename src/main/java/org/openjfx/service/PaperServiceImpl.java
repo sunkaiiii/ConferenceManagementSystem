@@ -63,7 +63,7 @@ final class PaperServiceImpl implements PaperService {
 
     @Override
     public List<Paper> getConferencePaper(Conference conference) throws IOException {
-        return databaseService.searchRecords(this, new String[]{conference.getName()}, this::findConferencePaper, DataModelFactory::convertPaperFromCSVLine);
+        return databaseService.searchRecords(this, new String[]{conference.getId()}, this::findConferencePaper, DataModelFactory::convertPaperFromCSVLine);
     }
 
     @Override
@@ -83,7 +83,7 @@ final class PaperServiceImpl implements PaperService {
 
     @Override
     public List<Paper> findPaperWithStatus(Conference conference, Paper.PaperStatus status) throws IOException {
-        return databaseService.searchRecords(this, null, (statusInfo, paper) -> paper.getPaperStatus().getStatus().equals(status.getStatus()) && paper.getConferenceName().equals(conference.getName()), DataModelFactory::convertPaperFromCSVLine);
+        return databaseService.searchRecords(this, null, (statusInfo, paper) -> paper.getPaperStatus().getStatus().equals(status.getStatus()) && paper.getConferenceId().equals(conference.getId()), DataModelFactory::convertPaperFromCSVLine);
     }
 
     @Override
@@ -133,7 +133,7 @@ final class PaperServiceImpl implements PaperService {
 
     private boolean findConferencePaper(String[] conferenceNames, Paper paper) {
         String conferenceName = conferenceNames[0];
-        return paper.getConferenceName().equalsIgnoreCase(conferenceName);
+        return paper.getConferenceId().equalsIgnoreCase(conferenceName);
     }
 
     @Override

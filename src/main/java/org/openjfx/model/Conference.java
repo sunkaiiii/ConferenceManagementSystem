@@ -8,16 +8,19 @@ import org.openjfx.service.UserService;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 public class Conference implements CSVConvertable<Conference> {
-  private String name;
-  private String title;
-  private String topic;
-  private List<String> keywords;
-  private String deadline;
-  private String chairName;
+    private String id;
+    private String name;
+    private String title;
+    private String topic;
+    private List<String> keywords;
+    private String deadline;
+    private String chairName;
 
     public Conference(String name, String title, String topic, List<String> keywords, String deadline) {
+        this.id = UUID.randomUUID().toString();
         this.name = name;
         this.title = title;
         this.topic = topic;
@@ -73,17 +76,27 @@ public class Conference implements CSVConvertable<Conference> {
         this.deadline = deadline;
     }
 
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Conference{" +
-                "name='" + name + '\'' +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
                 ", title='" + title + '\'' +
                 ", topic='" + topic + '\'' +
                 ", keywords=" + keywords +
-                ", deadline=" + deadline +
+                ", deadline='" + deadline + '\'' +
+                ", chairName='" + chairName + '\'' +
                 '}';
     }
-
 
     @Override
     public String convertToCSVLine() {
@@ -91,8 +104,8 @@ public class Conference implements CSVConvertable<Conference> {
     }
 
     public static void main(String[] args) throws IOException {
-        Conference conference = new Conference("Cloud computing","Cloud computing 2020","Cloud computing",List.of("Cloud","Big data"),LocalDateTime.now().plusDays(4).toString());
+        Conference conference = new Conference("Cloud computing", "Cloud computing 2020", "Cloud computing", List.of("Cloud", "Big data"), LocalDateTime.now().plusDays(4).toString());
         RegisterdUser chair = UserService.getDefaultInstance().searchAUser("123@qq.com");
-        ConferenceService.getDefaultInstance().createConference(chair,conference);
+        ConferenceService.getDefaultInstance().createConference(chair, conference);
     }
 }

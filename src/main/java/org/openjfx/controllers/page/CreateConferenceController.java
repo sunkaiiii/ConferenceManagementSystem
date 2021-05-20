@@ -16,7 +16,6 @@ import org.openjfx.MainApp;
 import org.openjfx.controllers.PageNames;
 import org.openjfx.controllers.dialog.CreateConferenceSelectTimeDialog;
 import org.openjfx.controllers.dialog.GeneralAlertView;
-import org.openjfx.controllers.dialog.absdialog.AbstractAlertDialog;
 import org.openjfx.helper.DialogHelper;
 import org.openjfx.helper.InputValidation;
 import org.openjfx.helper.SceneHelper;
@@ -132,7 +131,7 @@ public class CreateConferenceController implements Initializable {
         }
 
         Conference newConference = new Conference(conferenceName.getText(), conferenceTitle.getText(), conferenceTopic.getText(), Arrays.stream(keywords.getText().split(";")).collect(Collectors.toList()), deadline.getDateTimeValue().toString());
-        if (conferenceService.searchConference(conferenceName.getText()) != null) {
+        if (conferenceService.searchConferenceByName(conferenceName.getText()) != null) {
             DialogHelper.showErrorDialog("There has a existed conference with the same name");
             return;
         }

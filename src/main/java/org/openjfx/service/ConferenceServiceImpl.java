@@ -36,8 +36,24 @@ final class ConferenceServiceImpl implements ConferenceService {
     }
 
     @Override
-    public Conference searchConference(String conferenceName) throws IOException {
-        return databaseService.searchARecord(this, new String[]{conferenceName}, this::searchConference, DataModelFactory::convertConferenceFromCSVLine);
+    public Conference searchConferenceById(String id) throws IOException {
+        return databaseService.searchARecord(this, new String[]{id}, this::searchConferenceById, DataModelFactory::convertConferenceFromCSVLine);
+    }
+
+    @Override
+    public String getConferenceNameById(String id) {
+        try {
+            Conference conference = searchConferenceById(id);
+            return conference.getId();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    @Override
+    public Conference searchConferenceByName(String conferenceName) throws IOException {
+        return databaseService.searchARecord(this, new String[]{conferenceName}, this::searchConferenceByName, DataModelFactory::convertConferenceFromCSVLine);
     }
 
     @Override
@@ -50,7 +66,11 @@ final class ConferenceServiceImpl implements ConferenceService {
         return databaseService.searchRecords(this, null, this::judgeIsAvailableConference, DataModelFactory::convertConferenceFromCSVLine);
     }
 
-    private boolean searchConference(String[] conferenceName, Conference conference) {
+    private boolean searchConferenceById(String[] id, Conference conference) {
+        return conference.getId().equals(id[0]);
+    }
+
+    private boolean searchConferenceByName(String[] conferenceName, Conference conference) {
         return conference.getName().equalsIgnoreCase(conferenceName[0]);
     }
 
