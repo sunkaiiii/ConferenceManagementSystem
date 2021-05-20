@@ -3,3 +3,9 @@
 .ImageView{
     -moz-border-radius: 20px;
 }
+
+.custom-dashed-border {
+    -fx-border-color: blue ;
+    -fx-border-width: 5 ;
+    -fx-border-style: segments(10, 15, 15, 15)  line-cap round ;
+}

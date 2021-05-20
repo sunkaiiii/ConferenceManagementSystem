@@ -8,19 +8,23 @@
 
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.openjfx.controllers.page.WriteReviewPageFileListCell"
             onMouseClicked="#clickToDownloadFile"
-            >
-<left>
-    <HBox>
-        <ImageView fx:id="fileIcon" fitWidth="48" fitHeight="48"/>
-        <Label fx:id="fileName">
-            <Font name="System bold"/>
-        </Label>
-    </HBox>
-</left>
+>
+    <left>
+        <HBox alignment="CENTER_LEFT">
+            <ImageView fx:id="fileIcon" fitWidth="48" fitHeight="48"/>
+            <Label fx:id="fileName" textFill="black">
+                <HBox.margin>
+                    <Insets left="8"/>
+                </HBox.margin>
+                <Font name="System Bold"/>
+            </Label>
+        </HBox>
+    </left>
     <right>
         <Label text="Downloaded" textFill="cyan" fx:id="downloadedIndicator" visible="false"/>
     </right>

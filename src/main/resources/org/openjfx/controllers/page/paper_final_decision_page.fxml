@@ -13,6 +13,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.geometry.Insets?>
 <?import org.openjfx.controllers.dialog.absdialog.ButtonStyle?>
+<?import javafx.scene.text.Font?>
 <StackPane prefHeight="734.0" prefWidth="1396.0" xmlns="http://javafx.com/javafx"
            xmlns:fx="http://javafx.com/fxml"
            fx:controller="org.openjfx.controllers.page.PaperFinalDecisionPageController">
@@ -34,21 +35,67 @@
                         <Image url="@../../images/back_arrow.png"/>
                     </image>
                 </ImageView>
-                <Label fx:id="paperName"/>
-                <Label fx:id="authors"/>
+                <Label fx:id="paperName">
+                    <font>
+                        <Font name="System Bold" size="16"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets top="16"/>
+                    </VBox.margin>
+                </Label>
+                <Label fx:id="authors">
+                    <VBox.margin>
+                        <Insets top="8"/>
+                    </VBox.margin>
+                </Label>
                 <StackPane style="-fx-background-color: white;-fx-background-radius: 8">
+                    <VBox.margin>
+                        <Insets top="8"/>
+                    </VBox.margin>
                     <padding>
                         <Insets left="16" right="16" bottom="16" top="16"/>
                     </padding>
                     <BorderPane>
                         <left>
-                            <VBox fx:id="fileContainer"/>
+                            <VBox>
+                                <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;">
+                                    <VBox fx:id="fileContainer" prefHeight="275" style="-fx-background-color:#f6f8ff;-fx-background-radius: 8 ">
+                                        <padding>
+                                            <Insets left="16" right="16" bottom="16" top="16"/>
+                                        </padding>
+                                    </VBox>
+                                </ScrollPane>
+                                <HBox>
+                                    <Label text="Keywords:">
+                                        <font>
+                                            <Font name="System Bold" size="15"/>
+                                        </font>
+                                    </Label>
+                                    <Label fx:id="keywords">
+                                        <font>
+                                            <Font name="System Bold" size="15"/>
+                                        </font>
+                                    </Label>
+                                    <VBox.margin>
+                                        <Insets top="16"/>
+                                    </VBox.margin>
+                                </HBox>
+
+                            </VBox>
+
                         </left>
                         <right>
                             <ScrollPane fitToWidth="true" fitToHeight="true"
                                         style="-fx-background-color: transparent;-fx-background: transparent">
                                 <VBox fx:id="reviewContainer">
-                                    <Label text="Reviews" textFill="black"/>
+                                    <Label text="Reviews" textFill="black">
+                                        <font>
+                                            <Font size="16" name="System Bold"/>
+                                        </font>
+                                        <VBox.margin>
+                                            <Insets left="16" bottom="8"/>
+                                        </VBox.margin>
+                                    </Label>
                                 </VBox>
                             </ScrollPane>
                         </right>
@@ -70,11 +117,14 @@
                         </padding>
                         <Label style="-fx-font-weight: bold" textFill="white" text="Accept"/>
                     </StackPane>
+                    <VBox.margin>
+                        <Insets top="16"/>
+                    </VBox.margin>
                 </HBox>
             </VBox>
         </center>
     </BorderPane>
-    <GeneralAlertView fx:id="generalAlertView" visible="false" alertcon>
+    <GeneralAlertView fx:id="generalAlertView" visible="false">
         <negativeButtonStyle>
            <ButtonStyle buttonText="Cancel" buttonBackground="#FFFFFFFF" buttonTextFill="black"/>
         </negativeButtonStyle>

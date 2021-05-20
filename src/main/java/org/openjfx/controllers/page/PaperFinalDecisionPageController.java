@@ -7,8 +7,8 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Paint;
 import org.openjfx.controllers.PageNames;
 import org.openjfx.controllers.dialog.GeneralAlertView;
 import org.openjfx.controllers.dialog.absdialog.ButtonStyle;
@@ -43,6 +43,9 @@ public class PaperFinalDecisionPageController implements Initializable {
 
     @FXML
     private BorderPane finalDecisionBody;
+
+    @FXML
+    private Label keywords;
 
 
     private Paper paper;
@@ -136,6 +139,7 @@ public class PaperFinalDecisionPageController implements Initializable {
     private void initViews(Paper paper) {
         this.paperName.setText(paper.getTitle());
         this.authors.setText(paper.getAuthors().stream().map(AuthorInformation::getAuthorDisplayName).collect(Collectors.joining(";")));
+        keywords.setText(String.join(";", paper.getKeywords()));
         List<Node> fileListCell = paper.getPaperFiles()
                 .stream()
                 .map(this::createFileListCell)
@@ -150,8 +154,11 @@ public class PaperFinalDecisionPageController implements Initializable {
                 .map(this::createReviewContentCell)
                 .collect(Collectors.toList());
 
-        this.reviewContainer.getChildren().setAll(reviewContentCell);
+        this.reviewContainer.getChildren().addAll(reviewContentCell);
         this.fileContainer.getChildren().setAll(fileListCell);
+        CornerRadii radii = new CornerRadii(8);
+        BorderWidths widths = new BorderWidths(2);
+        this.fileContainer.setBorder(new Border(new BorderStroke(Paint.valueOf("#a5b9ff"), BorderStrokeStyle.DASHED, radii,widths)));
     }
 
     @Override
