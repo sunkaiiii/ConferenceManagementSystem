@@ -23,6 +23,9 @@
             <Insets left="8" right="8" top="4" bottom="4"/>
         </padding>
         <Label text="×">
+            <HBox.margin>
+                <Insets right="4"/>
+            </HBox.margin>
             <font>
                 <Font name="System Bold"/>
             </font>

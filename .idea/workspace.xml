@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae9b270c-5962-4e59-ac2f-9f747ba3f49c" name="Default Changelist" comment="Adjust the layout of submit_paper page">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/helper/ViewHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/PaperFinalDecisionPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/PaperFinalDecisionPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/ReviewerAssignmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/ReviewerAssignmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/assign_reviewer_reviewer_list_cell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/assign_reviewer_reviewer_list_cell.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/reviewer_assignment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/reviewer_assignment.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,7 +278,7 @@
       <workItem from="1621002406581" duration="2331000" />
       <workItem from="1621086570552" duration="4113000" />
       <workItem from="1621414551869" duration="10275000" />
-      <workItem from="1621483568902" duration="12592000" />
+      <workItem from="1621483568902" duration="14853000" />
     </task>
     <task id="LOCAL-00001" summary="Adjust the layout of submit_paper page">
       <created>1620902744935</created>

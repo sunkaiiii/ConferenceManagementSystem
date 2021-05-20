@@ -8,11 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Paint;
 import org.openjfx.controllers.PageNames;
 import org.openjfx.controllers.dialog.GeneralAlertView;
 import org.openjfx.controllers.dialog.absdialog.ButtonStyle;
 import org.openjfx.helper.SceneHelper;
+import org.openjfx.helper.ViewHelper;
 import org.openjfx.model.*;
 import org.openjfx.service.PaperService;
 import org.openjfx.service.ReviewService;
@@ -156,9 +156,7 @@ public class PaperFinalDecisionPageController implements Initializable {
 
         this.reviewContainer.getChildren().addAll(reviewContentCell);
         this.fileContainer.getChildren().setAll(fileListCell);
-        CornerRadii radii = new CornerRadii(8);
-        BorderWidths widths = new BorderWidths(2);
-        this.fileContainer.setBorder(new Border(new BorderStroke(Paint.valueOf("#a5b9ff"), BorderStrokeStyle.DASHED, radii,widths)));
+        this.fileContainer.setBorder(ViewHelper.createGeneralDashBolder("#a5b9ff"));
     }
 
     @Override

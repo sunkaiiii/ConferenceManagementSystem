@@ -13,6 +13,7 @@ import org.openjfx.MainApp;
 import org.openjfx.controllers.PageNames;
 import org.openjfx.helper.DialogHelper;
 import org.openjfx.helper.SceneHelper;
+import org.openjfx.helper.ViewHelper;
 import org.openjfx.model.AuthorInformation;
 import org.openjfx.model.Paper;
 import org.openjfx.model.interfaces.Reviewer;
@@ -84,6 +85,8 @@ public class ReviewerAssignmentController implements Initializable, AssignReview
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        this.reviewerListContainer.setBorder(ViewHelper.createGeneralDashBolder("#a5b9ff"));
     }
 
     private Node createReviewerListCell(Reviewer reviewer) {
@@ -174,7 +177,7 @@ public class ReviewerAssignmentController implements Initializable, AssignReview
     private void setReviewer(MouseEvent event) {
         try {
             paperService.setReviewer(paper, selectedReviewer);
-            if(this.onReviewerAssignedListener!=null){
+            if (this.onReviewerAssignedListener != null) {
                 this.onReviewerAssignedListener.onReviewerAssigned();
             }
             back(event);

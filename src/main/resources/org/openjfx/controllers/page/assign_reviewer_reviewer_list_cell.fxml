@@ -6,15 +6,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.geometry.Insets?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.openjfx.controllers.page.AssignReviewerReviewerListCell"
             onMouseClicked="#reviewerClicked"
 >
+    <padding>
+        <Insets top="8" bottom="8"/>
+    </padding>
     <left>
         <HBox>
-            <Label fx:id="reviewerName"/>
-            <Label fx:id="interestArea"/>
+            <Label fx:id="reviewerName" textFill="black"/>
+            <Label fx:id="interestArea" textFill="black"/>
         </HBox>
     </left>
     <right>
