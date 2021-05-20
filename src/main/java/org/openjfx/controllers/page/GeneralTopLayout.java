@@ -14,6 +14,7 @@ import org.openjfx.MainApp;
 import org.openjfx.controllers.PageNames;
 import org.openjfx.helper.DialogHelper;
 import org.openjfx.helper.SceneHelper;
+import org.openjfx.model.RegisterdUser;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,6 +35,8 @@ public class GeneralTopLayout extends StackPane implements Initializable {
 
     @FXML
     private MenuItem logOut;
+
+    private boolean isAdminView;
 
     private static final double HUE_OFFSET = new Random().nextDouble() * (new Random().nextInt() % 2 == 0 ? -1 : 1);
 
@@ -65,7 +68,7 @@ public class GeneralTopLayout extends StackPane implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        menuButton.setText(MainApp.getInstance().getUser().getUserName());
+        menuButton.setText(isAdminView ? "Admin" : tryToGetUserName());
         initItemSelectedAction();
     }
 
@@ -90,5 +93,19 @@ public class GeneralTopLayout extends StackPane implements Initializable {
             }
         });
 
+    }
+
+    public boolean isAdminView() {
+        return isAdminView;
+    }
+
+    public void setAdminView(boolean adminView) {
+        isAdminView = adminView;
+        menuButton.setText(isAdminView ? "Admin" : tryToGetUserName());
+    }
+
+    private String tryToGetUserName(){
+        RegisterdUser user = MainApp.getInstance().getUser();
+        return user==null?"Unknown User":user.getUserName();
     }
 }

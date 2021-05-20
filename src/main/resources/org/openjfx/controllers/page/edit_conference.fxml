@@ -70,7 +70,7 @@
                             <Insets left="32"/>
                         </HBox.margin>
                         <padding>
-                            <Insets left="16" right="16" top="8" bottom="8"/>
+                            <Insets left="32" right="32" top="8" bottom="8"/>
                         </padding>
                         <font>
                             <Font name="System Bold" size="14"/>
