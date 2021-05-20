@@ -20,15 +20,21 @@
         </padding>
     </Label>
 
-    <StackPane prefWidth="Infinity" alignment="CENTER_RIGHT">
+
+    <HBox alignment="CENTER_RIGHT">
         <padding>
-            <Insets right="32"/>
+            <Insets right="48"/>
         </padding>
-        <MenuButton fx:id="menuButton" alignment="CENTER_RIGHT">
+        <ImageView fitWidth="32" fitHeight="32" fx:id="userImage">
+            <image>
+                <Image url="@../../images/user.png"/>
+            </image>
+        </ImageView>
+        <MenuButton fx:id="menuButton" alignment="CENTER_RIGHT" style="-fx-background-color: transparent">
             <items>
                 <MenuItem fx:id="logOut" text="Log out"/>
             </items>
         </MenuButton>
-    </StackPane>
+    </HBox>
 
 </fx:root>

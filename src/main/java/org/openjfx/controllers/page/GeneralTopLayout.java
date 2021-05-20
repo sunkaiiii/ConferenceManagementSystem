@@ -7,6 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import org.openjfx.MainApp;
 import org.openjfx.controllers.PageNames;
@@ -15,11 +17,15 @@ import org.openjfx.helper.SceneHelper;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class GeneralTopLayout extends StackPane implements Initializable {
     @FXML
     private Label title;
+
+    @FXML
+    private ImageView userImage;
 
     private String titleText;
 
@@ -28,6 +34,9 @@ public class GeneralTopLayout extends StackPane implements Initializable {
 
     @FXML
     private MenuItem logOut;
+
+    private static final double HUE_OFFSET = new Random().nextDouble() * (new Random().nextInt() % 2 == 0 ? -1 : 1);
+
 
     public GeneralTopLayout() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("general_top_layout.fxml"));
@@ -39,6 +48,10 @@ public class GeneralTopLayout extends StackPane implements Initializable {
             throw new RuntimeException(exception);
         }
         this.title.setText(titleText);
+
+        ColorAdjust colorAdjust = new ColorAdjust();
+        colorAdjust.setHue(HUE_OFFSET);
+        this.userImage.setEffect(colorAdjust);
     }
 
     public String getTitleText() {
