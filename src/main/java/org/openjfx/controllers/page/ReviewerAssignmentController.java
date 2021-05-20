@@ -7,10 +7,13 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import org.openjfx.MainApp;
 import org.openjfx.controllers.PageNames;
+import org.openjfx.controllers.dialog.GeneralAlertView;
+import org.openjfx.controllers.dialog.absdialog.AbstractAlertDialog;
 import org.openjfx.helper.DialogHelper;
 import org.openjfx.helper.SceneHelper;
 import org.openjfx.helper.ViewHelper;
@@ -39,10 +42,16 @@ public class ReviewerAssignmentController implements Initializable, AssignReview
     private Label keywords;
 
     @FXML
+    private BorderPane rootView;
+
+    @FXML
     private VBox reviewerListContainer;
 
     @FXML
     private FlowPane selectedReviewersPane;
+
+    @FXML
+    private GeneralAlertView assignReviewerConfirmationView;
 
     private Paper paper;
 
@@ -153,17 +162,14 @@ public class ReviewerAssignmentController implements Initializable, AssignReview
         if (!validation()) {
             return;
         }
-        DialogHelper.showConfirmDialog("Assign reviewer confirmation", "Do you want to assign those reviewer?\n" + this.selectedReviewer.stream().map(Reviewer::getReviewerName).collect(Collectors.joining("\n")), "Cancel", "Assign", new DialogHelper.ConfirmDialogClickListener() {
+        assignReviewerConfirmationView.setAlertContent("Do you want to assign those reviewer?\n" + this.selectedReviewer.stream().map(Reviewer::getReviewerName).collect(Collectors.joining("\n")));
+        assignReviewerConfirmationView.setAlertDialogClickListener(new AbstractAlertDialog.AlertDialogClickListener() {
             @Override
-            public void onNegativeButtonClick() {
-
-            }
-
-            @Override
-            public void onPositiveButtonClick() {
+            public void onPositiveButtonClick(MouseEvent e) {
                 setReviewer(event);
             }
         });
+        assignReviewerConfirmationView.show(rootView,400);
     }
 
     private boolean validation() {

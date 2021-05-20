@@ -1,109 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<?import org.openjfx.controllers.page.MainPageLeftBannerController?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.*?>
 <?import org.openjfx.controllers.page.GeneralTopLayout?>
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.openjfx.controllers.page.ReviewerAssignmentController"
+<?import org.openjfx.controllers.page.MainPageLeftBannerController?>
+<?import org.openjfx.controllers.dialog.GeneralAlertView?>
+<?import org.openjfx.controllers.dialog.absdialog.ButtonStyle?>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="org.openjfx.controllers.page.ReviewerAssignmentController">
+    <BorderPane
             prefWidth="1396.0"
-            prefHeight="734.0">
-    <left>
-        <MainPageLeftBannerController index="0"/>
-    </left>
-    <top>
-        <GeneralTopLayout titleText="Reviewer Assignment"/>
-    </top>
-    <center>
-        <VBox>
-            <padding>
-                <Insets left="32" right="32" bottom="32" top="32"/>
-            </padding>
-            <Label fx:id="paperName">
-                <font>
-                    <Font name="System Bold" size="24"/>
-                </font>
-            </Label>
-            <Label fx:id="authors">
-                <VBox.margin>
-                    <Insets top="8"/>
-                </VBox.margin>
-                <font>
-                    <Font name="System Bold"/>
-                </font>
-            </Label>
-            <Label fx:id="keywords">
-                <VBox.margin>
-                    <Insets top="8"/>
-                </VBox.margin>
-            </Label>
-            <HBox style="-fx-background-color: white;-fx-background-radius: 8">
-                <VBox.margin>
-                    <Insets top="16"/>
-                </VBox.margin>
+            prefHeight="734.0"
+    fx:id="rootView">
+        <left>
+            <MainPageLeftBannerController index="0"/>
+        </left>
+        <top>
+            <GeneralTopLayout titleText="Reviewer Assignment"/>
+        </top>
+        <center>
+            <VBox>
                 <padding>
-                    <Insets left="16" top="16" bottom="16" right="16"/>
+                    <Insets left="32" right="32" bottom="32" top="32"/>
                 </padding>
-                <VBox>
-                    <Label text="Available Reviewers">
-                        <VBox.margin>
-                            <Insets left="32"/>
-                        </VBox.margin>
-                        <font>
-                            <Font name="System Bold" size="16"/>
-                        </font>
-                    </Label>
-
-                    <ScrollPane fitToHeight="true" fitToWidth="true"
-                                style="-fx-background-color: transparent;-fx-background:transparent">
-                        <VBox.margin>
-                            <Insets top="16"/>
-                        </VBox.margin>
-                        <VBox fx:id="reviewerListContainer" prefWidth="500" prefHeight="400">
-                            <padding>
-                                <Insets left="16" right="16" bottom="8" top="8"/>
-                            </padding>
-                        </VBox>
-                    </ScrollPane>
-                </VBox>
-                <Region prefWidth="48"/>
-                <VBox>
-                    <Label text="Selected Reviewers">
-                        <font>
-                            <Font name="System Bold" size="16"/>
-                        </font>
-                    </Label>
-                    <FlowPane fx:id="selectedReviewersPane"/>
-                </VBox>
-            </HBox>
-
-            <HBox alignment="CENTER">
-                <VBox.margin>
-                    <Insets top="32"/>
-                </VBox.margin>
-                <Label text="Cancel" onMouseClicked="#back"/>
-                <Region prefWidth="48"/>
-                <StackPane onMouseClicked="#assignReviewer"
-                           style="-fx-background-color: #0c7dba;-fx-background-radius: 8">
+                <Label fx:id="paperName">
+                    <font>
+                        <Font name="System Bold" size="24"/>
+                    </font>
+                </Label>
+                <Label fx:id="authors">
+                    <VBox.margin>
+                        <Insets top="8"/>
+                    </VBox.margin>
+                    <font>
+                        <Font name="System Bold"/>
+                    </font>
+                </Label>
+                <Label fx:id="keywords">
+                    <VBox.margin>
+                        <Insets top="8"/>
+                    </VBox.margin>
+                </Label>
+                <HBox style="-fx-background-color: white;-fx-background-radius: 8">
+                    <VBox.margin>
+                        <Insets top="16"/>
+                    </VBox.margin>
                     <padding>
-                        <Insets top="8" bottom="8" left="32" right="32"/>
+                        <Insets left="16" top="16" bottom="16" right="16"/>
                     </padding>
-                    <Label text="Assign" textFill="white">
-                        <font>
-                            <Font name="System Bold"/>
-                        </font>
-                    </Label>
-                </StackPane>
-            </HBox>
-        </VBox>
-    </center>
-</BorderPane>
+                    <VBox>
+                        <Label text="Available Reviewers">
+                            <VBox.margin>
+                                <Insets left="32"/>
+                            </VBox.margin>
+                            <font>
+                                <Font name="System Bold" size="16"/>
+                            </font>
+                        </Label>
+
+                        <ScrollPane fitToHeight="true" fitToWidth="true"
+                                    style="-fx-background-color: transparent;-fx-background:transparent">
+                            <VBox.margin>
+                                <Insets top="16"/>
+                            </VBox.margin>
+                            <VBox fx:id="reviewerListContainer" prefWidth="500" prefHeight="400">
+                                <padding>
+                                    <Insets left="16" right="16" bottom="8" top="8"/>
+                                </padding>
+                            </VBox>
+                        </ScrollPane>
+                    </VBox>
+                    <Region prefWidth="48"/>
+                    <VBox>
+                        <Label text="Selected Reviewers">
+                            <font>
+                                <Font name="System Bold" size="16"/>
+                            </font>
+                        </Label>
+                        <FlowPane fx:id="selectedReviewersPane"/>
+                    </VBox>
+                </HBox>
+
+                <HBox alignment="CENTER">
+                    <VBox.margin>
+                        <Insets top="32"/>
+                    </VBox.margin>
+                    <Label text="Cancel" onMouseClicked="#back"/>
+                    <Region prefWidth="48"/>
+                    <StackPane onMouseClicked="#assignReviewer"
+                               style="-fx-background-color: #0c7dba;-fx-background-radius: 8">
+                        <padding>
+                            <Insets top="8" bottom="8" left="32" right="32"/>
+                        </padding>
+                        <Label text="Assign" textFill="white">
+                            <font>
+                                <Font name="System Bold"/>
+                            </font>
+                        </Label>
+                    </StackPane>
+                </HBox>
+            </VBox>
+        </center>
+    </BorderPane>
+<GeneralAlertView fx:id="assignReviewerConfirmationView" visible="false">
+    <negativeButtonStyle>
+        <ButtonStyle buttonText="Cancel" buttonBackground="#FFFFFFFF" buttonTextFill="black"/>
+    </negativeButtonStyle>
+    <positiveButtonStyle>
+        <ButtonStyle buttonText="Assign" buttonBackground="#0c7dba" buttonTextFill="white"/>
+    </positiveButtonStyle>
+</GeneralAlertView>
+</StackPane>

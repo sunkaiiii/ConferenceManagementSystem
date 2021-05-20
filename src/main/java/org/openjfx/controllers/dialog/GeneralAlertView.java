@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Region;
 import org.openjfx.controllers.PageNames;
 import org.openjfx.controllers.dialog.absdialog.AbstractAlertDialog;
 import org.openjfx.helper.SceneHelper;
@@ -27,9 +28,9 @@ public class GeneralAlertView extends AbstractAlertDialog {
     private Label alertContent;
 
     @FXML
-    private Parent contentBody;
+    private Region contentBody;
 
-    private final Parent root;
+    private final Region root;
 
 
 
@@ -43,6 +44,7 @@ public class GeneralAlertView extends AbstractAlertDialog {
             fxmlLoader.setRoot(this);
             fxmlLoader.setController(this);
             this.root = fxmlLoader.load();
+            setVisible(false);
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
@@ -77,12 +79,12 @@ public class GeneralAlertView extends AbstractAlertDialog {
     }
 
     @Override
-    public Node getRoot() {
+    public Region getRoot() {
         return this.root;
     }
 
     @Override
-    public Node getContentBody() {
+    public Region getContentBody() {
         return this.contentBody;
     }
 

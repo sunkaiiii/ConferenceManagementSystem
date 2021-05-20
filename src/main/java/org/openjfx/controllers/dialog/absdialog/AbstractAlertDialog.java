@@ -6,10 +6,12 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.Initializable;
 import javafx.scene.CacheHint;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
@@ -68,6 +70,10 @@ public abstract class AbstractAlertDialog extends StackPane implements Initializ
     }
     
     public void show(Node caller) {
+        show(caller, (int) getContentBody().getMaxHeight());
+    }
+
+    public void show(Node caller, int preHeight){
         GaussianBlur blur = new GaussianBlur(0);
         caller.setEffect(blur);
         caller.setCache(true);
@@ -84,10 +90,11 @@ public abstract class AbstractAlertDialog extends StackPane implements Initializ
         final KeyFrame kf = new KeyFrame(Duration.millis(225), kv);
         timeline.getKeyFrames().add(kf);
         timeline.play();
-        
-        Node contentBody = getContentBody();
+
+        Region contentBody = getContentBody();
         contentBody.setCache(true);
         contentBody.setCacheHint(CacheHint.SPEED);
+        contentBody.setMaxHeight(preHeight);
         ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(225), contentBody);
         scaleTransition.setFromX(0.3);
         scaleTransition.setFromY(0.3);
@@ -162,9 +169,9 @@ public abstract class AbstractAlertDialog extends StackPane implements Initializ
 
     public abstract void setAlertContent(String content);
     
-    public abstract Node getRoot();
+    public abstract Region getRoot();
     
-    public abstract Node getContentBody();
+    public abstract Region getContentBody();
     
     public abstract Button getPositiveButton();
     
