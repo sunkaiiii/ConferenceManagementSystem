@@ -22,7 +22,7 @@
         </padding>
         <Label fx:id="conferenceName" alignment="CENTER">
             <font>
-                <Font name="System bold"/>
+                <Font name="System Bold"/>
             </font>
         </Label>
         <HBox>

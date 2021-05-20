@@ -16,7 +16,7 @@ fx:id="topView">
         <HBox>
             <ImageView fx:id="fileIcon" fitWidth="48" fitHeight="48"/>
             <Label fx:id="fileName" textFill="black" alignment="CENTER">
-                <Font name="System bold"/>
+                <Font name="System Bold"/>
             </Label>
         </HBox>
     </left>

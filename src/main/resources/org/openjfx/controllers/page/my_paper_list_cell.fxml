@@ -16,7 +16,7 @@
             <VBox alignment="CENTER_LEFT">
                 <Label fx:id="paperName">
                     <font>
-                        <Font name="System bold" size="16"/>
+                        <Font name="System Bold" size="16"/>
                     </font>
                 </Label>
                 <Label fx:id="keywords" textFill="gray" />
@@ -27,12 +27,12 @@
             <HBox alignment="CENTER">
                 <Label text="Submitted by:" >
                     <font>
-                        <Font name="System bold"/>
+                        <Font name="System Bold"/>
                     </font>
                 </Label>
                 <Label fx:id="submittedName">
                     <font>
-                        <Font name="System bold"/>
+                        <Font name="System Bold"/>
                     </font>
                 </Label>
             </HBox>
@@ -53,7 +53,7 @@
                         </padding>
                         <Label fx:id="paperStatus" textFill="white" prefHeight="16" maxHeight="16">
                             <font>
-                                <Font name="System bold"/>
+                                <Font name="System Bold"/>
                             </font>
                         </Label>
                     </StackPane>

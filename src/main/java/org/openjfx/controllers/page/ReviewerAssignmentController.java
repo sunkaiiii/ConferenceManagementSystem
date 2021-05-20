@@ -131,7 +131,6 @@ public class ReviewerAssignmentController implements Initializable, AssignReview
     }
 
     private void onCancelReviewerClick(MouseEvent event, Reviewer reviewer) {
-        System.out.println("event");
         this.selectedReviewersPane.getChildren().remove(event.getSource());
         reviewerListContainer.getChildren().add(createReviewerListCell(reviewer));
         this.selectedReviewer.remove(reviewer);

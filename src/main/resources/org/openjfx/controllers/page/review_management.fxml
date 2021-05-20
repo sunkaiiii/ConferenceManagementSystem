@@ -26,13 +26,13 @@
             <VBox>
                 <Label text="Assign to you">
                     <font>
-                        <Font name="System bold"/>
+                        <Font name="System Bold"/>
                     </font>
                 </Label>
                 <FlowPane fx:id="reviewPaperList"/>
                 <Text text="Reviewed paper">
                     <font>
-                        <Font name="System bold"/>
+                        <Font name="System Bold"/>
                     </font>
                 </Text>
                 <FlowPane fx:id="reviewedPaperList"/>

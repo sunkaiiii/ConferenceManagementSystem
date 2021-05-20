@@ -22,7 +22,7 @@
             <StackPane>
                 <Label fx:id="userName">
                     <font>
-                        <Font name="System bold" size="14"/>
+                        <Font name="System Bold" size="14"/>
                     </font>
                 </Label>
             </StackPane>
