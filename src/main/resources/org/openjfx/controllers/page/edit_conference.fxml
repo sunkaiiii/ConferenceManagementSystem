@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import tornadofx.control.DateTimePicker?>
 <?import org.openjfx.controllers.page.MainPageLeftBannerController?>
 <?import org.openjfx.controllers.page.GeneralTopLayout?>
 <?import org.openjfx.controllers.dialog.GeneralAlertView?>
 <?import org.openjfx.controllers.dialog.absdialog.ButtonStyle?>
 <StackPane prefHeight="734.0" prefWidth="1396.0" xmlns="http://javafx.com/javafx/11.0.1"
-           xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controllers.page.CreateConferenceController">
+           xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controllers.page.EditConferenceController">
     <BorderPane prefHeight="734.0" prefWidth="1396.0" fx:id="rootView">
         <left>
             <MainPageLeftBannerController index="0"/>
         </left>
         <top>
-            <GeneralTopLayout titleText="Create Conference"/>
+            <GeneralTopLayout titleText="Edit Conference"/>
         </top>
         <center>
             <VBox maxWidth="350">
@@ -59,8 +63,8 @@
                         </font>
                     </Label>
 
-                    <Button text="Create" onMouseClicked="#positiveButtonClicked"
-                            style="-fx-background-color: #19967d;-fx-background-radius: 8;-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 6, 0, 0, 0);"
+                    <Button text="Edit" onMouseClicked="#positiveButtonClicked"
+                            style="-fx-background-color: #ef8d22;-fx-background-radius: 8;-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 6, 0, 0, 0);"
                             textFill="white">
                         <HBox.margin>
                             <Insets left="32"/>
@@ -80,12 +84,12 @@
             </VBox>
         </center>
     </BorderPane>
-    <GeneralAlertView fx:id="confirmCreateConferenceView" visible="false" alertText="Do you want to create this conference?">
+    <GeneralAlertView fx:id="confirmCreateConferenceView" visible="false" alertText="Do you want to edit this conference?">
         <negativeButtonStyle>
             <ButtonStyle buttonText="Cancel" buttonBackground="#FFFFFFFF" buttonTextFill="black"/>
         </negativeButtonStyle>
         <positiveButtonStyle>
-            <ButtonStyle buttonText="Create" buttonBackground="#19967d" buttonTextFill="white"/>
+            <ButtonStyle buttonText="Edit" buttonBackground="#ef8d22" buttonTextFill="white"/>
         </positiveButtonStyle>
     </GeneralAlertView>
 </StackPane>

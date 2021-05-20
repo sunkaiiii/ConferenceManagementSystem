@@ -7,6 +7,7 @@ public enum PageNames implements PageNameDescriber {
     SIGN_UP("sign_up.fxml"),
     CONFERENCE_MANAGEMENT("conference_management.fxml"),
     CREATE_CONFERENCE("create_conference.fxml"),
+    EDIT_CONFERENCE("edit_conference.fxml"),
     CONFERENCE_CELL("conference_cell.fxml"),
     AVAILABLE_CONFERENCE_CELL("paper_page_available_conference_cell.fxml"),
     PAPER_MANAGEMENT("paper_management.fxml"),

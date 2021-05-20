@@ -12,11 +12,15 @@ import org.openjfx.controllers.page.interfaces.PageNameDescriber;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Consumer;
 
 public final class SceneHelper {
     private static final Map<String, Scene> sceneMap = new HashMap<>();
 
     public static void startPage(Class<? extends Initializable> controllerClazz, Event event, PageNameDescriber resourceFileName, boolean cacheScene) throws IOException {
+        startPage(controllerClazz,event,resourceFileName,cacheScene,null);
+    }
+    public static void startPage(Class<? extends Initializable> controllerClazz, Event event, PageNameDescriber resourceFileName, boolean cacheScene, Consumer<Scene> onStageShowing) throws IOException {
         Scene scene;
         if (cacheScene) {
             scene = SceneHelper.getSceneFromResourceNameWithCache(controllerClazz, resourceFileName.getPageName());
@@ -26,6 +30,9 @@ public final class SceneHelper {
         Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         appStage.setScene(scene);
         appStage.show();
+        if(onStageShowing!=null){
+            onStageShowing.accept(scene);
+        }
     }
 
     public static void startStage(Scene scene,Event event){
@@ -63,12 +70,19 @@ public final class SceneHelper {
     }
 
     private static Scene getSceneFromResourceName(Class<? extends Initializable> clazz, String resourceFileName) throws IOException {
-        Parent parent = FXMLLoader.load(clazz.getResource(resourceFileName));
-        return new Scene(parent);
+        FXMLLoader loader = new FXMLLoader(clazz.getResource(resourceFileName));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        scene.setUserData(loader);
+        return scene;
     }
 
     public static FXMLLoader createViewWithResourceName(Class<? extends Initializable> clazz,PageNameDescriber resourceFileName)throws IOException{
         return new FXMLLoader(clazz.getResource(resourceFileName.getPageName()));
+    }
+
+    public static <T> T getController(Scene scene){
+        return ((FXMLLoader)scene.getUserData()).getController();
     }
 
     public static void deleteScene(String resourceFileName) {

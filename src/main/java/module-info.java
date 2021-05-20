@@ -12,6 +12,7 @@ module assignment{
     exports org.openjfx.controllers.dialog;
     exports org.openjfx.controllers.dialog.absdialog;
     opens org.openjfx.controllers.dialog.absdialog to javafx.fxml;
+    opens org.openjfx.controllers.page.abspage to javafx.fxml;
     opens  org.openjfx.controllers.dialog to javafx.fxml;
     opens org.openjfx.controllers.page to javafx.fxml;
     opens org.openjfx.model.abstracts to com.google.gson;

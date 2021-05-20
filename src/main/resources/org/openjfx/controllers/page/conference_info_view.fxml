@@ -11,7 +11,7 @@
 <?import org.openjfx.controllers.dialog.GeneralAlertView?>
 <?import org.openjfx.controllers.dialog.absdialog.ButtonStyle?>
 <StackPane prefHeight="734.0" prefWidth="1396.0" xmlns="http://javafx.com/javafx/11.0.1"
-           xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controllers.page.CreateConferenceController">
+           xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controllers.page.abspage.AbsConferenceViewController">
     <BorderPane prefHeight="734.0" prefWidth="1396.0" fx:id="rootView">
         <left>
             <MainPageLeftBannerController index="0"/>

@@ -31,6 +31,9 @@
             <padding>
                 <Insets left="8" right="8" top="8" bottom="8"/>
             </padding>
+            <VBox.margin>
+                <Insets top="8"/>
+            </VBox.margin>
         </VBox>
         <HBox alignment="CENTER_RIGHT">
             <VBox.margin>
@@ -45,7 +48,7 @@
             </Button>
             <Button fx:id="edit" text="Edit"
                     style="-fx-background-color: transparent;-fx-border-color: #ffc474;-fx-border-radius: 8;-fx-border-width: 2"
-                    textFill="#ef8c22">
+                    textFill="#ef8c22" onMouseClicked="#editConference">
                 <padding>
                     <Insets left="16" right="16" top="8" bottom="8"/>
                 </padding>

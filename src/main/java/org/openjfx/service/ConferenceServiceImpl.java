@@ -31,6 +31,11 @@ final class ConferenceServiceImpl implements ConferenceService {
     }
 
     @Override
+    public void updateConference(Conference newConference) throws IOException {
+        databaseService.alterRecord(this,new String[]{newConference.getId()},newConference,this::searchConferenceById,DataModelFactory::convertConferenceFromCSVLine);
+    }
+
+    @Override
     public List<Conference> searchAllConference() throws IOException {
         return databaseService.searchRecords(this, null, (predicate, data) -> true, DataModelFactory::convertConferenceFromCSVLine);
     }

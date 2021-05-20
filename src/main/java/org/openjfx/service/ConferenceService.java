@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface ConferenceService extends DatabaseController {
     void createConference(Chair chair, Conference newConference) throws IOException;
+    void updateConference(Conference newConference) throws IOException;
     List<Conference> searchAllConference() throws IOException;
     Conference searchConferenceById(String id) throws IOException;
     String getConferenceNameById(String id);
