@@ -8,7 +8,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.text.Font?>
-<StackPane prefWidth="500" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+<StackPane prefWidth="400" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
            fx:controller="org.openjfx.controllers.page.PaperPageAvailableConferenceCellController">
     <padding>
         <Insets bottom="16" left="16" right="16" top="16"/>
@@ -25,21 +25,41 @@
         <HBox alignment="CENTER_LEFT">
             <Label text="Topic:"/>
             <Label fx:id="topic"/>
+            <VBox.margin>
+                <Insets top="16" bottom="6"/>
+            </VBox.margin>
         </HBox>
         <HBox alignment="CENTER_LEFT">
             <Label text="Keywords:"/>
             <Label fx:id="keywords"/>
+            <VBox.margin>
+                <Insets top="6" bottom="6"/>
+            </VBox.margin>
         </HBox>
         <HBox alignment="CENTER_LEFT">
             <Label text="Deadline:"/>
             <Label fx:id="deadline"/>
+            <VBox.margin>
+                <Insets top="6" bottom="6"/>
+            </VBox.margin>
         </HBox>
         <HBox alignment="CENTER_LEFT">
             <Label text="Chair Name:"/>
             <Label fx:id="chairName"/>
+            <VBox.margin>
+                <Insets top="6" bottom="6"/>
+            </VBox.margin>
         </HBox>
         <HBox alignment="CENTER_RIGHT">
-            <Button text="Submit Paper" onMouseClicked="#goToSubmitPage"/>
+            <Button text="Submit Paper" onMouseClicked="#goToSubmitPage"
+                    style="-fx-background-color: #0c7cba;-fx-background-radius: 8;-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 6, 0, 0, 0)" textFill="white">
+                <padding>
+                    <Insets left="12" right="12" top="6" bottom="6"/>
+                </padding>
+            </Button>
+            <VBox.margin>
+                <Insets top="8"/>
+            </VBox.margin>
         </HBox>
 
     </VBox>
