@@ -32,13 +32,23 @@
                 <Insets left="32" right="32" bottom="16" top="16"/>
             </padding>
             <VBox alignment="CENTER_LEFT">
-                <Label text="Paper Name: " />
+                <Label text="Paper Name: ">
+                    <padding>
+                        <Insets bottom="4"/>
+                    </padding>
+                </Label>
                 <TextField fx:id="paperName"/>
                 <HBox>
+                    <padding>
+                        <Insets top="8"/>
+                    </padding>
                     <Label text="Conference Name: "/>
                     <Label fx:id="conferenceName"/>
                 </HBox>
                 <HBox>
+                    <padding>
+                        <Insets top="8" bottom="8"/>
+                    </padding>
                     <Label text="Conference chair: "/>
                     <Label fx:id="chairName"/>
                 </HBox>
@@ -86,13 +96,21 @@
                             <padding>
                                 <Insets left="8" />
                             </padding>
-                            <Label text="Authors:"/>
+                            <Label text="Authors:">
+                                <padding>
+                                    <Insets bottom="4"/>
+                                </padding>
+                            </Label>
                             <StackPane alignment="CENTER_RIGHT">
                                 <TextField fx:id="authorField" editable="false"/>
                                 <MenuButton fx:id="authorSelectMenuButton"/>
                             </StackPane>
 
-                            <Label text="Keywords"/>
+                            <Label text="Keywords: ">
+                                <padding>
+                                    <Insets top="8" bottom="4"/>
+                                </padding>
+                            </Label>
                             <TextField fx:id="keywordField" editable="false"/>
                             <FlowPane fx:id="preDefineKeywordFlowPane"/>
                         </VBox>
@@ -118,3 +136,4 @@
     </center>
 
 </BorderPane>
+
