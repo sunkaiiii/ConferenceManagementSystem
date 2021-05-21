@@ -1,16 +1,12 @@
 package org.openjfx.controllers.page;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -18,6 +14,7 @@ import javafx.util.Pair;
 import org.openjfx.MainApp;
 import org.openjfx.controllers.PageNames;
 import org.openjfx.controllers.dialog.AddInterestingAreaDialog;
+import org.openjfx.helper.AutoTrimTextField;
 import org.openjfx.helper.DialogHelper;
 import org.openjfx.helper.InputValidation;
 import org.openjfx.helper.SceneHelper;
@@ -31,13 +28,13 @@ import java.util.*;
 public class SignUpController implements Initializable {
 
     @FXML
-    private TextField firstName;
+    private AutoTrimTextField firstName;
 
     @FXML
-    private TextField lastName;
+    private AutoTrimTextField lastName;
 
     @FXML
-    private TextField email;
+    private AutoTrimTextField email;
 
     @FXML
     private TextField password;
@@ -46,16 +43,16 @@ public class SignUpController implements Initializable {
     private TextField confirmedPassword;
 
     @FXML
-    private TextField highestQualification;
+    private AutoTrimTextField highestQualification;
 
     @FXML
-    private TextField mobileNumber;
+    private AutoTrimTextField mobileNumber;
 
     @FXML
-    private TextField interestArea;
+    private AutoTrimTextField interestArea;
 
     @FXML
-    private TextField employerDetails;
+    private AutoTrimTextField employerDetails;
 
     private List<TextField> allTextFields;
 
@@ -98,7 +95,7 @@ public class SignUpController implements Initializable {
 
     private void refreshViewWithNewInterestingArea(Pair<String, Integer> newInterestingArea) {
         this.interestAreas.put(newInterestingArea.getKey(), newInterestingArea.getValue());
-        this.interestArea.setText(this.interestArea.getText() + String.format("(%s:%s)", newInterestingArea.getKey(), newInterestingArea.getValue()));
+        this.interestArea.setText(this.interestArea.getTrimText() + String.format("(%s:%s)", newInterestingArea.getKey(), newInterestingArea.getValue()));
     }
 
     @FXML
@@ -110,7 +107,7 @@ public class SignUpController implements Initializable {
             emptyField.forEach(InputValidation::setFocusAndSetErrorStyle);
             return;
         }
-        if (!InputValidation.isEmailFormat(email.getText())) {
+        if (!InputValidation.isEmailFormat(email.getTrimText())) {
             DialogHelper.showErrorDialog("The email is not in a correct format");
             InputValidation.setFocusAndSetErrorStyle(email);
             return;
@@ -124,9 +121,9 @@ public class SignUpController implements Initializable {
             DialogHelper.showErrorDialog("You need to fill up at least 1 interesting area");
             return;
         }
-        RegisterdUser newUser = new RegisterdUser(email.getText(), password.getText(), firstName.getText(), lastName.getText(), highestQualification.getText(), this.interestAreas, employerDetails.getText());
+        RegisterdUser newUser = new RegisterdUser(email.getTrimText(), password.getText(), firstName.getTrimText(), lastName.getTrimText(), highestQualification.getTrimText(), this.interestAreas, employerDetails.getTrimText());
         try {
-            if (userService.searchAUser(email.getText()) != null) {
+            if (userService.searchAUser(email.getTrimText()) != null) {
                 DialogHelper.showErrorDialog("The email has been already registered in the system");
                 return;
             }

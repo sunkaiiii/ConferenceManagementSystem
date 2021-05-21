@@ -1,20 +1,17 @@
 package org.openjfx.controllers.page;
 
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import org.openjfx.MainApp;
 import org.openjfx.controllers.PageNames;
+import org.openjfx.helper.AutoTrimTextField;
 import org.openjfx.helper.DialogHelper;
 import org.openjfx.helper.InputValidation;
 import org.openjfx.helper.SceneHelper;
@@ -32,7 +29,7 @@ import java.util.ResourceBundle;
 public class LoginPageController implements Initializable {
     
     @FXML
-    private TextField userName;
+    private AutoTrimTextField userName;
 
     @FXML
     private TextField password;
@@ -57,15 +54,15 @@ public class LoginPageController implements Initializable {
             emptyField.forEach(InputValidation::setFocusAndSetErrorStyle);
             return;
         }
-        if (userName.getText().equalsIgnoreCase("admin")) {
-            Admin admin = userService.adminLogin(userName.getText(), password.getText());
+        if (userName.getTrimText().equalsIgnoreCase("admin")) {
+            Admin admin = userService.adminLogin(userName.getTrimText(), password.getText());
             if(admin!=null){
                 jumpToAdminPage(event,admin);
             }
 
             return;
         }
-        RegisterdUser user = userService.checkUserCredential(userName.getText(), password.getText());
+        RegisterdUser user = userService.checkUserCredential(userName.getTrimText(), password.getText());
 
         if (user != null) {
             MainApp.getInstance().setUser(user);

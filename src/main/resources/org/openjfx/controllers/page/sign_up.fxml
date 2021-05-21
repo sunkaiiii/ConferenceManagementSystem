@@ -9,6 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.geometry.Insets?>
 
+<?import org.openjfx.helper.AutoTrimTextField?>
 <BorderPane prefWidth="1396.0"
             prefHeight="734.0"
             style="-fx-background-color: #f6f6f6;" xmlns="http://javafx.com/javafx/8.0.121"
@@ -56,11 +57,11 @@
                         <Insets left="4" top="8" bottom="8" right="4"/>
                     </padding>
                     <Label text="First Name" style="-fx-font-weight: bold"/>
-                    <TextField fx:id="firstName"/>
+                    <AutoTrimTextField fx:id="firstName"/>
                 </VBox>
                 <VBox alignment="CENTER_LEFT" prefWidth="280">
                     <Label text="Last Name" style="-fx-font-weight: bold"/>
-                    <TextField fx:id="lastName"/>
+                    <AutoTrimTextField fx:id="lastName"/>
                 </VBox>
             </HBox>
             <VBox>
@@ -68,7 +69,7 @@
                     <Insets left="4" top="8" bottom="8" right="4"/>
                 </padding>
                 <Label text="Email" style="-fx-font-weight: bold"/>
-                <TextField fx:id="email"/>
+                <AutoTrimTextField fx:id="email"/>
             </VBox>
             <VBox>
                 <padding>
@@ -89,14 +90,14 @@
                     <Insets left="4" top="8" bottom="8" right="4"/>
                 </padding>
                 <Label text="Highest qualification" style="-fx-font-weight: bold"/>
-                <TextField fx:id="highestQualification"/>
+                <AutoTrimTextField fx:id="highestQualification"/>
             </VBox>
             <VBox>
                 <padding>
                     <Insets left="4" top="8" bottom="8" right="4"/>
                 </padding>
                 <Label text="Mobile number" style="-fx-font-weight: bold"/>
-                <TextField fx:id="mobileNumber"/>
+                <AutoTrimTextField fx:id="mobileNumber"/>
             </VBox>
             <VBox>
                 <padding>
@@ -104,7 +105,7 @@
                 </padding>
                 <Label text="Interest area" style="-fx-font-weight: bold"/>
                 <StackPane>
-                    <TextField fx:id="interestArea" disable="true"/>
+                    <AutoTrimTextField fx:id="interestArea" disable="true"/>
                     <Button text="Add" onMouseClicked="#addInterestingAreaClicked" StackPane.alignment="CENTER_RIGHT"/>
                 </StackPane>
 
@@ -114,7 +115,7 @@
                     <Insets left="4" top="8" bottom="8" right="4"/>
                 </padding>
                 <Label text="Employer's details" style="-fx-font-weight: bold"/>
-                <TextField fx:id="employerDetails" onAction="#sign_up"/>
+                <AutoTrimTextField fx:id="employerDetails" onAction="#sign_up"/>
             </VBox>
             <Button text="Sign up" onAction="#sign_up" style="-fx-background-color: #3aa6dd" textFill="white" prefWidth="Infinity" >
                 <font>

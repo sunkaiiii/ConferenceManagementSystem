@@ -2,10 +2,10 @@ package org.openjfx.controllers.dialog;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Pair;
+import org.openjfx.helper.AutoTrimTextField;
 import org.openjfx.helper.DialogHelper;
 import org.openjfx.helper.InputValidation;
 
@@ -13,10 +13,10 @@ import java.util.List;
 
 public class AddInterestingAreaDialog {
     @FXML
-    private TextField interestingAreaName;
+    private AutoTrimTextField interestingAreaName;
 
     @FXML
-    private TextField interestingAreaExpertise;
+    private AutoTrimTextField interestingAreaExpertise;
 
     private OnAddInterestingAreaListener onAddInterestingAreaListener;
 
@@ -28,7 +28,7 @@ public class AddInterestingAreaDialog {
         }
         int expertise = Integer.MIN_VALUE;
         try {
-            expertise = Integer.parseInt(interestingAreaExpertise.getText());
+            expertise = Integer.parseInt(interestingAreaExpertise.getTrimText());
         } catch (Exception e) {
             e.printStackTrace();
             DialogHelper.showErrorDialog("The expertise needs to be a number (0-10)");
@@ -39,7 +39,7 @@ public class AddInterestingAreaDialog {
             return;
         }
         if (onAddInterestingAreaListener != null) {
-            onAddInterestingAreaListener.onAdded(new Pair<>(interestingAreaName.getText(), expertise));
+            onAddInterestingAreaListener.onAdded(new Pair<>(interestingAreaName.getTrimText(), expertise));
         }
         closeStage(event);
     }

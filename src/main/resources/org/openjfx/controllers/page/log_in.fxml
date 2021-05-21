@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import org.openjfx.helper.AutoTrimTextField?>
 <BorderPane prefHeight="734.0" prefWidth="1396.0" style="-fx-background-color: #f6f6f6;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.controllers.page.LoginPageController">
     <top>
         <BorderPane>
@@ -40,7 +41,7 @@
                         <Insets bottom="8" top="8" />
                     </padding>
                 </Label>
-                <TextField fx:id="userName" onAction="#login" />
+                <AutoTrimTextField fx:id="userName" onAction="#login" />
                 <Label style="-fx-font-weight: bold" text="password">
                     <font>
                         <Font size="18" />
