@@ -40,7 +40,7 @@
                         <Insets bottom="8" top="8" />
                     </padding>
                 </Label>
-                <TextField fx:id="userName" />
+                <TextField fx:id="userName" onAction="#login" />
                 <Label style="-fx-font-weight: bold" text="password">
                     <font>
                         <Font size="18" />
@@ -49,7 +49,7 @@
                         <Insets bottom="8" top="8" />
                     </padding>
                 </Label>
-                <PasswordField fx:id="password" />
+                <PasswordField fx:id="password" onAction="#login" />
                 <StackPane>
                     <padding>
                         <Insets bottom="16" top="16" />
@@ -64,10 +64,6 @@
                     <Label style="-fx-font-weight: bold" text="Don’t have an account yet? " />
                     <Label onMouseClicked="#signup" style="-fx-font-weight: bold" text="Sign up" textFill="dodgerblue" />
                 </HBox>
-            <Label fx:id="errorMessage" alignment="CENTER" prefHeight="15.0" prefWidth="620.0" textAlignment="CENTER" textFill="RED">
-               <font>
-                  <Font size="18.0" />
-               </font></Label>
 
             </VBox>
         </StackPane>

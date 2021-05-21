@@ -114,9 +114,8 @@
                     <Insets left="4" top="8" bottom="8" right="4"/>
                 </padding>
                 <Label text="Employer's details" style="-fx-font-weight: bold"/>
-                <TextField fx:id="employerDetails"/>
+                <TextField fx:id="employerDetails" onAction="#sign_up"/>
             </VBox>
-            <Label fx:id="validationMessage"/>
             <Button text="Sign up" onAction="#sign_up" style="-fx-background-color: #3aa6dd" textFill="white" prefWidth="Infinity" >
                 <font>
                     <Font size="18"/>

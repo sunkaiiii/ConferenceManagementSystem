@@ -3,6 +3,8 @@ package org.openjfx.controllers.page;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -46,9 +48,8 @@ public class LoginPageController implements Initializable {
         textFieldList.add(password);
     }
 
-
     @FXML
-    public void login(MouseEvent event) throws IOException {
+    public void login(Event event) throws IOException {
         List<TextField> emptyField = InputValidation.findTextFieldIsEmpty(textFieldList);
         Collections.reverse(emptyField);
         if (emptyField.size()>0) {
@@ -74,7 +75,7 @@ public class LoginPageController implements Initializable {
         }
     }
 
-    private void jumpToAdminPage(MouseEvent event, Admin admin) throws IOException {
+    private void jumpToAdminPage(Event event, Admin admin) throws IOException {
         FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.ADMIN_PAGE);
         Parent parent = loader.load();
         AdminPageController controller = loader.getController();
@@ -82,7 +83,7 @@ public class LoginPageController implements Initializable {
         SceneHelper.startStage(new Scene(parent),event);
     }
 
-    private void jumpToMainPage(MouseEvent event) throws IOException {
+    private void jumpToMainPage(Event event) throws IOException {
         SceneHelper.startPage(getClass(), event, PageNames.CONFERENCE_MANAGEMENT, true);
     }
 
