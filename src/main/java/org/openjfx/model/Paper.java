@@ -20,7 +20,7 @@ public class Paper implements CSVConvertable<Conference> {
     private PaperStatus paperStatus;
     private List<ReviewerInformation> reviewerInformationList;
 
-    public Paper(String title, String topic, List<String> keywords, String deadline, List<PaperFile> paperFiles, String conferenceName) {
+    public Paper(String title, String topic, List<String> keywords, String deadline, List<PaperFile> paperFiles, String conferenceId) {
         this.id = UUID.randomUUID().toString();
         this.title = title;
         this.topic = topic;
@@ -28,6 +28,7 @@ public class Paper implements CSVConvertable<Conference> {
         this.deadline = deadline;
         this.paperFiles = paperFiles;
         this.submittedTime = LocalDateTime.now().toString();
+        this.conferenceId = conferenceId;
         this.paperStatus = PaperStatus.SUBMITTED;
     }
 

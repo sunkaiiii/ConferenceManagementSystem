@@ -216,10 +216,11 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
                 throw new RuntimeException();
             }
         }).collect(Collectors.toList());
-        Paper paper = new Paper(paperName.getText(), conference.getTopic(), Arrays.stream(keywordField.getText().split(";")).collect(Collectors.toList()), conference.getDeadline(), paperFiles, conference.getName());
+        Paper paper = new Paper(paperName.getText(), conference.getTopic(), Arrays.stream(keywordField.getText().split(";")).collect(Collectors.toList()), conference.getDeadline(), paperFiles, conference.getId());
         try {
             paperService.submitPaper(selectedAuthor, paper);
             SceneHelper.startPage(getClass(),event,PageNames.PAPER_MANAGEMENT,true);
+            SceneHelper.deleteScene(PageNames.CONFERENCE_MANAGEMENT.getPageName());
         } catch (IOException exception) {
             exception.printStackTrace();
         }
