@@ -10,6 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.geometry.Insets?>
 <?import org.openjfx.controllers.page.GeneralTopLayout?>
+<?import org.openjfx.helper.AutoTrimTextField?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.openjfx.controllers.page.WriteReviewPageController"
@@ -37,7 +38,7 @@
                 <right>
                     <VBox>
                         <Label text="Review"/>
-                        <TextField fx:id="reviewContent"/>
+                        <AutoTrimTextField fx:id="reviewContent"/>
                     </VBox>
                 </right>
             </BorderPane>

@@ -14,6 +14,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 <?import org.openjfx.controllers.page.GeneralTopLayout?>
+<?import org.openjfx.helper.AutoTrimTextField?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.openjfx.controllers.page.SubmitPaperController"
@@ -37,7 +38,7 @@
                         <Insets bottom="4"/>
                     </padding>
                 </Label>
-                <TextField fx:id="paperName"/>
+                <AutoTrimTextField fx:id="paperName"/>
                 <HBox>
                     <padding>
                         <Insets top="8"/>
@@ -102,7 +103,7 @@
                                 </padding>
                             </Label>
                             <StackPane alignment="CENTER_RIGHT">
-                                <TextField fx:id="authorField" editable="false"/>
+                                <AutoTrimTextField fx:id="authorField" editable="false"/>
                                 <MenuButton fx:id="authorSelectMenuButton"/>
                             </StackPane>
 
@@ -111,7 +112,7 @@
                                     <Insets top="8" bottom="4"/>
                                 </padding>
                             </Label>
-                            <TextField fx:id="keywordField" editable="false"/>
+                            <AutoTrimTextField fx:id="keywordField" editable="false"/>
                             <FlowPane fx:id="preDefineKeywordFlowPane"/>
                         </VBox>
                     </right>

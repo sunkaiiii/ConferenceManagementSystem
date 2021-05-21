@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import org.openjfx.MainApp;
 import org.openjfx.controllers.PageNames;
+import org.openjfx.helper.AutoTrimTextField;
 import org.openjfx.helper.DialogHelper;
 import org.openjfx.helper.InputValidation;
 import org.openjfx.helper.SceneHelper;
@@ -51,7 +52,7 @@ public class WriteReviewPageController implements Initializable {
     private Label submittedTime;
 
     @FXML
-    private TextField reviewContent;
+    private AutoTrimTextField reviewContent;
 
     private List<WriteReviewPageFileListCell> fileListCellList;
 
@@ -72,7 +73,7 @@ public class WriteReviewPageController implements Initializable {
             return;
         }
         assert this.paper != null;
-        Review review = new Review(this.paper.getId(), this.reviewContent.getText(), MainApp.getInstance().getUser().getReviewerIdentifiedName(), MainApp.getInstance().getUser().getReviewerName());
+        Review review = new Review(this.paper.getId(), this.reviewContent.getTrimText(), MainApp.getInstance().getUser().getReviewerIdentifiedName(), MainApp.getInstance().getUser().getReviewerName());
         DialogHelper.showConfirmDialog("Confirmation", "Do you want to submit this review?", new DialogHelper.ConfirmDialogClickListener() {
             @Override
             public void onNegativeButtonClick() {

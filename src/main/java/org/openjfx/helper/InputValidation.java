@@ -17,11 +17,11 @@ public class InputValidation {
         return text == null || text.isEmpty();
     }
 
-    static public boolean checkTextFiledIsEmpty(TextField field) {
+    static public <T extends TextField> boolean checkTextFiledIsEmpty(T field) {
         return isNullOrEmpty(field.getText());
     }
 
-    static public boolean checkTextFiledIsEmpty(Collection<TextField> fields) {
+    static public <T extends TextField> boolean checkTextFiledIsEmpty(Collection<T> fields) {
         Optional<Boolean> isEmptyResult = fields
                 .stream()
                 .map(textField -> InputValidation.isNullOrEmpty(textField.getText()))

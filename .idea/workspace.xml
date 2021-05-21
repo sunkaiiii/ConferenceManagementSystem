@@ -5,12 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae9b270c-5962-4e59-ac2f-9f747ba3f49c" name="Default Changelist" comment="Adjust the layout of submit_paper page">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/helper/AutoTrimTextField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/SignUpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/log_in.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/log_in.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/sign_up.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/sign_up.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/SubmitPaperController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/SubmitPaperController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/abspage/AbsConferenceViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/abspage/AbsConferenceViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/helper/InputValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/helper/InputValidation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/conference_info_view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/create_conference.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/create_conference.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/edit_conference.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/edit_conference.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/my_paper_list_cell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/my_paper_list_cell.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/submit_paper.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/submit_paper.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,13 +185,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

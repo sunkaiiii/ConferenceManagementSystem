@@ -8,7 +8,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DateCell;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -16,6 +15,7 @@ import org.openjfx.MainApp;
 import org.openjfx.controllers.PageNames;
 import org.openjfx.controllers.dialog.CreateConferenceSelectTimeDialog;
 import org.openjfx.controllers.dialog.GeneralAlertView;
+import org.openjfx.helper.AutoTrimTextField;
 import org.openjfx.helper.DialogHelper;
 import org.openjfx.helper.InputValidation;
 import org.openjfx.helper.SceneHelper;
@@ -40,26 +40,26 @@ public abstract class AbsConferenceViewController implements Initializable {
     protected Parent rootView;
 
     @FXML
-    protected TextField conferenceName;
+    protected AutoTrimTextField conferenceName;
 
     @FXML
-    protected TextField conferenceTitle;
+    protected AutoTrimTextField conferenceTitle;
 
     @FXML
-    protected TextField conferenceTopic;
+    protected AutoTrimTextField conferenceTopic;
 
     @FXML
     protected GeneralAlertView confirmCreateConferenceView;
 
     @FXML
-    protected TextField keywords;
+    protected AutoTrimTextField keywords;
 
     @FXML
     protected DateTimePicker deadline;
 
     private Conference existConference;
 
-    protected List<TextField> textFields;
+    protected List<AutoTrimTextField> AutoTrimTextFields;
 
     protected final ConferenceService conferenceService = ConferenceService.getDefaultInstance();
 
@@ -77,7 +77,7 @@ public abstract class AbsConferenceViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        textFields = List.of(conferenceName, conferenceTitle, conferenceTopic, keywords);
+        AutoTrimTextFields = List.of(conferenceName, conferenceTitle, conferenceTopic, keywords);
         addDateSelectedListener();
         disablePastDates();
         setViewState();
@@ -127,7 +127,7 @@ public abstract class AbsConferenceViewController implements Initializable {
 
     @FXML
     void positiveButtonClicked(MouseEvent event) throws IOException {
-        if (InputValidation.checkTextFiledIsEmpty(textFields)) {
+        if (InputValidation.checkTextFiledIsEmpty(AutoTrimTextFields)) {
             DialogHelper.showErrorDialog("You need to fill up all fields");
             return;
         }
@@ -141,17 +141,17 @@ public abstract class AbsConferenceViewController implements Initializable {
         final Conference newConference;
         if (existConference != null) {
             newConference = existConference;
-            existConference.setName(conferenceName.getText());
-            existConference.setTitle(conferenceTitle.getText());
-            existConference.setTopic(conferenceTopic.getText());
-            existConference.setKeywords(Arrays.stream(keywords.getText().split(";")).collect(Collectors.toList()));
+            existConference.setName(conferenceName.getTrimText());
+            existConference.setTitle(conferenceTitle.getTrimText());
+            existConference.setTopic(conferenceTopic.getTrimText());
+            existConference.setKeywords(Arrays.stream(keywords.getTrimText().split(";")).collect(Collectors.toList()));
             existConference.setDeadline(deadline.getDateTimeValue().toString());
         } else {
-            newConference = new Conference(conferenceName.getText(), conferenceTitle.getText(), conferenceTopic.getText(), Arrays.stream(keywords.getText().split(";")).collect(Collectors.toList()), deadline.getDateTimeValue().toString());
+            newConference = new Conference(conferenceName.getTrimText(), conferenceTitle.getTrimText(), conferenceTopic.getTrimText(), Arrays.stream(keywords.getTrimText().split(";")).collect(Collectors.toList()), deadline.getDateTimeValue().toString());
         }
 
-        if (conferenceService.searchConferenceByName(conferenceName.getText()) != null) {
-            if (existConference == null || !conferenceName.getText().equals(existConference.getName())) {
+        if (conferenceService.searchConferenceByName(conferenceName.getTrimText()) != null) {
+            if (existConference == null || !conferenceName.getTrimText().equals(existConference.getName())) {
                 DialogHelper.showErrorDialog("There has a existed conference with the same name");
                 return;
             }
