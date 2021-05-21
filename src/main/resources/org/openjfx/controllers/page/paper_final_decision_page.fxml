@@ -30,11 +30,13 @@
                 <padding>
                     <Insets left="48" right="48" top="48" bottom="48"/>
                 </padding>
-                <ImageView fitHeight="36" fitWidth="36" onMouseClicked="#backToPreviousPage">
-                    <image>
-                        <Image url="@../../images/back_arrow.png"/>
-                    </image>
-                </ImageView>
+                <HBox maxWidth="36" onMouseClicked="#backToPreviousPage">
+                    <ImageView fitHeight="36" fitWidth="36" >
+                        <image>
+                            <Image url="@../../images/back_arrow.png"/>
+                        </image>
+                    </ImageView>
+                </HBox>
                 <Label fx:id="paperName">
                     <font>
                         <Font name="System Bold" size="16"/>
