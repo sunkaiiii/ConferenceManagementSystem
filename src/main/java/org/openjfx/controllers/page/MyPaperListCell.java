@@ -128,10 +128,12 @@ public class MyPaperListCell implements Initializable {
         PAPER_PAGE_ACCEPTED("Accepted","#0c7cba",""),
         PAPER_PAGE_REJECTED("Rejected","#c92d3a",""),
         PAPER_PAGE_REVIEWED("Reviewed","#19967d","Waiting for acceptance"),
+        PAPER_PAGE_BEING_REVIEW("Wait for Review","#ef8d22",""),
         CONFERENCE_MANAGEMENT_PAPER_SUBMITTED("Assign Reviewer","#a575a8","Reviewer required"),
         CONFERENCE_MANAGEMENT_PAPER_REVIEWED("Reviewed","#19967d","Final decision required"),
         CONFERENCE_MANAGEMENT_PAPER_ACCEPTED("Accepted","#0c7cba",""),
         CONFERENCE_MANAGEMENT_PAPER_REJECTED("Rejected","#c92d3a",""),
+        CONFERENCE_MANAGEMENT_PAPER_BEING_REVIEW("Wait for Review","#ef8d22",""),
         ;
         private final String statusText;
         private final String statusBackgroundStyle;

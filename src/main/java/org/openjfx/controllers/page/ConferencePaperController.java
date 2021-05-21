@@ -84,6 +84,9 @@ public class ConferencePaperController implements Initializable, MyPaperListCell
                 case SUBMITTED:
                     cell.setPresentation(MyPaperListCell.PaperStatusPresentation.CONFERENCE_MANAGEMENT_PAPER_SUBMITTED);
                     break;
+                case BEING_REVIEWED:
+                    cell.setPresentation(MyPaperListCell.PaperStatusPresentation.CONFERENCE_MANAGEMENT_PAPER_BEING_REVIEW);
+                    break;
             }
             return node;
         } catch (IOException exception) {

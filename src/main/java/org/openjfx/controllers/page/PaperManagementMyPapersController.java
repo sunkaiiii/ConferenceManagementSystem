@@ -59,6 +59,9 @@ public class PaperManagementMyPapersController implements Initializable {
                 case SUBMITTED :
                     cell.setPresentation(MyPaperListCell.PaperStatusPresentation.PAPER_PAGE_SUBMITTED);
                     break;
+                case BEING_REVIEWED:
+                    cell.setPresentation(MyPaperListCell.PaperStatusPresentation.PAPER_PAGE_BEING_REVIEW);
+                    break;
             }
             return node;
         } catch (IOException exception) {
