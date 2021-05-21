@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae9b270c-5962-4e59-ac2f-9f747ba3f49c" name="Default Changelist" comment="Adjust the layout of submit_paper page">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/ReviewerAssignmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/ReviewerAssignmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/MyPaperListCell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/controllers/page/MyPaperListCell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/my_paper_list_cell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/my_paper_list_cell.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

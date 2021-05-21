@@ -14,6 +14,7 @@ import org.openjfx.model.AuthorInformation;
 import org.openjfx.model.Paper;
 
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
@@ -63,7 +64,7 @@ public class MyPaperListCell implements Initializable {
         keywords.setText(String.join(";", item.getKeywords()));
         authors.setText(item.getAuthors().stream().map(AuthorInformation::getAuthorDisplayName).collect(Collectors.joining(";")));
         submittedName.setText(item.getAuthors().stream().map(AuthorInformation::getAuthorDisplayName).findFirst().orElse(""));
-        submittedTime.setText(item.getSubmittedTime());
+        submittedTime.setText(LocalDateTime.parse(item.getSubmittedTime()).toLocalDate().toString());
         fillStatusView();
     }
 

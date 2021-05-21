@@ -50,15 +50,12 @@
                     <Label text="submitted at:"/>
                     <Label fx:id="submittedTime"/>
                 </VBox>
-                <VBox alignment="CENTER">
+                <VBox alignment="CENTER" maxWidth="150" prefWidth="150">
                     <StackPane fx:id="statusBackground" style="-fx-background-color: #428452;-fx-background-radius: 32"
-                               prefHeight="32" maxHeight="32" onMouseClicked="#onStatusButtonClicked">
-                        <padding>
-                            <Insets left="32" right="32"/>
-                        </padding>
+                               prefHeight="36" maxHeight="36" onMouseClicked="#onStatusButtonClicked">
                         <Label fx:id="paperStatus" textFill="white" prefHeight="16" maxHeight="16">
                             <font>
-                                <Font name="System Bold"/>
+                                <Font name="System Bold" size="14"/>
                             </font>
                         </Label>
                     </StackPane>
