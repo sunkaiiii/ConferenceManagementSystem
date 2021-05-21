@@ -32,11 +32,7 @@
                 <Insets left="32" right="32" bottom="16" top="16"/>
             </padding>
             <VBox alignment="CENTER_LEFT">
-                <Label text="Paper Name: ">
-                    <padding>
-                        <Insets left="16" />
-                    </padding>
-                </Label>
+                <Label text="Paper Name: " />
                 <TextField fx:id="paperName"/>
                 <HBox>
                     <Label text="Conference Name: "/>
@@ -52,7 +48,7 @@
                             <padding>
                                 <Insets left="32" right="32" top="32" bottom="32"/>
                             </padding>
-                            <VBox alignment="CENTER" onMouseClicked="#selectPapers" fx:id="selectPaperContainer">
+                            <VBox alignment="CENTER" fx:id="selectPaperContainer">
                                 <Label text="Upload your paper(s)">
                                     <font>
                                         <Font  size="24" name="System Bold"/>
@@ -66,7 +62,7 @@
                                         <Insets bottom="16"/>
                                     </VBox.margin>
                                 </Label>
-                                <StackPane style="-fx-border-color: #a6b9ff;-fx-border-radius: 8;-fx-background-color: #f6f8ff;-fx-background-radius: 8" prefHeight="400">
+                                <StackPane style="-fx-border-color: #a6b9ff;-fx-border-radius: 8;-fx-background-color: #f6f8ff;-fx-background-radius: 8" onMouseClicked="#selectPapers" prefHeight="400">
                                     <padding>
                                         <Insets left="16" right="16" top="16" bottom="16"/>
                                     </padding>
