@@ -88,6 +88,7 @@ public class ReviewerAssignmentController implements Initializable, AssignReview
             List<Node> reviewerListCells = userService
                     .findAllReviewers(MainApp.getInstance().getUser())
                     .stream()
+                    .filter(this::reviewerIsNotAuthor)
                     .map(this::createReviewerListCell)
                     .collect(Collectors.toList());
             this.reviewerListContainer.getChildren().setAll(reviewerListCells);
@@ -96,6 +97,10 @@ public class ReviewerAssignmentController implements Initializable, AssignReview
         }
 
         this.reviewerListContainer.setBorder(ViewHelper.createGeneralDashBolder("#a5b9ff"));
+    }
+
+    private boolean reviewerIsNotAuthor(Reviewer reviewer) {
+        return this.paper.getAuthors().stream().noneMatch(author -> author.getAuthorIdentifyName().equals(reviewer.getReviewerIdentifiedName()));
     }
 
     private Node createReviewerListCell(Reviewer reviewer) {
@@ -169,7 +174,7 @@ public class ReviewerAssignmentController implements Initializable, AssignReview
                 setReviewer(event);
             }
         });
-        assignReviewerConfirmationView.show(rootView,400);
+        assignReviewerConfirmationView.show(rootView, 400);
     }
 
     private boolean validation() {
