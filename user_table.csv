@@ -5,3 +5,4 @@
 {"firstName":"Jim","lastName":"Keller","highestQualification":"Master","interestAreas":{"Cloud computing":5},"employerDetails":"no","creationTime":"2021-05-11T11:40:13.232234","userName":"jim@kk.edu","password":"123qweASD"}
 {"firstName":"Bella","lastName":"Wang","highestQualification":"Doctor","interestAreas":{"Mobile development":2},"employerDetails":"n","creationTime":"2021-05-11T11:40:59.018717","userName":"bella@ccc.edu","password":"123qweASD"}
 {"firstName":"Andy","lastName":"Hope","highestQualification":"Master","interestAreas":{"Software security":4},"employerDetails":"nnn","creationTime":"2021-05-11T11:41:42.295860","userName":"andy@we.edu","password":"123qweASD"}
+{"firstName":"Bosh","lastName":"John","highestQualification":"master","interestAreas":{"Android":2},"employerDetails":"Monash University","creationTime":"2021-05-22T21:07:30.221068700","userName":"bosh@monash.edu","password":"123QWEasd"}

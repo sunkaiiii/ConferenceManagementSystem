@@ -2,3 +2,5 @@
 {"id":"2","name":"123","title":"123","topic":"123","keywords":["123"],"deadline":"2021-05-15T21:19:52.934820900","chairName":"123@qq.com"}
 {"id":"3","name":"321","title":"32","topic":"32132","keywords":["32"],"deadline":"2021-05-05T22:14:07.516376900","chairName":"123@qq.com"}
 {"id":"4","name":"Better one hhh","title":"Upload conference for now","topic":"Cloud computing","keywords":["Big data","Cloud computing"],"deadline":"2021-05-31T00:36:12.508269500","chairName":"123@qq.com"}
+
+{"id":"c0e295f7-b807-4fe1-8c4c-cf3a9473b9dd","name":"World Telecom Communication","title":"World Telecom Communication","topic":"5G and AI","keywords":["5G","AI","Big Data"],"deadline":"2021-06-23T12:00","chairName":"bosh@monash.edu"}

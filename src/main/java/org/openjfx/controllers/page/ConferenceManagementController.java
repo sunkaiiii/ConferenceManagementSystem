@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import org.openjfx.MainApp;
@@ -28,6 +29,15 @@ public class ConferenceManagementController implements Initializable {
     @FXML
     private FlowPane finishedConferenceFLowPane;
 
+    @FXML
+    private Label onGoingConferenceLabel;
+
+    @FXML
+    private Label finishedConferenceLabel;
+
+    @FXML
+    private Label noContentLabel;
+
     private final ConferenceService conferenceService = ConferenceService.getDefaultInstance();
 
     @Override
@@ -50,6 +60,11 @@ public class ConferenceManagementController implements Initializable {
         }
         List<Node> onGoingConference = userConferences.stream().filter(this::isConferenceOnGoing).map(this::createCellWithConference).filter(Objects::nonNull).collect(Collectors.toList());
         List<Node> finishedConference = userConferences.stream().filter(this::isConferenceFinished).map(this::createCellWithConference).filter(Objects::nonNull).collect(Collectors.toList());
+        noContentLabel.setVisible(onGoingConference.size() == 0 && finishedConference.size() == 0);
+        onGoingConferenceLabel.setVisible(onGoingConference.size() > 0);
+        finishedConferenceLabel.setVisible(finishedConference.size() > 0);
+        onGoingConferenceFlowPane.setVisible(onGoingConference.size() > 0);
+        finishedConferenceFLowPane.setVisible(finishedConference.size() > 0);
         onGoingConferenceFlowPane.getChildren().addAll(onGoingConference);
         finishedConferenceFLowPane.getChildren().addAll(finishedConference);
     }
