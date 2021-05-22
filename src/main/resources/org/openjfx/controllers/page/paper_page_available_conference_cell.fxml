@@ -17,7 +17,7 @@
         <padding>
             <Insets bottom="32" left="32" right="32" top="32"/>
         </padding>
-        <Label fx:id="conferenceName" alignment="CENTER" prefWidth="Infinity" text="conference name">
+        <Label fx:id="conferenceName" alignment="CENTER" textAlignment="CENTER" prefWidth="Infinity" text="conference name" wrapText="true">
             <font>
                 <Font name="System Bold" size="23.0"/>
             </font>
