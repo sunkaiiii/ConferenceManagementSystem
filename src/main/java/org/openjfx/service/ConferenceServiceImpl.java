@@ -49,7 +49,7 @@ final class ConferenceServiceImpl implements ConferenceService {
     public String getConferenceNameById(String id) {
         try {
             Conference conference = searchConferenceById(id);
-            return conference.getId();
+            return conference.getName();
         } catch (IOException e) {
             e.printStackTrace();
         }

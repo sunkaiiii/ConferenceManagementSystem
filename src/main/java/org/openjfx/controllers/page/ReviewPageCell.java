@@ -5,13 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.StackPane;
 import org.openjfx.controllers.PageNames;
 import org.openjfx.helper.SceneHelper;
 import org.openjfx.model.AuthorInformation;
 import org.openjfx.model.Paper;
+import org.openjfx.service.ConferenceService;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,7 +33,15 @@ public class ReviewPageCell implements Initializable {
     private Label paperKeywords;
 
     @FXML
-    private StackPane submitReview;
+    private Label conferenceName;
+
+    @FXML
+    private Button submitReviewButton;
+
+    @FXML
+    private Button seeReviewButton;
+
+    private final ConferenceService conferenceService = ConferenceService.getDefaultInstance();
     
     private Paper paper;
 
@@ -54,12 +63,15 @@ public class ReviewPageCell implements Initializable {
         paperAuthor.setText(paper.getAuthors().stream().map(AuthorInformation::getAuthorDisplayName).collect(Collectors.joining(";")));
         paperKeywords.setText(String.join(";",paper.getKeywords()));
         submittedTime.setText(paper.getSubmittedTime());
+        conferenceName.setText(conferenceService.getConferenceNameById(paper.getConferenceId()));
         switch (this.cellType){
             case REVIEWED:
-                this.submitReview.setVisible(false);
+                this.submitReviewButton.setVisible(false);
+                this.seeReviewButton.setVisible(true);
                 break;
             case BEING_REVIEW:
-                this.submitReview.setVisible(true);
+                this.submitReviewButton.setVisible(true);
+                this.seeReviewButton.setVisible(false);
                 break;
         }
     }

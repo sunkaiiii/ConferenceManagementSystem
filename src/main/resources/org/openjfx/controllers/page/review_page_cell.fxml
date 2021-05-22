@@ -7,20 +7,76 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
 <StackPane xmlns="http://javafx.com/javafx"
            xmlns:fx="http://javafx.com/fxml"
            fx:controller="org.openjfx.controllers.page.ReviewPageCell"
-            >
-<VBox>
-    <Label fx:id="paperName"/>
-    <Label fx:id="submittedTime"/>
-    <Label fx:id="paperAuthor"/>
-    <Label fx:id="paperKeywords"/>
-    <StackPane style="-fx-background-color: green; -fx-background-radius: 16 " onMouseClicked="#goToReviewPage" fx:id="submitReview">
+>
+    <padding>
+        <Insets left="8" right="8" bottom="8" top="8"/>
+    </padding>
+    <VBox style="-fx-background-color: white;-fx-background-radius: 8;-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
         <padding>
-            <Insets left="48" right="48" top="16" bottom="16"/>
+            <Insets left="16" right="16" bottom="16" top="16"/>
         </padding>
-        <Label text="Review" textFill="white"/>
-    </StackPane>
-</VBox>
+        <Label fx:id="paperName" textAlignment="CENTER" wrapText="true">
+            <font>
+                <Font name="System Bold" size="24"/>
+            </font>
+        </Label>
+        <HBox>
+            <VBox.margin>
+                <Insets top="8"/>
+            </VBox.margin>
+            <Label text="Conference Name: "/>
+            <Label fx:id="conferenceName"/>
+        </HBox>
+
+        <HBox>
+            <VBox.margin>
+                <Insets top="8"/>
+            </VBox.margin>
+            <Label text="Submit time: "/>
+            <Label fx:id="submittedTime"/>
+        </HBox>
+        <HBox>
+            <VBox.margin>
+                <Insets top="8"/>
+            </VBox.margin>
+            <Label text="Author: "/>
+            <Label fx:id="paperAuthor"/>
+        </HBox>
+        <HBox>
+            <VBox.margin>
+                <Insets top="8"/>
+            </VBox.margin>
+            <Label text="Keywords"/>
+            <Label fx:id="paperKeywords"/>
+        </HBox>
+
+        <StackPane alignment="CENTER_RIGHT"
+                   >
+            <VBox.margin>
+                <Insets top="16"/>
+            </VBox.margin>
+            <Button style="-fx-background-color: #ef8c22;-fx-background-radius: 8;-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
+                    text="Review" onMouseClicked="#goToReviewPage" textFill="white" fx:id="submitReviewButton">
+                <padding>
+                    <Insets left="32" right="32" top="8" bottom="8"/>
+                </padding>
+                <font>
+                    <Font name="System Bold"/>
+                </font>
+            </Button>
+            <Button style="-fx-background-color: #19967d;-fx-background-radius: 8;-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
+                    text="View Review " textFill="white" visible="false" fx:id="seeReviewButton">
+                <padding>
+                    <Insets left="32" right="32" top="8" bottom="8"/>
+                </padding>
+                <font>
+                    <Font name="System Bold"/>
+                </font>
+            </Button>
+        </StackPane>
+    </VBox>
 </StackPane>

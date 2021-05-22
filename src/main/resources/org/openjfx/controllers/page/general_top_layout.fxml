@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<fx:root type="javafx.scene.layout.StackPane" style="-fx-background-color: #FFFFFF"
+<fx:root type="javafx.scene.layout.StackPane" style="-fx-background-color: #DDDDDD;-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
          xmlns="http://javafx.com/javafx/11.0.1"
          xmlns:fx="http://javafx.com/fxml/1"
          prefWidth="Infinity"
@@ -30,7 +30,7 @@
                 <Image url="@../../images/user.png"/>
             </image>
         </ImageView>
-        <MenuButton fx:id="menuButton" alignment="CENTER_RIGHT" style="-fx-background-color: transparent">
+        <MenuButton fx:id="menuButton" alignment="CENTER_RIGHT" style="-fx-background-color: transparent" textFill="black">
             <items>
                 <MenuItem fx:id="logOut" text="Log out"/>
             </items>

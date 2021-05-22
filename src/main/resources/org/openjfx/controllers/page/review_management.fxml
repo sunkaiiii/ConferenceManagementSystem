@@ -24,6 +24,9 @@
     <center>
         <ScrollPane fitToHeight="true" fitToWidth="true">
             <VBox>
+                <padding>
+                    <Insets left="16" top="16" bottom="16" right="16"/>
+                </padding>
                 <Label text="Assign to you" fx:id="assignToYouLabel">
                     <font>
                         <Font name="System Bold" size="16"/>

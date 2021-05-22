@@ -57,7 +57,7 @@
                     <center>
                         <StackPane style="-fx-background-color: white;-fx-background-radius: 8">
                             <padding>
-                                <Insets left="32" right="32" top="32" bottom="32"/>
+                                <Insets left="32" right="32" top="24" bottom="32"/>
                             </padding>
                             <VBox alignment="CENTER" fx:id="selectPaperContainer">
                                 <Label text="Upload your paper(s)">
@@ -95,7 +95,7 @@
                     <right>
                         <VBox>
                             <padding>
-                                <Insets left="8" />
+                                <Insets left="16" />
                             </padding>
                             <Label text="Authors:">
                                 <padding>
@@ -117,7 +117,13 @@
                         </VBox>
                     </right>
                 </BorderPane>
-                <VBox alignment="CENTER">
+                <HBox alignment="CENTER">
+                    <VBox.margin>
+                        <Insets top="16"/>
+                    </VBox.margin>
+                    <Label text="Cancel Submit" textFill="gray" onMouseClicked="#cancelSubmit">
+                    </Label>
+                    <Region prefWidth="48"/>
                     <Button text="Submit" onMouseClicked="#submitPaper" textFill="white" style="-fx-background-color: #3aa5d3;-fx-background-radius: 8;-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0); -fx-font-weight: bold">
                         <padding>
                             <Insets left="48" right="48" top="8" bottom="8"/>
@@ -126,12 +132,7 @@
                             <Insets top="16"/>
                         </VBox.margin>
                     </Button>
-                    <Label text="Cancel Submit" textFill="RED" onMouseClicked="#cancelSubmit">
-                        <VBox.margin>
-                            <Insets top="16" bottom="8"/>
-                        </VBox.margin>
-                    </Label>
-                </VBox>
+                </HBox>
             </VBox>
         </StackPane>
     </center>
