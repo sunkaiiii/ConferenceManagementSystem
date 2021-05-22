@@ -8,6 +8,7 @@
 
 <?import org.openjfx.controllers.page.MainPageLeftBannerController?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
 <StackPane xmlns="http://javafx.com/javafx"
            xmlns:fx="http://javafx.com/fxml"
            fx:controller="org.openjfx.controllers.page.PaperManagementMyPapersController"
@@ -17,6 +18,11 @@
             <padding>
                 <Insets left="32" right="32" top="16" bottom="16"/>
             </padding>
+            <Label prefWidth="Infinity" prefHeight="Infinity" textAlignment="CENTER" textFill="gray" text="You do not have submitted any paper">
+                <font>
+                    <Font name="System Bold" size="32"/>
+                </font>
+            </Label>
         </VBox>
     </ScrollPane>
 </StackPane>

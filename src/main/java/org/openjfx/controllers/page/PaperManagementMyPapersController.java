@@ -37,7 +37,10 @@ public class PaperManagementMyPapersController implements Initializable {
 
     private void getMyPaper() throws IOException {
         List<Node> myPaper = paperService.getUserPapers(MainApp.getInstance().getUser()).stream().map(this::createPaperCell).filter(Objects::nonNull).collect(Collectors.toList());
-        myPaperContainer.getChildren().setAll(myPaper);
+        if(myPaper.size()>0){
+            myPaperContainer.getChildren().setAll(myPaper);
+        }
+
     }
 
     private Node createPaperCell(Paper paper) {
