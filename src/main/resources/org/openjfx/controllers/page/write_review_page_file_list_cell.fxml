@@ -26,7 +26,10 @@
         </HBox>
     </left>
     <right>
-        <Label text="Downloaded" textFill="cyan" fx:id="downloadedIndicator" visible="false"/>
+        <StackPane alignment="CENTER_RIGHT">
+            <Label text="Downloaded" textFill="cyan" fx:id="downloadedIndicator" visible="false"/>
+        </StackPane>
+
     </right>
 
 </BorderPane>

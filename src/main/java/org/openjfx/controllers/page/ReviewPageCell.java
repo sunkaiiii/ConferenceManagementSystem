@@ -16,6 +16,7 @@ import org.openjfx.service.ConferenceService;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -62,7 +63,7 @@ public class ReviewPageCell implements Initializable {
         paperName.setText(paper.getTitle());
         paperAuthor.setText(paper.getAuthors().stream().map(AuthorInformation::getAuthorDisplayName).collect(Collectors.joining(";")));
         paperKeywords.setText(String.join(";",paper.getKeywords()));
-        submittedTime.setText(paper.getSubmittedTime());
+        submittedTime.setText(LocalDateTime.parse(paper.getSubmittedTime()).toLocalDate().toString());
         conferenceName.setText(conferenceService.getConferenceNameById(paper.getConferenceId()));
         switch (this.cellType){
             case REVIEWED:

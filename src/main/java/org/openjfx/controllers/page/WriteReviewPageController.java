@@ -7,13 +7,13 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import org.openjfx.MainApp;
 import org.openjfx.controllers.PageNames;
-import org.openjfx.helper.AutoTrimTextField;
-import org.openjfx.helper.DialogHelper;
-import org.openjfx.helper.InputValidation;
-import org.openjfx.helper.SceneHelper;
+import org.openjfx.controllers.dialog.GeneralAlertView;
+import org.openjfx.controllers.dialog.absdialog.AbstractAlertDialog;
+import org.openjfx.helper.*;
 import org.openjfx.model.AuthorInformation;
 import org.openjfx.model.Paper;
 import org.openjfx.model.PaperFile;
@@ -29,6 +29,12 @@ import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class WriteReviewPageController implements Initializable {
+
+    @FXML
+    private BorderPane rootView;
+
+    @FXML
+    private GeneralAlertView alertView;
 
     @FXML
     private Label paperName;
@@ -74,23 +80,19 @@ public class WriteReviewPageController implements Initializable {
         }
         assert this.paper != null;
         Review review = new Review(this.paper.getId(), this.reviewContent.getTrimText(), MainApp.getInstance().getUser().getReviewerIdentifiedName(), MainApp.getInstance().getUser().getReviewerName());
-        DialogHelper.showConfirmDialog("Confirmation", "Do you want to submit this review?", new DialogHelper.ConfirmDialogClickListener() {
+        alertView.setAlertDialogClickListener(new AbstractAlertDialog.AlertDialogClickListener() {
             @Override
-            public void onNegativeButtonClick() {
-
-            }
-
-            @Override
-            public void onPositiveButtonClick() {
+            public void onPositiveButtonClick(MouseEvent event) {
                 try {
                     writeReview(event, review);
                     backToPreviousPageAndRefresh(event);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
             }
         });
+        alertView.show(this.rootView);
+
     }
 
     private void writeReview(MouseEvent event, Review review) throws IOException {
@@ -133,6 +135,7 @@ public class WriteReviewPageController implements Initializable {
         this.keywords.setText(String.join(";", paper.getKeywords()));
         this.submittedTime.setText(paper.getSubmittedTime());
         this.fileContainer.getChildren().setAll(paper.getPaperFiles().stream().map(this::createReviewFileListCell).collect(Collectors.toList()));
+        this.fileContainer.setBorder(ViewHelper.createGeneralDashBolder("#a5b9ff"));
     }
 
     private Node createReviewFileListCell(PaperFile file) {

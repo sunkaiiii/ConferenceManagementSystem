@@ -11,47 +11,150 @@
 <?import javafx.geometry.Insets?>
 <?import org.openjfx.controllers.page.GeneralTopLayout?>
 <?import org.openjfx.helper.AutoTrimTextField?>
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.openjfx.controllers.page.WriteReviewPageController"
-            prefHeight="734.0" prefWidth="1396.0">
-    <left>
-        <MainPageLeftBannerController index="2"/>
-    </left>
-    <top>
-        <GeneralTopLayout titleText="Write Review"/>
-    </top>
-    <center>
-        <VBox>
-            <Label fx:id="paperName"/>
-            <Label fx:id="authorNames"/>
-            <BorderPane>
-                <left>
-                    <VBox>
-                        <Label fx:id="conferenceName"/>
-                        <Label fx:id="topic"/>
-                        <Label fx:id="keywords"/>
-                        <VBox fx:id="fileContainer"/>
-                        <Label fx:id="submittedTime"/>
-                    </VBox>
-                </left>
-                <right>
-                    <VBox>
-                        <Label text="Review"/>
-                        <AutoTrimTextField fx:id="reviewContent"/>
-                    </VBox>
-                </right>
-            </BorderPane>
-            <HBox>
-                <Label text="Cancel" onMouseClicked="#cancelSubmit"/>
-                <Region prefHeight="80"/>
-                <StackPane style="-fx-background-color: blue;-fx-background-radius: 8" onMouseClicked="#submitReview">
+<?import org.openjfx.controllers.dialog.GeneralAlertView?>
+<?import org.openjfx.controllers.dialog.absdialog.ButtonStyle?>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="org.openjfx.controllers.page.WriteReviewPageController">
+    <BorderPane prefHeight="734.0" prefWidth="1396.0" fx:id="rootView">
+        <left>
+            <MainPageLeftBannerController index="2"/>
+        </left>
+        <top>
+            <GeneralTopLayout titleText="Write Review"/>
+        </top>
+        <center>
+            <VBox>
+                <padding>
+                    <Insets left="32" right="32" top="16" bottom="16"/>
+                </padding>
+                <VBox alignment="CENTER">
+                    <Label fx:id="paperName" wrapText="true">
+                        <font>
+                            <Font name="System Bold" size="32"/>
+                        </font>
+                    </Label>
+                    <Label fx:id="authorNames" textFill="#444444"/>
+                </VBox>
+
+                <BorderPane style="-fx-background-color: white;-fx-background-radius: 8">
                     <padding>
-                        <Insets left="32" right="32" top="8" bottom="8"/>
+                        <Insets top="32" bottom="32" left="32" right="32"/>
                     </padding>
-                    <Label text="Submit" textFill="white"/>
+                    <left>
+                        <VBox>
+                            <HBox>
+                                <Label text="Conference Name: ">
+                                    <font>
+                                        <Font name="System Bold"/>
+                                    </font>
+                                </Label>
+                                <Label fx:id="conferenceName">
+                                    <font>
+                                        <Font name="System Bold"/>
+                                    </font>
+                                </Label>
+                            </HBox>
+                            <HBox>
+                                <VBox.margin>
+                                    <Insets top="8"/>
+                                </VBox.margin>
+                                <Label text="Topic: ">
+                                    <font>
+                                        <Font name="System Bold"/>
+                                    </font>
+                                </Label>
+                                <Label fx:id="topic">
+                                    <font>
+                                        <Font name="System Bold"/>
+                                    </font>
+                                </Label>
+                            </HBox>
+                            <HBox>
+                                <VBox.margin>
+                                    <Insets top="8"/>
+                                </VBox.margin>
+                                <Label text="Keywords: ">
+                                    <font>
+                                        <Font name="System Bold"/>
+                                    </font>
+                                </Label>
+                                <Label fx:id="keywords">
+                                    <font>
+                                        <Font name="System Bold"/>
+                                    </font>
+                                </Label>
+                            </HBox>
+                            <HBox>
+                                <VBox.margin>
+                                    <Insets top="8"/>
+                                </VBox.margin>
+                                <Label text="Submit Time: ">
+                                    <font>
+                                        <Font name="System Bold"/>
+                                    </font>
+                                </Label>
+                                <Label fx:id="submittedTime">
+                                    <font>
+                                        <Font name="System Bold"/>
+                                    </font>
+                                </Label>
+                            </HBox>
+                            <VBox fx:id="fileContainer" prefHeight="370" prefWidth="500" style="-fx-background-color:#f6f8ff;-fx-background-radius: 8 ">
+                                <VBox.margin>
+                                    <Insets top="8"/>
+                                </VBox.margin>
+                                <padding>
+                                    <Insets top="16" bottom="16" left="16" right="16"/>
+                                </padding>
+                            </VBox>
+
+                        </VBox>
+                    </left>
+                    <right>
+                        <VBox alignment="CENTER_LEFT">
+                            <Label text="Review">
+                                <font>
+                                    <Font name="System Bold" size="24"/>
+                                </font>
+                            </Label>
+                            <AutoTrimTextField fx:id="reviewContent" prefHeight="400" prefWidth="500" alignment="TOP_LEFT">
+                                <VBox.margin>
+                                    <Insets top="8"/>
+                                </VBox.margin>
+                            </AutoTrimTextField>
+                        </VBox>
+                    </right>
+                </BorderPane>
+                <StackPane>
+                    <VBox.margin>
+                        <Insets top="16"/>
+                    </VBox.margin>
+                    <HBox alignment="CENTER">
+                        <Label text="Cancel" onMouseClicked="#cancelSubmit"/>
+                        <Region prefWidth="80"/>
+                        <StackPane style="-fx-background-color: #ef8c22;-fx-background-radius: 8;-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0)" onMouseClicked="#submitReview">
+                            <padding>
+                                <Insets left="32" right="32" top="8" bottom="8"/>
+                            </padding>
+                            <Label text="Submit" textFill="white">
+                                <font>
+                                    <Font name="System Bold"/>
+                                </font>
+                            </Label>
+                        </StackPane>
+                    </HBox>
                 </StackPane>
-            </HBox>
-        </VBox>
-    </center>
-</BorderPane>
+            </VBox>
+        </center>
+    </BorderPane>
+ <GeneralAlertView alertText="Do you want to submit this review?" fx:id="alertView">
+     <positiveButtonStyle>
+         <ButtonStyle buttonTextFill="white" buttonText="Submit" buttonBackground="#ef8c22"/>
+     </positiveButtonStyle>
+     <negativeButtonStyle>
+         <ButtonStyle buttonBackground="#FFFFFFFF" buttonTextFill="black" buttonText="Cancel"/>
+     </negativeButtonStyle>
+ </GeneralAlertView>
+</StackPane>
+
