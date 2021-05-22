@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import org.openjfx.MainApp;
 import org.openjfx.controllers.PageNames;
@@ -27,6 +28,15 @@ public class ReviewManagementController implements Initializable {
     @FXML
     private FlowPane reviewedPaperList;
 
+    @FXML
+    private Label reviewedPaperLabel;
+
+    @FXML
+    private Label assignToYouLabel;
+
+    @FXML
+    private Label noContentLabel;
+
     private final PaperService paperService = PaperService.getDefaultInstance();
 
     @Override
@@ -46,8 +56,13 @@ public class ReviewManagementController implements Initializable {
                     .map(this::createReviewedCell)
                     .filter(Objects::nonNull)
                     .collect(Collectors.toList());
+            this.assignToYouLabel.setVisible(paperCells.size() > 0);
+            this.reviewedPaperLabel.setVisible(reviewedPaperCells.size() > 0);
+            this.reviewPaperList.setVisible(paperCells.size() > 0);
+            this.reviewedPaperList.setVisible(reviewedPaperCells.size() > 0);
             this.reviewPaperList.getChildren().setAll(paperCells);
             this.reviewedPaperList.getChildren().setAll(reviewedPaperCells);
+            this.noContentLabel.setVisible(paperCells.size() == 0 && reviewedPaperCells.size() == 0);
         } catch (IOException e) {
             e.printStackTrace();
         }

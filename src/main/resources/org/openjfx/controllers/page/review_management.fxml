@@ -15,27 +15,33 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.openjfx.controllers.page.ReviewManagementController"
             prefHeight="734.0" prefWidth="1396.0">
-<left>
-    <MainPageLeftBannerController index="2"/>
-</left>
+    <left>
+        <MainPageLeftBannerController index="2"/>
+    </left>
     <top>
         <GeneralTopLayout titleText="Review Management"/>
     </top>
     <center>
         <ScrollPane fitToHeight="true" fitToWidth="true">
             <VBox>
-                <Label text="Assign to you">
+                <Label text="Assign to you" fx:id="assignToYouLabel">
                     <font>
-                        <Font name="System Bold"/>
+                        <Font name="System Bold" size="16"/>
                     </font>
                 </Label>
                 <FlowPane fx:id="reviewPaperList"/>
-                <Text text="Reviewed paper">
+                <Label text="Reviewed paper" fx:id="reviewedPaperLabel">
                     <font>
-                        <Font name="System Bold"/>
+                        <Font name="System Bold" size="16"/>
                     </font>
-                </Text>
+                </Label>
                 <FlowPane fx:id="reviewedPaperList"/>
+                <Label prefWidth="Infinity" prefHeight="Infinity" textAlignment="CENTER" textFill="gray"
+                       text="No any review recorded yet" visible="false" fx:id="noContentLabel">
+                    <font>
+                        <Font name="System Bold" size="32"/>
+                    </font>
+                </Label>
             </VBox>
         </ScrollPane>
 
