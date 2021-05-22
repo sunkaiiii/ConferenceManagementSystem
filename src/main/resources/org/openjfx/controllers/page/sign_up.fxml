@@ -76,14 +76,14 @@
                     <Insets left="4" top="8" bottom="8" right="4"/>
                 </padding>
                 <Label text="Password" style="-fx-font-weight: bold"/>
-                <PasswordField fx:id="password"/>
+                <PasswordField fx:id="password" promptText="The password must have at least 1 digit number 1 upper case and 1 lower case"/>
             </VBox>
             <VBox>
                 <padding>
                     <Insets left="4" top="8" bottom="8" right="4"/>
                 </padding>
                 <Label text="Confirmed password" style="-fx-font-weight: bold"/>
-                <PasswordField fx:id="confirmedPassword"/>
+                <PasswordField fx:id="confirmedPassword" promptText="The password must have at least 1 digit number 1 upper case and 1 lower case"/>
             </VBox>
             <VBox>
                 <padding>

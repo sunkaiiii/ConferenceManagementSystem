@@ -1,9 +1,8 @@
 package org.openjfx.helper;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
+import javafx.scene.Parent;
+import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 
 public class DialogHelper {
     static public void showErrorDialog(String message) {

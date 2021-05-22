@@ -20,14 +20,14 @@
                 <Insets right="30.0"/>
             </padding>
             <Label alignment="CENTER_RIGHT" minWidth="100.0" text="Interest Area Name"/>
-            <AutoTrimTextField fx:id="interestingAreaName" HBox.hgrow="ALWAYS"/>
+            <AutoTrimTextField fx:id="interestingAreaName" HBox.hgrow="ALWAYS" onAction="#onEnterClicked"/>
         </HBox>
         <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
             <padding>
                 <Insets right="30.0"/>
             </padding>
             <Label alignment="CENTER_RIGHT" minWidth="100.0" text="Level of Expertise"/>
-            <AutoTrimTextField fx:id="interestingAreaExpertise" HBox.hgrow="ALWAYS" promptText="Number of 0-10"/>
+            <AutoTrimTextField fx:id="interestingAreaExpertise" HBox.hgrow="ALWAYS" promptText="Number of 0-10" onAction="#onEnterClicked"/>
         </HBox>
         <HBox alignment="CENTER_RIGHT">
             <Button mnemonicParsing="false" onMouseClicked="#btnAddInterestingAreaClicked" text="Add"/>

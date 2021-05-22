@@ -1,5 +1,6 @@
 package org.openjfx.controllers.dialog;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
@@ -8,6 +9,7 @@ import javafx.util.Pair;
 import org.openjfx.helper.AutoTrimTextField;
 import org.openjfx.helper.DialogHelper;
 import org.openjfx.helper.InputValidation;
+import org.w3c.dom.events.Event;
 
 import java.util.List;
 
@@ -41,12 +43,16 @@ public class AddInterestingAreaDialog {
         if (onAddInterestingAreaListener != null) {
             onAddInterestingAreaListener.onAdded(new Pair<>(interestingAreaName.getTrimText(), expertise));
         }
-        closeStage(event);
+        closeStage();
     }
 
-    private void closeStage(MouseEvent event) {
-        Node source = (Node) event.getSource();
-        Stage stage = (Stage) source.getScene().getWindow();
+    @FXML
+    void onEnterClicked(ActionEvent event) {
+        btnAddInterestingAreaClicked(null);
+    }
+
+    private void closeStage() {
+        Stage stage = (Stage) interestingAreaName.getScene().getWindow();
         stage.close();
     }
 

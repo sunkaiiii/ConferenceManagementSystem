@@ -113,7 +113,7 @@ public class SignUpController implements Initializable {
             return;
         }
         if (!InputValidation.checkPasswordFormat(password.getText())) {
-            DialogHelper.showErrorDialog("The password is not in a correct format");
+            DialogHelper.showErrorDialog("The password must have at least 1 digit number 1 upper case and 1 lower case");
             InputValidation.setFocusAndSetErrorStyle(password);
             return;
         }
