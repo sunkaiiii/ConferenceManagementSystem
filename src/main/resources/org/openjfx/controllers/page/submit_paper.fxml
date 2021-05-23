@@ -97,7 +97,7 @@
                             <padding>
                                 <Insets left="16" />
                             </padding>
-                            <Label text="Authors:">
+                            <Label text="Co-Authors:">
                                 <padding>
                                     <Insets bottom="4"/>
                                 </padding>
