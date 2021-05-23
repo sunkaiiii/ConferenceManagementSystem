@@ -14,6 +14,9 @@
             fx:controller="org.openjfx.controllers.page.WriteReviewPageFileListCell"
             onMouseClicked="#clickToDownloadFile"
 >
+    <padding>
+        <Insets top="8" bottom="8"/>
+    </padding>
     <left>
         <HBox alignment="CENTER_LEFT">
             <ImageView fx:id="fileIcon" fitWidth="48" fitHeight="48"/>

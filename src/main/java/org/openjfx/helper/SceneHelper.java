@@ -21,7 +21,7 @@ public final class SceneHelper {
     public static void startPage(Class<? extends Initializable> controllerClazz, Event event, PageNameDescriber resourceFileName, boolean cacheScene) throws IOException {
         startPage(controllerClazz,event,resourceFileName,cacheScene,null);
     }
-    public static void startPage(Class<? extends Initializable> controllerClazz, Event event, PageNameDescriber resourceFileName, boolean cacheScene, Consumer<Scene> onStageShowing) throws IOException {
+    public static <T> void startPage(Class<? extends Initializable> controllerClazz, Event event, PageNameDescriber resourceFileName, boolean cacheScene, Consumer<T> onStageShowing) throws IOException {
         Scene scene;
         if (cacheScene) {
             scene = SceneHelper.getSceneFromResourceNameWithCache(controllerClazz, resourceFileName.getPageName());
@@ -31,8 +31,9 @@ public final class SceneHelper {
         Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         appStage.setScene(scene);
         appStage.show();
+        T t = getController(scene);
         if(onStageShowing!=null){
-            onStageShowing.accept(scene);
+            onStageShowing.accept(t);
         }
     }
 

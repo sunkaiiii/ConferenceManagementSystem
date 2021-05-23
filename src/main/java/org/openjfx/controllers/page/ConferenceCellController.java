@@ -99,10 +99,9 @@ public class ConferenceCellController implements Initializable {
 
     @FXML
     void editConference(MouseEvent event) throws IOException {
-        SceneHelper.startPage(getClass(), event, PageNames.EDIT_CONFERENCE, false, (scene -> {
-            EditConferenceController controller = SceneHelper.getController(scene);
+        SceneHelper.startPage(getClass(), event, PageNames.EDIT_CONFERENCE, false, (EditConferenceController controller) -> {
             controller.setExistConference(this.conference);
-        }));
+        });
 
     }
 

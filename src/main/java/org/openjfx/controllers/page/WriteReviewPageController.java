@@ -3,21 +3,21 @@ package org.openjfx.controllers.page;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Paint;
 import org.openjfx.MainApp;
 import org.openjfx.controllers.PageNames;
 import org.openjfx.controllers.dialog.GeneralAlertView;
 import org.openjfx.controllers.dialog.absdialog.AbstractAlertDialog;
 import org.openjfx.helper.*;
-import org.openjfx.model.AuthorInformation;
-import org.openjfx.model.Paper;
-import org.openjfx.model.PaperFile;
-import org.openjfx.model.Review;
+import org.openjfx.model.*;
 import org.openjfx.service.ConferenceService;
 import org.openjfx.service.ReviewService;
 
@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -53,6 +54,12 @@ public class WriteReviewPageController implements Initializable {
 
     @FXML
     private VBox fileContainer;
+
+    @FXML
+    private StackPane submitReviewPane;
+
+    @FXML
+    private Label cancelSubmitLabel;
 
     @FXML
     private Label submittedTime;
@@ -155,5 +162,24 @@ public class WriteReviewPageController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         fileListCellList = new ArrayList<>();
+    }
+
+    public void setSeeReviewMode() {
+        Optional<ReviewerInformation> reviewer = this.paper.getReviewerInformationList().stream().filter(reviewerInformation -> reviewerInformation.getReviewerIdentifiedName().equals(MainApp.getInstance().getUser().getReviewerIdentifiedName())).findAny();
+        if (reviewer.isPresent()) {
+            String reviewId = reviewer.get().getReviewId();
+            try {
+                Review review = reviewService.searchReviewById(reviewId);
+                this.reviewContent.setText(review.getReviewContent());
+                this.reviewContent.setDisable(true);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        this.submitReviewPane.setVisible(false);
+        this.cancelSubmitLabel.setText("Back");
+        this.cancelSubmitLabel.setTextFill(Paint.valueOf("#ffffff"));
+        this.cancelSubmitLabel.setStyle("-fx-background-color: #444444;-fx-background-radius: 8");
+        this.cancelSubmitLabel.setPadding(new Insets(8,16,8,16));
     }
 }

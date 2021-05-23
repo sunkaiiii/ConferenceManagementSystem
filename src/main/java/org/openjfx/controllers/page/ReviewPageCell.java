@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import org.openjfx.controllers.PageNames;
 import org.openjfx.helper.SceneHelper;
 import org.openjfx.model.AuthorInformation;
@@ -92,8 +93,16 @@ public class ReviewPageCell implements Initializable {
         }
         assert this.writeReviewScene!=null;
         SceneHelper.startStage(this.writeReviewScene,event);
-
     }
+
+    @FXML
+    private void seeReview(MouseEvent event) throws IOException {
+        SceneHelper.startPage(getClass(),event,PageNames.WRITE_REVIEW_PAGE,false,(WriteReviewPageController controller)->{
+            controller.setPaper(this.paper);
+            controller.setSeeReviewMode();
+        });
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

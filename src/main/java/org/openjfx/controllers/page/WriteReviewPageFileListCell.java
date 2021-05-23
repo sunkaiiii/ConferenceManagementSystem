@@ -72,5 +72,6 @@ public class WriteReviewPageFileListCell extends AbstractFileListCell implements
         java.io.File source = new java.io.File(this.paperFile.getStoragePath());
         Files.copy(source.toPath(),saveFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
         this.downloadedIndicator.setVisible(true);
+
     }
 }
