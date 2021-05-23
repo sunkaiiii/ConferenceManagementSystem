@@ -27,7 +27,7 @@
                 </ImageView>
             </left>
             <center>
-                <Label text="Welcome to Monash Conference Management System" style="-fx-font-weight: bold"
+                <Label text="User Registration" style="-fx-font-weight: bold"
                        wrapText="true" textAlignment="CENTER">
                     <font>
                         <Font size="38"/>
@@ -90,7 +90,7 @@
                     <Insets left="4" top="8" bottom="8" right="4"/>
                 </padding>
                 <Label text="Highest qualification" style="-fx-font-weight: bold"/>
-                <AutoTrimTextField fx:id="highestQualification"/>
+                <AutoTrimTextField fx:id="highestQualification" promptText="Enter a number from 1 to 5"/>
             </VBox>
             <VBox>
                 <padding>
