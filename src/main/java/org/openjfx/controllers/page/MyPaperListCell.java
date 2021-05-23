@@ -20,6 +20,9 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
+/**
+ * This page cell will be used on several pages for the presentation of the list of papers. Where the button style for the thesis list is already defined in the enumeration
+ */
 public class MyPaperListCell implements Initializable {
     @FXML
     private Label paperName;
@@ -60,6 +63,7 @@ public class MyPaperListCell implements Initializable {
         this.paper = paper;
         updateItem(paper);
     }
+
     protected void updateItem(Paper item) {
         paperName.setText(item.getTitle());
         keywords.setText(String.join(";", item.getKeywords()));
@@ -70,20 +74,20 @@ public class MyPaperListCell implements Initializable {
     }
 
     private void fillStatusView() {
-        if(this.presentation == null || this.paper == null){
+        if (this.presentation == null || this.paper == null) {
             return;
         }
         paperStatus.setText(this.presentation.statusText);
         statusBackground.setStyle(this.presentation.getStatusBackgroundStyle());
-        if(!this.presentation.getNotificationText().isBlank()){
+        if (!this.presentation.getNotificationText().isBlank()) {
             ImageView imageView = new ImageView();
             imageView.setFitHeight(12);
             imageView.setFitWidth(12);
-            try{
+            try {
                 Image image = new Image(Objects.requireNonNull(getClass().getResource("/org/openjfx/images/information.png")).toString());
                 imageView.setImage(image);
                 this.statusContainer.getChildren().add(imageView);
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             Label label = new Label();
@@ -98,9 +102,9 @@ public class MyPaperListCell implements Initializable {
     }
 
     @FXML
-    void onStatusButtonClicked(MouseEvent event){
-        if(this.statusButtonListener!=null){
-            this.statusButtonListener.onStatusButtonClicked(event,this.paper);
+    void onStatusButtonClicked(MouseEvent event) {
+        if (this.statusButtonListener != null) {
+            this.statusButtonListener.onStatusButtonClicked(event, this.paper);
         }
     }
 
@@ -121,27 +125,30 @@ public class MyPaperListCell implements Initializable {
         this.statusButtonListener = statusButtonListener;
     }
 
-    public interface StatusButtonListener{
+    public interface StatusButtonListener {
         void onStatusButtonClicked(MouseEvent event, Paper paper);
     }
 
-    public enum PaperStatusPresentation{
-        PAPER_PAGE_SUBMITTED("Submitted","#b391b5", "Being reviewed"),
-        PAPER_PAGE_ACCEPTED("Accepted","#0c7cba",""),
-        PAPER_PAGE_REJECTED("Rejected","#c92d3a",""),
-        PAPER_PAGE_REVIEWED("Reviewed","#19967d","Waiting for acceptance"),
-        PAPER_PAGE_BEING_REVIEW("Wait for Review","#ef8d22",""),
-        CONFERENCE_MANAGEMENT_PAPER_SUBMITTED("Assign Reviewer","#a575a8","Reviewer required"),
-        CONFERENCE_MANAGEMENT_PAPER_REVIEWED("Reviewed","#19967d","Final decision required"),
-        CONFERENCE_MANAGEMENT_PAPER_ACCEPTED("Accepted","#0c7cba",""),
-        CONFERENCE_MANAGEMENT_PAPER_REJECTED("Rejected","#c92d3a",""),
-        CONFERENCE_MANAGEMENT_PAPER_BEING_REVIEW("Wait for Review","#ef8d22",""),
+    /**
+     * Defines the style of the thesis button and will provide different styles and tips depending on the state and page
+     */
+    public enum PaperStatusPresentation {
+        PAPER_PAGE_SUBMITTED("Submitted", "#b391b5", "Being reviewed"),
+        PAPER_PAGE_ACCEPTED("Accepted", "#0c7cba", ""),
+        PAPER_PAGE_REJECTED("Rejected", "#c92d3a", ""),
+        PAPER_PAGE_REVIEWED("Reviewed", "#19967d", "Waiting for acceptance"),
+        PAPER_PAGE_BEING_REVIEW("Wait for Review", "#ef8d22", ""),
+        CONFERENCE_MANAGEMENT_PAPER_SUBMITTED("Assign Reviewer", "#a575a8", "Reviewer required"),
+        CONFERENCE_MANAGEMENT_PAPER_REVIEWED("Reviewed", "#19967d", "Final decision required"),
+        CONFERENCE_MANAGEMENT_PAPER_ACCEPTED("Accepted", "#0c7cba", ""),
+        CONFERENCE_MANAGEMENT_PAPER_REJECTED("Rejected", "#c92d3a", ""),
+        CONFERENCE_MANAGEMENT_PAPER_BEING_REVIEW("Wait for Review", "#ef8d22", ""),
         ;
         private final String statusText;
         private final String statusBackgroundStyle;
         private final String notificationText;
 
-        PaperStatusPresentation(String statusText,String colourText,String notificationText){
+        PaperStatusPresentation(String statusText, String colourText, String notificationText) {
             this.statusText = statusText;
             this.statusBackgroundStyle = String.format("-fx-background-color: %s;-fx-background-radius: 32", colourText);
             this.notificationText = notificationText;

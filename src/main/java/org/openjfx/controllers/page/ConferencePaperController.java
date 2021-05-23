@@ -21,6 +21,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
+
+/**
+ * Show all papers submitted under this Conference
+ */
 public class ConferencePaperController implements Initializable, MyPaperListCell.StatusButtonListener {
     @FXML
     private Label conferenceName;
@@ -71,6 +75,8 @@ public class ConferencePaperController implements Initializable, MyPaperListCell
             MyPaperListCell cell = loader.getController();
             cell.setPaper(paper);
             cell.setStatusButtonListener(this);
+
+            //Display different styles of buttons depending on the status of the paper
             switch (paper.getPaperStatus()) {
                 case ACCEPTED:
                     cell.setPresentation(MyPaperListCell.PaperStatusPresentation.CONFERENCE_MANAGEMENT_PAPER_ACCEPTED);

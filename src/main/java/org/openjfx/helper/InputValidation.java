@@ -12,7 +12,10 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class InputValidation {
+/**
+ * Tool class for input validation
+ */
+public final class InputValidation {
     static public boolean isNullOrEmpty(String text) {
         return text == null || text.isEmpty() || text.trim().isBlank();
     }
@@ -30,6 +33,10 @@ public class InputValidation {
         return isEmptyResult.isPresent();
     }
 
+    /**
+     * When an input box does not meet the validation criteria, you can make it checked and indicate an error in red
+     * @param field The textfield to be focused and indicated
+     */
     public static void setFocusAndSetErrorStyle(TextField field){
         final String previousStyle = field.getStyle();
         field.setStyle("-fx-text-box-border: #ff0000; -fx-focus-color: #ff0000;");
@@ -53,6 +60,11 @@ public class InputValidation {
         return validator.isValid(text);
     }
 
+    /**
+     * Acceptable password formats must contain at least one number, one uppercase letter and one lowercase letter
+     * @param password A string of password
+     * @return the format of the password is correct
+     */
     static public boolean checkPasswordFormat(String password) {
         boolean result = password.length() >= 8;
         result &= hasDigit(password);

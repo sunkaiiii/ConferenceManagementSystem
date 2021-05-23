@@ -2,14 +2,9 @@ package org.openjfx.controllers.page;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import javafx.util.Pair;
 import org.openjfx.MainApp;
 import org.openjfx.controllers.PageNames;
@@ -25,6 +20,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
+/**
+ * This page is used to complete user registration, all textfields need to be populated with content
+ */
 public class SignUpController implements Initializable {
 
     @FXML

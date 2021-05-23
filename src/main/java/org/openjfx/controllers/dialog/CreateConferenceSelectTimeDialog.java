@@ -8,6 +8,10 @@ import javafx.stage.Stage;
 import org.openjfx.helper.DialogHelper;
 import org.openjfx.helper.InputValidation;
 
+
+/**
+ * Dialog used in Create and Edit conference page to allow the user select hour and minute for deadline
+ */
 public class CreateConferenceSelectTimeDialog {
     @FXML
     private TextField hour;

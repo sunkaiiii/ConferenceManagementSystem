@@ -1,9 +1,7 @@
 package org.openjfx.model;
 
-import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class PaperFile {
     private String fileName;

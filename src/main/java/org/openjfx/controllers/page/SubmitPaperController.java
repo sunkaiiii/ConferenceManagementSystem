@@ -1,15 +1,16 @@
 package org.openjfx.controllers.page;
 
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
@@ -32,6 +33,9 @@ import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * A page for submitting papers, where users can upload files and select keywords and add additional author
+ */
 public class SubmitPaperController implements Initializable, PreDefineListCellController.OnKeywordSelectedListener, PaperSubmitFileListCell.OnCancelButtonSelectedListener {
 
     @FXML
@@ -108,11 +112,13 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
         this.chairName.setText(conference.getChairName());
         this.conferenceName.setText(conference.getName());
         initAuthorList();
+        //Initialize additional author list
         List<MenuItem> items = authorList
                 .stream()
                 .map(this::createMenuItem)
                 .collect(Collectors.toList());
         this.authorSelectMenuButton.getItems().setAll(items);
+        //Initialisation of pre-defined keywords
         this.preDefineKeywordFlowPane.getChildren().addAll(getPreDefineKeywordsCells());
         this.selectPaperParentView.addEventHandler(MouseEvent.MOUSE_CLICKED, selectPaperEvent);
     }
@@ -167,6 +173,7 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
             return;
         }
         FileChooser fileChooser = new FileChooser();
+        //Filtering specific extensions
         FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("Paper format (*.pdf, *.doc, *.docx)", "*.doc", "*.docx", "*.pdf");
         fileChooser.getExtensionFilters().add(filter);
         Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -216,7 +223,7 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
             return;
         }
         this.selectedKeywords.add(newKeyword);
-        this.preDefineListCellControllers.stream().filter(cell->cell.getKeyword().equalsIgnoreCase(newKeyword)).forEach(cell->cell.setState(PreDefineListCellController.SelectedState.DELETE));
+        this.preDefineListCellControllers.stream().filter(cell -> cell.getKeyword().equalsIgnoreCase(newKeyword)).forEach(cell -> cell.setState(PreDefineListCellController.SelectedState.DELETE));
         this.keywordField.setText(String.join(";", this.selectedKeywords));
     }
 
@@ -225,7 +232,7 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
         if (!ignoreCaseKeyword.isBlank()) {
             this.selectedKeywords.remove(ignoreCaseKeyword);
         }
-        this.preDefineListCellControllers.stream().filter(cell->cell.getKeyword().equalsIgnoreCase(keyword)).forEach(cell->cell.setState(PreDefineListCellController.SelectedState.ADD));
+        this.preDefineListCellControllers.stream().filter(cell -> cell.getKeyword().equalsIgnoreCase(keyword)).forEach(cell -> cell.setState(PreDefineListCellController.SelectedState.ADD));
         this.keywordField.setText(String.join(";", this.selectedKeywords));
     }
 
@@ -255,6 +262,7 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
     }
 
     private void submitPaperToSystem(MouseEvent event) {
+        //Uploading each user-selected file to the project
         List<PaperFile> paperFiles = this.paperFiles.stream().map(paper -> {
             try {
                 return FileHelper.getInstance().uploadFileToServer(paper.getName(), paper.getAbsolutePath());

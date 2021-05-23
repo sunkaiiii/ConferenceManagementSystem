@@ -21,6 +21,9 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
+/**
+ * The home page of the admin page, which will display all available Conferences
+ */
 public class AdminPageController implements Initializable {
     @FXML
     private FlowPane conferenceListContainer;

@@ -7,6 +7,9 @@ import java.nio.file.FileSystems;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * The different pages share similar logic for displaying file icons, so create this base class
+ */
 public abstract class AbstractFileListCell {
     public static final String WORD_RESOURCE = "/org/openjfx/images/word.png";
     public static final String PNG_RESOURCE = "/org/openjfx/images/pdf.png";
@@ -19,6 +22,11 @@ public abstract class AbstractFileListCell {
         return getFileIcon(filePath);
     }
 
+    /**
+     * Returns an icon with the corresponding extension based on the incoming file
+     * @param storagePath the file store path
+     * @return an icon related to the extension name
+     */
     protected Image getFileIcon(String storagePath){
         Optional<String> fileExtension = FileHelper.getInstance().getFileExtensionByStringHandling(storagePath);
         Image result = null;

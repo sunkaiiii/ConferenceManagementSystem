@@ -22,6 +22,9 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
+/**
+ * Show all Conferences belonging to this user
+ */
 public class ConferenceManagementController implements Initializable {
     @FXML
     private FlowPane onGoingConferenceFlowPane;

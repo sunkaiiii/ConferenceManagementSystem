@@ -40,6 +40,10 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
+
+/**
+ * The Create Conference and Modify Conference pages share the same UI, so a base class was created for this operation UI
+ */
 public abstract class AbsConferenceViewController implements Initializable {
     @FXML
     protected Parent rootView;

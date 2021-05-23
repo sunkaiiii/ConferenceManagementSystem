@@ -21,6 +21,9 @@ import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+/**
+ * The generic top bar of this application, which will display a header and user name, can be used to log out
+ */
 public class GeneralTopLayout extends StackPane implements Initializable {
     @FXML
     private Label title;

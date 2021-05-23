@@ -20,6 +20,9 @@ import java.util.ResourceBundle;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
+/**
+ * This page shows all the reviews sent by this user
+ */
 public class ReviewManagementController implements Initializable {
 
     @FXML
@@ -44,6 +47,10 @@ public class ReviewManagementController implements Initializable {
         initViews();
     }
 
+    /**
+     * There are two types of review,
+     * one is assigned to this reviewer and the reviewer has not yet conducted a review. The other type is a review that has already been carried out
+     */
     private void initViews() {
         try {
             List<Node> paperCells = paperService

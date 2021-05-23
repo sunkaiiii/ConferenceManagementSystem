@@ -2,17 +2,18 @@ package org.openjfx.controllers.dialog;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 import org.openjfx.helper.AutoTrimTextField;
 import org.openjfx.helper.DialogHelper;
 import org.openjfx.helper.InputValidation;
-import org.w3c.dom.events.Event;
 
 import java.util.List;
 
+/**
+ * Dialog used in Sign up page to allow the user add an interest area
+ */
 public class AddInterestingAreaDialog {
     @FXML
     private AutoTrimTextField interestingAreaName;

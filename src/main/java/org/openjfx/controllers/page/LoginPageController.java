@@ -26,6 +26,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Registration and login page, where users can login or jump to the registration page to register a new account
+ */
 public class LoginPageController implements Initializable {
     
     @FXML

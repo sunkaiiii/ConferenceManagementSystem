@@ -28,6 +28,9 @@ import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * The page where reviewers are assigned, showing a list of all reviewers except the author
+ */
 public class ReviewerAssignmentController implements Initializable, AssignReviewerReviewerListCell.OnReviewerClickListener {
 
     @FXML
@@ -83,6 +86,8 @@ public class ReviewerAssignmentController implements Initializable, AssignReview
         this.authors.setText(paper.getAuthors().stream().map(AuthorInformation::getAuthorDisplayName).collect(Collectors.joining(";")));
         this.keywords.setText(String.join(";", paper.getKeywords()));
         try {
+            //Grouping reviewers, sorting them by expertise and removing users who are authors,
+            // and eventually converting them into displayable cells with an emphasis on reviewers with the same professional interests and thesis keywords
             List<Node> reviewerListCells = userService
                     .findAllReviewers(MainApp.getInstance().getUser())
                     .stream()

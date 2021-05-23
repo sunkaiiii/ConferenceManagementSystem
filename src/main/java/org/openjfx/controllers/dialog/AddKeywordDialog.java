@@ -7,6 +7,9 @@ import org.openjfx.helper.AutoTrimTextField;
 import org.openjfx.helper.DialogHelper;
 import org.openjfx.helper.InputValidation;
 
+/**
+ * Dialog used in Submit paper page to allow the user add an keyword
+ */
 public class AddKeywordDialog {
     @FXML
     private AutoTrimTextField keyword;

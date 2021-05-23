@@ -75,6 +75,7 @@ public abstract class AbstractAlertDialog extends StackPane implements Initializ
 
     public void show(Node caller, int preHeight){
         GaussianBlur blur = new GaussianBlur(0);
+        //enable high cache hit to start animations
         caller.setEffect(blur);
         caller.setCache(true);
         caller.setCacheHint(CacheHint.SPEED);
@@ -85,6 +86,8 @@ public abstract class AbstractAlertDialog extends StackPane implements Initializ
             }
             blur.setRadius(newV.intValue());
         });
+
+        //use time frame to make animation of blur background
         Timeline timeline = new Timeline();
         final KeyValue kv = new KeyValue(value, 24);
         final KeyFrame kf = new KeyFrame(Duration.millis(225), kv);
@@ -119,6 +122,7 @@ public abstract class AbstractAlertDialog extends StackPane implements Initializ
             GaussianBlur blur = new GaussianBlur(24);
             caller.setEffect(blur);
             caller.setCache(true);
+            //enable high cache hit to start animations
             caller.setCacheHint(CacheHint.SPEED);
             IntegerProperty value = new SimpleIntegerProperty(0);
             value.addListener((observable, oldV, newV) -> {
@@ -149,6 +153,8 @@ public abstract class AbstractAlertDialog extends StackPane implements Initializ
             fadeTransition.setToValue(0);
             ParallelTransition parallelTransition = new ParallelTransition(scaleTransition, fadeTransition);
             parallelTransition.play();
+
+            //When the animation ends, let current dialog invisible
             parallelTransition.setOnFinished((event) -> {
                 contentBody.setCacheHint(CacheHint.QUALITY);
                 getRoot().setVisible(false);

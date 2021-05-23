@@ -19,6 +19,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * The universal left sidebar of this application allows the user to switch to different pages by clicking on the different tabs in the sidebar
+ */
 public class MainPageLeftBannerController extends BorderPane implements Initializable {
     @FXML
     private HBox conferenceManagement;
@@ -109,6 +112,9 @@ public class MainPageLeftBannerController extends BorderPane implements Initiali
         label.setFont(Font.font("System",FontWeight.BOLD,18));
     }
 
+    /**
+     * The selection status of the sidebar needs to be refreshed each time a page switch is made
+     */
     private void restoreAllState(){
         conferenceManagementIndicator.setVisible(false);
         paperManagementIndicator.setVisible(false);

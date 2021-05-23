@@ -19,6 +19,9 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
+/**
+ * The main page of the paper submission page, showing all available Conferences and allowing users to upload their papers
+ */
 public class PaperManagementMyPapersController implements Initializable, MyPaperListCell.StatusButtonListener {
 
     @FXML

@@ -1,10 +1,14 @@
 package org.openjfx.helper;
 
-import javafx.scene.Parent;
-import javafx.scene.control.*;
-import javafx.scene.layout.Pane;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 
-public class DialogHelper {
+/**
+ * Tools for displaying e.g. error pop-ups and generic OK Cancel pop-ups
+ */
+public final class DialogHelper {
     static public void showErrorDialog(String message) {
         Dialog<String> dialog = new Dialog<>();
         dialog.setTitle("Error");

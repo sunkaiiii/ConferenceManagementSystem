@@ -60,12 +60,19 @@ public class AssignReviewerReviewerListCell implements Initializable {
         this.onCellClickedListener = onCellClickedListener;
     }
 
+    /**
+     * The automatically recommended reviewers will be displayed in different formats
+     */
     public void setRecommend() {
         this.interestArea.setText("(" + reviewer.getInterestAreas().entrySet().iterator().next().getKey() + ")" + "(Recommend Reviewer)");
         this.reviewerName.setTextFill(Paint.valueOf("#2700a6"));
         this.interestArea.setTextFill(Paint.valueOf("#2700a6"));
     }
 
+
+    /**
+     * When the user clicks on this viewer, the handling callback needs to implement this interface
+     */
     public interface OnReviewerClickListener {
         void onClick(MouseEvent event, Reviewer reviewer);
     }

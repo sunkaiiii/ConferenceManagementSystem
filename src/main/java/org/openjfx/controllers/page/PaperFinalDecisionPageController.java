@@ -25,6 +25,9 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
+/**
+ * Used to allow the chair to make the final decision on a paper
+ */
 public class PaperFinalDecisionPageController implements Initializable {
 
     @FXML
@@ -154,6 +157,7 @@ public class PaperFinalDecisionPageController implements Initializable {
         if(informations == null){
             informations = new ArrayList<>();
         }
+        //Extract all reviews and convert to a review cell for display on the page
         List<Node> reviewContentCell = informations
                 .stream()
                 .map(ReviewerInformation::getReviewId)
@@ -208,11 +212,17 @@ public class PaperFinalDecisionPageController implements Initializable {
         return null;
     }
 
+    /**
+     * When this method is called, the accept and reject buttons will be hidden, so this page will only be used for browsing.
+     */
     public void setViewOnlyMode() {
         this.decisionButtonPane.setVisible(false);
     }
 
 
+    /**
+     * Once the final decision has been made, let other pages know about the change by implementing this interface
+     */
     public interface FinalDecisionAppliedListener {
         void finalDecisionApplied();
     }

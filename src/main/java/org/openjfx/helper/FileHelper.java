@@ -10,7 +10,10 @@ import java.nio.file.StandardCopyOption;
 import java.util.Optional;
 import java.util.UUID;
 
-public class FileHelper {
+/**
+ * Tool class for uploading files specified by the user to the project
+ */
+public final class FileHelper {
     public final static String PAPER_FOLDER = "papers";
     private static final FileHelper Instance = new FileHelper();
 

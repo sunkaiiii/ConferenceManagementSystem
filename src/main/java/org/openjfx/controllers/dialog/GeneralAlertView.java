@@ -16,6 +16,9 @@ import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.function.Consumer;
 
+/**
+ * General full screen alert view, with the blur background and fade animation
+ */
 public class GeneralAlertView extends AbstractAlertDialog {
 
     @FXML

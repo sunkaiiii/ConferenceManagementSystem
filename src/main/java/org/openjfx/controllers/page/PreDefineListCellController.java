@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Predefined keyword cell, when the user clicks on this cell, the layout of the cell will change and the keyword will be added or removed via a callback
+ */
 public class PreDefineListCellController implements Initializable {
 
     @FXML
@@ -102,6 +105,9 @@ public class PreDefineListCellController implements Initializable {
         this.onKeywordSelectedListener = onKeywordSelectedListener;
     }
 
+    /**
+     * This interface must be implemented until the keyword is selected when the click event is triggered
+     */
     public interface OnKeywordSelectedListener {
         void onKeywordSelected(String keyword, SelectedState state);
     }

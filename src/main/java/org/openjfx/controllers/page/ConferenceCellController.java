@@ -68,6 +68,8 @@ public class ConferenceCellController implements Initializable {
         this.conferenceName.setText(conference.getName());
         this.topic.setText(conference.getTopic());
         this.deadline.setText(TimeHelper.convertToDisplayTime(conference.getDeadline()));
+
+        //Get the status of paper submissions, count the total number of papers in each status and display them on the page
         Arrays.stream(Paper.PaperStatus.values())
                 .map(status -> String.format("Paper %s: %d", status.getStatus(), findPaperWithStatus(this.conference, status).size()))
                 .map(paperInformation -> {
