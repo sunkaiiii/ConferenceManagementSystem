@@ -11,7 +11,7 @@
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="org.openjfx.controllers.page.AdminPageController"
       prefHeight="734.0" prefWidth="1396.0">
-    <GeneralTopLayout titleText="Admin" adminView="true"/>
+    <GeneralTopLayout titleText="Conference Administration" adminView="true"/>
     <TabPane>
         <Tab text="Conference List" closable="false">
             <FlowPane fx:id="conferenceListContainer"/>

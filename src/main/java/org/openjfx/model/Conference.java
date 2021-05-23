@@ -76,7 +76,6 @@ public class Conference implements CSVConvertable<Conference> {
         this.deadline = deadline;
     }
 
-
     public String getId() {
         return id;
     }
