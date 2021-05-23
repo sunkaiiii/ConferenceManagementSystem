@@ -77,6 +77,10 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
 
     private Set<java.io.File> paperFiles;
 
+    List<String> selectedKeywords;
+
+    List<PreDefineListCellController> preDefineListCellControllers;
+
     private final PaperService paperService = PaperService.getDefaultInstance();
 
     private final EventHandler<MouseEvent> selectPaperEvent = this::selectPapers;
@@ -87,6 +91,8 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
         allFields = List.of(paperName, keywordField);
         selectedAuthor = new ArrayList<>(List.of(MainApp.getInstance().getUser()));
         paperFiles = new HashSet<>();
+        selectedKeywords = new ArrayList<>();
+        preDefineListCellControllers = new ArrayList<>();
     }
 
     public Conference getConference() {
@@ -145,6 +151,7 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
             FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.PRE_DEFINE_KEYWORD_CELL);
             Parent result = loader.load();
             PreDefineListCellController cell = loader.getController();
+            preDefineListCellControllers.add(cell);
             cell.setKeyword(keyword);
             cell.setOnKeywordSelectedListener(this);
             return result;
@@ -204,11 +211,22 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
     }
 
     private void addKeywordToField(String newKeyword) {
-        if (Arrays.stream(this.keywordField.getText().split(";")).anyMatch(word -> word.equalsIgnoreCase(newKeyword))) {
+        if (this.selectedKeywords.stream().anyMatch(keyword -> keyword.equalsIgnoreCase(newKeyword))) {
             DialogHelper.showErrorDialog("There is already have a keyword of " + newKeyword);
             return;
         }
-        this.keywordField.setText(this.keywordField.getText() + newKeyword + ";");
+        this.selectedKeywords.add(newKeyword);
+        this.preDefineListCellControllers.stream().filter(cell->cell.getKeyword().equalsIgnoreCase(newKeyword)).forEach(cell->cell.setState(PreDefineListCellController.SelectedState.DELETE));
+        this.keywordField.setText(String.join(";", this.selectedKeywords));
+    }
+
+    private void removeKeywordToField(String keyword) {
+        String ignoreCaseKeyword = this.selectedKeywords.stream().filter(k -> k.equalsIgnoreCase(keyword)).findAny().orElse("");
+        if (!ignoreCaseKeyword.isBlank()) {
+            this.selectedKeywords.remove(ignoreCaseKeyword);
+        }
+        this.preDefineListCellControllers.stream().filter(cell->cell.getKeyword().equalsIgnoreCase(keyword)).forEach(cell->cell.setState(PreDefineListCellController.SelectedState.ADD));
+        this.keywordField.setText(String.join(";", this.selectedKeywords));
     }
 
     @FXML
@@ -246,7 +264,7 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
                 throw new RuntimeException();
             }
         }).collect(Collectors.toList());
-        Paper paper = new Paper(paperName.getTrimText(), conference.getTopic(), Arrays.stream(keywordField.getText().split(";")).collect(Collectors.toList()), conference.getDeadline(), paperFiles, conference.getId());
+        Paper paper = new Paper(paperName.getTrimText(), conference.getTopic(), this.selectedKeywords, conference.getDeadline(), paperFiles, conference.getId());
         try {
             paperService.submitPaper(selectedAuthor, paper);
             SceneHelper.startPage(getClass(), event, PageNames.PAPER_MANAGEMENT, true);
@@ -261,7 +279,7 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
         if (state == PreDefineListCellController.SelectedState.ADD) {
             addKeywordToField(keyword);
         } else if (state == PreDefineListCellController.SelectedState.DELETE) {
-            this.keywordField.setText(this.keywordField.getText().replace(keyword + ";", ""));
+            removeKeywordToField(keyword);
         }
     }
 

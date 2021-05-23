@@ -77,14 +77,24 @@ public class PreDefineListCellController implements Initializable {
 
     @FXML
     void keywordClicked(MouseEvent event) throws IOException {
-        if (onKeywordSelectedListener != null) {
-            onKeywordSelectedListener.onKeywordSelected(this.keyword, this.state);
-        }
+        SelectedState currentState = this.state;
         if (this.state == SelectedState.ADD) {
             this.state = SelectedState.DELETE;
         } else {
             this.state = SelectedState.ADD;
         }
+        if (onKeywordSelectedListener != null) {
+            onKeywordSelectedListener.onKeywordSelected(this.keyword, currentState);
+        }
+        initView();
+    }
+
+    public SelectedState getState() {
+        return state;
+    }
+
+    public void setState(SelectedState state) {
+        this.state = state;
         initView();
     }
 
