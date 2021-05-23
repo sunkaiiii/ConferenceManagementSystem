@@ -3,6 +3,8 @@ package org.openjfx.controllers.page.abspage;
 import javafx.scene.image.Image;
 import org.openjfx.helper.FileHelper;
 
+import java.nio.file.FileSystems;
+import java.util.List;
 import java.util.Optional;
 
 public abstract class AbstractFileListCell {
@@ -12,7 +14,12 @@ public abstract class AbstractFileListCell {
     private static final String WORD_FORMAT = "docx";
     private static final String PDF_FORMAT = "pdf";
 
-    protected Image getFileIcon(String storagePath) {
+    protected Image getFileIcon(List<String> storagePath) {
+        String filePath = String.join(FileSystems.getDefault().getSeparator(),storagePath);
+        return getFileIcon(filePath);
+    }
+
+    protected Image getFileIcon(String storagePath){
         Optional<String> fileExtension = FileHelper.getInstance().getFileExtensionByStringHandling(storagePath);
         Image result = null;
         if (fileExtension.isPresent()) {
