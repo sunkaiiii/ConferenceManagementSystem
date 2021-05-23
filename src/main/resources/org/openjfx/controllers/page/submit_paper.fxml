@@ -125,7 +125,7 @@
                     <VBox.margin>
                         <Insets top="16"/>
                     </VBox.margin>
-                    <Label text="Cancel Submit" textFill="gray" onMouseClicked="#cancelSubmit">
+                    <Label text="Cancel" textFill="black" onMouseClicked="#cancelSubmit">
                     </Label>
                     <Region prefWidth="48"/>
                     <Button text="Submit" onMouseClicked="#submitPaper" textFill="white" style="-fx-background-color: #3aa5d3;-fx-background-radius: 8;-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0); -fx-font-weight: bold">
