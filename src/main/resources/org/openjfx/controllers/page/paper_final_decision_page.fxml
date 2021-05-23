@@ -108,7 +108,7 @@
 
 
                 </StackPane>
-                <HBox alignment="CENTER">
+                <HBox alignment="CENTER" fx:id="decisionButtonPane">
                     <StackPane style="-fx-background-radius: 8;-fx-background-color: #c92d39"
                                onMouseClicked="#rejectClicked">
                         <padding>

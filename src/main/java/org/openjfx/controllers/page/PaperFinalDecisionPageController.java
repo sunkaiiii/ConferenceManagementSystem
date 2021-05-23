@@ -39,6 +39,9 @@ public class PaperFinalDecisionPageController implements Initializable {
     private VBox reviewContainer;
 
     @FXML
+    private HBox decisionButtonPane;
+
+    @FXML
     private GeneralAlertView generalAlertView;
 
     @FXML
@@ -198,6 +201,10 @@ public class PaperFinalDecisionPageController implements Initializable {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void setViewOnlyMode() {
+        this.decisionButtonPane.setVisible(false);
     }
 
 

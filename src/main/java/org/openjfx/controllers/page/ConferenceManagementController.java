@@ -85,6 +85,9 @@ public class ConferenceManagementController implements Initializable {
             Parent parent = loader.load();
             ConferenceCellController controller = loader.getController();
             controller.setConference(conference);
+            if(isConferenceFinished(conference)){
+                controller.setConferenceFinishedLayout();
+            }
             return parent;
         } catch (IOException e) {
             e.printStackTrace();

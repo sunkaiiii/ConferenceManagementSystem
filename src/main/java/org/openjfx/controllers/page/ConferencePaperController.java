@@ -103,20 +103,34 @@ public class ConferencePaperController implements Initializable, MyPaperListCell
                 break;
             case REVIEWED:
                 goToFinalDecisionPage(event, paper);
+                break;
+            case ACCEPTED:
+            case REJECTED:
+                goToFinalDecisionPageWithoutEditing(event,paper);
             default:
                 break;
         }
     }
 
+    private void goToFinalDecisionPageWithoutEditing(MouseEvent event, Paper paper) {
+        try {
+            SceneHelper.startPage(getClass(), event, PageNames.PAPER_FINAL_DECISION_PAGE, false, (PaperFinalDecisionPageController controller) -> {
+                controller.setPaper(paper);
+                controller.setPreviousScene(((Node) event.getSource()).getScene());
+                controller.setViewOnlyMode();
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void goToFinalDecisionPage(MouseEvent event, Paper paper) {
         try {
-            FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.PAPER_FINAL_DECISION_PAGE);
-            Parent node = loader.load();
-            PaperFinalDecisionPageController controller = loader.getController();
-            controller.setPaper(paper);
-            controller.setPreviousScene(((Node) event.getSource()).getScene());
-            controller.setFinalDecisionAppliedListener(() -> initView(this.conference));
-            SceneHelper.startStage(new Scene(node), event);
+            SceneHelper.startPage(getClass(), event, PageNames.PAPER_FINAL_DECISION_PAGE, false, (PaperFinalDecisionPageController controller) -> {
+                controller.setPaper(paper);
+                controller.setPreviousScene(((Node) event.getSource()).getScene());
+                controller.setFinalDecisionAppliedListener(() -> initView(this.conference));
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }

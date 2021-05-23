@@ -39,6 +39,14 @@
             <VBox.margin>
                 <Insets top="16"/>
             </VBox.margin>
+            <Button fx:id="edit" text="Edit"
+                    style="-fx-background-color: transparent;-fx-border-color: #ffc474;-fx-border-radius: 8;-fx-border-width: 2"
+                    textFill="#ef8c22" onMouseClicked="#editConference">
+                <padding>
+                    <Insets left="16" right="16" top="8" bottom="8"/>
+                </padding>
+            </Button>
+            <Region prefWidth="16"/>
             <Button fx:id="viewPapers" text="View Papers" onMouseClicked="#viewPapers"
                     style="-fx-background-color: transparent;-fx-border-color: #99d1f2;-fx-border-radius: 8;-fx-border-width: 2"
                     textFill="#0c7dba">
@@ -46,16 +54,7 @@
                     <Insets left="16" right="16" top="8" bottom="8"/>
                 </padding>
             </Button>
-            <Button fx:id="edit" text="Edit"
-                    style="-fx-background-color: transparent;-fx-border-color: #ffc474;-fx-border-radius: 8;-fx-border-width: 2"
-                    textFill="#ef8c22" onMouseClicked="#editConference">
-                <padding>
-                    <Insets left="16" right="16" top="8" bottom="8"/>
-                </padding>
-                <HBox.margin>
-                    <Insets left="16"/>
-                </HBox.margin>
-            </Button>
+
         </HBox>
 
     </VBox>

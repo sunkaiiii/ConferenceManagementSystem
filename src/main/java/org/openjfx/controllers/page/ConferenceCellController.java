@@ -105,4 +105,7 @@ public class ConferenceCellController implements Initializable {
 
     }
 
+    public void setConferenceFinishedLayout() {
+        this.edit.setVisible(false);
+    }
 }
