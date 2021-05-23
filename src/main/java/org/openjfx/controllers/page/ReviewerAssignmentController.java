@@ -25,9 +25,7 @@ import org.openjfx.service.UserService;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ReviewerAssignmentController implements Initializable, AssignReviewerReviewerListCell.OnReviewerClickListener {
@@ -89,6 +87,11 @@ public class ReviewerAssignmentController implements Initializable, AssignReview
                     .findAllReviewers(MainApp.getInstance().getUser())
                     .stream()
                     .filter(this::reviewerIsNotAuthor)
+                    .sorted(Comparator.comparingInt(this::getLevelExpertise))
+                    .collect(Collectors.groupingBy(this::getReviewerInterestAreaName))
+                    .values()
+                    .stream()
+                    .flatMap(Collection::stream)
                     .map(this::createReviewerListCell)
                     .collect(Collectors.toList());
             this.reviewerListContainer.getChildren().setAll(reviewerListCells);
@@ -97,6 +100,16 @@ public class ReviewerAssignmentController implements Initializable, AssignReview
         }
 
         this.reviewerListContainer.setBorder(ViewHelper.createGeneralDashBolder("#a5b9ff"));
+    }
+
+    private int getLevelExpertise(Reviewer reviewer){
+        final var expertise =  reviewer.getInterestAreas().values().stream().findFirst();
+        return expertise.orElse(Integer.MIN_VALUE);
+    }
+
+    private String getReviewerInterestAreaName(Reviewer reviewer){
+        final var interestArea = reviewer.getInterestAreas().keySet().stream().findFirst();
+        return interestArea.orElse("Unknown");
     }
 
     private boolean reviewerIsNotAuthor(Reviewer reviewer) {
@@ -109,6 +122,9 @@ public class ReviewerAssignmentController implements Initializable, AssignReview
             Node result = loader.load();
             AssignReviewerReviewerListCell cell = loader.getController();
             cell.setReviewer(reviewer);
+            if (reviewer.getInterestAreas().keySet().stream().anyMatch(area -> this.paper.getKeywords().stream().anyMatch(keywords -> keywords.equalsIgnoreCase(area)))) {
+                cell.setRecommend();
+            }
             cell.setOnCellClickedListener(this);
             return result;
         } catch (IOException e) {

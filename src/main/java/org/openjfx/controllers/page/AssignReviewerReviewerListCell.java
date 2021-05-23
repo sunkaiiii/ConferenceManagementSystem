@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Paint;
 import org.openjfx.model.interfaces.Reviewer;
 
 import java.net.URL;
@@ -47,8 +48,8 @@ public class AssignReviewerReviewerListCell implements Initializable {
 
     private void initViews(Reviewer reviewer) {
         this.reviewerName.setText(reviewer.getReviewerName());
-        this.interestArea.setText("("+reviewer.getInterestAreas().entrySet().iterator().next().getKey()+")");
-        this.expertise.setText("("+reviewer.getInterestAreas().entrySet().iterator().next().getValue().toString()+")");
+        this.interestArea.setText("(" + reviewer.getInterestAreas().entrySet().iterator().next().getKey() + ")");
+        this.expertise.setText("(" + reviewer.getInterestAreas().entrySet().iterator().next().getValue().toString() + ")");
     }
 
     public OnReviewerClickListener getOnCellClickedListener() {
@@ -57,6 +58,12 @@ public class AssignReviewerReviewerListCell implements Initializable {
 
     public void setOnCellClickedListener(OnReviewerClickListener onCellClickedListener) {
         this.onCellClickedListener = onCellClickedListener;
+    }
+
+    public void setRecommend() {
+        this.interestArea.setText("(" + reviewer.getInterestAreas().entrySet().iterator().next().getKey() + ")" + "(Recommend Reviewer)");
+        this.reviewerName.setTextFill(Paint.valueOf("#2700a6"));
+        this.interestArea.setTextFill(Paint.valueOf("#2700a6"));
     }
 
     public interface OnReviewerClickListener {
