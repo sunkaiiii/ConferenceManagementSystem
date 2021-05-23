@@ -16,15 +16,18 @@
     <padding>
         <Insets left="8" top="16" bottom="16" right="8"/>
     </padding>
-    <VBox style="-fx-background-color: white; -fx-background-radius: 8">
+    <VBox style="-fx-background-color: white; -fx-background-radius: 8;-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 8, 0, 0, 0);">
         <padding>
             <Insets left="16" top="16" bottom="16" right="16"/>
         </padding>
-        <Label fx:id="conferenceName" alignment="CENTER">
-            <font>
-                <Font name="System Bold"/>
-            </font>
-        </Label>
+        <StackPane>
+            <Label fx:id="conferenceName" textAlignment="CENTER">
+                <font>
+                    <Font name="System Bold" size="24"/>
+                </font>
+            </Label>
+        </StackPane>
+
         <HBox>
             <Label text="Title:"/>
             <Label fx:id="title"/>
@@ -41,11 +44,5 @@
             <Label text="Chair Name:"/>
             <Label fx:id="chairName"/>
         </HBox>
-        <StackPane alignment="CENTER_RIGHT" style="-fx-border-color: #0c7dba; -fx-background-radius: 8">
-            <padding>
-                <Insets left="8" right="8" top="4" bottom="4"/>
-            </padding>
-            <Label text="Detail"/>
-        </StackPane>
     </VBox>
 </StackPane>

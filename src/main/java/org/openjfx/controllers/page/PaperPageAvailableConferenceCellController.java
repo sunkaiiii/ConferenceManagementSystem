@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import org.openjfx.controllers.PageNames;
 import org.openjfx.helper.SceneHelper;
+import org.openjfx.helper.TimeHelper;
 import org.openjfx.model.Conference;
 
 import java.io.IOException;
@@ -51,7 +52,7 @@ public class PaperPageAvailableConferenceCellController implements Initializable
     private void initCell(Conference conference) {
         this.conferenceName.setText(conference.getName());
         this.topic.setText(conference.getTopic());
-        this.deadline.setText(LocalDateTime.parse(conference.getDeadline()).toLocalDate().toString());
+        this.deadline.setText(TimeHelper.convertToDisplayTime(conference.getDeadline()));
         this.keywords.setText(String.join(",", conference.getKeywords()));
         this.chairName.setText(conference.getChairName());
     }

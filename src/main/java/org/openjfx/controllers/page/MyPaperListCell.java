@@ -10,6 +10,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
+import org.openjfx.helper.TimeHelper;
 import org.openjfx.model.AuthorInformation;
 import org.openjfx.model.Paper;
 
@@ -64,7 +65,7 @@ public class MyPaperListCell implements Initializable {
         keywords.setText(String.join(";", item.getKeywords()));
         authors.setText(item.getAuthors().stream().map(AuthorInformation::getAuthorDisplayName).collect(Collectors.joining(";")));
         submittedName.setText(item.getAuthors().stream().map(AuthorInformation::getAuthorDisplayName).findFirst().orElse(""));
-        submittedTime.setText(LocalDateTime.parse(item.getSubmittedTime()).toLocalDate().toString());
+        submittedTime.setText(TimeHelper.convertToDisplayTime(item.getSubmittedTime()));
         fillStatusView();
     }
 
