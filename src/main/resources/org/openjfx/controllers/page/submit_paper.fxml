@@ -73,7 +73,7 @@
                                         <Insets bottom="16"/>
                                     </VBox.margin>
                                 </Label>
-                                <StackPane style="-fx-border-color: #a6b9ff;-fx-border-radius: 8;-fx-background-color: #f6f8ff;-fx-background-radius: 8" onMouseClicked="#selectPapers" prefHeight="400">
+                                <StackPane style="-fx-border-color: #a6b9ff;-fx-border-radius: 8;-fx-background-color: #f6f8ff;-fx-background-radius: 8"  prefHeight="400" fx:id="selectPaperParentView">
                                     <padding>
                                         <Insets left="16" right="16" top="16" bottom="16"/>
                                     </padding>

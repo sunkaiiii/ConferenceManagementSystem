@@ -2,6 +2,8 @@ package org.openjfx.controllers.page;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -43,6 +46,9 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
     private Parent selectPaperContainer;
 
     @FXML
+    private StackPane selectPaperParentView;
+
+    @FXML
     private MenuButton authorSelectMenuButton;
 
     @FXML
@@ -72,6 +78,8 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
 
     private final PaperService paperService = PaperService.getDefaultInstance();
 
+    private final EventHandler<MouseEvent> selectPaperEvent = this::selectPapers;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         allFields = List.of(paperName, keywordField);
@@ -98,6 +106,7 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
                 .collect(Collectors.toList());
         this.authorSelectMenuButton.getItems().setAll(items);
         this.preDefineKeywordFlowPane.getChildren().addAll(getPreDefineKeywordsCells());
+        this.selectPaperParentView.addEventHandler(MouseEvent.MOUSE_CLICKED, selectPaperEvent);
     }
 
     private void initAuthorList() {
@@ -109,17 +118,17 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
         }
     }
 
-    private MenuItem createMenuItem(Author author){
+    private MenuItem createMenuItem(Author author) {
         MenuItem menuItem = new MenuItem();
         menuItem.setText(author.getAuthorName());
         menuItem.setUserData(author);
-        menuItem.setOnAction((event)->authorItemSelected(event,menuItem));
+        menuItem.setOnAction((event) -> authorItemSelected(event, menuItem));
         return menuItem;
     }
 
-    private void authorItemSelected(ActionEvent event, MenuItem item){
+    private void authorItemSelected(ActionEvent event, MenuItem item) {
         Author author = (Author) item.getUserData();
-        authorField.setText(authorField.getText()+author.getAuthorName()+";");
+        authorField.setText(authorField.getText() + author.getAuthorName() + ";");
         selectedAuthor.add(author);
         this.authorSelectMenuButton.getItems().remove(item);
     }
@@ -145,7 +154,7 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
 
     @FXML
     void selectPapers(MouseEvent event) {
-        if(paperFiles.size()>0){
+        if (paperFiles.size() > 0) {
             return;
         }
         FileChooser fileChooser = new FileChooser();
@@ -153,29 +162,33 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
         fileChooser.getExtensionFilters().add(filter);
         Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         List<java.io.File> selectedFiles = fileChooser.showOpenMultipleDialog(appStage);
-        if(selectedFiles==null || selectedFiles.size()==0){
+        if (selectedFiles == null || selectedFiles.size() == 0) {
             return;
         }
         this.paperFiles.addAll(selectedFiles);
         refreshFilePageCell();
-        System.out.println(this.paperFiles.size());
     }
 
     private void refreshFilePageCell() {
+        this.selectPaperParentView.removeEventHandler(MouseEvent.MOUSE_CLICKED, selectPaperEvent);
         List<Node> result = this.paperFiles.stream().map(this::createFileListCell).filter(Objects::nonNull).collect(Collectors.toList());
         this.fileListContainer.getChildren().setAll(result);
-        this.folderContainer.setVisible(!(result.size()>0));
+        this.folderContainer.setVisible(!(result.size() > 0));
+        if (result.size() == 0) {
+            this.selectPaperParentView.addEventHandler(MouseEvent.MOUSE_CLICKED, selectPaperEvent);
+        }
+
     }
 
-    private Node createFileListCell(java.io.File file){
-        try{
-            FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(),PageNames.PAPER_SUBMIT_FILE_LIST_CELL);
+    private Node createFileListCell(java.io.File file) {
+        try {
+            FXMLLoader loader = SceneHelper.createViewWithResourceName(getClass(), PageNames.PAPER_SUBMIT_FILE_LIST_CELL);
             Node result = loader.load();
             PaperSubmitFileListCell cell = loader.getController();
             cell.setSelectedFile(file);
             cell.setOnCancelButtonSelectedListener(this);
             return result;
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return null;
@@ -206,7 +219,7 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
 
     }
 
-    private void submitPaperToSystem(MouseEvent event){
+    private void submitPaperToSystem(MouseEvent event) {
         List<PaperFile> paperFiles = this.paperFiles.stream().map(paper -> {
             try {
                 return FileHelper.getInstance().uploadFileToServer(paper.getName(), paper.getAbsolutePath());
@@ -219,7 +232,7 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
         Paper paper = new Paper(paperName.getTrimText(), conference.getTopic(), Arrays.stream(keywordField.getText().split(";")).collect(Collectors.toList()), conference.getDeadline(), paperFiles, conference.getId());
         try {
             paperService.submitPaper(selectedAuthor, paper);
-            SceneHelper.startPage(getClass(),event,PageNames.PAPER_MANAGEMENT,true);
+            SceneHelper.startPage(getClass(), event, PageNames.PAPER_MANAGEMENT, true);
             SceneHelper.deleteScene(PageNames.CONFERENCE_MANAGEMENT.getPageName());
         } catch (IOException exception) {
             exception.printStackTrace();
@@ -255,6 +268,7 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
     @Override
     public void onCanceled(MouseEvent event, java.io.File file, Parent parent) {
         this.paperFiles.remove(file);
+        event.consume();
         refreshFilePageCell();
     }
 }
