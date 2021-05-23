@@ -4,6 +4,7 @@ import org.openjfx.helper.CSVConvertHelper;
 import org.openjfx.model.interfaces.CSVConvertable;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,6 +31,7 @@ public class Paper implements CSVConvertable<Conference> {
         this.submittedTime = LocalDateTime.now().toString();
         this.conferenceId = conferenceId;
         this.paperStatus = PaperStatus.SUBMITTED;
+        this.reviewerInformationList = new ArrayList<>();
     }
 
     public String getId() {

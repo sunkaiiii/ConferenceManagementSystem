@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import org.openjfx.MainApp;
 import org.openjfx.controllers.PageNames;
@@ -18,7 +19,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class PaperManagementMyPapersController implements Initializable {
+public class PaperManagementMyPapersController implements Initializable, MyPaperListCell.StatusButtonListener {
 
     @FXML
     private VBox myPaperContainer;
@@ -49,6 +50,7 @@ public class PaperManagementMyPapersController implements Initializable {
             Node node = loader.load();
             MyPaperListCell cell = loader.getController();
             cell.setPaper(paper);
+            cell.setStatusButtonListener(this);
             switch (paper.getPaperStatus()){
                 case ACCEPTED :
                     cell.setPresentation(MyPaperListCell.PaperStatusPresentation.PAPER_PAGE_ACCEPTED);
@@ -71,5 +73,31 @@ public class PaperManagementMyPapersController implements Initializable {
             exception.printStackTrace();
         }
         return null;
+    }
+
+    @Override
+    public void onStatusButtonClicked(MouseEvent event, Paper paper) {
+        switch (paper.getPaperStatus()) {
+            case SUBMITTED:
+            case REVIEWED:
+            case ACCEPTED:
+            case REJECTED:
+            case BEING_REVIEWED:
+                goToFinalDecisionPageWithoutEditing(event,paper);
+            default:
+                break;
+        }
+    }
+
+    private void goToFinalDecisionPageWithoutEditing(MouseEvent event, Paper paper) {
+        try {
+            SceneHelper.startPage(getClass(), event, PageNames.PAPER_FINAL_DECISION_PAGE, false, (PaperFinalDecisionPageController controller) -> {
+                controller.setPaper(paper);
+                controller.setPreviousScene(((Node) event.getSource()).getScene());
+                controller.setViewOnlyMode();
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
