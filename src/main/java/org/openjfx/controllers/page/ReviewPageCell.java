@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import org.openjfx.controllers.PageNames;
 import org.openjfx.helper.SceneHelper;
+import org.openjfx.helper.TimeHelper;
 import org.openjfx.model.AuthorInformation;
 import org.openjfx.model.Paper;
 import org.openjfx.service.ConferenceService;
@@ -64,7 +65,7 @@ public class ReviewPageCell implements Initializable {
         paperName.setText(paper.getTitle());
         paperAuthor.setText(paper.getAuthors().stream().map(AuthorInformation::getAuthorDisplayName).collect(Collectors.joining(";")));
         paperKeywords.setText(String.join(";",paper.getKeywords()));
-        submittedTime.setText(LocalDateTime.parse(paper.getSubmittedTime()).toLocalDate().toString());
+        submittedTime.setText(TimeHelper.convertToDisplayTime(paper.getSubmittedTime()));
         conferenceName.setText(conferenceService.getConferenceNameById(paper.getConferenceId()));
         switch (this.cellType){
             case REVIEWED:

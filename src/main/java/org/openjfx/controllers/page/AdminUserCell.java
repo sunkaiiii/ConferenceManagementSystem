@@ -3,10 +3,15 @@ package org.openjfx.controllers.page;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import org.openjfx.helper.TimeHelper;
 import org.openjfx.model.RegisterdUser;
 
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.ResourceBundle;
+import java.util.logging.SimpleFormatter;
 
 public class AdminUserCell implements Initializable {
 
@@ -34,6 +39,6 @@ public class AdminUserCell implements Initializable {
 
     private void initView(RegisterdUser user) {
         this.userName.setText(String.format("%s %s(%s)", user.getFirstName(), user.getLastName(), user.getUserName()));
-        this.creationTime.setText(user.getCreationTime());
+        this.creationTime.setText(TimeHelper.convertToDisplayTime(user.getCreationTime()));
     }
 }

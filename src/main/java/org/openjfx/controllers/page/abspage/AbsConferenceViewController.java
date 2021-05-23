@@ -30,8 +30,13 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.chrono.Chronology;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.FormatStyle;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -78,6 +83,7 @@ public abstract class AbsConferenceViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         AutoTrimTextFields = List.of(conferenceName, conferenceTitle, conferenceTopic, keywords);
+        deadline.setFormat(DateTimeFormatterBuilder.getLocalizedDateTimePattern(FormatStyle.MEDIUM,FormatStyle.MEDIUM, Chronology.ofLocale(Locale.getDefault()),Locale.getDefault()));
         addDateSelectedListener();
         disablePastDates();
         setViewState();

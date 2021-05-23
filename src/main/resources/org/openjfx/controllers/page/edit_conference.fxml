@@ -52,7 +52,7 @@
                         <Insets top="8"/>
                     </padding>
                 </Label>
-                <DateTimePicker prefWidth="Infinity" fx:id="deadline"/>
+                <DateTimePicker prefWidth="Infinity" fx:id="deadline" editable="false"/>
                 <HBox alignment="CENTER">
 
                     <Label text="Cancel" onMouseClicked="#cancelButtonClicked" textFill="#5e5e5e">

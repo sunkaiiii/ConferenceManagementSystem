@@ -140,7 +140,7 @@ public class WriteReviewPageController implements Initializable {
         this.conferenceName.setText(conferenceService.getConferenceNameById(paper.getConferenceId()));
         this.topic.setText(paper.getTopic());
         this.keywords.setText(String.join(";", paper.getKeywords()));
-        this.submittedTime.setText(paper.getSubmittedTime());
+        this.submittedTime.setText(TimeHelper.convertToDisplayTime(paper.getSubmittedTime()));
         this.fileContainer.getChildren().setAll(paper.getPaperFiles().stream().map(this::createReviewFileListCell).collect(Collectors.toList()));
         this.fileContainer.setBorder(ViewHelper.createGeneralDashBolder("#a5b9ff"));
     }

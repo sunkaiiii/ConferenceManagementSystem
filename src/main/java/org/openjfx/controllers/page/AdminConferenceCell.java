@@ -3,6 +3,7 @@ package org.openjfx.controllers.page;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import org.openjfx.helper.TimeHelper;
 import org.openjfx.model.Conference;
 
 import java.net.URL;
@@ -44,7 +45,7 @@ public class AdminConferenceCell implements Initializable {
 
     private void initViews(Conference conference) {
         this.conferenceName.setText(conference.getName());
-        this.deadline.setText(conference.getDeadline());
+        this.deadline.setText(TimeHelper.convertToDisplayTime(conference.getDeadline()));
         this.title.setText(conference.getTitle());
         this.topic.setText(conference.getTopic());
         this.chairName.setText(conference.getChairName());

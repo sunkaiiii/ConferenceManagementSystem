@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import org.openjfx.controllers.PageNames;
 import org.openjfx.helper.SceneHelper;
+import org.openjfx.helper.TimeHelper;
 import org.openjfx.model.Conference;
 import org.openjfx.model.Paper;
 import org.openjfx.service.PaperService;
@@ -66,7 +67,7 @@ public class ConferenceCellController implements Initializable {
         }
         this.conferenceName.setText(conference.getName());
         this.topic.setText(conference.getTopic());
-        this.deadline.setText(LocalDateTime.parse(conference.getDeadline()).toLocalDate().toString());
+        this.deadline.setText(TimeHelper.convertToDisplayTime(conference.getDeadline()));
         Arrays.stream(Paper.PaperStatus.values())
                 .map(status -> String.format("Paper %s: %d", status.getStatus(), findPaperWithStatus(this.conference, status).size()))
                 .map(paperInformation -> {
