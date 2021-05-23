@@ -82,15 +82,9 @@ public class SignUpController implements Initializable {
 
     @FXML
     void addInterestingAreaClicked(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/openjfx/controllers/dialog/add_interesting_area_dialog.fxml"));
-        Parent parent = fxmlLoader.load();
-        AddInterestingAreaDialog dialog = fxmlLoader.getController();
-        dialog.setOnAddInterestingAreaListener(this::refreshViewWithNewInterestingArea);
-        Scene scene = new Scene(parent,350,150);
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(scene);
-        stage.showAndWait();
+        SceneHelper.showDialogStage(getClass(),350,150,PageNames.ADD_INTERSTING_AREA_DIALOG,(AddInterestingAreaDialog dialogController)->{
+            dialogController.setOnAddInterestingAreaListener(this::refreshViewWithNewInterestingArea);
+        });
     }
 
     private void refreshViewWithNewInterestingArea(Pair<String, Integer> newInterestingArea) {

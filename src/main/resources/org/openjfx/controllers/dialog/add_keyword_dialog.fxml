@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<?import org.openjfx.helper.AutoTrimTextField?>
+<?import javafx.geometry.Insets?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.openjfx.controllers.dialog.AddKeywordDialog"
+      prefHeight="150.0" prefWidth="300.0" alignment="CENTER_LEFT">
+    <padding>
+        <Insets left="32" right="32"/>
+    </padding>
+    <Label text="Keyword">
+        <font>
+            <Font size="20" name="System Bold"/>
+        </font>
+    </Label>
+    <AutoTrimTextField fx:id="keyword"/>
+    <HBox alignment="CENTER_RIGHT">
+        <VBox.margin>
+            <Insets top="16"/>
+        </VBox.margin>
+        <Button text="Cancel" style="-fx-background-color: transparent" onMouseClicked="#closeDialog"/>
+        <Region prefWidth="36"/>
+        <Button text="Add" onMouseClicked="#addKeyword" style="-fx-background-color: #1161d1; -fx-background-radius: 8" textFill="white">
+            <padding>
+                <Insets left="16" right="16" top="4" bottom="4"/>
+            </padding>
+        </Button>
+    </HBox>
+</VBox>

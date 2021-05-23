@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 
 public class InputValidation {
     static public boolean isNullOrEmpty(String text) {
-        return text == null || text.isEmpty();
+        return text == null || text.isEmpty() || text.trim().isBlank();
     }
 
     static public <T extends TextField> boolean checkTextFiledIsEmpty(T field) {

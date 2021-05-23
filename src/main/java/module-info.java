@@ -12,6 +12,7 @@ module assignment{
     exports org.openjfx.controllers.dialog;
     exports org.openjfx.controllers.dialog.absdialog;
     exports org.openjfx.helper;
+    exports org.openjfx.controllers.page.interfaces;
     opens org.openjfx.helper to javafx.fxml;
     opens org.openjfx.controllers.dialog.absdialog to javafx.fxml;
     opens org.openjfx.controllers.page.abspage to javafx.fxml;

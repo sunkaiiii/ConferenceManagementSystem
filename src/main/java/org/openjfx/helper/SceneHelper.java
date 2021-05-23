@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.openjfx.controllers.page.interfaces.PageNameDescriber;
 
@@ -33,6 +34,18 @@ public final class SceneHelper {
         if(onStageShowing!=null){
             onStageShowing.accept(scene);
         }
+    }
+
+    public static <T> void showDialogStage(Class<? extends Initializable> controllerClazz, int stageWidth, int stageHeight, PageNameDescriber resourceFileName, Consumer<T> onStageCreated) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(controllerClazz.getResource(resourceFileName.getPageName()));
+        Parent parent = fxmlLoader.load();
+        Scene scene = new Scene(parent,stageWidth,stageHeight);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        T t = fxmlLoader.getController();
+        onStageCreated.accept(t);
+        stage.showAndWait();
     }
 
     public static void startStage(Scene scene,Event event){

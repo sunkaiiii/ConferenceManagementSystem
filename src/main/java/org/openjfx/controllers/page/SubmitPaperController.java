@@ -18,6 +18,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.openjfx.MainApp;
 import org.openjfx.controllers.PageNames;
+import org.openjfx.controllers.dialog.AddKeywordDialog;
 import org.openjfx.helper.*;
 import org.openjfx.model.Conference;
 import org.openjfx.model.Paper;
@@ -79,6 +80,7 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
     private final PaperService paperService = PaperService.getDefaultInstance();
 
     private final EventHandler<MouseEvent> selectPaperEvent = this::selectPapers;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -195,6 +197,21 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
     }
 
     @FXML
+    private void showAddKeywordDialog(MouseEvent event) throws IOException {
+        SceneHelper.showDialogStage(getClass(), 300, 150, PageNames.ADD_KEYWORD_DIALOG, (AddKeywordDialog dialog) -> {
+            dialog.setOnAddKeywordListener(this::addKeywordToField);
+        });
+    }
+
+    private void addKeywordToField(String newKeyword) {
+        if (Arrays.stream(this.keywordField.getText().split(";")).anyMatch(word -> word.equalsIgnoreCase(newKeyword))) {
+            DialogHelper.showErrorDialog("There is already have a keyword of " + newKeyword);
+            return;
+        }
+        this.keywordField.setText(this.keywordField.getText() + newKeyword + ";");
+    }
+
+    @FXML
     void cancelSubmit(MouseEvent event) throws IOException {
         SceneHelper.startPage(getClass(), event, PageNames.PAPER_MANAGEMENT, true);
     }
@@ -242,7 +259,7 @@ public class SubmitPaperController implements Initializable, PreDefineListCellCo
     @Override
     public void onKeywordSelected(String keyword, PreDefineListCellController.SelectedState state) {
         if (state == PreDefineListCellController.SelectedState.ADD) {
-            this.keywordField.setText(this.keywordField.getText() + keyword + ";");
+            addKeywordToField(keyword);
         } else if (state == PreDefineListCellController.SelectedState.DELETE) {
             this.keywordField.setText(this.keywordField.getText().replace(keyword + ";", ""));
         }

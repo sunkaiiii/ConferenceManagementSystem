@@ -112,7 +112,11 @@
                                     <Insets top="8" bottom="4"/>
                                 </padding>
                             </Label>
-                            <AutoTrimTextField fx:id="keywordField" editable="false"/>
+                            <StackPane>
+                                <AutoTrimTextField fx:id="keywordField" editable="false"/>
+                                <Button text="Add Keywords" StackPane.alignment="CENTER_RIGHT" style="-fx-background-color: #1161d1; -fx-background-radius: 8" textFill="white" onMouseClicked="#showAddKeywordDialog"/>
+                            </StackPane>
+
                             <FlowPane fx:id="preDefineKeywordFlowPane"/>
                         </VBox>
                     </right>

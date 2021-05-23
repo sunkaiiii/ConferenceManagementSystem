@@ -31,6 +31,8 @@ public enum PageNames implements PageNameDescriber {
     FINAL_DECISION_REVIEW_LIST_CELL("final_decision_review_list_cell.fxml"),
     GENERAL_ALERT_VIEW("general_alert_view.fxml"),
     CREATE_CONFERENCE_ADD_TIME_DIALOG("/org/openjfx/controllers/dialog/create_conference_select_time_dialog.fxml"),
+    ADD_INTERSTING_AREA_DIALOG("/org/openjfx/controllers/dialog/add_interesting_area_dialog.fxml"),
+    ADD_KEYWORD_DIALOG("/org/openjfx/controllers/dialog/add_keyword_dialog.fxml"),
     ;
     private final String pageName;
 
