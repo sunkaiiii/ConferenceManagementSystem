@@ -19,6 +19,7 @@ import org.openjfx.service.ReviewService;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -149,7 +150,11 @@ public class PaperFinalDecisionPageController implements Initializable {
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
 
-        List<Node> reviewContentCell = paper.getReviewerInformationList()
+        List<ReviewerInformation> informations = paper.getReviewerInformationList();
+        if(informations == null){
+            informations = new ArrayList<>();
+        }
+        List<Node> reviewContentCell = informations
                 .stream()
                 .map(ReviewerInformation::getReviewId)
                 .map(this::searchReviewById)
