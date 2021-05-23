@@ -20,7 +20,7 @@
         <padding>
             <Insets left="32" right="32" top="16" bottom="16"/>
         </padding>
-        <HBox alignment="CENTER">
+        <HBox alignment="CENTER_LEFT">
             <VBox alignment="CENTER">
                 <ImageView fitWidth="36" fitHeight="36">
                     <image>

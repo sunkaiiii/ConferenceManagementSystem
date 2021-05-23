@@ -62,6 +62,7 @@ public class WriteReviewPageFileListCell extends AbstractFileListCell implements
         String extension = FileHelper.getInstance().getFileExtensionByStringHandling(paperFile.getStoragePath()).orElse("*");
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save");
+        fileChooser.setInitialFileName(paperFile.getFileName());
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Document format","*."+extension));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         java.io.File saveFile = fileChooser.showSaveDialog(stage);

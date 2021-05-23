@@ -30,78 +30,83 @@
                 <padding>
                     <Insets left="48" right="48" top="48" bottom="48"/>
                 </padding>
-                <HBox maxWidth="36" onMouseClicked="#backToPreviousPage">
-                    <ImageView fitHeight="36" fitWidth="36" >
-                        <image>
-                            <Image url="@../../images/back_arrow.png"/>
-                        </image>
-                    </ImageView>
-                </HBox>
-                <Label fx:id="paperName">
-                    <font>
-                        <Font name="System Bold" size="16"/>
-                    </font>
-                    <VBox.margin>
-                        <Insets top="16"/>
-                    </VBox.margin>
-                </Label>
-                <Label fx:id="authors">
-                    <VBox.margin>
-                        <Insets top="8"/>
-                    </VBox.margin>
-                </Label>
+                <StackPane>
+                    <HBox maxWidth="36" onMouseClicked="#backToPreviousPage" StackPane.alignment="CENTER_LEFT">
+                        <ImageView fitHeight="36" fitWidth="36" >
+                            <image>
+                                <Image url="@../../images/back_arrow.png"/>
+                            </image>
+                        </ImageView>
+                    </HBox>
+                    <VBox alignment="CENTER">
+                        <StackPane.margin>
+                            <Insets left="48" right="48"/>
+                        </StackPane.margin>
+                        <Label fx:id="paperName" textAlignment="CENTER">
+                            <font>
+                                <Font name="System Bold" size="24"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="authors">
+                            <VBox.margin>
+                                <Insets top="8"/>
+                            </VBox.margin>
+                        </Label>
+                    </VBox>
+
+                </StackPane>
+
                 <StackPane style="-fx-background-color: white;-fx-background-radius: 8">
                     <VBox.margin>
-                        <Insets top="8"/>
+                        <Insets top="12"/>
                     </VBox.margin>
                     <padding>
                         <Insets left="16" right="16" bottom="16" top="16"/>
                     </padding>
-                    <BorderPane>
-                        <left>
-                            <VBox>
-                                <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;">
-                                    <VBox fx:id="fileContainer" prefHeight="275" style="-fx-background-color:#f6f8ff;-fx-background-radius: 8 ">
-                                        <padding>
-                                            <Insets left="16" right="16" bottom="16" top="16"/>
-                                        </padding>
-                                    </VBox>
-                                </ScrollPane>
-                                <HBox>
-                                    <Label text="Keywords:">
-                                        <font>
-                                            <Font name="System Bold" size="15"/>
-                                        </font>
-                                    </Label>
-                                    <Label fx:id="keywords">
-                                        <font>
-                                            <Font name="System Bold" size="15"/>
-                                        </font>
-                                    </Label>
-                                    <VBox.margin>
-                                        <Insets top="16"/>
-                                    </VBox.margin>
-                                </HBox>
-
-                            </VBox>
-
-                        </left>
-                        <right>
-                            <ScrollPane fitToWidth="true" fitToHeight="true"
-                                        style="-fx-background-color: transparent;-fx-background: transparent">
-                                <VBox fx:id="reviewContainer">
-                                    <Label text="Reviews" textFill="black">
-                                        <font>
-                                            <Font size="16" name="System Bold"/>
-                                        </font>
-                                        <VBox.margin>
-                                            <Insets left="16" bottom="8"/>
-                                        </VBox.margin>
-                                    </Label>
+                    <HBox>
+                        <VBox>
+                            <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;">
+                                <VBox fx:id="fileContainer" prefHeight="400" prefWidth="500" style="-fx-background-color:#f6f8ff;-fx-background-radius: 8 ">
+                                    <padding>
+                                        <Insets left="16" right="16" bottom="16" top="16"/>
+                                    </padding>
                                 </VBox>
                             </ScrollPane>
-                        </right>
-                    </BorderPane>
+                            <HBox>
+                                <Label text="Keywords:">
+                                    <font>
+                                        <Font name="System Bold" size="15"/>
+                                    </font>
+                                </Label>
+                                <Label fx:id="keywords">
+                                    <font>
+                                        <Font name="System Bold" size="15"/>
+                                    </font>
+                                </Label>
+                                <VBox.margin>
+                                    <Insets top="16"/>
+                                </VBox.margin>
+                            </HBox>
+
+                        </VBox>
+                        <Region prefWidth="36"/>
+                        <ScrollPane fitToWidth="true" fitToHeight="true"
+                                    style="-fx-background-color: transparent;-fx-background: transparent">
+
+                            <VBox fx:id="reviewContainer" prefWidth="500" >
+                                <Label text="Reviews" textFill="black">
+                                    <font>
+                                        <Font size="16" name="System Bold"/>
+                                    </font>
+                                    <VBox.margin>
+                                        <Insets left="16" bottom="8"/>
+                                    </VBox.margin>
+                                </Label>
+                            </VBox>
+                        </ScrollPane>
+                    </HBox>
+
+
                 </StackPane>
                 <HBox alignment="CENTER">
                     <StackPane style="-fx-background-radius: 8;-fx-background-color: #c92d39"
