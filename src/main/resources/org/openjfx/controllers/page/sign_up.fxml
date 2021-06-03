@@ -90,7 +90,7 @@
                     <Insets left="4" top="8" bottom="8" right="4"/>
                 </padding>
                 <Label text="Highest qualification" style="-fx-font-weight: bold"/>
-                <AutoTrimTextField fx:id="highestQualification" promptText="Enter a number from 1 to 5"/>
+                <AutoTrimTextField fx:id="highestQualification" />
             </VBox>
             <VBox>
                 <padding>
