@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ae9b270c-5962-4e59-ac2f-9f747ba3f49c" name="Default Changelist" comment="Slight adjustment of layout on submit_paper">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/openjfx/model/Conference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/openjfx/model/Conference.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/admin_page.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/openjfx/controllers/page/admin_page.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,9 +81,9 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Bitcoin-Wallet-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -114,19 +112,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Gradle.FIT5136Assignment">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Conference" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.openjfx.model.Conference" />
       <module name="FIT5136Assignment.main" />
@@ -277,6 +262,7 @@
       <workItem from="1621414551869" duration="10275000" />
       <workItem from="1621483568902" duration="15845000" />
       <workItem from="1621597920884" duration="343000" />
+      <workItem from="1623307378671" duration="447000" />
     </task>
     <task id="LOCAL-00001" summary="Adjust the layout of submit_paper page">
       <created>1620902744935</created>
