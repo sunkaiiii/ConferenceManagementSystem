@@ -5,6 +5,14 @@
 
 A desktop-based software using JavaFX with the MVC architecture.
 
+## To run the project
+Open this project in Intellij IDEA, or run in command line
+```
+gradlew run
+```
+
+#### It is recommended to use JDK 11 to run this project, and JDK 16 currently has a compatibility issue with JavaFX., which leads a compile error and cannot run in any platform.
+
   
 
 ## Software fuction <br>
@@ -38,3 +46,6 @@ A desktop-based software using JavaFX with the MVC architecture.
 - Review management
 
 	+ Write review for a paper assigned to the user
+
+
+![](https://github.com/sunkaiiii/ConferenceManagementSystem/blob/master/img/1.png)![](https://github.com/sunkaiiii/ConferenceManagementSystem/blob/master/img/2.png)![](https://github.com/sunkaiiii/ConferenceManagementSystem/blob/master/img/3.png)![](https://github.com/sunkaiiii/ConferenceManagementSystem/blob/master/img/4.png)![](https://github.com/sunkaiiii/ConferenceManagementSystem/blob/master/img/5.png)![](https://github.com/sunkaiiii/ConferenceManagementSystem/blob/master/img/6.png)![](https://github.com/sunkaiiii/ConferenceManagementSystem/blob/master/img/7.png)![](https://github.com/sunkaiiii/ConferenceManagementSystem/blob/master/img/8.png)![](https://github.com/sunkaiiii/ConferenceManagementSystem/blob/master/img/9.png)![](https://github.com/sunkaiiii/ConferenceManagementSystem/blob/master/img/10.png)
